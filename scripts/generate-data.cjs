@@ -269,7 +269,8 @@ function generateImportsAndData() {
         console.log(`Added Instagram Reels project separate from scan (Items: ${reelCollection.length})`);
 
     } else {
-        // Folder doesn't exist? Create hardcoded fallback so it NEVER disappears
+        // Folder doesn't exist (e.g. on Vercel if empty)? 
+        // Create hardcoded fallback with CORRECT COVER so it looks consistent
         projectsData.push({
             id: 10,
             title: 'Instagram Reels',
@@ -279,13 +280,14 @@ function generateImportsAndData() {
             status: "Online",
             link: "",
             desc: { en: 'Reels collection.', fr: 'Collection Reels.' },
-            media: 'https://picsum.photos/seed/insta/800/600',
+            // FIX: Use the same cover as the main block
+            media: 'assets/projects/instagram-3d-final.png',
             type: 'collection',
             collection: [
                 { type: 'video', src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4' }
             ]
         });
-        console.log("Added Fallback Instagram Reels (Folder not found)");
+        console.log("Added Fallback Instagram Reels (Folder not found on server)");
     }
 
     // Write File
