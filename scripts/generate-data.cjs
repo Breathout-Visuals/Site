@@ -176,31 +176,117 @@ function generateImportsAndData() {
         projectsData.push(projectObj);
     });
 
-    // --- MANUALLY RESTORED SPECIAL PROJECTS ---
-    // Instagram Reels (Project ID 10) - Kept as hardcoded special case for now
-    projectsData.push({
-        id: 10,
-        title: 'Instagram Reels',
-        category: 'social_media',
-        role: "Content Creation",
-        date: { fr: '2025', en: '2025' },
-        status: "Online",
-        link: "",
-        desc: {
-            en: 'A collection of dynamic, high-engagement reels created for various brands and personal projects.',
-            fr: 'Une collection de reels dynamiques créés pour diverses marques et projets personnels.'
-        },
-        media: 'assets/projects/instagram-3d-final.png', // Ensure this asset exists in public/
-        type: 'collection',
-        collection: [
-            { type: 'video', src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', title: { fr: 'Fashion Week', en: 'Fashion Week' }, poster: 'https://picsum.photos/seed/v1/260/460' },
-            { type: 'video', src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4', title: { fr: 'Urban Explorer', en: 'Urban Explorer' }, poster: 'https://picsum.photos/seed/v2/260/460' },
-            { type: 'video', src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4', title: { fr: 'Neon Nights', en: 'Neon Nights' }, poster: 'https://picsum.photos/seed/v3/260/460' },
-            { type: 'video', src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4', title: { fr: 'Cinematic Port', en: 'Cinematic Port' }, poster: 'https://picsum.photos/seed/v4/260/460' },
-            { type: 'video', src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4', title: { fr: 'Vitesse', en: 'Speed' }, poster: 'https://picsum.photos/seed/v5/260/460' },
-            { type: 'video', src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4', title: { fr: 'Sci-Fi Mood', en: 'Sci-Fi Mood' }, poster: 'https://picsum.photos/seed/v6/260/460' },
-        ]
-    });
+    // --- DYNAMIC INSTAGRAM REELS ---
+    const reelsDir = path.resolve(__dirname, '../Contents projets/Instagram Reel');
+    if (fs.existsSync(reelsDir)) {
+        const reelFiles = fs.readdirSync(reelsDir);
+        // Look for A.*, B.*, C.*, D.* ... Z.*
+        // Map letters to collection items
+
+        let reelCollection = [];
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+
+        alphabet.forEach(letter => {
+            const match = reelFiles.find(f => f.startsWith(letter + '.') && MEDIA_EXTS.includes(path.extname(f).toLowerCase()));
+            if (match) {
+                // Determine absolute/relative path
+                // From src/project-data.js to Contents projets/Instagram Reel/file.mp4
+                // path.relative(src, Contents/Insta/file)
+
+                let relativePath = path.relative(path.dirname(OUTPUT_FILE), path.join(reelsDir, match));
+                relativePath = relativePath.split(path.sep).join('/');
+                if (!relativePath.startsWith('.')) relativePath = './' + relativePath;
+
+                const varName = `reel_${letter}`;
+                imports.push(`import ${varName} from '${relativePath}';`);
+
+                const isVideo = match.match(/\.(mp4|webm)$/i);
+
+                // OPTIMIZATION: Check for companion poster (Same name, image ext)
+                let posterVar = "''"; // Default empty string
+                if (isVideo) {
+                    const baseName = path.basename(match, path.extname(match)); // e.g., "A"
+                    // Look for A.jpg, A.png, etc.
+                    const posterFile = reelFiles.find(f =>
+                        f.startsWith(baseName + '.') &&
+                        ['.jpg', '.jpeg', '.png', '.webp'].includes(path.extname(f).toLowerCase()) &&
+                        f !== match // Avoid self
+                    );
+
+                    if (posterFile) {
+                        let posterPath = path.relative(path.dirname(OUTPUT_FILE), path.join(reelsDir, posterFile));
+                        posterPath = posterPath.split(path.sep).join('/');
+                        if (!posterPath.startsWith('.')) posterPath = './' + posterPath;
+
+                        const posterVarName = `reel_poster_${letter}`;
+                        imports.push(`import ${posterVarName} from '${posterPath}';`);
+                        posterVar = posterVarName;
+                    }
+                }
+
+                reelCollection.push({
+                    type: isVideo ? 'video' : 'image',
+                    src: varName,
+                    // Title could be mapped if needed, for now generic "Reel A"
+                    title: { fr: '', en: '' },
+                    poster: (posterVar !== "''") ? posterVar : '' // Pass variable or empty string
+                });
+            }
+        });
+
+        // ... (Scanning logic remains above)
+
+        // ALWAYS PUSH THE PROJECT (Even if empty, or use placeholder)
+        // If collection is empty, we can keep the previous placeholder logic OR just show an empty project
+        // User requested "il sera tjs là" (Use placeholders if real files missing?)
+
+        if (reelCollection.length === 0) {
+            // FALLBACK TO PLACEHOLDERS so it doesn't disappear
+            reelCollection = [
+                { type: 'video', src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', title: { fr: 'Demo 1', en: 'Demo 1' } },
+                { type: 'video', src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4', title: { fr: 'Demo 2', en: 'Demo 2' } }
+            ];
+            // You can remove this fallback later when you have real files
+        }
+
+        projectsData.push({
+            id: 10,
+            title: 'Instagram Reels',
+            category: 'social_media',
+            role: "Content Creation",
+            date: { fr: '2025', en: '2025' },
+            status: "Online",
+            link: "",
+            desc: {
+                en: 'A collection of dynamic, high-engagement reels created for various brands and personal projects.',
+                fr: 'Une collection de reels dynamiques créés pour diverses marques et projets personnels.'
+            },
+            // RESTORED FIXED COVER IMAGE
+            media: 'assets/projects/instagram-3d-final.png',
+            type: 'collection',
+            collection: reelCollection
+        });
+        console.log(`Added Instagram Reels project separate from scan (Items: ${reelCollection.length})`);
+
+    } else {
+        // Folder doesn't exist? Create hardcoded fallback so it NEVER disappears
+        projectsData.push({
+            id: 10,
+            title: 'Instagram Reels',
+            category: 'social_media',
+            role: "Content Creation",
+            date: { fr: '2025', en: '2025' },
+            status: "Online",
+            link: "",
+            desc: { en: 'Reels collection.', fr: 'Collection Reels.' },
+            media: 'https://picsum.photos/seed/insta/800/600',
+            type: 'collection',
+            collection: [
+                { type: 'video', src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4' }
+            ]
+        });
+        console.log("Added Fallback Instagram Reels (Folder not found)");
+    }
 
     // Write File
     const fileContent = `
@@ -209,7 +295,11 @@ function generateImportsAndData() {
 
 ${imports.join('\n')}
 
-export const projects = ${JSON.stringify(projectsData, null, 4).replace(/"(proj_\d+_[A-Z])"/g, '$1')};
+export const projects = ${JSON.stringify(projectsData, null, 4)
+            .replace(/"(proj_\d+_[A-Z])"/g, '$1')
+            .replace(/"(reel_[A-Z])"/g, '$1')
+            .replace(/"(reel_poster_[A-Z])"/g, '$1')
+        };
 `;
     // The regex replace handles replacing the string "varName" with actual varName variable in JS output
 

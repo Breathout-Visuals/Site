@@ -26,6 +26,8 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--bg-color);
+  /* Fix overscroll flicker */
 }
 
 * {
@@ -42,6 +44,8 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   cursor: none;
+  min-height: 100vh;
+  /* Ensure full height cover */
 }
 
 /* Custom Cursor */
@@ -421,7 +425,8 @@ nav {
   grid-auto-flow: column;
   grid-auto-columns: 25vw;
   /* Card width */
-  gap: 5vh;
+  gap: 5vw;
+  /* Changed from 5vh to match padding-left for seamless infinite loop */
   padding-left: 5vw;
   /* Start with some offset */
   /* JS will handle transition/translate */
@@ -676,28 +681,17 @@ nav {
 }
 
 /* Navigation Arrows */
+/* Navigation Arrows - REMOVED */
 .gallery-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: transparent;
-  border: none;
-  color: rgba(255, 255, 255, 0.6);
-  /* Soft grey */
-  font-size: 2rem;
-  /* Smaller */
-  cursor: pointer;
-  z-index: 10;
-  padding: 2rem;
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
-  font-family: var(--font-display);
-  /* Use elegant font for arrows */
+  display: none !important;
 }
 
+/* ... (kept for legacy if needed but hidden) ... */
+
 .gallery-wrapper:hover .gallery-nav {
-  opacity: 1;
+  opacity: 0;
 }
+
 
 .gallery-nav:hover {
   transform: translateY(-50%) scale(1.2);
@@ -1105,9 +1099,14 @@ footer {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
-  margin: 1.5rem auto 0 auto;
+  margin: 0 auto 0 auto;
+  /* Removed top margin to pull buttons up */
+  transform: translateY(-90px);
+  /* Nudge up further into the video area bottom */
   display: none;
   /* Hidden by default, toggled via JS */
+  position: relative;
+  z-index: 20;
 }
 
 /* Control Buttons (Rotate & Fullscreen) */

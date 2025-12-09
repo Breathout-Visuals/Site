@@ -367,10 +367,12 @@ function setupAnimations() {
         if (!ticking) {
             window.requestAnimationFrame(() => {
                 if (lastScrollY > 50) {
-                    header.style.background = 'rgba(5, 5, 5, 0.9)';
-                    header.style.backdropFilter = 'blur(10px)';
+                    header.style.background = '#050505'; // Hardcode same as bg-color for consistency
+                    header.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
+                    header.style.backdropFilter = 'none'; // Avoid weird blur glitches on some browsers
                 } else {
                     header.style.background = 'transparent';
+                    header.style.borderBottom = '1px solid transparent';
                     header.style.backdropFilter = 'none';
                 }
                 ticking = false;
@@ -950,14 +952,23 @@ class ReelCarousel {
             item.appendChild(inner);
 
             const video = document.createElement('video');
-            video.src = data.src;
             video.loop = true;
             video.muted = globalMute;
             video.playsInline = true;
 
-            // OPTIMIZATION: Lazy Load
-            video.preload = 'none';
-            if (data.poster) video.poster = data.poster;
+            if (data.poster && data.poster !== '') {
+                // OPTIMIZED PATH: Custom Poster
+                video.src = data.src;
+                video.preload = 'none';
+                video.poster = data.poster;
+            } else {
+                // FALLBACK PATH: No Poster -> Use Black Placeholder (Zero Lag)
+                video.src = data.src; // Clean src
+                video.preload = 'none'; // ZERO Network usage until click
+                // Tiny 1x1 Black Pixel (Base64)
+                video.poster = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mBk+A8AABOBAAQ12tuAAAAAElFTkSuQmCC";
+                video.style.backgroundColor = "black"; // Double safety
+            }
 
             inner.appendChild(video);
 
@@ -975,9 +986,15 @@ class ReelCarousel {
                     // Toggle Play/Pause
                     if (video.paused) {
                         // Lazy Load Logic
-                        if (video.readyState === 0) {
+                        if (video.readyState < 3) { // Use HAVE_FUTURE_DATA or generic check
+                            video.preload = 'auto'; // Force full load now
                             video.load();
                         }
+
+                        // Remove fragment for smooth looping playback if supported
+                        // or just play. video.src change might reset buffering, so we keep as is usually fine
+                        // But best practice for loop is clean src. 
+                        // Simplified: Play directly.
 
                         video.play().then(() => {
                             item.classList.add('active');
@@ -989,6 +1006,7 @@ class ReelCarousel {
                                 const ov = it.querySelector('video');
                                 if (ov) {
                                     ov.pause();
+                                    ov.currentTime = 0.001; // Reset to frame 1
                                 }
                                 it.classList.remove('active');
                             }
@@ -1270,6 +1288,9 @@ class InfiniteGallery {
         this.filterButtons = document.querySelectorAll('.filter-btn');
         this.navButtons = document.querySelectorAll('.gallery-nav');
 
+        // State for correct looping width
+        this.currentCount = 0;
+
         // Drag State
         this.isDragging = false;
         this.startX = 0;
@@ -1345,6 +1366,9 @@ class InfiniteGallery {
     render(data) {
         if (this.animationId) cancelAnimationFrame(this.animationId);
         this.track.innerHTML = '';
+
+        // Update current valid count for animate logic
+        this.currentCount = data.length;
 
         // 1. Initial Render (No clones yet)
         data.forEach(project => {
@@ -1457,6 +1481,23 @@ class InfiniteGallery {
             this.currentTranslate += delta;
             this.lastX = x;
         });
+
+        // Add Trackpad / Horizontal Scroll Support
+        this.wrapper.addEventListener('wheel', e => {
+            // Check for horizontal scroll (Trackpad or Shift+Wheel)
+            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+                e.preventDefault();
+                // Invert delta because: scrolling right (two fingers left) -> positive deltaX -> should move content left (negative translate)
+                // Actually:
+                // Standard: Pan Right -> Content moves Left.
+                // e.deltaX > 0 (Pan Right gesture?). 
+
+                this.currentTranslate -= e.deltaX * 1.5;
+
+                // Temporarily pause auto-scroll or boost it?
+                // Usually we just affect currentTranslate directly.
+            }
+        }, { passive: false });
     }
 
     animate() {
@@ -1469,17 +1510,23 @@ class InfiniteGallery {
         }
 
         // Bounds Check (Infinite Loop)
-        // Assume each set is 1/3 of total width roughly if we cloned twice
-        // Or just check if we scrolled past the first set width
-        const totalWidth = this.track.scrollWidth;
-        const singleSetWidth = totalWidth / 3;
+        // Calculated based on: Item Width (25vw) + Gap (5vw) = 30vw per item
+        // We use window.innerWidth to get the exact pixel value of 1vw
+        const vw = window.innerWidth / 100;
+        const singleItemWidth = 30 * vw;
+
+        // CRITICAL FIX: Use currentCount instead of originalData.length
+        // This ensures the loop point is correct even when filtered to a small subset
+        const singleSetWidth = this.currentCount * singleItemWidth;
 
         // Wrapping logic
-        if (Math.abs(this.currentTranslate) >= singleSetWidth) {
-            this.currentTranslate += singleSetWidth;
-        }
-        if (this.currentTranslate > 0) {
-            this.currentTranslate -= singleSetWidth;
+        if (singleSetWidth > 0) { // Safety check
+            if (Math.abs(this.currentTranslate) >= singleSetWidth) {
+                this.currentTranslate += singleSetWidth;
+            }
+            if (this.currentTranslate > 0) {
+                this.currentTranslate -= singleSetWidth;
+            }
         }
 
         this.track.style.transform = `translateX(${this.currentTranslate}px)`;

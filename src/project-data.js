@@ -385,55 +385,17 @@ export const projects = [
                 "type": "video",
                 "src": "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
                 "title": {
-                    "fr": "Fashion Week",
-                    "en": "Fashion Week"
-                },
-                "poster": "https://picsum.photos/seed/v1/260/460"
+                    "fr": "Demo 1",
+                    "en": "Demo 1"
+                }
             },
             {
                 "type": "video",
                 "src": "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
                 "title": {
-                    "fr": "Urban Explorer",
-                    "en": "Urban Explorer"
-                },
-                "poster": "https://picsum.photos/seed/v2/260/460"
-            },
-            {
-                "type": "video",
-                "src": "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
-                "title": {
-                    "fr": "Neon Nights",
-                    "en": "Neon Nights"
-                },
-                "poster": "https://picsum.photos/seed/v3/260/460"
-            },
-            {
-                "type": "video",
-                "src": "https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
-                "title": {
-                    "fr": "Cinematic Port",
-                    "en": "Cinematic Port"
-                },
-                "poster": "https://picsum.photos/seed/v4/260/460"
-            },
-            {
-                "type": "video",
-                "src": "https://storage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
-                "title": {
-                    "fr": "Vitesse",
-                    "en": "Speed"
-                },
-                "poster": "https://picsum.photos/seed/v5/260/460"
-            },
-            {
-                "type": "video",
-                "src": "https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
-                "title": {
-                    "fr": "Sci-Fi Mood",
-                    "en": "Sci-Fi Mood"
-                },
-                "poster": "https://picsum.photos/seed/v6/260/460"
+                    "fr": "Demo 2",
+                    "en": "Demo 2"
+                }
             }
         ]
     }
