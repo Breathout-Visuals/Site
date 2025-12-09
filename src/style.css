@@ -439,8 +439,8 @@ nav {
   /* Fill container to allow centering */
   justify-content: center;
   padding-left: 0;
-  gap: 3rem !important;
-  /* Adjust gap if needed */
+  gap: 5vw !important;
+  /* Match the standard gap */
 }
 
 .project-card {
