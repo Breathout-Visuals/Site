@@ -71,12 +71,13 @@ function generateImportsAndData() {
         const infoPath = path.join(dir, 'info.txt');
         const info = parseInfoTxt(infoPath);
 
-        // Scan for A, B, C media AND Cover
+        // Scan for A-Z media AND Cover
         const mediaFiles = {};
         let coverFile = null;
         const files = fs.readdirSync(dir);
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
-        ['A', 'B', 'C', 'D', 'E', 'F'].forEach(letter => {
+        alphabet.forEach(letter => {
             const match = files.find(f => f.startsWith(letter + '.') && MEDIA_EXTS.includes(path.extname(f).toLowerCase()));
             if (match) {
                 mediaFiles[letter] = match;
@@ -161,7 +162,7 @@ function generateImportsAndData() {
         let collection = [];
         // If we have mediaVars.A, that's the cover/first item.
         // If we have B, C, etc, they are added.
-        ['A', 'B', 'C', 'D', 'E'].forEach(l => {
+        alphabet.forEach(l => {
             if (mediaVars[l]) {
                 const isVideo = mediaFiles[l].match(/\.(mp4|webm)$/i);
                 collection.push({

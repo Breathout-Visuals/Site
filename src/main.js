@@ -579,8 +579,29 @@ function setupModal() {
             }
 
             // Standard Image/Video Handling (Unified as Carousel)
-            // Normalize to array for single items
-            const mediaList = Array.isArray(project.media) ? project.media : [project.media];
+
+            // 1. Determine Source: Collection (Obj Array) vs Media (String)
+            let rawMedia = [];
+            if (project.collection && project.collection.length > 0) {
+                rawMedia = project.collection;
+            } else if (project.media) {
+                rawMedia = [project.media]; // Fallback to single media
+            }
+
+            // 2. Normalize to standard format { src, type }
+            const mediaList = rawMedia.map(item => {
+                if (typeof item === 'object') {
+                    // Already an object (from collection)
+                    return item;
+                } else {
+                    // String (from media property)
+                    const isVid = item.match(/\.(mp4|webm)$/i);
+                    return {
+                        src: item,
+                        type: isVid ? 'video' : 'image'
+                    };
+                }
+            });
 
             // --- CAROUSEL MODE FOR ALL STANDARD PROJECTS ---
             const carousel = document.createElement('div');
@@ -589,22 +610,22 @@ function setupModal() {
             const track = document.createElement('div');
             track.className = 'project-carousel-track';
 
-            mediaList.forEach((src) => {
+            mediaList.forEach((item) => {
                 const slide = document.createElement('div');
                 slide.className = 'project-carousel-slide';
 
-                if (src && src.endsWith('.mp4')) {
+                if (item.type === 'video' || (item.src && item.src.match(/\.(mp4|webm)$/i))) {
                     const video = document.createElement('video');
-                    video.src = src;
+                    video.src = item.src;
                     video.controls = false; // Hide controls globally
                     video.autoplay = false;
                     video.loop = true;
                     video.muted = true; // Required for autoplay
                     video.playsInline = true;
                     slide.appendChild(video);
-                } else if (src) {
+                } else {
                     const img = document.createElement('img');
-                    img.src = src;
+                    img.src = item.src;
                     slide.appendChild(img);
                 }
                 track.appendChild(slide);
@@ -669,6 +690,7 @@ function setupModal() {
             }
 
             mediaContainer.appendChild(carousel);
+
         }
         // Related Projects
         const relatedContainer = document.getElementById('related-projects');
