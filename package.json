@@ -1,0 +1,15 @@
+{
+  "name": "site-antigravity",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/generate-data.cjs && vite",
+    "build": "node scripts/generate-data.cjs && vite build",
+    "gen": "node scripts/generate-data.cjs",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^7.2.4"
+  }
+}
