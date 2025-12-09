@@ -71,8 +71,9 @@ function generateImportsAndData() {
         const infoPath = path.join(dir, 'info.txt');
         const info = parseInfoTxt(infoPath);
 
-        // Scan for A, B, C media
+        // Scan for A, B, C media AND Cover
         const mediaFiles = {};
+        let coverFile = null;
         const files = fs.readdirSync(dir);
 
         ['A', 'B', 'C', 'D', 'E', 'F'].forEach(letter => {
@@ -82,9 +83,27 @@ function generateImportsAndData() {
             }
         });
 
+        // Search for 'cover' image (strict: image only)
+        const coverMatch = files.find(f => f.startsWith('cover.') && ['.jpg', '.jpeg', '.png', '.webp'].includes(path.extname(f).toLowerCase()));
+        if (coverMatch) {
+            coverFile = coverMatch;
+        }
+
         // Generate Import Statements
         const projectVarName = `proj_${index}`;
         const mediaVars = {}; // { A: 'proj_0_A', B: 'proj_0_B' }
+        let coverVar = "''";
+
+        // Import Cover
+        if (coverFile) {
+            let relativePath = path.relative(path.dirname(OUTPUT_FILE), path.join(dir, coverFile));
+            relativePath = relativePath.split(path.sep).join('/');
+            if (!relativePath.startsWith('.')) relativePath = './' + relativePath;
+
+            const varName = `${projectVarName}_cover`;
+            imports.push(`import ${varName} from '${relativePath}';`);
+            coverVar = varName;
+        }
 
         Object.keys(mediaFiles).forEach(letter => {
             const fileName = mediaFiles[letter];
@@ -299,8 +318,9 @@ ${imports.join('\n')}
 
 export const projects = ${JSON.stringify(projectsData, null, 4)
             .replace(/"(proj_\d+_[A-Z])"/g, '$1')
-            .replace(/"(reel_[A-Z])"/g, '$1')
-            .replace(/"(reel_poster_[A-Z])"/g, '$1')
+            .replace(/"(proj_\d+_cover)"/g, '$1')
+            .replace(/"(reel_\d+)"/g, '$1')
+            .replace(/"(reel_poster_\d+)"/g, '$1')
         };
 `;
     // The regex replace handles replacing the string "varName" with actual varName variable in JS output

@@ -977,37 +977,56 @@ class ReelCarousel {
             clickLayer.className = 'click-layer';
             clickLayer.style.cursor = 'none'; // Force hide cursor inline
 
-            // Click Interaction
+            // Click Interaction (Fixed for Infinite Scroll & Anti-Spin)
             clickLayer.addEventListener('click', (e) => {
                 e.stopPropagation();
-                this.isIntro = false; // Force exit intro mode immediately
+                this.isIntro = false;
 
-                if (this.selectedIndex === i) {
+                const itemSpacing = 210;
+                const totalWidth = this.displayData.length * itemSpacing;
+
+                // 1. Calculate Shortest Path to this clone ('i')
+                // The item 'i' has a fixed absolute position in the strip: i * 210
+                // But 'scrollX' might be very far (due to infinite looping).
+                // We want to move scrollX by the small visual distance to bring 'i' to center.
+
+                const itemPos = i * itemSpacing;
+                const diff = itemPos - this.scrollX;
+
+                // Wrap the difference to find shortest path (Modulo)
+                let wrappedDiff = ((diff % totalWidth) + totalWidth) % totalWidth;
+                if (wrappedDiff > totalWidth / 2) wrappedDiff -= totalWidth;
+
+                // wrappedDiff is the distance from Center to Item 'i'.
+                // If wrappedDiff is ~0, the item is physically centered.
+
+                const isCentered = Math.abs(wrappedDiff) < 10;
+
+                if (isCentered) {
+                    // IT IS CENTERED -> TOGGLE PLAY
+                    // Also Sync Selection just in case
+                    this.selectedIndex = i;
+
                     // Toggle Play/Pause
                     if (video.paused) {
-                        // Lazy Load Logic
-                        if (video.readyState < 3) { // Use HAVE_FUTURE_DATA or generic check
-                            video.preload = 'auto'; // Force full load now
+                        if (video.readyState < 3) {
+                            video.preload = 'auto';
                             video.load();
                         }
-
-                        // Remove fragment for smooth looping playback if supported
-                        // or just play. video.src change might reset buffering, so we keep as is usually fine
-                        // But best practice for loop is clean src. 
-                        // Simplified: Play directly.
 
                         video.play().then(() => {
                             item.classList.add('active');
                         }).catch(e => console.log("Play failed:", e));
 
-                        // Ensure others are stopped
+                        // Stop ALL other videos (clones or different)
                         this.items.forEach((it, idx) => {
                             if (idx !== i) {
                                 const ov = it.querySelector('video');
                                 if (ov) {
                                     ov.pause();
-                                    ov.currentTime = 0.001; // Reset to frame 1
+                                    if (ov.readyState > 0) ov.currentTime = 0;
                                 }
+                                // Clean active class
                                 it.classList.remove('active');
                             }
                         });
@@ -1016,8 +1035,20 @@ class ReelCarousel {
                         item.classList.remove('active');
                     }
                 } else {
-                    // Center It
-                    this.centerItem(i);
+                    // NOT CENTERED -> SCROLL TO IT (Smoothly, Shortest Path)
+                    this.selectedIndex = i;
+                    this.targetScrollX = this.scrollX + wrappedDiff;
+
+                    // Optional: Force Pause others as we move away?
+                    // Good UX: Leave playing until new one selected?
+                    // Let's pause to keep performance high during scroll.
+                    this.items.forEach((it) => {
+                        const ov = it.querySelector('video');
+                        if (ov && !ov.paused) {
+                            ov.pause();
+                            it.classList.remove('active');
+                        }
+                    });
                 }
             });
 
@@ -1436,9 +1467,12 @@ class InfiniteGallery {
             mediaSrc = mediaSrc[0];
         }
 
+        // PREFER COVER IF AVAILABLE (Work Only)
+        const displaySrc = project.cover || mediaSrc;
+
         article.innerHTML = `
       <div class="project-overlay-role"><span class="role-badge" data-project-role>${roleName || 'Filmmaker'}</span></div>
-      <img src="${mediaSrc}" alt="${project.title}" class="project-media">
+      <img src="${displaySrc}" alt="${project.title}" class="project-media">
       <div class="project-info">
         <h3 class="project-title">${project.title}</h3>
         <span class="project-category" data-i18n="cat.${catKey}">${catName}</span>
