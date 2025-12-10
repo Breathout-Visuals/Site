@@ -109,14 +109,6 @@ function generateImportsAndData() {
         Object.keys(mediaFiles).forEach(letter => {
             const fileName = mediaFiles[letter];
             // Path relative to src/project-data.js
-            // src is sibling to Contents projets.
-            // FROM: src/project-data.js
-            // TO: Contents projets/...
-            // Relative path: ../Contents projets/...
-
-            // We use absolute path construction for safety in Node, but for the output file we need relative import
-            // actually Vite supports absolute imports if configured, but relative is standard.
-            // dir is absolute. OUTPUT_FILE is absolute.
             let relativePath = path.relative(path.dirname(OUTPUT_FILE), path.join(dir, fileName));
             relativePath = relativePath.split(path.sep).join('/'); // Normalize slashes
             if (!relativePath.startsWith('.')) relativePath = './' + relativePath;
@@ -127,13 +119,6 @@ function generateImportsAndData() {
         });
 
         // Construct Project Object
-        // We stick to the main.js structure.
-
-        // Category normalization (improve if needed)
-        // info.txt: "Short Film (48h)" -> needs to match keys in CATEGORIES if possible, 
-        // OR we trust the string. The Main.js logic uses strict check `p.category === filter`.
-        // We might need a mapper for strict categories.
-
         // Category normalization based on Folder Name first, then info.txt
         const parentFolder = path.basename(path.dirname(dir)).toLowerCase();
         let normalizedCategory = 'other';
@@ -155,13 +140,8 @@ function generateImportsAndData() {
             else if (type.includes('social') || type.includes('youtube')) normalizedCategory = 'social_media';
         }
 
-        // Role - passing raw for now, as reverse mapping huge dictionary is fragile. 
-        // We'll trust the string or user can update Main.js ROLES if needed.
-
         // Collection Construction
         let collection = [];
-        // If we have mediaVars.A, that's the cover/first item.
-        // If we have B, C, etc, they are added.
         alphabet.forEach(l => {
             if (mediaVars[l]) {
                 const isVideo = mediaFiles[l].match(/\.(mp4|webm)$/i);
@@ -186,7 +166,6 @@ function generateImportsAndData() {
                 fr: info.desc_fr || info.desc_en || "Pas de description.",
                 en: info.desc_en || "No description."
             },
-            // Fallback: if A exists use it, else generic placeholder
             // Priority: Cover -> A -> First Available -> Placeholder
             media: (coverVar !== "''") ? coverVar : (mediaVars['A'] ? mediaVars['A'] : "https://picsum.photos/seed/placeholder/800/600"),
 
@@ -201,37 +180,40 @@ function generateImportsAndData() {
     const reelsDir = path.resolve(__dirname, '../Contents projets/Instagram Reel');
     if (fs.existsSync(reelsDir)) {
         const reelFiles = fs.readdirSync(reelsDir);
-        // Look for A.*, B.*, C.*, D.* ... Z.*
-        // Map letters to collection items
+        // Look for 1.*, 2.*, ..., 50.*
 
         let reelCollection = [];
-        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+        // Change from Alphabet to Numbers 1-50
+        const numbers = Array.from({ length: 50 }, (_, i) => i + 1); // [1, 2, ..., 50]
 
-        alphabet.forEach(letter => {
-            const match = reelFiles.find(f => f.startsWith(letter + '.') && MEDIA_EXTS.includes(path.extname(f).toLowerCase()));
+        numbers.forEach(number => {
+            // Prioritize Video (MP4/WEBM) - Strict check "1."
+            let match = reelFiles.find(f => f.startsWith(number + '.') && /\.(mp4|webm)$/i.test(f));
+
+            // If no video, check for Image
+            if (!match) {
+                match = reelFiles.find(f => f.startsWith(number + '.') && /\.(jpg|jpeg|png)$/i.test(f));
+            }
+
             if (match) {
                 // Determine absolute/relative path
-                // From src/project-data.js to Contents projets/Instagram Reel/file.mp4
-                // path.relative(src, Contents/Insta/file)
-
                 let relativePath = path.relative(path.dirname(OUTPUT_FILE), path.join(reelsDir, match));
                 relativePath = relativePath.split(path.sep).join('/');
                 if (!relativePath.startsWith('.')) relativePath = './' + relativePath;
 
-                const varName = `reel_${letter}`;
+                const varName = `reel_${number}`;
                 imports.push(`import ${varName} from '${relativePath}';`);
 
                 const isVideo = match.match(/\.(mp4|webm)$/i);
 
-                // OPTIMIZATION: Check for companion poster (Same name, image ext)
-                let posterVar = "''"; // Default empty string
+                // OPTIMIZATION: Check for companion poster
+                let posterVar = "''";
                 if (isVideo) {
-                    const baseName = path.basename(match, path.extname(match)); // e.g., "A"
-                    // Look for A.jpg, A.png, etc.
+                    const baseName = path.basename(match, path.extname(match)); // e.g., "1"
                     const posterFile = reelFiles.find(f =>
                         f.startsWith(baseName + '.') &&
                         ['.jpg', '.jpeg', '.png', '.webp'].includes(path.extname(f).toLowerCase()) &&
-                        f !== match // Avoid self
+                        f !== match
                     );
 
                     if (posterFile) {
@@ -239,7 +221,7 @@ function generateImportsAndData() {
                         posterPath = posterPath.split(path.sep).join('/');
                         if (!posterPath.startsWith('.')) posterPath = './' + posterPath;
 
-                        const posterVarName = `reel_poster_${letter}`;
+                        const posterVarName = `reel_poster_${number}`;
                         imports.push(`import ${posterVarName} from '${posterPath}';`);
                         posterVar = posterVarName;
                     }
@@ -248,26 +230,19 @@ function generateImportsAndData() {
                 reelCollection.push({
                     type: isVideo ? 'video' : 'image',
                     src: varName,
-                    // Title could be mapped if needed, for now generic "Reel A"
                     title: { fr: '', en: '' },
-                    poster: (posterVar !== "''") ? posterVar : '' // Pass variable or empty string
+                    poster: (posterVar !== "''") ? posterVar : ''
                 });
             }
         });
 
-        // ... (Scanning logic remains above)
-
-        // ALWAYS PUSH THE PROJECT (Even if empty, or use placeholder)
-        // If collection is empty, we can keep the previous placeholder logic OR just show an empty project
-        // User requested "il sera tjs là" (Use placeholders if real files missing?)
-
+        // ALWAYS PUSH THE PROJECT
         if (reelCollection.length === 0) {
-            // FALLBACK TO PLACEHOLDERS so it doesn't disappear
+            // FALLBACK TO PLACEHOLDERS
             reelCollection = [
                 { type: 'video', src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', title: { fr: 'Demo 1', en: 'Demo 1' } },
                 { type: 'video', src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4', title: { fr: 'Demo 2', en: 'Demo 2' } }
             ];
-            // You can remove this fallback later when you have real files
         }
 
         projectsData.push({
@@ -282,7 +257,6 @@ function generateImportsAndData() {
                 en: 'A collection of dynamic, high-engagement reels created for various brands and personal projects.',
                 fr: 'Une collection de reels dynamiques créés pour diverses marques et projets personnels.'
             },
-            // RESTORED FIXED COVER IMAGE
             media: 'assets/projects/instagram-3d-final.png',
             type: 'collection',
             collection: reelCollection
@@ -290,8 +264,7 @@ function generateImportsAndData() {
         console.log(`Added Instagram Reels project separate from scan (Items: ${reelCollection.length})`);
 
     } else {
-        // Folder doesn't exist (e.g. on Vercel if empty)? 
-        // Create hardcoded fallback with CORRECT COVER so it looks consistent
+        // Folder doesn't exist
         projectsData.push({
             id: 10,
             title: 'Instagram Reels',
@@ -301,7 +274,6 @@ function generateImportsAndData() {
             status: "Online",
             link: "",
             desc: { en: 'Reels collection.', fr: 'Collection Reels.' },
-            // FIX: Use the same cover as the main block
             media: 'assets/projects/instagram-3d-final.png',
             type: 'collection',
             collection: [

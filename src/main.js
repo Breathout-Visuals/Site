@@ -405,7 +405,13 @@ function setupModal() {
 
         // Reset Scroll Position
         const modalWrapper = document.querySelector('.modal-content-wrapper');
-        if (modalWrapper) modalWrapper.scrollTop = 0;
+        if (modalWrapper) {
+            modalWrapper.scrollTop = 0;
+            // Also force it after a frame in case of layout shifts
+            requestAnimationFrame(() => {
+                modalWrapper.scrollTop = 0;
+            });
+        }
 
         // Populate Data
         const titleEl = document.getElementById('modal-title');
@@ -769,6 +775,9 @@ function setupModal() {
 
         setTimeout(() => {
             openModal(list[newIndex].id);
+            // Ensure scroll is reset during navigation
+            const modalWrapper = document.querySelector('.modal-content-wrapper');
+            if (modalWrapper) modalWrapper.scrollTop = 0;
 
             modalContent.classList.remove(outClass);
             modalContent.classList.add(inClass);
@@ -1001,8 +1010,9 @@ class ReelCarousel {
 
             // Click Interaction (Fixed for Infinite Scroll & Anti-Spin)
             clickLayer.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.isIntro = false;
+                e.preventDefault();
+                e.stopPropagation(); // Prevent bubbling to container which might handle drags
+                if (this.isDragging) return; // Ignore drag clicks
 
                 const itemSpacing = 210;
                 const totalWidth = this.displayData.length * itemSpacing;
@@ -1052,12 +1062,27 @@ class ReelCarousel {
                                 it.classList.remove('active');
                             }
                         });
+                        this.updateRotation(); // Ensure rotation persists
                     } else {
                         video.pause();
                         item.classList.remove('active');
+                        this.updateRotation(); // Ensure rotation persists
                     }
                 } else {
                     // NOT CENTERED -> SCROLL TO IT (Smoothly, Shortest Path)
+
+                    // Reset Rotation if active (User switched item)
+                    if (globalRotate) {
+                        globalRotate = false;
+                        const rotateBtn = document.querySelector('.modal-rotate');
+                        if (rotateBtn) {
+                            rotateBtn.style.background = '';
+                            rotateBtn.classList.remove('active');
+                        }
+                        const allRotated = this.container.querySelectorAll('.is-rotated');
+                        allRotated.forEach(el => el.classList.remove('is-rotated'));
+                    }
+
                     this.selectedIndex = i;
                     this.targetScrollX = this.scrollX + wrappedDiff;
 
@@ -1159,21 +1184,22 @@ class ReelCarousel {
         if (wrappedDist > totalWidth / 2) wrappedDist -= totalWidth;
 
         // Check if changing index (reset rotation)
-        /* 
-        // DISABLED: User wants rotation to persist
         if (index !== this.selectedIndex) {
             if (globalRotate) {
                 globalRotate = false; // Reset Reset
-                if (document.querySelector('.modal-rotate')) {
-                    const rotateBtn = document.querySelector('.modal-rotate');
-                    if (rotateBtn) {
-                        rotateBtn.style.background = '';
-                        rotateBtn.classList.remove('active');
-                    }
+
+                // Force Clean UI
+                const rotateBtn = document.querySelector('.modal-rotate');
+                if (rotateBtn) {
+                    rotateBtn.style.background = '';
+                    rotateBtn.classList.remove('active');
                 }
+
+                // Force Clean DOM of any stuck rotation
+                const allRotated = this.container.querySelectorAll('.is-rotated');
+                allRotated.forEach(el => el.classList.remove('is-rotated'));
             }
         }
-        */
 
         this.targetScrollX += wrappedDist;
         this.selectedIndex = index;

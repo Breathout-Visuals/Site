@@ -52,6 +52,18 @@ import proj_17_C from '../Contents projets/Projets/Weddings/M&L/C.mp4';
 import proj_17_D from '../Contents projets/Projets/Weddings/M&L/D.jpg';
 import proj_17_E from '../Contents projets/Projets/Weddings/M&L/E.jpg';
 import proj_17_F from '../Contents projets/Projets/Weddings/M&L/F.mp4';
+import reel_1 from '../Contents projets/Instagram Reel/1.mp4';
+import reel_poster_1 from '../Contents projets/Instagram Reel/1.jpg';
+import reel_2 from '../Contents projets/Instagram Reel/2.mp4';
+import reel_poster_2 from '../Contents projets/Instagram Reel/2.jpg';
+import reel_3 from '../Contents projets/Instagram Reel/3.mp4';
+import reel_poster_3 from '../Contents projets/Instagram Reel/3.jpg';
+import reel_4 from '../Contents projets/Instagram Reel/4.mp4';
+import reel_poster_4 from '../Contents projets/Instagram Reel/4.jpg';
+import reel_5 from '../Contents projets/Instagram Reel/5.mp4';
+import reel_poster_5 from '../Contents projets/Instagram Reel/5.jpg';
+import reel_6 from '../Contents projets/Instagram Reel/6.mp4';
+import reel_poster_6 from '../Contents projets/Instagram Reel/6.jpg';
 
 export const projects = [
     {
@@ -653,19 +665,57 @@ export const projects = [
         "collection": [
             {
                 "type": "video",
-                "src": "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+                "src": reel_1,
                 "title": {
-                    "fr": "Demo 1",
-                    "en": "Demo 1"
-                }
+                    "fr": "",
+                    "en": ""
+                },
+                "poster": reel_poster_1
             },
             {
                 "type": "video",
-                "src": "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+                "src": reel_2,
                 "title": {
-                    "fr": "Demo 2",
-                    "en": "Demo 2"
-                }
+                    "fr": "",
+                    "en": ""
+                },
+                "poster": reel_poster_2
+            },
+            {
+                "type": "video",
+                "src": reel_3,
+                "title": {
+                    "fr": "",
+                    "en": ""
+                },
+                "poster": reel_poster_3
+            },
+            {
+                "type": "video",
+                "src": reel_4,
+                "title": {
+                    "fr": "",
+                    "en": ""
+                },
+                "poster": reel_poster_4
+            },
+            {
+                "type": "video",
+                "src": reel_5,
+                "title": {
+                    "fr": "",
+                    "en": ""
+                },
+                "poster": reel_poster_5
+            },
+            {
+                "type": "video",
+                "src": reel_6,
+                "title": {
+                    "fr": "",
+                    "en": ""
+                },
+                "poster": reel_poster_6
             }
         ]
     }
