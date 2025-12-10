@@ -1,4 +1,12 @@
 import './style.css'
+// --- Vercel Speed Insights ---
+import { injectSpeedInsights } from '@vercel/speed-insights';
+
+// Initialize Speed Insights for performance monitoring
+if (typeof window !== 'undefined') {
+  injectSpeedInsights();
+}
+
 // --- Projects Data (Imported) ---
 import { projects } from './project-data.js';
 
