@@ -1,6 +1,11 @@
 import './style.css'
 // --- Projects Data (Imported) ---
 import { projects } from './project-data.js';
+import { inject as injectAnalytics } from '@vercel/analytics';
+import { injectSpeedInsights } from '@vercel/speed-insights';
+
+injectAnalytics();
+injectSpeedInsights();
 
 // --- Constants ---
 const CATEGORIES = {
