@@ -187,7 +187,8 @@ function generateImportsAndData() {
                 en: info.desc_en || "No description."
             },
             // Fallback: if A exists use it, else generic placeholder
-            media: mediaVars['A'] ? mediaVars['A'] : "https://picsum.photos/seed/placeholder/800/600",
+            // Priority: Cover -> A -> First Available -> Placeholder
+            media: (coverVar !== "''") ? coverVar : (mediaVars['A'] ? mediaVars['A'] : "https://picsum.photos/seed/placeholder/800/600"),
 
             // Collection for carousel
             collection: collection.length > 0 ? collection : null

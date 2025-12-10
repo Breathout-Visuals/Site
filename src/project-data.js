@@ -6,21 +6,46 @@ import proj_3_A from '../Contents projets/Projets/Documentary/Bergers des Abeill
 import proj_3_B from '../Contents projets/Projets/Documentary/Bergers des Abeilles/B.jpg';
 import proj_3_C from '../Contents projets/Projets/Documentary/Bergers des Abeilles/C.mp4';
 import proj_3_D from '../Contents projets/Projets/Documentary/Bergers des Abeilles/D.jpg';
+import proj_4_A from '../Contents projets/Projets/Documentary/Des collines aux machines/A.jpg';
+import proj_4_B from '../Contents projets/Projets/Documentary/Des collines aux machines/B.mp4';
+import proj_4_C from '../Contents projets/Projets/Documentary/Des collines aux machines/C.jpg';
+import proj_4_D from '../Contents projets/Projets/Documentary/Des collines aux machines/D.mp4';
+import proj_4_E from '../Contents projets/Projets/Documentary/Des collines aux machines/E.jpg';
+import proj_4_F from '../Contents projets/Projets/Documentary/Des collines aux machines/F.jpg';
 import proj_5_A from '../Contents projets/Projets/Music Video/Bonne Santé – Visualiser/A.jpg';
 import proj_5_B from '../Contents projets/Projets/Music Video/Bonne Santé – Visualiser/B.mp4';
 import proj_5_C from '../Contents projets/Projets/Music Video/Bonne Santé – Visualiser/C.jpg';
 import proj_5_D from '../Contents projets/Projets/Music Video/Bonne Santé – Visualiser/D.jpg';
 import proj_5_E from '../Contents projets/Projets/Music Video/Bonne Santé – Visualiser/E.jpg';
-import proj_6_A from '../Contents projets/Projets/Music Video/Jamais/A.png';
+import proj_6_A from '../Contents projets/Projets/Music Video/Jamais/A.jpg';
+import proj_6_B from '../Contents projets/Projets/Music Video/Jamais/B.jpg';
+import proj_6_C from '../Contents projets/Projets/Music Video/Jamais/C.mp4';
+import proj_6_D from '../Contents projets/Projets/Music Video/Jamais/D.jpg';
+import proj_6_E from '../Contents projets/Projets/Music Video/Jamais/E.mp4';
+import proj_7_cover from '../Contents projets/Projets/Music Video/Komani/cover.jpg';
 import proj_7_A from '../Contents projets/Projets/Music Video/Komani/A.jpg';
 import proj_7_B from '../Contents projets/Projets/Music Video/Komani/B.mp4';
 import proj_7_C from '../Contents projets/Projets/Music Video/Komani/C.jpg';
 import proj_7_D from '../Contents projets/Projets/Music Video/Komani/D.jpg';
-import proj_8_A from '../Contents projets/Projets/Music Video/Level Up/A.png';
-import proj_10_A from '../Contents projets/Projets/Short Film/Fort Intérieur/A.png';
+import proj_7_E from '../Contents projets/Projets/Music Video/Komani/E.mp4';
+import proj_8_A from '../Contents projets/Projets/Music Video/Level Up/A.jpg';
+import proj_8_B from '../Contents projets/Projets/Music Video/Level Up/B.jpg';
+import proj_8_C from '../Contents projets/Projets/Music Video/Level Up/C.mp4';
+import proj_8_D from '../Contents projets/Projets/Music Video/Level Up/D.jpg';
+import proj_8_E from '../Contents projets/Projets/Music Video/Level Up/E.jpg';
+import proj_10_A from '../Contents projets/Projets/Short Film/Fort Intérieur/A.jpg';
+import proj_10_B from '../Contents projets/Projets/Short Film/Fort Intérieur/B.jpg';
+import proj_10_C from '../Contents projets/Projets/Short Film/Fort Intérieur/C.jpg';
+import proj_10_D from '../Contents projets/Projets/Short Film/Fort Intérieur/D.mp4';
+import proj_10_E from '../Contents projets/Projets/Short Film/Fort Intérieur/E.jpg';
+import proj_10_F from '../Contents projets/Projets/Short Film/Fort Intérieur/F.jpg';
 import proj_11_A from '../Contents projets/Projets/Short Film/Le miroir des générations/A.jpg';
 import proj_11_B from '../Contents projets/Projets/Short Film/Le miroir des générations/B.mp4';
 import proj_11_C from '../Contents projets/Projets/Short Film/Le miroir des générations/C.jpg';
+import proj_14_A from '../Contents projets/Projets/Short Film/Nouvelle Ecoute/A.jpg';
+import proj_14_B from '../Contents projets/Projets/Short Film/Nouvelle Ecoute/B.mp4';
+import proj_14_C from '../Contents projets/Projets/Short Film/Nouvelle Ecoute/C.jpg';
+import proj_14_D from '../Contents projets/Projets/Short Film/Nouvelle Ecoute/D.jpg';
 import proj_17_A from '../Contents projets/Projets/Weddings/M&L/A.jpg';
 import proj_17_B from '../Contents projets/Projets/Weddings/M&L/B.jpg';
 import proj_17_C from '../Contents projets/Projets/Weddings/M&L/C.mp4';
@@ -137,8 +162,39 @@ export const projects = [
             "fr": "Documentaire de festival sur les bergers modernes et les défis qu'ils affrontent aujourd'hui. Un regard authentique sur la tension entre tradition et modernité. J'ai réalisé le film.",
             "en": "Festival documentary about modern shepherds facing the tension between tradition and technological evolution. I directed the film."
         },
-        "media": "https://picsum.photos/seed/placeholder/800/600",
-        "collection": null
+        "media": proj_4_A,
+        "collection": [
+            {
+                "type": "image",
+                "src": proj_4_A,
+                "poster": ""
+            },
+            {
+                "type": "video",
+                "src": proj_4_B,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_4_C,
+                "poster": ""
+            },
+            {
+                "type": "video",
+                "src": proj_4_D,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_4_E,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_4_F,
+                "poster": ""
+            }
+        ]
     },
     {
         "id": 105,
@@ -205,6 +261,26 @@ export const projects = [
                 "type": "image",
                 "src": proj_6_A,
                 "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_6_B,
+                "poster": ""
+            },
+            {
+                "type": "video",
+                "src": proj_6_C,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_6_D,
+                "poster": ""
+            },
+            {
+                "type": "video",
+                "src": proj_6_E,
+                "poster": ""
             }
         ]
     },
@@ -223,7 +299,7 @@ export const projects = [
             "fr": "Clip vidéo pour l'artiste Faz’r Elengi. Tourné dans quatre lieux différents, avec notamment ma première gestion de voitures de drift sur le plateau. J'ai réalisé le clip et supervisé toute la mise en scène.",
             "en": "Music video for Faz’r Elengi shot in four locations, including my first experience supervising drift cars on set. I directed and handled staging."
         },
-        "media": proj_7_A,
+        "media": proj_7_cover,
         "collection": [
             {
                 "type": "image",
@@ -243,6 +319,11 @@ export const projects = [
             {
                 "type": "image",
                 "src": proj_7_D,
+                "poster": ""
+            },
+            {
+                "type": "video",
+                "src": proj_7_E,
                 "poster": ""
             }
         ]
@@ -267,6 +348,26 @@ export const projects = [
             {
                 "type": "image",
                 "src": proj_8_A,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_8_B,
+                "poster": ""
+            },
+            {
+                "type": "video",
+                "src": proj_8_C,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_8_D,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_8_E,
                 "poster": ""
             }
         ]
@@ -309,6 +410,31 @@ export const projects = [
             {
                 "type": "image",
                 "src": proj_10_A,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_10_B,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_10_C,
+                "poster": ""
+            },
+            {
+                "type": "video",
+                "src": proj_10_D,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_10_E,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_10_F,
                 "poster": ""
             }
         ]
@@ -398,8 +524,29 @@ export const projects = [
             "fr": "Court-métrage pour le Festival TousHanscene. Un jeune sourd perd ses appareils auditifs et fait face à une journée d'obstacles. J'étais Cadreur.",
             "en": "Short film for the TousHanscene Festival. A deaf young man loses his hearing aids and must navigate a difficult day. I worked as Camera Operator."
         },
-        "media": "https://picsum.photos/seed/placeholder/800/600",
-        "collection": null
+        "media": proj_14_A,
+        "collection": [
+            {
+                "type": "image",
+                "src": proj_14_A,
+                "poster": ""
+            },
+            {
+                "type": "video",
+                "src": proj_14_B,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_14_C,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_14_D,
+                "poster": ""
+            }
+        ]
     },
     {
         "id": 115,
