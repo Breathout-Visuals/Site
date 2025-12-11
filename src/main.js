@@ -810,15 +810,17 @@ function setupModal() {
             if (isTouch) {
                 if (!card.classList.contains('touched')) {
                     // First Tap: Reveal Info
-
-                    // Clear others
-                    document.querySelectorAll('.project-card.touched').forEach(c => c.classList.remove('touched'));
+                    // DO NOT clear others (User Request: Multi-active allowed)
 
                     card.classList.add('touched');
 
-                    // Auto-hide after 2.5s
-                    setTimeout(() => {
+                    // Clear existing timer if any (though usually state prevents re-entry, it's safer)
+                    if (card.touchTimer) clearTimeout(card.touchTimer);
+
+                    // Auto-hide after 2.5s INDEPENDENTLY
+                    card.touchTimer = setTimeout(() => {
                         card.classList.remove('touched');
+                        card.touchTimer = null;
                     }, 2500);
 
                     return; // STOP here, do not open modal
@@ -831,14 +833,8 @@ function setupModal() {
             if (workSection) workSection.scrollIntoView({ behavior: 'smooth' });
 
             openModal(card.getAttribute('data-id'));
-        } else {
-            // Clicked outside of a project card
-            // If we are on mobile, clear any active 'touched' states
-            const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-            if (isTouch) {
-                document.querySelectorAll('.project-card.touched').forEach(c => c.classList.remove('touched'));
-            }
         }
+        /* REMOVED: Clicking outside should NOT clear active states (User Request) */
     });
 
     closeBtn.addEventListener('click', closeModal);
@@ -1405,7 +1401,14 @@ class InfiniteGallery {
         this.speed = this.baseSpeed;
         this.targetSpeed = this.baseSpeed;
 
-        this.originalData = [...projects];
+        // Randomize Projects on Load
+        const shuffled = [...projects];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        this.originalData = shuffled;
+
         this.filterButtons = document.querySelectorAll('.filter-btn');
         this.navButtons = document.querySelectorAll('.gallery-nav');
 
@@ -1696,7 +1699,14 @@ class InfiniteGallery {
         }
 
         // Calculate limit once
-        this.singleSetWidth = this.currentCount * this.singleItemWidth;
+        // FIX: Handle Odd vs Even counts for 2-row grid.
+        // Even: Pattern repeats every 1 Set (Count/2 cols).
+        // Odd: Pattern shifts rows, repeats every 2 Sets (Count cols).
+        const visualCols = (this.currentCount % 2 === 0)
+            ? (this.currentCount / 2)
+            : this.currentCount;
+
+        this.singleSetWidth = visualCols * this.singleItemWidth;
     }
 
     animate() {

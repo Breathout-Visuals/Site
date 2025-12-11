@@ -1430,6 +1430,8 @@ footer {
   background: var(--modal-bg);
   border-radius: 10px;
   overflow-y: auto;
+  overflow-x: hidden;
+  /* Fix animation scrollbar */
   opacity: 0;
   transform: scale(0.95);
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1589,18 +1591,40 @@ footer {
 }
 
 .modal.collection-mode .modal-media-container {
-  aspect-ratio: 16/9;
-  height: auto;
-  min-height: auto;
-  background: var(--modal-bg);
-  /* Match standard background */
+  aspect-ratio: unset !important;
+  /* Unlock ratio */
+  height: 70vh !important;
+  /* Tall container */
+  min-height: 600px;
+  background: transparent;
+  /* Transparent bg */
   overflow: visible !important;
   /* Allow shadows to spill */
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2rem;
-  /* Reduced space */
+  margin-bottom: 4rem;
+  /* Space for shadow */
+  margin-top: 2rem;
+  /* Space for top overlap */
+}
+
+@media (max-width: 1200px) {
+  .modal.collection-mode .modal-media-container {
+    height: 30vh !important;
+    /* User requested 30% */
+    margin-bottom: 0 !important;
+    /* Remove gap to pull content up */
+  }
+
+  /* Specific Override for Collection Controls (Reels) on Mobile */
+  .modal.collection-mode .modal-controls {
+    margin-top: -3rem !important;
+    /* Pull UP to align with arrows/overlay */
+    position: relative;
+    z-index: 2050;
+    /* Ensure above arrows/content */
+  }
 }
 
 /* Controls - Relative Flow Strategy */
@@ -1777,9 +1801,15 @@ footer {
   perspective: 1000px;
   /* Depth for 3D effect */
   cursor: none;
-  touch-action: pan-y;
   /* Allow vertical scroll but handle horizontal in JS */
   margin-top: 1rem;
+}
+
+@media (max-width: 1200px) {
+  .carousel-viewport {
+    height: 30vh !important;
+    /* User requested 30% */
+  }
 }
 
 .carousel-viewport:active {
