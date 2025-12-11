@@ -64,6 +64,12 @@ import reel_5 from '../Contents projets/Instagram Reel/5.mp4';
 import reel_poster_5 from '../Contents projets/Instagram Reel/5.jpg';
 import reel_6 from '../Contents projets/Instagram Reel/6.mp4';
 import reel_poster_6 from '../Contents projets/Instagram Reel/6.jpg';
+import reel_7 from '../Contents projets/Instagram Reel/7.mp4';
+import reel_poster_7 from '../Contents projets/Instagram Reel/7.jpg';
+import reel_8 from '../Contents projets/Instagram Reel/8.mp4';
+import reel_poster_8 from '../Contents projets/Instagram Reel/8.jpg';
+import reel_9 from '../Contents projets/Instagram Reel/9.mp4';
+import reel_poster_9 from '../Contents projets/Instagram Reel/9.jpg';
 
 export const projects = [
     {
@@ -716,6 +722,33 @@ export const projects = [
                     "en": ""
                 },
                 "poster": reel_poster_6
+            },
+            {
+                "type": "video",
+                "src": reel_7,
+                "title": {
+                    "fr": "",
+                    "en": ""
+                },
+                "poster": reel_poster_7
+            },
+            {
+                "type": "video",
+                "src": reel_8,
+                "title": {
+                    "fr": "",
+                    "en": ""
+                },
+                "poster": reel_poster_8
+            },
+            {
+                "type": "video",
+                "src": reel_9,
+                "title": {
+                    "fr": "",
+                    "en": ""
+                },
+                "poster": reel_poster_9
             }
         ]
     }

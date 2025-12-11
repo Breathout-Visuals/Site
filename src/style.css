@@ -49,6 +49,289 @@ body {
 }
 
 /* Custom Cursor */
+/* Disable on touch devices & reduce spacing */
+@media (hover: none) and (pointer: coarse) {
+  :root {
+    --spacing-xl: 4rem;
+    /* Reduced Spacing for Phones/Tablets */
+    --spacing-lg: 3rem;
+  }
+
+  .cursor-dot,
+  .cursor-outline {
+    display: none !important;
+  }
+
+  * {
+    cursor: auto !important;
+  }
+
+  /* Fix "I" shape cards: Use Width-based height (vw) instead of Viewport Height (vh) */
+  .gallery-track {
+    grid-template-rows: repeat(2, 35vw) !important;
+    grid-auto-columns: 35vw !important;
+    gap: 2rem !important;
+  }
+
+  /* Fix enormous bottom padding in Work */
+  /* Compromise: Give enough height for Sticky Menu to work, but less than Desktop's 40vh */
+  #work {
+    padding-bottom: 15rem !important;
+    /* Explicit 15rem gap (Red Space 1) */
+    min-height: auto !important;
+    /* Auto height creates exact spacing, no dynamic flex gap */
+    display: flex !important;
+    justify-content: flex-start !important;
+    /* Stack from top (No Green Gap) */
+    flex-direction: column !important;
+  }
+
+  /* Match Red Space 2 (Between About and Footer) */
+  #about {
+    padding-bottom: 15rem !important;
+  }
+
+  /* Override auto margin so it doesn't push to bottom of strict 80vh container */
+  .project-filters {
+    margin-top: 1rem !important;
+    /* Reduced to 1rem as requested */
+  }
+
+  /* FIX: Disable sticky hover animations on touch (User Request) */
+  .nav-links a:hover .nav-char {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .nav-links a:hover {
+    color: inherit !important;
+    /* Prevent color stick */
+  }
+
+  .nav-links a:hover::after {
+    width: 0% !important;
+    /* Stop underline stick */
+  }
+
+  .contact-btn:hover .btn-char {
+    animation: none !important;
+  }
+
+  .contact-btn:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    color: var(--text-color) !important;
+    /* Prevent color stick on button */
+  }
+
+  /* MOBILE HEADER REDESIGN (User Request) */
+  /* 1. Scale Elements 50% larger */
+  .logo {
+    font-size: 3.4rem !important;
+    /* Huge Logo */
+    pointer-events: auto !important;
+  }
+
+  /* FIX: Logo sticky hover state */
+  .logo:hover {
+    color: inherit !important;
+  }
+
+  /* Right Side Wrapper on Mobile */
+  .nav-right {
+    gap: 3rem !important;
+    /* Gap increased */
+  }
+
+  /* 2. Toggle Button */
+  .mobile-menu-toggle {
+    display: block !important;
+    position: relative !important;
+    /* Required for z-index */
+    background: none;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    /* Thicker border */
+    color: var(--text-color);
+    font-size: 1.8rem !important;
+    /* Larger text/icon */
+    cursor: pointer;
+    z-index: 1005 !important;
+    /* Above Menu Overlay */
+    padding: 0.8rem 1.8rem !important;
+    /* Larger padding */
+    border-radius: 40px !important;
+    /* Larger radius */
+    margin-top: 0 !important;
+    transition: border-color 0.1s, background-color 0.1s !important;
+    /* Faster transition for touch */
+  }
+
+  /* Active State (Persistent when open) */
+  .mobile-menu-toggle.active {
+    border-color: #ffffff !important;
+    /* Force pure white */
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    /* Subtle glow */
+  }
+
+  /* Touch State (Momentary) */
+  .mobile-menu-toggle:active {
+    border-color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  /* 3. Dropdown / Overlay Menu */
+  .nav-links {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(5, 5, 5, 0.98) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 4rem !important;
+    z-index: 1000;
+
+    /* Hidden State */
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: opacity 0.5s ease, visibility 0.5s ease !important;
+    transition-delay: 0.4s !important;
+    /* Wait for text to zip out first */
+  }
+
+  .nav-links.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transition-delay: 0s !important;
+    /* Instant open */
+  }
+
+  /* Scale Links inside Overlay */
+  .nav-links a {
+    font-size: 3rem !important;
+    /* Huge text */
+    font-family: var(--font-display) !important;
+    font-weight: 700 !important;
+
+    /* Base State (Hidden/Exit) */
+    opacity: 0;
+    transform: translateY(20px);
+
+    /* Transition for Exit (Faster 0.3s) */
+    transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease !important;
+    color: var(--text-color);
+  }
+
+  /* Active State (Visible/Entry) */
+  .nav-links.active a {
+    opacity: 1;
+    transform: translateY(0);
+    /* Transition for Entry */
+    transition: opacity 0.5s ease, transform 0.5s ease, color 0.3s ease !important;
+  }
+
+  /* Stagger Delays (Entry) */
+  .nav-links.active li:nth-child(1) a {
+    transition-delay: 0.1s !important;
+  }
+
+  .nav-links.active li:nth-child(2) a {
+    transition-delay: 0.2s !important;
+  }
+
+  .nav-links.active li:nth-child(3) a {
+    transition-delay: 0.3s !important;
+  }
+
+  .nav-links.active li:nth-child(4) a {
+    transition-delay: 0.4s !important;
+  }
+
+  /* Stagger Delays (Exit) - Bottom to Top (3 Items Optimized) */
+  .nav-links li:nth-child(1) a {
+    transition-delay: 0.2s !important;
+  }
+
+  .nav-links li:nth-child(2) a {
+    transition-delay: 0.1s !important;
+  }
+
+  .nav-links li:nth-child(3) a {
+    transition-delay: 0s !important;
+  }
+
+  .nav-links li:nth-child(4) a {
+    transition-delay: 0s !important;
+  }
+
+  /* TOUCH INTERACTION: Logo (Instant Dim, Fast recover) */
+  .logo {
+    transition: opacity 0.3s ease, color 0.3s ease !important;
+    /* Fast fade out */
+    opacity: 1;
+  }
+
+  /* Instant Feedback on Touch */
+  .logo:active {
+    transition: none !important;
+    /* Instant on */
+    opacity: 0.5;
+    /* Visible feedback */
+  }
+
+  /* TOUCH INTERACTION: Contact Btn (Scale, Fast Recover) */
+  .contact-btn {
+    transition: transform 0.3s ease !important;
+    /* Fast recover scale */
+    transform: scale(1);
+  }
+
+  .contact-btn:active {
+    transition: none !important;
+    /* Instant scale down */
+    transform: scale(0.95) !important;
+  }
+
+  /* Lang Button Scaled & Visible */
+  .lang-btn {
+    font-size: 1.8rem !important;
+    padding: 0.8rem 1.8rem !important;
+    margin-top: 0 !important;
+    border-width: 2px !important;
+    z-index: 1005 !important;
+    position: relative !important;
+    border-radius: 40px !important;
+    transition: border-color 0.3s ease, background-color 0.3s ease !important;
+    /* Fast fade out */
+  }
+
+  /* PREVENT STICKY HOVER/FOCUS */
+  .lang-btn:hover,
+  .lang-btn:focus {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    /* Reset to default */
+    background-color: transparent !important;
+    color: var(--text-color) !important;
+  }
+
+  /* Touch State (Momentary - Instant ON) */
+  .lang-btn:active {
+    border-color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    transition: none !important;
+    /* Instant on */
+  }
+}
+
+/* END of @media (hover: none) and (pointer: coarse) */
+
+
 .cursor-dot,
 .cursor-outline {
   position: fixed;
@@ -144,6 +427,19 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+/* Wrapper for right side */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  /* Same gap as links */
+}
+
+.mobile-menu-toggle {
+  display: none;
+  /* Hidden on Desktop */
 }
 
 .logo {
@@ -434,6 +730,28 @@ nav {
   will-change: transform;
 }
 
+@media (max-width: 1200px) {
+
+  /* Reduce Work Padding to fix "Enormous Space" */
+  #work {
+    padding-bottom: 10vh;
+  }
+
+  .gallery-track {
+    grid-template-rows: repeat(2, 40vh);
+    /* PORTRAIT RATIO (Desktop Height) */
+    grid-auto-columns: 45vw;
+    /* 2 visible items, portrait mode */
+    /* 2 visible items, portrait mode */
+    /* 2 visible items, portrait mode */
+    gap: 5vw !important;
+    /* Force uniformity */
+    /* Match Desktop Ratio for consistency */
+    padding-left: 5vw;
+    /* Ensure 1fr 1fr rows doesn't break */
+  }
+}
+
 .gallery-track.center-content {
   width: 100%;
   /* Fill container to allow centering */
@@ -443,6 +761,13 @@ nav {
   /* Match the standard gap */
 }
 
+/* Performance Optimizations */
+#about,
+footer {
+  contain: content;
+  /* Isolate painting performance */
+}
+
 .project-card {
   position: relative;
   width: 100%;
@@ -450,6 +775,10 @@ nav {
   cursor: pointer;
   overflow: hidden;
   border-radius: 4px;
+  will-change: transform;
+  /* Hint for hover scale */
+  transform: translateZ(0);
+  /* Force GPU layer */
 }
 
 .project-media {
@@ -464,11 +793,21 @@ nav {
   /* Let clicks pass through to card container if needed, or just handle drags */
 }
 
-.project-card:hover .project-media {
-  transform: scale(1.05);
-  filter: grayscale(0%);
+/* Desktop Hover (Only on devices that support hover) */
+@media (hover: hover) {
+  .project-card:hover .project-media {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+  }
+
+  .project-card:hover .project-info {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+/* RESTORED: Base Project Info Styles */
+/* RESTORED: Base Project Info Styles */
 .project-info {
   position: absolute;
   bottom: 0;
@@ -479,11 +818,22 @@ nav {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 10;
+  /* Force on top */
+  pointer-events: none;
+  /* Let touches pass through to card */
 }
 
-.project-card:hover .project-info {
-  opacity: 1;
-  transform: translateY(0);
+/* Mobile/JS Touch State (Controlled by JS) */
+.project-card.touched .project-media {
+  transform: scale(1.05);
+  filter: grayscale(0%);
+}
+
+.project-card.touched .project-info {
+  opacity: 1 !important;
+  /* Force visible */
+  transform: translateY(0) !important;
 }
 
 .project-title {
@@ -531,31 +881,58 @@ nav {
   border-radius: 50px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(-10px);
 }
 
-.project-card:hover .role-badge {
+/* Role Badge Hover/Touch */
+@media (hover: hover) {
+  .project-card:hover .role-badge {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    border-color: #fff;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.project-card.touched .role-badge {
   background: rgba(255, 255, 255, 0.95);
   color: #000;
   border-color: #fff;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
 /* Filters */
+/* Filters */
+/* Filters */
 .project-filters {
   position: sticky;
+  /* Restore Sticky Behavior */
   bottom: 2rem;
-  /* Low standard position */
+  /* Stays visible at bottom of viewport until end of section */
   align-self: center;
+  /* Centered in flex container (if applicable) */
   margin-top: auto;
-  /* Hidden initially */
-  background: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(10px);
-  padding: 1rem 2rem;
+  /* Push to bottom of flex if needed */
+
+  /* Centering override if sticky behaves oddly with margin-auto, but sticky usually needs distinct positioning */
+  /* Using left: 50% + transform for sticky centering works if width is not 100% */
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 1.2rem 5rem;
+  /* Significantly Wider (+30% ish) */
   border-radius: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
   z-index: 900;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease;
   opacity: 0;
   pointer-events: none;
 }
@@ -573,14 +950,26 @@ nav {
   font-family: var(--font-main);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-size: 0.8rem;
+  font-size: 0.95rem;
+  /* Larger Font */
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
-.filter-btn:hover,
+@media (hover: hover) {
+  .filter-btn:hover {
+    color: var(--text-color);
+  }
+}
+
 .filter-btn.active {
   color: var(--text-color);
+}
+
+.filter-btn:active {
+  color: var(--text-color);
+  transform: scale(0.95);
+  transition: transform 0.1s;
 }
 
 /* Seamless Dropup "Stretch" */
@@ -593,45 +982,78 @@ nav {
 
 .dropup-menu {
   position: absolute;
-  bottom: 100%;
-  /* Start right above */
+  bottom: 140%;
+  /* higher gap */
   left: 50%;
   transform: translateX(-50%) scaleY(0.5);
-  /* Start compressed */
   transform-origin: bottom center;
 
   background: rgba(10, 10, 10, 0.95);
-  /* High opacity */
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
 
   /* Padding layout */
-  padding: 1.2rem 1.5rem 0.8rem 1.5rem;
-  min-width: 140px;
+  padding: 1.5rem 2rem 1rem 2rem;
+  /* Larger */
+  width: max-content;
+  /* Auto Width */
+  min-width: unset;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.2rem;
-  /* Gap handled by separators */
 
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1), visibility 0.5s cubic-bezier(0.19, 1, 0.22, 1), transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-  /* Elegant finish */
+  transition: opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1), visibility 0.4s, transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
   z-index: 1000;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
   pointer-events: none;
 }
 
-.filter-dropup:hover .dropup-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) scaleY(1) translateY(-10px);
-  /* Move up slightly */
-  pointer-events: auto;
+
+
+@media (max-width: 1200px) {
+  .project-filters {
+    padding: 1rem 1.5rem;
+    /* Reduce huge padding on mobile */
+    /* Robust Centering for Sticky */
+    width: fit-content;
+    max-width: 90%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    transform: none;
+    /* Disable the translate centering */
+
+    justify-content: center;
+    /* Center items */
+    gap: 1rem;
+    /* Reduce gap */
+    bottom: 2rem;
+    flex-wrap: wrap;
+    /* Allow wrapping if needed */
+  }
+
+  .dropup-menu {
+    min-width: 250px;
+    display: none !important;
+    /* HIDE ON MOBILE */
+  }
+}
+
+/* PC Hover Restore */
+@media (min-width: 1201px) {
+  .filter-dropup:hover .dropup-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) scaleY(1) translateY(0);
+    pointer-events: auto;
+  }
 }
 
 /* Items - Editorial Style */
@@ -661,11 +1083,20 @@ nav {
   align-items: center;
 }
 
-.dropup-item:hover {
+@media (hover: hover) {
+  .dropup-item:hover {
+    opacity: 1;
+    color: #fff !important;
+    background: transparent !important;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  }
+}
+
+.dropup-item:active {
   opacity: 1;
   color: #fff !important;
-  background: transparent !important;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  transform: scale(0.95);
+  transition: transform 0.1s;
 }
 
 /* Mini Bar Separator between items */
@@ -840,64 +1271,13 @@ footer {
 }
 
 /* Mobile */
+/* Mobile Footer Override Removed to force Desktop Grid */
 @media (max-width: 900px) {
+
+  /* Only adjust text alignment if needed, but keep grid */
   .footer-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-  }
-
-  .f-name,
-  .f-city,
-  .f-copy,
-  .f-mail1,
-  .f-mail2,
-  .f-phone,
-  .f-social,
-  .f-credits {
-    text-align: center !important;
-    justify-content: center !important;
-  }
-
-  .f-social {
-    width: 100%;
-    justify-content: center;
-  }
-
-  /* Logical Order Mobile */
-  .f-name {
-    order: 1;
-  }
-
-  .f-city {
-    order: 2;
-  }
-
-  .f-copy {
-    order: 3;
-    margin-bottom: 1.5rem;
-  }
-
-  .f-mail1 {
-    order: 4;
-  }
-
-  .f-mail2 {
-    order: 5;
-  }
-
-  .f-phone {
-    order: 6;
-    margin-bottom: 1.5rem;
-  }
-
-  .f-social {
-    order: 7;
-  }
-
-  .f-credits {
-    order: 8;
+    gap: 0.5rem;
+    /* Tighten gap slightly */
   }
 }
 
@@ -1095,18 +1475,33 @@ footer {
   justify-content: center;
 }
 
-.modal-controls {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin: 0 auto 0 auto;
-  /* Removed top margin to pull buttons up */
-  transform: translateY(-90px);
-  /* Nudge up further into the video area bottom */
-  display: none;
-  /* Hidden by default, toggled via JS */
-  position: relative;
-  z-index: 20;
+/* Sound Pulse Animation */
+@keyframes soundPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    transform: scale(1);
+  }
+}
+
+.modal-mute.sound-active {
+  animation: soundPulse 0.6s ease-out 2;
+  /* Pulse twice */
+  background: rgba(255, 255, 255, 0.3);
+  border-color: #fff;
+  color: #fff;
 }
 
 /* Control Buttons (Rotate & Fullscreen) */
@@ -1140,16 +1535,15 @@ footer {
   /* Vertical representation */
 }
 
-.modal-controls button:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: scale(1.05);
-}
+@media (hover: hover) {
+  .modal-controls button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+  }
 
-/* Remove separate rule for offset */
-
-.modal-mute:hover,
-.modal-rotate:hover {
-  background: rgba(255, 255, 255, 0.2);
+  .modal-mute:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
 }
 
 /* Rotated Video State - REMOVED (Handled by reel-inner) */
@@ -1188,19 +1582,49 @@ footer {
   min-height: auto;
   background: var(--modal-bg);
   /* Match standard background */
-  overflow: hidden;
-  /* Prevent spill over text */
+  overflow: visible !important;
+  /* Allow shadows to spill */
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
+  /* Reduced space */
 }
 
-.modal.collection-mode .carousel-viewport {
-  margin-top: 0;
-  height: 100%;
-  /* Fit inside the 16/9 box */
+/* Controls - Relative Flow Strategy */
+/* Controls - Relative Flow Strategy */
+.modal-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
   width: 100%;
+  position: relative;
+  z-index: 20;
+
+  /* Default (Mobile/Safe): Sit below video */
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  transform: none;
+  left: auto;
+  bottom: auto;
+}
+
+@media (min-width: 1101px) {
+  .modal-controls {
+    /* Desktop: Shift UP to overlap video */
+    transform: translateY(-90px);
+    margin-bottom: -90px;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 1100px) {
+  .modal-controls {
+    /* Mobile/Tablet: Ensure standard flow */
+    position: relative !important;
+    transform: none !important;
+    margin: 1.5rem auto 1rem auto !important;
+  }
 }
 
 .modal-media-container img,
@@ -1336,7 +1760,8 @@ footer {
   width: 100%;
   height: 60vh;
   position: relative;
-  overflow: hidden;
+  overflow: visible !important;
+  /* Show shadows */
   perspective: 1000px;
   /* Depth for 3D effect */
   cursor: none;
@@ -1463,17 +1888,31 @@ a,
 }
 
 /* Mobile */
+/* Mobile overrides removed/superseded by Viewport Width 1100 strategy 
+   We keep specific adjustments only if needed, but since we force Desktop View, 
+   most max-width queries are bypassed. 
+*/
+
 @media (max-width: 768px) {
   .hero-content h1 {
     font-size: 3rem;
   }
 
-  .work-grid {
-    grid-template-columns: 1fr;
+  .work-grid,
+  .about {
+    /* Force Side by side even on mobile - Desktop Feel */
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    /* Reduced gap */
   }
 
-  .about {
-    grid-template-columns: 1fr;
+  /* Scale down about text if needed */
+  .about-text h2 {
+    font-size: 2.5rem;
+  }
+
+  .about-text p {
+    font-size: 0.9rem;
   }
 
   .modal-details {
@@ -1506,9 +1945,17 @@ a,
   transition: all 0.3s ease;
 }
 
-.modal-nav:hover {
+@media (hover: hover) {
+  .modal-nav:hover {
+    color: #fff;
+    transform: translateY(-50%) scale(1.2);
+  }
+}
+
+.modal-nav:active {
   color: #fff;
-  transform: translateY(-50%) scale(1.2);
+  transform: translateY(-50%) scale(0.9);
+  transition: transform 0.1s;
 }
 
 .modal-nav.prev {
@@ -2160,9 +2607,17 @@ a,
   backdrop-filter: blur(4px);
 }
 
-.project-carousel-nav:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-50%) scale(1.1);
+@media (hover: hover) {
+  .project-carousel-nav:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%) scale(1.1);
+  }
+}
+
+.project-carousel-nav:active {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-50%) scale(0.95);
+  transition: transform 0.1s;
 }
 
 .project-carousel-nav.prev {

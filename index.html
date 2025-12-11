@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="viewport" content="width=1100, user-scalable=yes">
   <title>Lucas Jacquot | Filmmaker</title>
   <meta name="description" content="Portfolio of a visual storyteller and filmmaker based in Paris.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,12 +20,15 @@
     <div class="container">
       <nav>
         <a data-scroll="#home" class="logo">LUCAS JACQUOT</a>
-        <ul class="nav-links">
-          <li><a data-scroll="#work" data-i18n="nav.work">Work</a></li>
-          <li><a data-scroll="#about" data-i18n="nav.about">About</a></li>
-          <li><a data-scroll="#contact" data-i18n="nav.contact">Contact</a></li>
-          <li><button id="lang-switch" class="lang-btn">FR</button></li>
-        </ul>
+        <div class="nav-right">
+          <ul class="nav-links">
+            <li><a data-scroll="#work" data-i18n="nav.work">Work</a></li>
+            <li><a data-scroll="#about" data-i18n="nav.about">About</a></li>
+            <li><a data-scroll="#contact" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+          <button class="mobile-menu-toggle" aria-label="Toggle Menu"><i class="fa-solid fa-bars"></i></button>
+          <button id="lang-switch" class="lang-btn">FR</button>
+        </div>
       </nav>
     </div>
   </header>
@@ -304,7 +307,7 @@
   <footer id="contact">
     <div class="container footer-grid">
       <!-- Line 1 -->
-      <h2 class="f-item f-name logo">LUCAS JACQUOT</h2>
+      <h2 class="f-item f-name">LUCAS JACQUOT</h2>
       <a data-href="mailto:lucasjacquot06@gmail.com"
         class="f-item f-mail1 email-interaction footer-highlight">lucasjacquot06@gmail.com</a>
       <div class="f-item f-social social-icons">

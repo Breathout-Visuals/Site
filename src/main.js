@@ -803,11 +803,41 @@ function setupModal() {
         const card = e.target.closest('.project-card');
         // Ensure we don't trigger if clicking nav buttons
         if (card && !e.target.closest('.modal-nav')) {
+
+            // MOBILE TAP LOGIC (Reveal Info First)
+            const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+
+            if (isTouch) {
+                if (!card.classList.contains('touched')) {
+                    // First Tap: Reveal Info
+
+                    // Clear others
+                    document.querySelectorAll('.project-card.touched').forEach(c => c.classList.remove('touched'));
+
+                    card.classList.add('touched');
+
+                    // Auto-hide after 2.5s
+                    setTimeout(() => {
+                        card.classList.remove('touched');
+                    }, 2500);
+
+                    return; // STOP here, do not open modal
+                }
+                // If already touched (Second Tap), proceed to open modal below
+            }
+
             // Center Work Section
             const workSection = document.getElementById('work');
             if (workSection) workSection.scrollIntoView({ behavior: 'smooth' });
 
             openModal(card.getAttribute('data-id'));
+        } else {
+            // Clicked outside of a project card
+            // If we are on mobile, clear any active 'touched' states
+            const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+            if (isTouch) {
+                document.querySelectorAll('.project-card.touched').forEach(c => c.classList.remove('touched'));
+            }
         }
     });
 
@@ -859,9 +889,16 @@ function setupMuteButton() {
         if (globalMute) {
             icon.classList.remove('fa-volume-high');
             icon.classList.add('fa-volume-xmark');
+            muteBtn.classList.remove('sound-active');
         } else {
             icon.classList.remove('fa-volume-xmark');
             icon.classList.add('fa-volume-high');
+
+            // Trigger Pulse Animation (Two pulses)
+            muteBtn.classList.add('sound-active');
+            setTimeout(() => {
+                muteBtn.classList.remove('sound-active');
+            }, 1200); // 0.6s * 2
         }
 
         // Apply to all reel videos
@@ -1395,15 +1432,31 @@ class InfiniteGallery {
     }
 
     setupFilters() {
-        // Basic Filter Setup
+        // Filter Logic
         this.filterButtons.forEach(btn => {
             btn.addEventListener('click', () => {
+
+                // Handle Active State
                 this.filterButtons.forEach(b => b.classList.remove('active'));
+
+                // If this is a main category trigger, active is handled by the toggle logic visually?
+                // No, we still want it white.
                 btn.classList.add('active');
+
+                // Also highlight parent if sub-item clicked?
+                // For now, simple logic:
+                if (btn.classList.contains('dropup-item')) {
+                    const parentTrigger = btn.closest('.filter-dropup')?.querySelector('.filter-btn');
+                    if (parentTrigger) {
+                        // parentTrigger.classList.add('active'); // Optional: keep parent white
+                    }
+                }
 
                 // Scroll to Work section
                 const workSection = document.getElementById('work');
+                // ... rest (keep standard filtering)
                 if (workSection) {
+                    // Only scroll if we are not already there?
                     workSection.scrollIntoView({ behavior: 'smooth' });
                 }
 
@@ -1414,6 +1467,12 @@ class InfiniteGallery {
                     : this.originalData.filter(p => p.category === filter);
 
                 currentFilteredProjects = filtered; // Update global
+
+                // Reset Carousel Position
+                this.currentTranslate = 0;
+                this.targetTranslate = 0;
+                this.speed = this.baseSpeed;
+
                 this.render(filtered);
             });
         });
@@ -1489,6 +1548,9 @@ class InfiniteGallery {
 
             if (this.navButtons) this.navButtons.forEach(btn => btn.style.display = 'block');
 
+            // Recalculate dimensions immediately
+            this.calculateDimensions();
+
             this.animate();
         } else {
             // Static Layout
@@ -1535,20 +1597,18 @@ class InfiniteGallery {
     }
 
     setupDrag() {
+        // Mouse Events
         this.wrapper.addEventListener('mousedown', e => {
             this.isDragging = true;
             this.startX = e.pageX;
             this.lastX = e.pageX;
-            // Native cursor removed for custom cursor
         });
 
         window.addEventListener('mouseup', () => {
             if (!this.isDragging) return;
             this.isDragging = false;
-            // Native cursor removed
             this.targetSpeed = this.baseSpeed; // Return to auto
 
-            // Only clear if confirmed drag
             if (window.isGalleryDragging) {
                 setTimeout(() => { window.isGalleryDragging = false; }, 50);
             }
@@ -1560,7 +1620,6 @@ class InfiniteGallery {
             const x = e.pageX;
             const delta = x - this.lastX;
 
-            // Only set global if moved significantly
             if (Math.abs(x - this.startX) > 5) {
                 window.isGalleryDragging = true;
             }
@@ -1568,6 +1627,42 @@ class InfiniteGallery {
             this.currentTranslate += delta;
             this.lastX = x;
         });
+
+        // Touch Events (Mobile Swipe)
+        this.wrapper.addEventListener('touchstart', e => {
+            this.isDragging = true;
+            this.startX = e.touches[0].pageX;
+            this.lastX = e.touches[0].pageX;
+            this.targetSpeed = 0; // Stop auto-scroll on touch
+        }, { passive: false });
+
+        window.addEventListener('touchend', () => {
+            if (!this.isDragging) return;
+            this.isDragging = false;
+            this.targetSpeed = this.baseSpeed; // Return to auto
+
+            // Allow click if minor move
+            if (window.isGalleryDragging) {
+                setTimeout(() => { window.isGalleryDragging = false; }, 50);
+            }
+        });
+
+        window.addEventListener('touchmove', e => {
+            if (!this.isDragging) return;
+            // e.preventDefault(); // allow vertical scroll? 
+            // Better to only preventDefault if horizontal move is dominant
+
+            const x = e.touches[0].pageX;
+            const delta = x - this.lastX;
+
+            // Simple horizontal lock check could go here, but for now direct map
+            if (Math.abs(x - this.startX) > 5) {
+                window.isGalleryDragging = true;
+            }
+
+            this.currentTranslate += delta * 1.5; // Sensitivity Boost for Touch
+            this.lastX = x;
+        }, { passive: false });
 
         // Add Trackpad / Horizontal Scroll Support
         this.wrapper.addEventListener('wheel', e => {
@@ -1587,6 +1682,23 @@ class InfiniteGallery {
         }, { passive: false });
     }
 
+    calculateDimensions() {
+        const firstCard = this.track.children[0];
+        if (firstCard) {
+            const cardWidth = firstCard.getBoundingClientRect().width;
+            const trackStyle = window.getComputedStyle(this.track);
+            const gap = parseFloat(trackStyle.gap) || 0;
+            this.singleItemWidth = cardWidth + gap;
+        } else {
+            // Fallback
+            const vw = window.innerWidth / 100;
+            this.singleItemWidth = 30 * vw;
+        }
+
+        // Calculate limit once
+        this.singleSetWidth = this.currentCount * this.singleItemWidth;
+    }
+
     animate() {
         if (!this.isScrolling) return;
 
@@ -1596,15 +1708,8 @@ class InfiniteGallery {
             this.currentTranslate -= this.speed;
         }
 
-        // Bounds Check (Infinite Loop)
-        // Calculated based on: Item Width (25vw) + Gap (5vw) = 30vw per item
-        // We use window.innerWidth to get the exact pixel value of 1vw
-        const vw = window.innerWidth / 100;
-        const singleItemWidth = 30 * vw;
-
-        // CRITICAL FIX: Use currentCount instead of originalData.length
-        // This ensures the loop point is correct even when filtered to a small subset
-        const singleSetWidth = this.currentCount * singleItemWidth;
+        // Use Cached Dimensions (No DOM Read)
+        const singleSetWidth = this.singleSetWidth || (this.currentCount * 300); // safety fallback
 
         // Wrapping logic
         if (singleSetWidth > 0) { // Safety check
@@ -1620,4 +1725,49 @@ class InfiniteGallery {
 
         this.animationId = requestAnimationFrame(this.animate.bind(this));
     }
+}
+// --- Mobile Menu Toggle ---
+const menuToggle = document.querySelector('.mobile-menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+if (menuToggle && navLinks) {
+    // Toggle Menu
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+
+        // Icon Swap Logic
+        const icon = menuToggle.querySelector('i');
+        if (navLinks.classList.contains('active')) {
+            // Switch to X (Close)
+            if (icon) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+            document.body.style.overflow = 'hidden'; // Lock Scroll
+        } else {
+            // Switch to Bars (Menu)
+            if (icon) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+            document.body.style.overflow = ''; // Unlock Scroll
+        }
+    });
+
+    // Close on Link Click
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+
+            // Revert Icon
+            const icon = menuToggle.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+
+            document.body.style.overflow = '';
+        });
+    });
 }
