@@ -1,6 +1,7 @@
 import './style.css'
 // --- Projects Data (Imported) ---
 import { projects } from './project-data.js';
+import { collaborators } from './data/collaborators.js';
 import { inject as injectAnalytics } from '@vercel/analytics';
 import { injectSpeedInsights } from '@vercel/speed-insights';
 
