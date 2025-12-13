@@ -2888,3 +2888,31 @@ a,
     /* Ensure they behave as blocks in column */
   }
 }
+
+/* FIX: Mobile "One Tap" behavior */
+@media (hover: none) {
+
+  /* 1. HIDE the overlay info (User request: "juste l'image") */
+  .related-item .related-overlay {
+    display: none !important;
+    opacity: 0 !important;
+  }
+
+  /* 2. DISABLE zoom effect to prevent double-tap issues */
+  .related-item:hover .related-card-inner img {
+    transform: none !important;
+  }
+
+  /* 3. Ensure simple hit test */
+  .related-item {
+    cursor: default !important;
+    /* No pointer needed on touch */
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Bouncy transition */
+  }
+
+  /* 4. Active Touch Feedback */
+  .related-item.is-pressed {
+    transform: scale(1.02) !important;
+  }
+}
