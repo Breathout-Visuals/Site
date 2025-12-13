@@ -871,7 +871,10 @@ footer {
   right: 1.5rem;
   z-index: 5;
   pointer-events: none;
-  /* Let clicks pass through to card */
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .role-badge {
@@ -893,15 +896,74 @@ footer {
   transform: translateY(-10px);
 }
 
+.status-badge {
+  display: inline-block;
+  background: rgba(255, 165, 0, 0.15);
+  /* Orange tint */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 165, 0, 0.6);
+  /* Orange border */
+  color: #ffb347;
+  /* Pastel Orange text */
+  font-family: var(--font-main);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition-delay: 0.1s;
+  /* Stagger */
+}
+
+/* Modal Variant of Status Badge */
+/* Modal Variant of Status Badge */
+#modal-title .status-badge {
+  display: inline-block;
+  white-space: nowrap;
+  opacity: 0.5;
+  transform: none;
+  margin-left: 0.3rem;
+  vertical-align: super;
+  font-size: 0.2em;
+  /* Tiny */
+  padding: 0.1rem 0.4rem;
+  box-shadow: none;
+  background: transparent;
+  color: #ffb347;
+  border: 1px solid rgba(255, 165, 0, 0.2);
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+}
+
 /* Role Badge Hover/Touch */
 @media (hover: hover) {
-  .project-card:hover .role-badge {
+
+  .project-card:hover .role-badge,
+  .project-card:hover .status-badge {
     background: rgba(255, 255, 255, 0.95);
     color: #000;
-    border-color: #fff;
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* Keep status distinct on hover? Maybe just opacity */
+  .project-card:hover .status-badge {
+    background: rgba(255, 165, 0, 0.9);
+    color: #000;
+    border-color: transparent;
+  }
+}
+
+
+/* Ensure Container is Visible on Touch */
+.project-card.touched .project-overlay-role {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
 .project-card.touched .role-badge {
@@ -911,6 +973,17 @@ footer {
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
+
+.project-card.touched .status-badge {
+  background: rgba(255, 165, 0, 0.9);
+  color: #000;
+  border-color: transparent;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Mobile optimization for badges */
+
 
 /* Filters */
 /* Filters */
@@ -1681,9 +1754,13 @@ footer {
 }
 
 .modal-details h2 {
+  display: inline-block;
+  /* Allow wrapping only if needed, keeps items close */
   font-family: var(--font-display);
   font-size: 3rem;
   margin-bottom: 0.5rem;
+  max-width: 100%;
+  /* Prevent overflow */
 }
 
 /* Role Badge on Card */
@@ -1698,9 +1775,11 @@ footer {
   pointer-events: none;
 }
 
-.project-card:hover .project-overlay-role {
-  opacity: 1;
-  transform: translateY(0);
+@media (hover: hover) {
+  .project-card:hover .project-overlay-role {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .role-badge {
@@ -2394,24 +2473,41 @@ a,
 }
 
 .credits-content {
+  display: block;
+  /* Revert grid */
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, margin-top 0.4s ease;
+  transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, margin-top 0.6s ease;
   opacity: 0;
   margin-top: 0;
 }
 
 .credits-content.active {
-  max-height: 500px;
-  /* Arbitrary large height */
+  max-height: 2000px;
   opacity: 1;
   margin-top: 1rem;
+}
+
+.credits-inner {
+  /* overflow: hidden; Not needed for max-height but harmless */
 }
 
 .credits-text {
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.6);
   line-height: 1.5;
+}
+
+/* Staggered Animation */
+.credits-row {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.credits-content.active .credits-row {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Contact Pulse Animation */
@@ -2693,4 +2789,102 @@ a,
   animation: highlightPulse 0.4s ease-in-out 3;
   /* 3 times */
   transform-origin: center;
+}
+
+/* Structured Credits */
+.credits-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 0.5rem 1.5rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.credits-row {
+  display: contents;
+}
+
+.credit-role {
+  text-align: right;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 400;
+}
+
+.credit-value {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.credit-link {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
+}
+
+.credit-link:hover {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+@media (max-width: 600px) {
+  .credits-grid {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+    text-align: center;
+  }
+
+  .credit-role {
+    text-align: center;
+    margin-top: 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .credits-row:first-child .credit-role {
+    margin-top: 0;
+  }
+}
+
+/* Credits Categories */
+.credits-category {
+  margin-bottom: 2rem;
+}
+
+.credits-category-title {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  text-align: center;
+  padding-left: 0;
+}
+
+/* --- MOBILE FIXES (Applied last to ensure priority) --- */
+@media (max-width: 1024px) {
+  .project-overlay-role {
+    display: flex !important;
+    /* Ensure it is flex */
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    gap: 0.3rem !important;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .role-badge,
+  .status-badge {
+    font-size: 0.6rem !important;
+    padding: 0.3rem 0.6rem !important;
+    white-space: nowrap !important;
+    /* Force no wrap */
+    max-width: 100%;
+    text-align: right;
+    display: block !important;
+    /* Ensure they behave as blocks in column */
+  }
 }

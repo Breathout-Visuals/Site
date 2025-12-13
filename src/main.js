@@ -1,7 +1,6 @@
 import './style.css'
 // --- Projects Data (Imported) ---
 import { projects } from './project-data.js';
-import { collaborators } from './data/collaborators.js';
 import { inject as injectAnalytics } from '@vercel/analytics';
 import { injectSpeedInsights } from '@vercel/speed-insights';
 
@@ -25,21 +24,7 @@ const STATUS = {
     ONGOING: "En cours"
 };
 
-// --- Roles Data ---
-const ROLES = {
-    key_grip: { fr: "Chef Machiniste", en: "Key Grip" },
-    dop: { fr: "Directeur de la Photographie", en: "Director of Photography" },
-    spark: { fr: "Électro", en: "Spark" },
-    spark_reinforcement: { fr: "Renfort Électro", en: "Spark" },
-    grip_spark: { fr: "Électro & Machino", en: "Grip & Spark" },
-    camera_op: { fr: "Cadreur", en: "Camera Operator" },
-    director: { fr: "Réalisateur", en: "Director" },
-    cam_dop: { fr: "Cadreur & DoP", en: "Camera Operator & DoP" },
-    content_creation: { fr: "Création de Contenu", en: "Content Creation" },
-    dop_cam: { fr: "DoP & Cadreur", en: "DoP & Camera Op" },
-    gaffer: { fr: "Chef Électricien", en: "Gaffer" },
-    cam_dir: { fr: "Cadreur & Réalisateur", en: "Camera Op & Director" }
-};
+import { ROLES } from './data/roles.js';
 
 
 let currentFilteredProjects = projects; // Global filtered list
@@ -47,7 +32,7 @@ let currentFilteredProjects = projects; // Global filtered list
 // --- Translations ---
 const translations = {
     fr: {
-        nav: { work: "Projets", about: "À Propos", social: "Réseaux", contact: "Contact" },
+        nav: { work: "Projets", about: "À Propos", contact: "Contact" },
         hero: { subtitle: "Capturer l'instant, sublimer le récit." },
         filter: { all: "Tout" },
         cat: {
@@ -80,10 +65,13 @@ const translations = {
             date_label: "Date",
             role_label: "Rôle",
             credits_placeholder: "Crédits à venir..."
+        },
+        status: {
+            editing: "En Montage"
         }
     },
     en: {
-        nav: { work: "Work", about: "About", social: "Socials", contact: "Contact" },
+        nav: { work: "Work", about: "About", contact: "Contact" },
         hero: { subtitle: "Capturing moments, crafting narratives." },
         filter: { all: "All" },
         cat: {
@@ -116,6 +104,9 @@ const translations = {
             date_label: "Date",
             role_label: "Role",
             credits_placeholder: "Credits coming soon..."
+        },
+        status: {
+            editing: "In Editing"
         }
     }
 };
@@ -139,6 +130,23 @@ document.addEventListener('DOMContentLoaded', () => {
     setupExternalLinks();
     new InfiniteGallery();
 });
+
+// --- SAFE ROLE TRANSLATION HELPER ---
+function getRoleName(key) {
+    if (!key) return "";
+
+    // 1. Try Lookup
+    let val = ROLES[key];
+
+    // 2. If valid object, return current lang
+    if (val && typeof val === 'object') {
+        return val[currentLang] || val.en || key;
+    }
+
+    // 3. Fallback: Beautify Key (e.g. "dop_me" -> "Dop Me")
+    // This ensures we NEVER show raw keys to user
+    return key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+}
 
 // --- Custom Cursor ---
 function setupCursor() {
@@ -216,10 +224,7 @@ function updateContent() {
             const roleEl = card.querySelector('[data-project-role]');
             if (roleEl && project.role) {
                 // Updated logic for role key
-                const roleData = ROLES[project.role] || project.role;
-                const roleText = (typeof roleData === 'object')
-                    ? (roleData[currentLang] || roleData.en)
-                    : roleData;
+                const roleText = getRoleName(project.role);
                 roleEl.textContent = roleText;
             }
         }
@@ -449,7 +454,16 @@ function setupModal() {
         // ------------------------------------
 
         // Reset basic text first
-        titleEl.textContent = project.title;
+        // titleEl.textContent = project.title; <-- CHANGED to InnerHTML for Badge
+
+        // Resolve Status (Editing Only)
+        let statusBadgeHtml = '';
+        if (project.status && (project.status.toLowerCase().includes('edit') || project.status.toLowerCase().includes('montage'))) {
+            const statusLabel = translations[currentLang].status.editing;
+            statusBadgeHtml = `<span class="status-badge" data-i18n="status.editing">${statusLabel}</span>`;
+        }
+
+        titleEl.innerHTML = `${project.title}&nbsp;${statusBadgeHtml}`;
         descEl.textContent = project.desc[currentLang];
 
         // Toggle collection mode class for CSS hooks
@@ -483,20 +497,19 @@ function setupModal() {
                 : (project.date || "");
 
             // Resolve Role using ROLES constant
-            const roleData = ROLES[project.role] || project.role;
-            const pRole = (typeof roleData === 'object')
-                ? (roleData[currentLang] || roleData.en || "")
-                : (roleData || "");
+            const pRole = getRoleName(project.role);
+
+
 
             metaBlock.innerHTML = `
          <h6 class="meta-type">${catName}</h6>
          <div class="meta-grid">
            <div class="meta-item">
-             <span class="meta-label">Date</span>
+             <span class="meta-label" data-i18n="modal.date_label">${translations[currentLang].modal.date_label}</span>
              <span class="meta-value">${pDate}</span>
            </div>
            <div class="meta-item">
-             <span class="meta-label">Rôle</span>
+             <span class="meta-label" data-i18n="modal.role_label">${translations[currentLang].modal.role_label}</span>
              <span class="meta-value">${pRole}</span>
            </div>
          </div>
@@ -526,7 +539,121 @@ function setupModal() {
             Credits <i class="fa-solid fa-chevron-down arrow-icon"></i>
           </button>
           <div class="credits-content">
-            <p class="credits-text">Crédits à venir...</p>
+            ${(() => {
+                        if (project.structuredCredits && project.structuredCredits.length > 0) {
+
+                            // Define Groups with Categories
+                            const CREDIT_GROUPS = [
+                                { category: "PRODUCTION", roles: ['producer', 'exec_producer', 'co_producer', 'line_producer', 'prod_manager', 'prod_coord', 'assist_prod_coord', 'prod_assist', 'unit_manager', 'unit_manager_me', 'unit_assist', 'loc_manager', 'assist_loc_manager', 'loc_assist'] },
+                                { category: "DIRECTION", roles: ['director', 'director_me', 'cam_dir_me', 'ad_1', 'ad_2', 'ad_3', 'ad_add', 'script_sup', 'storyboard', 'video_assist'] },
+                                { category: "CAMERA", roles: ['dop', 'dop_me', 'dop_cam_me', 'cam_op_a', 'cam_op_b', 'cam_op', 'camera_op_me', 'steadicam', 'trinity', 'ac_1_a', 'ac_1_b', 'ac_1', 'ac_2', 'camera_assistant_me', 'dit', 'video_op', 'photographer'] },
+                                { category: "LIGHTING & GRIP", roles: ['gaffer', 'gaffer_me', 'best_boy_elec', 'sparks', 'spark', 'spark_me', 'spark_reinforcement_me', 'rig_gaffer', 'key_grip', 'key_grip_me', 'best_boy_grip', 'grips', 'grip', 'grip_me', 'grip_spark_me', 'rig_grip'] },
+                                { category: "ART DEPARTMENT", roles: ['prod_design', 'art_dir', 'assist_art_dir', 'construction_coord', 'construction_crew', 'props_master', 'props_assist', 'set_dresser', 'set_decorator', 'painters', 'carpenters', 'model_maker'] },
+                                { category: "COSTUMES", roles: ['costume_designer', 'assist_costume', 'tailor', 'costume_sup', 'costume_assist', 'ager_dyer', 'set_costumer'] },
+                                { category: "MAKEUP & HAIR", roles: ['makeup_head', 'hair_head', 'makeup_artist', 'hair_stylist', 'sfx_makeup', 'prosthetic', 'barber', 'hmc'] },
+                                { category: "SOUND", roles: ['sound', 'sound_mixer', 'boom_op', 'sound_utility', 'playback'] }, // Added generic 'sound'
+                                { category: "TRANSPORTATION", roles: ['transport_capt', 'drivers'] },
+                                { category: "SFX", roles: ['sfx_sup', 'sfx_tech', 'pyro'] },
+                                { category: "VFX (ON SET)", roles: ['vfx_sup', 'vfx_data', 'lidar', 'tech_tracking'] },
+                                { category: "SPECIALTY RIGS & DRONE", roles: ['drone_pilot', 'drone_op', 'drone_tech', 'stunt_rigger', 'cam_car'] },
+                                { category: "STUNTS", roles: ['stunt_coord', 'stunt_perf', 'doubles', 'stunt_driver', 'safety'] },
+                                { category: "CREATURE & ANIMATRONICS", roles: ['creature_design', 'animatronic', 'puppeteer'] },
+                                { category: "CASTING", roles: ['casting_dir', 'casting_assist', 'acting_coach', 'dial_coach', 'extras_coord'] },
+                                { category: "CATERING", roles: ['caterer', 'catering_crew', 'craft_service'] },
+                                { category: "POST-PRODUCTION", roles: ['editor', 'editor_me', 'assist_editor', 'post_coord', 'content_creation_me'] },
+                                { category: "COLOR", roles: ['colorist', 'assist_colorist'] },
+                                { category: "MUSIC", roles: ['composer', 'orchestrator', 'conductor', 'musicians', 'music_mixer'] },
+                                { category: "POST SOUND", roles: ['sound_design', 'sound_editor', 'dial_editor', 'adr_editor', 'foley', 'foley_mixer', 're_record_mixer'] },
+                                { category: "VFX (POST)", roles: ['vfx_prod', 'lead_comp', 'compositors', '3d_artist', 'matte_paint', 'roto', 'matchmove', 'pipeline_td'] },
+                                { category: "TITLES", roles: ['motion_des', 'title_des', 'screenwriter_me'] }, // Added screenwriter here as it fits best with titles/writing
+                                { category: "LOCALIZATION", roles: ['translator', 'dial_adapt', 'voice_actor', 'subtitler'] },
+                                { category: "SAFETY", roles: ['safety_coord', 'medic', 'security'] },
+                                { category: "LAB & DISTRIBUTION", roles: ['lab', 'archivist', 'distributor', 'publicist', 'epk'] }
+                            ];
+
+                            let html = '<div class="credits-container">';
+                            let renderedRoles = new Set();
+
+                            // Helper to render a list of items
+                            let globalDelay = 0; // Reset for each open? No, reset for render.
+
+                            const renderItems = (items) => {
+                                let chunk = '<div class="credits-grid">'; // Grid inside category
+                                items.forEach(item => {
+                                    if (renderedRoles.has(item.roleKey)) return;
+                                    renderedRoles.add(item.roleKey);
+
+                                    const roleName = getRoleName(item.roleKey);
+
+                                    const namesHtml = item.names.map(name => {
+                                        return `<span class="credit-name">${name}</span>`;
+                                    }).join(', ');
+
+                                    // Stagger Logic
+                                    const delay = globalDelay * 0.03; // 30ms per item
+                                    globalDelay++;
+
+                                    chunk += `
+                                <div class="credits-row" style="transition-delay: ${delay}s">
+                                    <span class="credit-role">${roleName}</span>
+                                    <span class="credit-value">${namesHtml}</span>
+                                </div>
+                            `;
+                                });
+                                chunk += '</div>';
+                                return chunk;
+                            };
+
+                            let innerContent = '';
+                            globalDelay = 0; // START COUNTER
+                            // 1. Render Groups
+                            CREDIT_GROUPS.forEach(group => {
+                                // Find items in this group that haven't been rendered yet
+                                const groupItems = project.structuredCredits.filter(item => {
+                                    const match = group.roles.includes(item.roleKey) || (item.originalRole && group.roles.includes(item.originalRole));
+                                    return match;
+                                });
+
+                                if (groupItems.length > 0) {
+                                    const groupHtml = renderItems(groupItems);
+                                    if (groupHtml.includes('class="credits-row"')) { // Only add if items actually rendered
+                                        innerContent += `
+                                    <div class="credits-category">
+                                        <h4 class="credits-category-title">${group.category}</h4>
+                                        ${groupHtml}
+                                    </div>
+                                `;
+                                    }
+                                }
+                            });
+
+                            // 2. Render Leftovers
+                            const leftovers = project.structuredCredits.filter(item => !renderedRoles.has(item.roleKey));
+                            if (leftovers.length > 0) {
+                                innerContent += `
+                            <div class="credits-category">
+                                <h4 class="credits-category-title">ADDITIONAL CREW</h4>
+                                ${renderItems(leftovers)}
+                            </div>
+                        `;
+                            }
+
+                            // SAFETY NET: If nothing rendered but we have credits, force render everything
+                            if (!innerContent && project.structuredCredits.length > 0) {
+                                console.warn("Credit grouping failed, rendering raw list.");
+                                innerContent = `
+                            <div class="credits-category">
+                                <h4 class="credits-category-title">ALL CREDITS (FALLBACK)</h4>
+                                ${renderItems(project.structuredCredits)}
+                            </div>`;
+                            }
+
+                            html += `<div class="credits-inner">${innerContent}</div></div>`;
+                            return html;
+                        } else {
+                            return `<p class="credits-text" style="white-space: pre-line;">${project.credits || translations[currentLang].modal.credits_placeholder}</p>`;
+                        }
+                    })()}
           </div>
         `;
 
@@ -802,32 +929,42 @@ function setupModal() {
         if (window.isGalleryDragging) return;
 
         const card = e.target.closest('.project-card');
+
+        // 1. CLICK OUTSIDE LOGIC
+        if (!card) {
+            document.querySelectorAll('.project-card.touched').forEach(c => c.classList.remove('touched'));
+            return;
+        }
+
         // Ensure we don't trigger if clicking nav buttons
         if (card && !e.target.closest('.modal-nav')) {
 
-            // MOBILE TAP LOGIC (Reveal Info First)
-            const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+            // ROBUST MOBILE DETECT: If touch event happened recently (<600ms), it is a TAP.
+            // This overrides CSS hover states which can be sticky on mobile.
+            const lastTouch = window.lastTouchTime || 0;
+            const isTouch = (Date.now() - lastTouch < 600) || window.matchMedia('(hover: none) and (pointer: coarse)').matches;
 
             if (isTouch) {
                 if (!card.classList.contains('touched')) {
-                    // First Tap: Reveal Info
-                    // DO NOT clear others (User Request: Multi-active allowed)
+                    // EXCLUSIVE TOUCH: Clear all others first
+                    document.querySelectorAll('.project-card.touched').forEach(c => {
+                        if (c !== card) c.classList.remove('touched');
+                    });
 
+                    // First Tap: Reveal Info
                     card.classList.add('touched');
 
-                    // Clear existing timer if any (though usually state prevents re-entry, it's safer)
+                    // Auto-hide fallback (optional, longer duration)
                     if (card.touchTimer) clearTimeout(card.touchTimer);
-
-                    // Auto-hide after 2.5s INDEPENDENTLY
                     card.touchTimer = setTimeout(() => {
                         card.classList.remove('touched');
-                        card.touchTimer = null;
-                    }, 2500);
+                    }, 4000);
 
                     return; // STOP here, do not open modal
                 }
                 // If already touched (Second Tap), proceed to open modal below
             }
+
 
             // Center Work Section
             const workSection = document.getElementById('work');
@@ -1517,7 +1654,7 @@ class InfiniteGallery {
         // Update current valid count for animate logic
         this.currentCount = data.length;
 
-        // 1. Initial Render (No clones yet)
+        // 1. Initial Render (Original Data)
         data.forEach(project => {
             this.track.appendChild(this.createCard(project));
         });
@@ -1527,28 +1664,41 @@ class InfiniteGallery {
 
         // Remove old state
         this.track.classList.remove('no-scroll');
-        this.track.classList.remove('center-content'); // Reset centering
-        if (this.navButtons) this.navButtons.forEach(btn => btn.style.display = 'none'); // Reset nav
+        this.track.classList.remove('center-content');
+        if (this.navButtons) this.navButtons.forEach(btn => btn.style.display = 'none');
 
         if (isOverflowing && data.length > 0) {
-            // 3. Add Clones for Infinity (x3 usually enough)
-            // Pre-pend and Append for seamless looping
-            data.forEach(project => {
-                const clone = this.createCard(project);
-                clone.classList.add('clone');
-                this.track.appendChild(clone);
-            });
-            data.forEach(project => {
-                const clone = this.createCard(project);
-                clone.classList.add('clone');
-                this.track.appendChild(clone);
-            });
 
+            // FIX: If count is odd AND we need to loop, we must duplicate to fix grid alignment.
+            // But we do this ONLY if overflowing, to avoid "doubled" content on static views.
+            if (data.length % 2 !== 0) {
+                // Duplicate Data
+                data = [...data, ...data];
+                this.currentCount = data.length; // Update count
+
+                // Re-render completely with new even data
+                this.track.innerHTML = '';
+                data.forEach(project => {
+                    this.track.appendChild(this.createCard(project));
+                });
+            }
+
+            // 3. Add Clones for Infinity (x3)
+            data.forEach(project => {
+                const clone = this.createCard(project);
+                clone.classList.add('clone');
+                this.track.appendChild(clone);
+            });
+            data.forEach(project => {
+                const clone = this.createCard(project);
+                clone.classList.add('clone');
+                this.track.appendChild(clone);
+            });
 
             this.currentTranslate = 0;
             this.currentVelocity = 0;
             this.targetSpeed = this.baseSpeed;
-            this.isScrolling = true; // Flag for animate logic
+            this.isScrolling = true;
 
             if (this.navButtons) this.navButtons.forEach(btn => btn.style.display = 'block');
 
@@ -1565,6 +1715,8 @@ class InfiniteGallery {
         }
     }
 
+
+
     createCard(project) {
         const article = document.createElement('article');
         article.className = 'project-card';
@@ -1575,10 +1727,15 @@ class InfiniteGallery {
         const catName = translations[currentLang].cat[catKey] || catKey;
 
         // Resolve Role
-        const roleData = ROLES[project.role] || project.role;
-        const roleName = (typeof roleData === 'object')
-            ? (roleData[currentLang] || roleData.en)
-            : roleData;
+        const roleName = getRoleName(project.role);
+
+        // Resolve Status (Editing Only)
+        let statusBadgeHtml = '';
+        if (project.status && (project.status.toLowerCase().includes('edit') || project.status.toLowerCase().includes('montage'))) {
+            const statusLabel = translations[currentLang].status.editing;
+            // Add data-i18n for auto-translation on switch
+            statusBadgeHtml = `<span class="status-badge" data-i18n="status.editing">${statusLabel}</span>`;
+        }
 
         // Resolve Media (Handle Carousel Array)
         let mediaSrc = project.media;
@@ -1590,7 +1747,10 @@ class InfiniteGallery {
         const displaySrc = project.cover || mediaSrc;
 
         article.innerHTML = `
-      <div class="project-overlay-role"><span class="role-badge" data-project-role>${roleName || 'Filmmaker'}</span></div>
+      <div class="project-overlay-role">
+        <span class="role-badge" data-project-role>${roleName || 'Filmmaker'}</span>
+        ${statusBadgeHtml}
+      </div>
       <img src="${displaySrc}" alt="${project.title}" class="project-media">
       <div class="project-info">
         <h3 class="project-title">${project.title}</h3>
@@ -1638,6 +1798,9 @@ class InfiniteGallery {
             this.startX = e.touches[0].pageX;
             this.lastX = e.touches[0].pageX;
             this.targetSpeed = 0; // Stop auto-scroll on touch
+
+            // Global Touch Tracker for Click Logic
+            window.lastTouchTime = Date.now();
         }, { passive: false });
 
         window.addEventListener('touchend', () => {
@@ -1662,6 +1825,9 @@ class InfiniteGallery {
             // Simple horizontal lock check could go here, but for now direct map
             if (Math.abs(x - this.startX) > 5) {
                 window.isGalleryDragging = true;
+
+                // Clear all hover/touch states on scroll start
+                document.querySelectorAll('.project-card.touched').forEach(c => c.classList.remove('touched'));
             }
 
             this.currentTranslate += delta * 1.5; // Sensitivity Boost for Touch
@@ -1782,3 +1948,51 @@ if (menuToggle && navLinks) {
         });
     });
 }
+
+// --- FORCE MOBILE CSS FIX (JS Injection to bypass cache) ---
+(function () {
+    const style = document.createElement('style');
+    style.innerHTML = `
+        @media (max-width: 1300px) {
+            .project-overlay-role {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: flex-end !important;
+                justify-content: flex-start !important;
+                gap: 4px !important;
+                top: 1rem !important;
+                right: 1rem !important;
+                left: auto !important;
+                width: auto !important;
+                height: auto !important;
+            }
+            .role-badge, .status-badge {
+                font-size: 0.55rem !important;
+                padding: 4px 8px !important;
+                white-space: nowrap !important;
+                max-width: 100% !important;
+                text-align: right !important;
+                display: block !important;
+                margin-left: auto !important;
+                transform: none !important;
+                opacity: 1 !important; /* Ensure visible */
+            }
+            /* Stack order: Role first, then Status */
+            .role-badge { order: 1; }
+            .status-badge { order: 2; }
+
+            /* --- MODAL MOBILE FIX --- */
+            #modal-title .status-badge {
+                display: block !important;
+                width: fit-content !important;
+                margin: 0.5rem auto 0 auto !important; /* Center below title */
+                vertical-align: baseline !important;
+                font-size: 0.6rem !important;
+                transform: none !important;
+                opacity: 0.8 !important;
+                white-space: normal !important; /* Allow wrap if somehow needed, but fit-content prevents it */
+            }
+        }
+    `;
+    document.head.appendChild(style);
+})();

@@ -4,16 +4,17 @@ const path = require('path');
 const PROJECTS_DIR = path.resolve(__dirname, '../Contents projets/Projets');
 const OUTPUT_FILE = path.resolve(__dirname, '../src/project-data.js');
 
-// Helper to normalize keys (e.g., "Project Link" -> "link")
+// Helper to normalize keys of the META section
 const KEY_MAP = {
     'Name': 'title',
     'Type': 'category',
     'Date': 'date',
-    'Role': 'role',
+    'Role': 'role', // Main Role (badge)
     'Status': 'status',
     'Project Link': 'link',
     'Description': 'desc_en',
-    'Description Fr': 'desc_fr'
+    'Description Fr': 'desc_fr',
+    'Credits': 'credits' // Legacy single-line credits
 };
 
 // Valid extensions for media
@@ -26,10 +27,8 @@ function scanProjects(dir) {
     for (const entry of entries) {
         const fullPath = path.join(dir, entry.name);
         if (entry.isDirectory()) {
-            // Recurse
             results = results.concat(scanProjects(fullPath));
         } else if (entry.name === 'info.txt') {
-            // Found a project
             results.push(path.dirname(fullPath));
         }
     }
@@ -39,33 +38,64 @@ function scanProjects(dir) {
 function parseInfoTxt(filePath) {
     const content = fs.readFileSync(filePath, 'utf-8');
     const lines = content.split(/\r?\n/);
-    const data = {};
+    const data = {
+        meta: {},
+        credits: {}
+    };
     let currentKey = null;
+    let inCreditsSection = false;
 
     lines.forEach(line => {
+        const trimmed = line.trim();
+        if (!trimmed) return;
+
+        // Section Detection
+        if (trimmed.toUpperCase() === '[CREDITS]') {
+            inCreditsSection = true;
+            return;
+        }
+
         const match = line.match(/^([^:]+):\s*(.*)$/);
-        if (match) {
-            const rawKey = match[1].trim();
-            const value = match[2].trim();
-            if (KEY_MAP[rawKey]) {
-                currentKey = KEY_MAP[rawKey];
-                data[currentKey] = value;
-            } else {
-                currentKey = null; // Unknown key
+
+        if (inCreditsSection) {
+            // CREDITS MODE
+            if (match) {
+                const role = match[1].trim();
+                const name = match[2].trim();
+                data.credits[role] = name;
             }
-        } else if (currentKey && line.trim()) {
-            // Append multi-line description or similar
-            data[currentKey] += ' ' + line.trim();
+        } else {
+            // META MODE (Standard)
+            if (match) {
+                const rawKey = match[1].trim();
+                const value = match[2].trim();
+
+                if (KEY_MAP[rawKey]) {
+                    currentKey = KEY_MAP[rawKey];
+                    data.meta[currentKey] = value;
+                } else if (rawKey.toLowerCase().startsWith('credit ')) {
+                    // Backward compatibility: "Credit Role: Name"
+                    const role = rawKey.substring(7).trim(); // Remove "Credit "
+                    data.credits[role] = value;
+                    currentKey = null;
+                } else {
+                    currentKey = null;
+                }
+            } else if (currentKey && trimmed) {
+                // Append multi-line description
+                data.meta[currentKey] += ' ' + trimmed;
+            }
         }
     });
-    return data;
+
+    // Return combined object with _credits property
+    return { ...data.meta, _credits: data.credits };
 }
 
 function generateImportsAndData() {
     const projectDirs = scanProjects(PROJECTS_DIR);
     let imports = [];
     let projectsData = [];
-    let importCounter = 0;
 
     projectDirs.forEach((dir, index) => {
         const infoPath = path.join(dir, 'info.txt');
@@ -118,8 +148,7 @@ function generateImportsAndData() {
             mediaVars[letter] = varName;
         });
 
-        // Construct Project Object
-        // Category normalization based on Folder Name first, then info.txt
+        // Category Normalization
         const parentFolder = path.basename(path.dirname(dir)).toLowerCase();
         let normalizedCategory = 'other';
 
@@ -140,6 +169,38 @@ function generateImportsAndData() {
             else if (type.includes('social') || type.includes('youtube')) normalizedCategory = 'social_media';
         }
 
+        // --- Structured Credits Logic ---
+        const structuredCredits = [];
+        const rawCredits = info._credits || {};
+
+        Object.keys(rawCredits).forEach(rawRole => {
+            // Normalize: remove spaces, lowercase, replaces spaces with underscores
+            // Examples: "1st AD" -> "1st_ad", "Director" -> "director"
+            const finalRoleKey = rawRole.toLowerCase().trim().replace(/[\s\.]+/g, '_');
+
+            // Split names by comma
+            const names = rawCredits[rawRole].split(',').map(n => n.trim()).filter(n => n.length > 0);
+
+            if (names.length > 0) {
+                structuredCredits.push({
+                    roleKey: finalRoleKey,
+                    originalRole: rawRole, // Debug/Fallback
+                    names: names
+                });
+            }
+        });
+
+        // Main Role Logic (Simplified)
+        // User has migrated data to use exact keys (e.g. 'dop_me', 'director_me')
+        // We just normalize standard things like spaces.
+
+        let mainRoleNormalized = (info.role || "Unknown").toLowerCase().trim().replace(/[\s\.]+/g, '_');
+
+        // Pass directly. Browser will look up ROLES[mainRoleNormalized].
+        // If the key is 'dop', browser looks for ROLES['dop']. 
+        // If data is migrated to 'dop_me', it looks for ROLES['dop_me'].
+        let mappedMainRole = mainRoleNormalized;
+
         // Collection Construction
         let collection = [];
         alphabet.forEach(l => {
@@ -148,55 +209,44 @@ function generateImportsAndData() {
                 collection.push({
                     type: isVideo ? 'video' : 'image',
                     src: mediaVars[l],
-                    // Only generated variable, interpreted at runtime
-                    poster: '' // Optional, could look for A_poster etc if we wanted
+                    poster: ''
                 });
             }
         });
 
         const projectObj = {
-            id: index + 100, // New IDs to distinguish
+            id: index + 100,
             title: info.title || "Untitled",
             category: normalizedCategory,
-            role: info.role || "Unknown", // Raw string
-            date: { fr: info.date || "2025", en: info.date || "2025" }, // Basic duplication
+            role: mappedMainRole,
+            date: { fr: info.date || "2025", en: info.date || "2025" },
             status: info.status || "Completed",
             link: info.link || "",
             desc: {
                 fr: info.desc_fr || info.desc_en || "Pas de description.",
                 en: info.desc_en || "No description."
             },
-            // Priority: Cover -> A -> First Available -> Placeholder
+            credits: info.credits || "", // Legacy
+            structuredCredits: structuredCredits,
             media: (coverVar !== "''") ? coverVar : (mediaVars['A'] ? mediaVars['A'] : "https://picsum.photos/seed/placeholder/800/600"),
-
-            // Collection for carousel
             collection: collection.length > 0 ? collection : null
         };
 
         projectsData.push(projectObj);
     });
 
-    // --- DYNAMIC INSTAGRAM REELS ---
+    // --- DYNAMIC INSTAGRAM REELS (Fallback) ---
     const reelsDir = path.resolve(__dirname, '../Contents projets/Instagram Reel');
     if (fs.existsSync(reelsDir)) {
         const reelFiles = fs.readdirSync(reelsDir);
-        // Look for 1.*, 2.*, ..., 50.*
-
         let reelCollection = [];
-        // Change from Alphabet to Numbers 1-50
-        const numbers = Array.from({ length: 50 }, (_, i) => i + 1); // [1, 2, ..., 50]
+        const numbers = Array.from({ length: 50 }, (_, i) => i + 1);
 
         numbers.forEach(number => {
-            // Prioritize Video (MP4/WEBM) - Strict check "1."
             let match = reelFiles.find(f => f.startsWith(number + '.') && /\.(mp4|webm)$/i.test(f));
-
-            // If no video, check for Image
-            if (!match) {
-                match = reelFiles.find(f => f.startsWith(number + '.') && /\.(jpg|jpeg|png)$/i.test(f));
-            }
+            if (!match) match = reelFiles.find(f => f.startsWith(number + '.') && /\.(jpg|jpeg|png)$/i.test(f));
 
             if (match) {
-                // Determine absolute/relative path
                 let relativePath = path.relative(path.dirname(OUTPUT_FILE), path.join(reelsDir, match));
                 relativePath = relativePath.split(path.sep).join('/');
                 if (!relativePath.startsWith('.')) relativePath = './' + relativePath;
@@ -205,17 +255,10 @@ function generateImportsAndData() {
                 imports.push(`import ${varName} from '${relativePath}';`);
 
                 const isVideo = match.match(/\.(mp4|webm)$/i);
-
-                // OPTIMIZATION: Check for companion poster
                 let posterVar = "''";
                 if (isVideo) {
-                    const baseName = path.basename(match, path.extname(match)); // e.g., "1"
-                    const posterFile = reelFiles.find(f =>
-                        f.startsWith(baseName + '.') &&
-                        ['.jpg', '.jpeg', '.png', '.webp'].includes(path.extname(f).toLowerCase()) &&
-                        f !== match
-                    );
-
+                    const baseName = path.basename(match, path.extname(match));
+                    const posterFile = reelFiles.find(f => f.startsWith(baseName + '.') && ['.jpg', '.jpeg', '.png', '.webp'].includes(path.extname(f).toLowerCase()) && f !== match);
                     if (posterFile) {
                         let posterPath = path.relative(path.dirname(OUTPUT_FILE), path.join(reelsDir, posterFile));
                         posterPath = posterPath.split(path.sep).join('/');
@@ -236,9 +279,7 @@ function generateImportsAndData() {
             }
         });
 
-        // ALWAYS PUSH THE PROJECT
         if (reelCollection.length === 0) {
-            // FALLBACK TO PLACEHOLDERS
             reelCollection = [
                 { type: 'video', src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', title: { fr: 'Demo 1', en: 'Demo 1' } },
                 { type: 'video', src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4', title: { fr: 'Demo 2', en: 'Demo 2' } }
@@ -249,7 +290,7 @@ function generateImportsAndData() {
             id: 10,
             title: 'Instagram Reels',
             category: 'social_media',
-            role: "Content Creation",
+            role: "content_creation_me",
             date: { fr: '2025', en: '2025' },
             status: "Online",
             link: "",
@@ -264,7 +305,6 @@ function generateImportsAndData() {
         console.log(`Added Instagram Reels project separate from scan (Items: ${reelCollection.length})`);
 
     } else {
-        // Folder doesn't exist
         projectsData.push({
             id: 10,
             title: 'Instagram Reels',
@@ -283,7 +323,6 @@ function generateImportsAndData() {
         console.log("Added Fallback Instagram Reels (Folder not found on server)");
     }
 
-    // Write File
     const fileContent = `
 // AUTO-GENERATED BY scripts/generate-data.js
 // DO NOT EDIT MANUALLY - UPDATE info.txt FILES INSTEAD
@@ -297,7 +336,6 @@ export const projects = ${JSON.stringify(projectsData, null, 4)
             .replace(/"(reel_poster_\d+)"/g, '$1')
         };
 `;
-    // The regex replace handles replacing the string "varName" with actual varName variable in JS output
 
     fs.writeFileSync(OUTPUT_FILE, fileContent);
     console.log(`Generated ${projectsData.length} projects to ${OUTPUT_FILE}`);
