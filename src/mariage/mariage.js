@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         infoBlock.dataset.target = wedding.id;
 
         infoBlock.innerHTML = `
-            <span class="season">${wedding.subtitle}</span>
+            <span class="season">${wedding.subtitle.fr || wedding.subtitle}</span>
             <h2 class="ep-name">${wedding.title}</h2>
             <p class="ep-desc">${wedding.description.fr}</p>
             <span class="watch-btn custom-link" data-link="${wedding.link || ''}" data-target="_blank">WATCH FILM</span>
@@ -202,21 +202,204 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Global Link Handler (Hides Status Bar URL)
+    // Restore hover listeners
+    document.querySelectorAll('a, button, .media-item, .info-block, .custom-link').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+    });
+
+    // 6. LINK HANDLER (Hide Status Bar)
+    // 6. LINK HANDLER (Hide Status Bar)
     document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('custom-link')) {
-            const url = e.target.dataset.link;
-            const target = e.target.dataset.target || '_self';
+        const link = e.target.closest('.custom-link') || e.target.closest('[data-link]');
+        if (link) {
+            e.preventDefault();
+            const url = link.getAttribute('data-link');
+            const target = link.getAttribute('data-target');
+
             if (url) {
-                window.open(url, target);
+                if (target === '_blank') {
+                    window.open(url, '_blank');
+                } else {
+                    window.location.href = url;
+                }
             }
         }
     });
 
-    // Restore hover listeners
-    document.querySelectorAll('a, button, .media-item, .custom-link').forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
-    });
+    // --- TRANSLATION SYSTEM ---
+    const translations = {
+        fr: {
+            nav: "Histoires Vraies",
+            book: "RÉSERVER",
+            watch: "VOIR LE FILM",
+            hero: {
+                presents: "BREATHOUT WEDDINGS PRÉSENTE",
+                title1: "VOTRE VIE",
+                title2: "COMME UN FILM",
+                feat: "LONG MÉTRAGE DOCU",
+                netflix: "UNE SÉRIE ORIGINALE",
+                series: "SÉRIE MARIAGE",
+                orig: "SÉRIE ORIGINALE"
+            },
+            script: {
+                l1: "Pas d'acteurs.",
+                l2: "Pas de script.",
+                l3: "Juste de l'émotion."
+            },
+            synopsis: "Votre mariage n'est pas une séance photo. C'est un grand film. Nous capturons votre journée comme un <strong>documentaire d'auteur</strong> : brut, esthétique, et incroyablement vivant. Des rires volés, des larmes discrètes, et cette intensité « Cinéma » que vous ne trouverez nulle part ailleurs.",
+            footer: {
+                narrative: "UNE NOUVELLE NARRATION",
+                chapter: "ÉCRIVEZ VOTRE<br><i class=\"serif\">PROPRE CHAPITRE</i>",
+                start: "LANCER LA PRODUCTION",
+                prod: "PRODUIT PAR BREATHOUT VISUALS",
+                rights: "© 2025 TOUS DROITS RÉSERVÉS"
+            }
+        },
+        en: {
+            nav: "True Stories",
+            book: "BOOK NOW",
+            watch: "WATCH FILM",
+            hero: {
+                presents: "BREATHOUT WEDDINGS PRESENTS",
+                title1: "YOUR LIFE",
+                title2: "AS A MOVIE",
+                feat: "FEATURE DOC",
+                netflix: "A BREATHOUT ORIGINAL",
+                series: "WEDDING SERIES",
+                orig: "ORIGINAL SERIES"
+            },
+            script: {
+                l1: "No Acting.",
+                l2: "No Script.",
+                l3: "Pure emotion."
+            },
+            synopsis: "Your wedding is not a photoshoot. It is a feature film. We capture your day like an <strong>auteur documentary</strong>: raw, aesthetic, and incredibly alive. Stolen laughs, quiet tears, and that \"Cinema\" intensity you won't find anywhere else.",
+            footer: {
+                narrative: "A NEW NARRATIVE",
+                chapter: "WRITE YOUR<br><i class=\"serif\">OWN CHAPTER</i>",
+                start: "START PRODUCTION",
+                prod: "PRODUCED BY BREATHOUT VISUALS",
+                rights: "© 2025 ALL RIGHTS RESERVED"
+            }
+        }
+    };
+
+    let currentLang = 'en'; // Default to English as requested context implies it's the target
+
+    function updateContent() {
+        const t = translations[currentLang];
+
+        // Nav
+        document.querySelector('.ep-title').textContent = t.nav;
+        document.querySelector('.cta-book').textContent = t.book;
+
+        // Hero Slide 1
+        document.querySelector('[data-style="doc"] .studio-present').textContent = t.hero.presents;
+        document.querySelector('[data-style="doc"] .main-title .line:nth-child(1)').textContent = t.hero.title1;
+        document.querySelector('[data-style="doc"] .main-title .line:nth-child(2)').innerHTML = `${t.hero.title2.replace('MOVIE', '<i class="serif">MOVIE</i>').replace('FILM', '<i class="serif">FILM</i>')}`;
+        document.querySelector('[data-style="doc"] .bottom-credit').textContent = t.hero.feat;
+
+        // Hero Slide 2
+        document.querySelector('[data-style="netflix"] .studio-present').textContent = t.hero.netflix;
+        document.querySelector('[data-style="netflix"] .main-title').innerHTML = t.hero.series.replace('WEDDING', 'WEDDING<br>').replace('MARIAGE', 'MARIAGE<br>').replace('SERIES', '<span class="indent red">SERIES</span>').replace('SÉRIE', '<span class="indent red">SÉRIE</span>');
+        document.querySelector('[data-style="netflix"] .bottom-credit').textContent = t.hero.orig;
+
+        // Script
+        const scripts = document.querySelectorAll('.word-mask');
+        if (scripts[0]) scripts[0].textContent = t.script.l1;
+        if (scripts[1]) scripts[1].textContent = t.script.l2;
+        if (scripts[2]) scripts[2].textContent = t.script.l3;
+
+        // Synopsis
+        const p = document.querySelector('.synopsis p');
+        if (p) {
+            // Keep strong tag
+            p.innerHTML = t.synopsis;
+        }
+
+        // Footer
+        document.querySelector('.the-end').textContent = t.footer.narrative;
+        document.querySelector('.next-season').innerHTML = t.footer.chapter;
+        document.querySelector('.action-btn').textContent = t.footer.start;
+        document.querySelector('.legal-credits span:first-child').textContent = t.footer.prod;
+        document.querySelector('.legal-credits span:nth-child(2)').textContent = t.footer.rights;
+
+        // Button State
+        const langBtn = document.getElementById('lang-switch-wedding');
+        if (langBtn) langBtn.textContent = currentLang === 'fr' ? 'EN' : 'FR';
+
+        // Update Project Descriptions (Dynamic from Data) AND Watch Buttons
+        const infoBlocks = document.querySelectorAll('.info-block');
+        infoBlocks.forEach((block, index) => {
+            if (weddings[index]) {
+                // Description
+                if (weddings[index].description) {
+                    const descEl = block.querySelector('.ep-desc');
+                    if (descEl) {
+                        descEl.innerHTML = weddings[index].description[currentLang] || weddings[index].description.fr;
+                    }
+                }
+                // Watch Button
+                const watchBtn = block.querySelector('.watch-btn');
+                if (watchBtn) {
+                    watchBtn.textContent = t.watch;
+                }
+            }
+        });
+    }
+
+    // Language Switch Logic
+    const setupLanguageSwitch = () => {
+        const btn = document.createElement('button');
+        btn.id = 'lang-switch-wedding';
+        btn.className = 'lang-btn-wedding custom-link'; // Added custom-link for cursor
+        btn.textContent = 'EN'; // Shows what you switch TO
+
+        // Styling
+        btn.style.marginLeft = '2rem';
+        btn.style.background = 'transparent';
+        btn.style.color = 'var(--text-color, #000)'; // Adapt to header context
+        btn.style.border = '1px solid currentColor';
+        btn.style.padding = '0.5rem 1rem';
+        btn.style.borderRadius = '20px';
+        btn.style.cursor = 'pointer';
+        btn.style.fontFamily = 'var(--font-main, sans-serif)';
+        btn.style.fontSize = '0.8rem';
+        btn.style.transition = 'all 0.3s ease';
+        // Remove fixed positioning
+        // btn.style.position = 'fixed'; ...
+
+        btn.addEventListener('mouseenter', () => {
+            btn.style.background = 'rgba(0,0,0,0.05)';
+            if (typeof cursor !== 'undefined') cursor.classList.add('hovered');
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.background = 'transparent';
+            if (typeof cursor !== 'undefined') cursor.classList.remove('hovered');
+        });
+
+        btn.addEventListener('click', () => {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            updateContent();
+        });
+
+        // Append to Header Actions
+        const headerActions = document.querySelector('.header-actions');
+        if (headerActions) {
+            headerActions.appendChild(btn);
+        } else {
+            // Fallback
+            document.body.appendChild(btn);
+            btn.style.position = 'fixed';
+            btn.style.bottom = '2rem';
+            btn.style.right = '2rem';
+        }
+    };
+
+    setupLanguageSwitch();
+    // Initialize
+    updateContent();
 
     console.log('Series-Style Wedding Page Screenplay Loaded');
 });

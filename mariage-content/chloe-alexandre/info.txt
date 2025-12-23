@@ -1,5 +1,6 @@
-Name: MARION & LUCIEN
+Name: MARION & LAURENT
 Subtitle: THE PROVENCE EDIT
+Subtitle Fr: L'ÉDITION PROVENÇALE
 Project Link: https://youtu.be/P_eesdexjfs?si=2KAz39jzmFFlfHg_
 Description: An emotional road trip through Provence. From lavender fields to ancient stones, an ode to timeless love and southern light.
 Description Fr: Un road-trip émotionnel à travers la Provence. Des champs de lavande aux vieilles pierres, une ode à l'amour intemporel et à la lumière du sud.

@@ -10,7 +10,8 @@ const MEDIA_EXTS = ['.jpg', '.jpeg', '.png', '.mp4', '.webm'];
 // Helper to normalize keys of the META section (Matching Portfolio Base)
 const KEY_MAP = {
     'Name': 'title',
-    'Subtitle': 'subtitle', // Specific to Wedding
+    'Subtitle': 'subtitle_en', // Changed to subtitle_en
+    'Subtitle Fr': 'subtitle_fr', // Added subtitle_fr
     'Description Fr': 'description',
     'Description': 'description_en', // Optional fallback
     'Project Link': 'link'
@@ -34,8 +35,8 @@ function parseInfoTxt(filePath) {
                 const mappedKey = KEY_MAP[rawKey];
                 data[mappedKey] = value;
             } else if (rawKey.toLowerCase() === 'subtitle') {
-                // Fallback for direct english key usage if inconsistent
-                data['subtitle'] = value;
+                // Fallback for old key
+                data['subtitle_en'] = value;
             }
         }
     });
@@ -84,7 +85,10 @@ function generateData() {
         weddingsData.push({
             id: index + 1,
             title: info.title || folder.toUpperCase(),
-            subtitle: info.subtitle || "WEDDING EDIT",
+            subtitle: {
+                fr: info.subtitle_fr || "MONTE",
+                en: info.subtitle_en || "EDIT"
+            },
             link: info.link || "",
             description: {
                 fr: info.description || "",

@@ -2488,9 +2488,7 @@ a,
   margin-top: 1rem;
 }
 
-.credits-inner {
-  /* overflow: hidden; Not needed for max-height but harmless */
-}
+
 
 .credits-text {
   font-size: 0.9rem;

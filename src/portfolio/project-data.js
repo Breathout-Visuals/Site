@@ -108,6 +108,16 @@ import reel_9 from '../../portfolio-content/Instagram Reel/9.mp4';
 import reel_poster_9 from '../../portfolio-content/Instagram Reel/9.jpg';
 import reel_10 from '../../portfolio-content/Instagram Reel/10.mp4';
 import reel_poster_10 from '../../portfolio-content/Instagram Reel/10.jpg';
+import reel_11 from '../../portfolio-content/Instagram Reel/11.mp4';
+import reel_poster_11 from '../../portfolio-content/Instagram Reel/11.jpg';
+import reel_12 from '../../portfolio-content/Instagram Reel/12.mp4';
+import reel_poster_12 from '../../portfolio-content/Instagram Reel/12.jpg';
+import reel_13 from '../../portfolio-content/Instagram Reel/13.mp4';
+import reel_poster_13 from '../../portfolio-content/Instagram Reel/13.jpg';
+import reel_14 from '../../portfolio-content/Instagram Reel/14.mp4';
+import reel_poster_14 from '../../portfolio-content/Instagram Reel/14.jpg';
+import reel_15 from '../../portfolio-content/Instagram Reel/15.mp4';
+import reel_poster_15 from '../../portfolio-content/Instagram Reel/15.jpg';
 
 export const projects = [
     {
@@ -734,7 +744,7 @@ export const projects = [
             "en": "November 2025"
         },
         "status": "Delivered",
-        "link": "",
+        "link": "https://www.youtube.com/watch?v=0o7v2v1dPTc",
         "desc": {
             "fr": "Court-métrage pour le Festival TousHanscene. Un jeune sourd perd ses appareils auditifs et fait face à une journée d'obstacles. J'étais Cadreur.",
             "en": "Short film for the TousHanscene Festival. A deaf young man loses his hearing aids and must navigate a difficult day. I worked as Camera Operator."
@@ -1020,6 +1030,51 @@ export const projects = [
                     "en": ""
                 },
                 "poster": reel_poster_10
+            },
+            {
+                "type": "video",
+                "src": reel_11,
+                "title": {
+                    "fr": "",
+                    "en": ""
+                },
+                "poster": reel_poster_11
+            },
+            {
+                "type": "video",
+                "src": reel_12,
+                "title": {
+                    "fr": "",
+                    "en": ""
+                },
+                "poster": reel_poster_12
+            },
+            {
+                "type": "video",
+                "src": reel_13,
+                "title": {
+                    "fr": "",
+                    "en": ""
+                },
+                "poster": reel_poster_13
+            },
+            {
+                "type": "video",
+                "src": reel_14,
+                "title": {
+                    "fr": "",
+                    "en": ""
+                },
+                "poster": reel_poster_14
+            },
+            {
+                "type": "video",
+                "src": reel_15,
+                "title": {
+                    "fr": "",
+                    "en": ""
+                },
+                "poster": reel_poster_15
             }
         ]
     }

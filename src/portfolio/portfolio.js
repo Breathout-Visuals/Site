@@ -653,7 +653,8 @@ function setupModal() {
             if (project.link) {
                 const linkBtn = document.createElement('button');
                 linkBtn.className = 'project-link-btn';
-                linkBtn.textContent = 'View Project';
+                linkBtn.textContent = translations[currentLang].modal.view_project;
+                linkBtn.setAttribute('data-i18n', 'modal.view_project');
                 linkBtn.onclick = () => window.open(project.link, '_blank');
 
                 metaBlock.appendChild(linkBtn);

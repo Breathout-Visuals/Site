@@ -19,7 +19,10 @@ export const weddings = [
     {
         "id": 1,
         "title": "MARION & LUCIEN",
-        "subtitle": "THE PROVENCE EDIT",
+        "subtitle": {
+            "fr": "L'ÉDITION PROVENÇALE",
+            "en": "THE PROVENCE EDIT"
+        },
         "link": "https://youtu.be/P_eesdexjfs?si=2KAz39jzmFFlfHg_",
         "description": {
             "fr": "Un road-trip émotionnel à travers la Provence. Des champs de lavande aux vieilles pierres, une ode à l'amour intemporel et à la lumière du sud.",
@@ -37,7 +40,10 @@ export const weddings = [
     {
         "id": 2,
         "title": "ELODIE & JULIEN",
-        "subtitle": "THE PARISIAN EDIT",
+        "subtitle": {
+            "fr": "L'ÉDITION PARISIENNE",
+            "en": "THE PARISIAN EDIT"
+        },
         "link": "",
         "description": {
             "fr": "L'amour au cœur de la ville lumière. Une atmosphère urbaine, sophistiquée et terriblement romantique.",
@@ -52,7 +58,10 @@ export const weddings = [
     {
         "id": 3,
         "title": "SARAH & THOMAS",
-        "subtitle": "THE RIVIERA EDIT",
+        "subtitle": {
+            "fr": "L'ÉDITION RIVIERA",
+            "en": "THE RIVIERA EDIT"
+        },
         "link": "",
         "description": {
             "fr": "L'élégance de la Côte d'Azur. Une célébration chic et solaire, bercée par le bruit des vagues et l'éclat du soleil méditerranéen.",

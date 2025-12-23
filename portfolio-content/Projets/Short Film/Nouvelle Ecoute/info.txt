@@ -3,6 +3,7 @@ Type: Short Film
 Date: November 2025
 Role: camera_op_me
 Status: Delivered
+Project Link: https://www.youtube.com/watch?v=0o7v2v1dPTc
 Credits:
 Description: Short film for the TousHanscene Festival. A deaf young man loses his hearing aids and must navigate a difficult day. I worked as Camera Operator.
 Description Fr: Court-métrage pour le Festival TousHanscene. Un jeune sourd perd ses appareils auditifs et fait face à une journée d'obstacles. J'étais Cadreur.
