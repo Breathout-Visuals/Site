@@ -68,6 +68,11 @@ const translations = {
         },
         status: {
             editing: "En Montage"
+        },
+        footer: {
+            location: "Monde Entier • Basé à Paris",
+            designed: "Design par",
+            copyright: "© 2025 Breathout Visuals. Tous droits réservés."
         }
     },
     en: {
@@ -97,6 +102,11 @@ const translations = {
             p2: "I aim to create visuals that feel immersive and emotionally striking, bringing care, intention, and a cinematic eye to every project I collaborate on. Clients come to me for imagery that stands out and leaves a lasting impression."
         },
         contact: { btn: "Get in touch" },
+        footer: {
+            location: "WorldWide Based In Paris",
+            designed: "Designed by",
+            copyright: "© 2025 Breathout Visuals. All rights reserved."
+        },
         modal: {
             related: "See also",
             view_project: "View Project",

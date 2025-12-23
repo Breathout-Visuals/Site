@@ -118,6 +118,8 @@ import reel_14 from '../../portfolio-content/Instagram Reel/14.mp4';
 import reel_poster_14 from '../../portfolio-content/Instagram Reel/14.jpg';
 import reel_15 from '../../portfolio-content/Instagram Reel/15.mp4';
 import reel_poster_15 from '../../portfolio-content/Instagram Reel/15.jpg';
+import reel_16 from '../../portfolio-content/Instagram Reel/16.mp4';
+import reel_poster_16 from '../../portfolio-content/Instagram Reel/16.jpg';
 
 export const projects = [
     {
@@ -1075,6 +1077,15 @@ export const projects = [
                     "en": ""
                 },
                 "poster": reel_poster_15
+            },
+            {
+                "type": "video",
+                "src": reel_16,
+                "title": {
+                    "fr": "",
+                    "en": ""
+                },
+                "poster": reel_poster_16
             }
         ]
     }
