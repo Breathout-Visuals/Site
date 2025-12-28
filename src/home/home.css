@@ -10,16 +10,27 @@
     --transition-smooth: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-body {
-    cursor: none;
-    /* Hide default */
+/* GLOBAL CURSOR HIDE - SAFETY FIRST */
+/* only if JS active */
+.custom-cursor-active,
+.custom-cursor-active *,
+.custom-cursor-active a,
+.custom-cursor-active button {
+    cursor: none !important;
 }
 
-/* GLOBAL CURSOR HIDE (Fix bleed) */
-*,
-a,
-button {
-    cursor: none !important;
+/* Force defaults on touch/mobile */
+@media (hover: none) and (pointer: coarse) {
+
+    *,
+    a,
+    button {
+        cursor: auto !important;
+    }
+
+    .custom-cursor {
+        display: none !important;
+    }
 }
 
 .custom-cursor {
@@ -53,6 +64,9 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     height: 100vh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    /* Mobile Fix */
     overflow: hidden;
     /* No scroll for landing page */
     display: flex;
@@ -100,12 +114,27 @@ header {
     border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 0.5rem 1.5rem;
     border-radius: 50px;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Match cta-book physics */
+    position: relative;
+    z-index: 10;
+    touch-action: manipulation;
+    pointer-events: auto;
 }
 
-.wedding-link:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: #fff;
+@media (hover: hover) {
+    .wedding-link:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: #fff;
+    }
+}
+
+.wedding-link:active {
+    transform: scale(0.9);
+    /* Match cta-book scale */
+    background: rgba(255, 255, 255, 0.2);
+    opacity: 0.7;
+    /* Match cta-book opacity */
 }
 
 /* Hero Section */
@@ -146,12 +175,7 @@ header {
     opacity: 0.7;
 }
 
-/* Reveal State */
-.reveal-active {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
-}
+/* Reveal State moved to bottom */
 
 .subtitle {
     font-size: 1rem;
@@ -185,21 +209,24 @@ header {
     letter-spacing: 0.1em;
 }
 
-.btn-link:hover {
-    border-bottom-color: #fff;
-    color: #fff;
+@media (hover: hover) {
+    .btn-link:hover {
+        border-bottom-color: #fff;
+        color: #fff;
+    }
+
+    .btn-disabled:hover {
+        border-bottom-color: transparent;
+        color: #444;
+        cursor: default;
+    }
 }
 
-.btn-disabled {
-    color: #444;
-    border-bottom-color: transparent;
-    cursor: default;
-    pointer-events: none;
-}
-
-.btn-disabled:hover {
-    border-bottom-color: transparent;
-    color: #444;
+.btn-link:active {
+    opacity: 0.4;
+    /* Very visible interaction */
+    transform: scale(0.95);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 /* Footer for Landing */
@@ -221,4 +248,75 @@ footer {
     opacity: 1;
     transform: translateY(0);
     transition: opacity 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Mobile Adjustments */
+/* Mobile Adjustments - Final Polish */
+@media (max-width: 768px) {
+    header {
+        padding: 1.5rem 2rem;
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .wedding-link {
+        font-size: 0.85rem;
+        /* Increased for legibility */
+        padding: 0.8rem 1.4rem;
+        /* Match Mariage CTA padding */
+        letter-spacing: 0.1em;
+    }
+
+    .title-display {
+        font-size: clamp(2rem, 10vw, 3rem);
+        margin-bottom: 1rem;
+        padding: 0 1rem;
+    }
+
+    /* 1. Huge gap to push everything down */
+    .subtitle {
+        font-size: 0.75rem;
+        margin-bottom: 25vh;
+        /* Pushes content to bottom third */
+        letter-spacing: 0.15em;
+    }
+
+    /* 2. Reordering: Agency FIRST, Portfolios SECOND */
+    .agency-container {
+        order: 1;
+        margin-top: 0;
+        margin-bottom: 3rem;
+        /* Space between Agency and Portfolios */
+    }
+
+    .nav-choice {
+        order: 2;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    /* 3. Sober & Pro Styling */
+
+    /* Agency: Discrete, "Coming Soon" vibe */
+    .agency-container .agency-link {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        border-bottom: none;
+        /* No border for agency */
+        padding-bottom: 0;
+    }
+
+    /* Portfolio: Minimalist, no borders, light font */
+    .nav-choice .btn-link {
+        font-size: 1rem;
+        font-weight: 300;
+        /* Light/Pro look */
+        color: #fff;
+        border-bottom: none;
+        /* Clean look */
+        padding-bottom: 0;
+        opacity: 0.9;
+    }
 }

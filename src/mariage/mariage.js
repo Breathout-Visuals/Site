@@ -1,6 +1,9 @@
 import './mariage.css';
 import { weddings } from './data.js';
 
+// iOS :active state hack
+document.addEventListener("touchstart", function () { }, true);
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // 0. DYNAMIC CONTENT GENERATION (Project System)
@@ -146,55 +149,71 @@ document.addEventListener('DOMContentLoaded', () => {
         runTitleSlideshow();
     }
 
-    // 4. SLIDESHOW LOGIC (Story Style)
-    const slideshows = document.querySelectorAll('.slideshow');
+    // 4. SLIDESHOW LOGIC (Story Style) - Reusable Function
+    const initSlideshows = (scope = document) => {
+        const slideshows = scope.querySelectorAll('.slideshow');
 
-    slideshows.forEach(show => {
-        const images = show.querySelectorAll('.img-bg');
-        const indicators = show.querySelectorAll('.indicator');
-        let index = 0;
+        slideshows.forEach(show => {
+            // Avoid double init
+            if (show.dataset.init === 'true') return;
+            show.dataset.init = 'true';
 
-        // Initialize
-        if (images.length > 0 && indicators.length > 0) {
-            images[0].classList.add('active');
-            indicators[0].classList.add('active');
-        }
+            const images = show.querySelectorAll('.img-bg');
+            const indicators = show.querySelectorAll('.indicator');
+            let index = 0;
 
-        const nextSlide = () => {
-            // Mark current indicator as viewed (full)
-            indicators[index].classList.remove('active');
-            indicators[index].classList.add('viewed');
-
-            // Hide curent image
-            images[index].classList.remove('active');
-
-            // Increment
-            index++;
-
-            // Loop check
-            if (index >= images.length) {
-                index = 0;
-                // Reset indicators
-                indicators.forEach(ind => {
-                    ind.classList.remove('viewed', 'active');
-                });
+            // Initialize
+            if (images.length > 0) {
+                images[0].classList.add('active');
+                if (indicators.length > 0) indicators[0].classList.add('active');
             }
 
-            // Show next
-            images[index].classList.add('active');
+            const nextSlide = () => {
+                // Mark current indicator as viewed (full)
+                if (indicators[index]) {
+                    indicators[index].classList.remove('active');
+                    indicators[index].classList.add('viewed');
+                }
 
-            // Force reflow for animation restart if needed, 
-            // but adding class 'active' should trigger animation on new element.
-            indicators[index].classList.add('active');
-        };
+                // Hide curent image
+                if (images[index]) images[index].classList.remove('active');
 
-        setInterval(nextSlide, 4000); // Sync with CSS 4s animation
-    });
+                // Increment
+                index++;
+
+                // Loop check
+                if (index >= images.length) {
+                    index = 0;
+                    // Reset indicators
+                    indicators.forEach(ind => {
+                        ind.classList.remove('viewed', 'active');
+                    });
+                }
+
+                // Show next
+                if (images[index]) images[index].classList.add('active');
+
+                // Force reflow for animation restart if needed, 
+                // but adding class 'active' should trigger animation on new element.
+                if (indicators[index]) indicators[index].classList.add('active');
+            };
+
+            // Only auto-play if multiple images
+            if (images.length > 1) {
+                setInterval(nextSlide, 4000); // Sync with CSS 4s animation
+            }
+        });
+    };
+
+    // Run initially for Desktop
+    initSlideshows();
 
     // 5. CUSTOM CURSOR
     const cursor = document.createElement('div');
     cursor.classList.add('luxe-cursor');
     document.body.appendChild(cursor);
+    // Safe Cursor Activation
+    document.body.classList.add('custom-cursor-active');
 
     document.addEventListener('mousemove', (e) => {
         cursor.style.left = e.clientX + 'px';
@@ -214,8 +233,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const link = e.target.closest('.custom-link') || e.target.closest('[data-link]');
         if (link) {
             e.preventDefault();
-            const url = link.getAttribute('data-link');
-            const target = link.getAttribute('data-target');
+            const url = link.getAttribute('data-link') || link.getAttribute('href');
+            const target = link.getAttribute('data-target') || link.getAttribute('target');
 
             if (url) {
                 if (target === '_blank') {
@@ -321,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Footer
         document.querySelector('.the-end').textContent = t.footer.narrative;
         document.querySelector('.next-season').innerHTML = t.footer.chapter;
-        document.querySelector('.action-btn').textContent = t.footer.start;
+        document.querySelector('.sober-prod-btn').textContent = t.footer.start;
         document.querySelector('.legal-credits span:first-child').textContent = t.footer.prod;
         document.querySelector('.legal-credits span:nth-child(2)').textContent = t.footer.rights;
 
@@ -347,7 +366,127 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+
+        // 4. Update Mobile Gallery (NEW)
+        const mobileProjects = document.querySelectorAll('.mobile-project-card');
+        mobileProjects.forEach((card, index) => {
+            if (weddings[index]) {
+                const w = weddings[index];
+                card.querySelector('.mobile-ep-desc').innerHTML = w.description[currentLang];
+                card.querySelector('.watch-btn').textContent = t.watch;
+            }
+        });
     }
+
+    // --- RENDER MOBILE GALLERY (NEW) ---
+    const renderMobileGallery = () => {
+        const desktopGallery = document.querySelector('.sticky-gallery');
+        if (!desktopGallery) return;
+
+        // Avoid duplicate render
+        if (document.querySelector('.mobile-gallery-list')) return;
+
+        // Create Container
+        const mobileContainer = document.createElement('div');
+        mobileContainer.className = 'mobile-gallery-list';
+
+        // Populate
+        weddings.forEach(w => {
+            const card = document.createElement('div');
+            card.className = 'mobile-project-card';
+
+            // 1. Text Info
+            const infoDiv = document.createElement('div');
+            // Safe subtitle access (can be object or string)
+            const subtitle = w.subtitle ? (w.subtitle.fr || w.subtitle) : '';
+
+            infoDiv.className = 'mobile-project-info';
+            infoDiv.innerHTML = `
+                <span class="mobile-ep-label">${subtitle}</span>
+                <span class="mobile-ep-title">${w.title}</span>
+                <p class="mobile-ep-desc">${w.description[currentLang] || w.description.fr}</p>
+            `;
+
+            // 2. Media (Slideshow)
+            const mediaDiv = document.createElement('div');
+            mediaDiv.className = 'mobile-project-media slideshow';
+
+            let htmlContent = '';
+            let indicatorsHTML = '';
+
+            // USE 'media' property, not 'assets'
+            if (w.media && w.media.length > 0) {
+                w.media.forEach((src, i) => {
+                    const isActive = i === 0 ? 'active' : '';
+                    const isVideo = typeof src === 'string' && src.match(/\.(mp4|webm)($|\?)/i);
+
+                    if (isVideo) {
+                        htmlContent += `<video class="img-bg ${isActive}" src="${src}" autoplay muted loop playsinline></video>`;
+                    } else {
+                        htmlContent += `<div class="img-bg ${isActive}" style="background-image: url('${src}')"></div>`;
+                    }
+
+                    indicatorsHTML += `<div class="indicator ${isActive}"></div>`;
+                });
+
+                mediaDiv.innerHTML = `
+                    ${htmlContent}
+                    <div class="indicators" style="display: flex; justify-content: center; gap: 6px; position: absolute; bottom: 10px; width: 100%; z-index: 10;">
+                        ${indicatorsHTML}
+                    </div>
+                 `;
+            }
+
+            // 3. Watch Button
+            const btn = document.createElement('button');
+            btn.className = 'watch-btn custom-link';
+            btn.textContent = translations[currentLang].watch;
+            btn.setAttribute('data-link', w.link);
+            btn.setAttribute('target', '_blank');
+
+            // Append All
+            card.appendChild(infoDiv);
+            card.appendChild(mediaDiv);
+            card.appendChild(btn);
+            mobileContainer.appendChild(card);
+        });
+
+        // Insert after desktop gallery
+        desktopGallery.parentNode.insertBefore(mobileContainer, desktopGallery.nextSibling);
+
+        // Init Slideshows
+        if (typeof initSlideshows === 'function') {
+            initSlideshows(mobileContainer);
+        }
+
+        // Apply "Nuclear" handlers (Universal Fix)
+        const makeResponsive = (el) => {
+            // Instant Visual
+            el.addEventListener('touchstart', () => el.classList.add('is-pressed'), { passive: true });
+            el.addEventListener('touchend', () => setTimeout(() => el.classList.remove('is-pressed'), 150));
+            el.addEventListener('touchcancel', () => el.classList.remove('is-pressed'));
+
+            // Click Logic (Nuclear)
+            el.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const url = el.getAttribute('data-link');
+
+                // Force Animation
+                el.classList.add('is-pressed');
+
+                // Wait then Go
+                setTimeout(() => {
+                    el.classList.remove('is-pressed');
+                    if (url) window.open(url, '_blank');
+                }, 250);
+            });
+        };
+        mobileContainer.querySelectorAll('.watch-btn').forEach(btn => makeResponsive(btn));
+    };
+
+    // Run Render
+    renderMobileGallery();
 
     // Language Switch Logic
     const setupLanguageSwitch = () => {
@@ -356,19 +495,9 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.className = 'lang-btn-wedding custom-link'; // Added custom-link for cursor
         btn.textContent = 'EN'; // Shows what you switch TO
 
-        // Styling
-        btn.style.marginLeft = '2rem';
-        btn.style.background = 'transparent';
-        btn.style.color = 'var(--text-color, #000)'; // Adapt to header context
-        btn.style.border = '1px solid currentColor';
-        btn.style.padding = '0.5rem 1rem';
-        btn.style.borderRadius = '20px';
-        btn.style.cursor = 'pointer';
-        btn.style.fontFamily = 'var(--font-main, sans-serif)';
-        btn.style.fontSize = '0.8rem';
-        btn.style.transition = 'all 0.3s ease';
-        // Remove fixed positioning
-        // btn.style.position = 'fixed'; ...
+        // Styling managed by CSS class 'lang-btn-wedding'
+        // btn.style.marginLeft = '2rem'; <-- REMOVED
+        // ... all inline styles removed to let CSS handle mobile/desktop layout
 
         btn.addEventListener('mouseenter', () => {
             btn.style.background = 'rgba(0,0,0,0.05)';
@@ -398,8 +527,102 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     setupLanguageSwitch();
+
+    // 7. START PRODUCTION ISOLATED LOGIC
+    const prodBtn = document.getElementById('prod-cta');
+    if (prodBtn) {
+        // Manual Cursor Handling
+        prodBtn.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+        prodBtn.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+
+        // Forced Animation Logic
+        prodBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation(); // Kill global handlers
+
+            // Visual Feedack
+            prodBtn.classList.add('is-pressed');
+
+            // Wait then Go
+            setTimeout(() => {
+                prodBtn.classList.remove('is-pressed');
+                window.location.href = 'mailto:lucas.jacquot@breathoutvisuals.fr';
+            }, 250);
+        });
+    }
+
+    // 8. WATCH FILM BUTTONS (Nuclear Option for NodeList)
+    const setupWatchButtonHandlers = () => {
+        const watchBtns = document.querySelectorAll('.watch-btn');
+        watchBtns.forEach(btn => {
+            // Clone to strip old listeners
+            const newBtn = btn.cloneNode(true);
+            btn.parentNode.replaceChild(newBtn, btn);
+
+            // Manual Cursor
+            newBtn.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+            newBtn.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+
+            // Forced Animation
+            newBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                // Visual Feedback
+                newBtn.classList.add('is-pressed');
+
+                // Get URL
+                const url = newBtn.getAttribute('href') || newBtn.getAttribute('data-link');
+                const target = newBtn.getAttribute('target') || newBtn.getAttribute('data-target') || '_self';
+
+                // Wait then Go
+                setTimeout(() => {
+                    newBtn.classList.remove('is-pressed');
+                    if (url) {
+                        if (target === '_blank') {
+                            window.open(url, '_blank');
+                        } else {
+                            window.location.href = url;
+                        }
+                    }
+                }, 250);
+            });
+        });
+    };
+
     // Initialize
     updateContent();
+    setupWatchButtonHandlers();
 
-    console.log('Series-Style Wedding Page Screenplay Loaded');
+    const makeResponsive = (el) => {
+        if (!el) return;
+        el.addEventListener('touchstart', (e) => {
+            // Instant Visual Feedback
+            el.classList.add('is-pressed');
+        }, { passive: true });
+
+        el.addEventListener('touchend', () => {
+            // Small delay to ensure the flash is seen if tap is super fast
+            setTimeout(() => el.classList.remove('is-pressed'), 150);
+        });
+
+        el.addEventListener('touchcancel', () => {
+            el.classList.remove('is-pressed');
+        });
+    };
+
+    // Apply to Book & Lang
+    const bookBtn = document.querySelector('.cta-book');
+    const langBtn = document.querySelector('.lang-btn-wedding'); // Might be null initially if injected by JS? No, JS injects it.
+
+    // We need to wait for lang btn? setupLanguageSwitch() runs before this.
+    // Re-query just in case
+    makeResponsive(document.querySelector('.cta-book'));
+    makeResponsive(document.getElementById('lang-switch-wedding'));
+
+    // Apply to Nuclear Buttons (Visual Boost)
+    makeResponsive(document.getElementById('prod-cta'));
+    document.querySelectorAll('.watch-btn').forEach(btn => makeResponsive(btn));
+
+    console.log('Series-Style Wedding Page Screenplay Loaded & Responsive');
 });

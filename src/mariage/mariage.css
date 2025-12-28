@@ -31,11 +31,27 @@ body {
     /* Hide default */
 }
 
-/* GLOBAL CURSOR HIDE */
-*,
-a,
-button {
+/* GLOBAL CURSOR HIDE - SAFETY FIRST */
+/* Only hide if JS has activated the custom cursor AND we are on a mouse device */
+.custom-cursor-active,
+.custom-cursor-active *,
+.custom-cursor-active a,
+.custom-cursor-active button {
     cursor: none !important;
+}
+
+/* Force defaults on touch/mobile to prevent "Blind" navigation */
+@media (hover: none) and (pointer: coarse) {
+
+    *,
+    a,
+    button {
+        cursor: auto !important;
+    }
+
+    .luxe-cursor {
+        display: none !important;
+    }
 }
 
 /* Cursor: "Focus Ring" (Minimalist Chic) */
@@ -116,8 +132,15 @@ button {
     transition: opacity 0.3s ease;
 }
 
-.logo:hover {
-    opacity: 0.7;
+@media (hover: hover) {
+    .logo:hover {
+        opacity: 0.7;
+    }
+}
+
+.logo:active {
+    opacity: 0.5;
+    transform: scale(0.98);
 }
 
 .logo-img {
@@ -182,12 +205,31 @@ button {
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     background: rgba(0, 0, 0, 0.02);
     cursor: pointer;
+    will-change: transform;
+    white-space: nowrap !important;
+    /* Prevent wrapping (FR: RÉSERVER) */
 }
 
-.cta-book:hover {
-    background: #000;
-    color: #fff;
-    border-color: #000;
+@media (hover: hover) {
+    .cta-book:hover {
+        background: #000;
+        color: #fff;
+        border-color: #000;
+    }
+}
+
+.cta-book:active {
+    transform: scale(0.9);
+    /* Stronger press */
+    background: rgba(0, 0, 0, 0.2);
+    opacity: 0.7;
+}
+
+.cta-book.is-pressed {
+    transform: scale(0.9) !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+    opacity: 0.7 !important;
+    transition: none !important;
 }
 
 /* Language Button Overrides */
@@ -208,37 +250,114 @@ button {
     font-size: 0.7rem !important;
 }
 
-.lang-btn-wedding:hover {
-    background: #000 !important;
-    color: #fff !important;
-    border-color: #000 !important;
+@media (hover: hover) {
+    .lang-btn-wedding:hover {
+        background: #000 !important;
+        color: #fff !important;
+        border-color: #000 !important;
+    }
+}
+
+.lang-btn-wedding:active {
+    transform: scale(0.85);
+    /* distinct press */
+    background: rgba(0, 0, 0, 0.2) !important;
+}
+
+.lang-btn-wedding.is-pressed {
+    transform: scale(0.9) !important;
+    opacity: 0.7 !important;
+    background: rgba(0, 0, 0, 0.1) !important;
+    transition: none !important;
 }
 
 /* Responsive adjustment */
+/* Responsive adjustment: SPACIOUS & CHIC */
 @media (max-width: 768px) {
     .series-header {
-        padding: 0 1.5rem;
-        height: 70px;
+        padding: 1.5rem 1.2rem;
+        /* Reduced horizontal padding to fit FR text */
+        height: auto;
+        /* Let padding define height like Home */
+        min-height: 85px;
+        display: flex !important;
+        /* Switch to Flex for stability */
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .series-header .logo {
+        flex: 0 0 auto;
+        /* Never shrink */
+    }
+
+    .series-header .header-actions {
+        flex: 0 0 auto;
+        /* Never shrink */
+        display: flex;
+        align-items: center;
+    }
+
+    .episode-nav {
+        display: none;
+        /* Hide middle nav on mobile to prevent shifts */
+    }
+
+    /* Hide the middle column (Ep label) effectively */
+    .episode-nav {
+        display: none;
+    }
+
+    /* Logo area */
+    .logo {
+        flex: 0 0 auto;
+        /* Don't shrink */
+    }
+
+    .logo-img {
+        height: 40px;
+        /* Match Home Logo Height EXACTLY (was 32px) */
+    }
+
+    /* Right side actions */
+    .header-actions {
+        gap: 0.5rem;
+        /* Stable small gap */
+    }
+
+    .cta-book {
+        padding: 0.7rem 0;
+        /* Center text vertically, rely on width for horizontal */
+        width: 100px;
+        /* FIXED WIDTH for stability */
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+        white-space: nowrap !important;
+    }
+
+    .lang-btn-wedding {
+        width: 38px;
+        /* Bigger button */
+        height: 38px;
+        font-size: 0.85rem !important;
+        /* Larger text */
     }
 
     .ep-label {
         display: none;
-    }
-
-    .cta-book {
-        padding: 0.6rem 1rem;
-        font-size: 0.65rem;
-    }
-
-    .lang-btn-wedding {
-        width: 32px;
-        height: 32px;
     }
 }
 
 /* 3. TITLE SEQUENCE (HERO) */
 .title-sequence {
     height: 100vh;
+    /* Fallback */
+    height: 100dvh;
+    /* Mobile Address Bar Fix */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -523,6 +642,7 @@ button {
     width: 50%;
     /* Increased width to accommodate padding */
     height: 100vh;
+    height: 100dvh;
     /* Acts as the "Rail" */
     position: sticky;
     top: 0;
@@ -558,6 +678,8 @@ button {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(-50%);
+    z-index: 50;
+    /* Ensure active block is on top */
 }
 
 .season {
@@ -594,12 +716,40 @@ button {
     font-weight: 600;
     font-size: 0.8rem;
     letter-spacing: 0.1em;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Match cta-book */
+    position: relative;
+    /* Ensure z-index works */
+    z-index: 100;
+    /* SUPER HIGH */
+    pointer-events: auto;
+    /* Force clickable */
+    touch-action: manipulation;
+    /* Faster taps */
 }
 
-.watch-btn:hover {
-    background: #000;
-    color: #fff;
+@media (hover: hover) {
+    .watch-btn:hover {
+        background: #000;
+        color: #fff;
+    }
+}
+
+.watch-btn:active {
+    transform: scale(0.9);
+    /* Match cta-book */
+    background: rgba(0, 0, 0, 0.1);
+    /* Match cta-book bg feedback */
+    opacity: 0.7;
+    /* Match cta-book opacity */
+}
+
+/* JS FORCED STATE */
+.watch-btn.is-pressed {
+    transform: scale(0.9) !important;
+    opacity: 0.7 !important;
+    background: rgba(0, 0, 0, 0.1) !important;
+    transition: none !important;
 }
 
 .gallery-media-col {
@@ -743,34 +893,66 @@ button {
     color: var(--accent-color);
 }
 
-.action-btn {
+#prod-cta {
     display: inline-block;
     background: var(--accent-color);
     color: #000;
     padding: 1.5rem 4rem;
-    text-decoration: none;
+    font-family: var(--font-body);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-size: 1.2rem;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    border: none;
+    outline: none;
+
+    /* PHYSICS */
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* INTERACTION & LAYOUT */
     cursor: pointer;
+    position: relative;
+    z-index: 100;
+    touch-action: manipulation;
+    pointer-events: auto;
+    will-change: transform, background-color;
 }
 
-.action-btn:hover {
-    transform: scale(1.05);
+@media (hover: hover) {
+    #prod-cta:hover {
+        background: #fff;
+        color: #000;
+        transform: scale(1.05);
+    }
 }
+
+/* JS CONTROLLED STATE */
+#prod-cta.is-pressed {
+    transform: scale(0.9) !important;
+    opacity: 0.7;
+    background: #fff;
+    transition: none !important;
+    /* Flash effect */
+}
+
+
 
 .legal-credits {
-    margin-top: 2rem;
-    /* Reduced from 8rem */
+    margin-top: 1rem;
+    /* Reduced even more */
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 2rem;
+    padding-top: 1rem;
     display: flex;
     justify-content: space-between;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    opacity: 0.4;
+    align-items: center;
+    flex-wrap: nowrap;
+    /* Strictly one line */
+    width: 100%;
+    font-size: clamp(0.5rem, 1.5vw, 0.7rem);
+    /* Responsive elegance */
+    letter-spacing: 0.2em;
+    opacity: 0.5;
+    white-space: nowrap;
 }
 
 /* ANIMATIONS */
@@ -826,6 +1008,9 @@ button {
         transform: none;
         opacity: 1;
         margin-bottom: 4rem;
+        pointer-events: auto !important;
+        /* UNBLOCK BUTTONS */
+        z-index: 5;
     }
 
     .info-block:not(.active) {
@@ -842,7 +1027,144 @@ button {
 
     .media-item {
         height: 50vh;
-        margin-bottom: 4rem;
         padding: 0 1rem;
     }
+}
+
+/* --- MOBILE LAYOUT REWORK --- */
+
+/* 1. Fullscreen Synopsis */
+@media (max-width: 768px) {
+    .monologue {
+        min-height: 100dvh !important;
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 !important;
+    }
+
+    .monologue .container-narrow {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+    }
+}
+
+/* 2. Mobile Gallery (Interleaved) */
+.mobile-gallery-list {
+    display: none;
+    /* Hidden on Desktop */
+}
+
+@media (max-width: 768px) {
+
+    /* Hide Desktop Columnar Layout */
+    .sticky-gallery {
+        display: none !important;
+    }
+
+    /* Show Mobile Linear Layout */
+    .mobile-gallery-list {
+        display: block !important;
+        padding: 2rem 1.5rem;
+        background: var(--bg-color);
+    }
+
+    .mobile-project-card {
+        margin-bottom: 8rem;
+        /* Space between projects */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Text Block */
+    .mobile-project-info {
+        margin-bottom: 2rem;
+    }
+
+    .mobile-ep-label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        opacity: 0.6;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    .mobile-ep-title {
+        font-family: var(--font-serif);
+        font-size: 2rem;
+        font-style: italic;
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .mobile-ep-desc {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Images (Slideshow Container) */
+    .mobile-project-media {
+        width: 100%;
+        margin-bottom: 2rem;
+        position: relative;
+        aspect-ratio: 16/9;
+        /* Fixes visibility */
+        background: #111;
+        overflow: hidden;
+    }
+
+    .mobile-project-media .img-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+    .mobile-project-media .img-bg.active {
+        opacity: 1;
+    }
+
+    .mobile-project-media img {
+        display: none;
+    }
+}
+
+/* --- REFINED WATCH BUTTON (OVERRIDE) --- */
+.watch-btn {
+    border-radius: 50px !important;
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1) !important;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    padding: 0.8rem 1.8rem !important;
+    /* Slightly wider */
+    will-change: transform, border, background;
+}
+
+.watch-btn:hover {
+    border-color: #000 !important;
+    background: rgba(0, 0, 0, 0.02) !important;
+    transform: translateY(-1px) !important;
+}
+
+.watch-btn.is-pressed,
+.watch-btn:active {
+    transform: scale(0.96) !important;
+    border-color: #000 !important;
+    transition: none !important;
+    background: rgba(0, 0, 0, 0.05) !important;
 }

@@ -166,6 +166,10 @@ function setupCursor() {
     const cursorDot = document.querySelector('[data-cursor-dot]');
     const cursorOutline = document.querySelector('[data-cursor-outline]');
 
+    if (cursorDot && cursorOutline) {
+        document.body.classList.add('custom-cursor-active');
+    }
+
 
     let mouseX = 0, mouseY = 0;
     let cursorRaf = null;

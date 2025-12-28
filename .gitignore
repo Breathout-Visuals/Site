@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Generated Content (Do not edit manually)
+src/zoltan/projects.gen.js

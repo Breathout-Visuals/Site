@@ -11,6 +11,57 @@
 
 <body>
 
+    <!-- PRELOADER (Inline for instant render) -->
+    <style>
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #050505;
+            /* Dark Theme */
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-logo {
+            width: 60px;
+            /* Logo Size */
+            height: auto;
+            opacity: 0.8;
+            animation: pulseLogo 0.8s infinite ease-in-out;
+            /* Much Faster */
+        }
+
+        @keyframes pulseLogo {
+            100% {
+                transform: scale(0.95);
+                opacity: 0.6;
+            }
+        }
+    </style>
+    <div id="preloader">
+        <img src="/assets/logo-white.png" alt="Loading..." class="preloader-logo">
+    </div>
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            // Small buffer to ensure smoothness
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+            }, 300);
+        });
+    </script>
+
     <header>
         <span data-href="/" class="logo custom-link"><img src="/assets/logo-white.png" alt="BREATHOUT"
                 class="logo-img"></span>
@@ -28,7 +79,7 @@
 
         <nav class="nav-choice" id="nav-choice">
             <span data-href="/lucas-jacquot/" class="btn-link custom-link">Lucas Jacquot Portfolio</span>
-            <span data-href="https://zoltanhays.netlify.app/" data-target="_blank" class="btn-link custom-link">Zoltan
+            <span data-href="/zoltan-hays/" class="btn-link custom-link">Zoltan
                 Hays Portfolio</span>
         </nav>
 

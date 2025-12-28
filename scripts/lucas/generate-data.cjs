@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const PROJECTS_DIR = path.resolve(__dirname, '../../portfolio-content/Projets');
-const OUTPUT_FILE = path.resolve(__dirname, '../../src/portfolio/project-data.js');
+const PROJECTS_DIR = path.resolve(__dirname, '../../lucas-content/Projets');
+const OUTPUT_FILE = path.resolve(__dirname, '../../src/lucas/project-data.js');
 
 // Helper to normalize keys of the META section
 const KEY_MAP = {
@@ -236,7 +236,7 @@ function generateImportsAndData() {
     });
 
     // --- DYNAMIC INSTAGRAM REELS (Fallback) ---
-    const reelsDir = path.resolve(__dirname, '../../portfolio-content/Instagram Reel');
+    const reelsDir = path.resolve(__dirname, '../../lucas-content/Instagram Reel');
     if (fs.existsSync(reelsDir)) {
         const reelFiles = fs.readdirSync(reelsDir);
         let reelCollection = [];
@@ -298,7 +298,7 @@ function generateImportsAndData() {
                 en: 'A collection of dynamic, high-engagement reels created for various brands and personal projects.',
                 fr: 'Une collection de reels dynamiques créés pour diverses marques et projets personnels.'
             },
-            media: '/portfolio/assets/projects/instagram-3d-final.png',
+            media: '/lucas/assets/projects/instagram-3d-final.png',
             type: 'collection',
             collection: reelCollection
         });
@@ -314,7 +314,7 @@ function generateImportsAndData() {
             status: "Online",
             link: "",
             desc: { en: 'Reels collection.', fr: 'Collection Reels.' },
-            media: '/portfolio/assets/projects/instagram-3d-final.png',
+            media: '/lucas/assets/projects/instagram-3d-final.png',
             type: 'collection',
             collection: [
                 { type: 'video', src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4' }

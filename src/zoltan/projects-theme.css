@@ -1,0 +1,608 @@
+/* Unified Styles for Zoltan Categories */
+/* Restores the original "Basic" look requested by the user */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
+
+/* -------------------- Global -------------------- */
+body.page {
+    background-color: #000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", Arial, sans-serif;
+    --font-heading: "Italiana", serif;
+    /* Defining var here too just in case */
+    overflow-x: hidden;
+    line-height: 1.6;
+    /* Improved readability */
+    -webkit-font-smoothing: antialiased;
+    animation: fadeInPage 0.8s ease-out forwards;
+}
+
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.page * {
+    box-sizing: border-box;
+}
+
+.page a {
+    text-decoration: none;
+}
+
+/* -------------------- Navbar (Glassmorphism) -------------------- */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15vw;
+    /* Responsive gap */
+    padding: 20px 40px;
+
+    /* Glass Effect */
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1020;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.4s;
+}
+
+.navbar.scrolled {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.navbar.nav-hidden {
+    transform: translateY(-100%);
+}
+
+.navbar .logo {
+    font-family: "Italiana", serif;
+    /* Artistic */
+    font-size: 2.2rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: white;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    /* Ensure caps */
+}
+
+.navbar .logo a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.navbar nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.25rem;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    transition: color 0.3s;
+}
+
+.navbar nav ul {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+    margin: 0;
+}
+
+.navbar nav a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.5s ease;
+    padding-bottom: 4px;
+    border-bottom: 1px solid transparent;
+}
+
+.navbar nav a:hover {
+    color: white;
+    border-bottom: 1px solid #00a2d4;
+    text-shadow: 0 0 20px rgba(0, 162, 212, 0.5);
+}
+
+/* -------------------- Back Arrow -------------------- */
+.back-arrow-container {
+    position: fixed;
+    top: 80px;
+    left: 20px;
+    z-index: 200;
+}
+
+.back-arrow-container img {
+    width: 30px;
+    height: auto;
+    display: block;
+    transition: transform 0.3s;
+    filter: invert(1);
+    /* Ensure white on black if it's a black icon */
+}
+
+
+
+/* -------------------- Mobile Burger (Default Hidden to avoid FOUC) -------------------- */
+.burger {
+    display: none;
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    width: 30px;
+    height: 20px;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1030;
+    /* Higher than navbar */
+}
+
+.burger span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: white;
+    transition: 0.3s;
+}
+
+.burger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.burger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* -------------------- Main Container -------------------- */
+.main {
+    padding-top: 150px;
+    padding-bottom: 70px;
+    min-height: 100vh;
+}
+
+/* -------------------- Generic Grid (Replaces specific containers but looks same) -------------------- */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1800px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+/* -------------------- Cards -------------------- */
+.card {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    color: white;
+    opacity: 0;
+    opacity: 0;
+    animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    /* Smoother entry */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.5s ease, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.card:hover img {
+    filter: brightness(0.6);
+    /* Slightly more visible than 50% */
+    transform: scale(1.05);
+    /* Gentle zoom */
+}
+
+.card-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.card:hover .card-text {
+    opacity: 1;
+}
+
+.card-text h3 {
+    font-family: "Italiana", serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin: 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    transition: letter-spacing 0.5s ease;
+}
+
+.card:hover .card-text h3 {
+    letter-spacing: 4px;
+    /* Artistic expansion */
+}
+
+.card-text p {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin: 5px 0 0 0;
+}
+
+/* -------------------- Special Reels Grid (9:16) -------------------- */
+.reels-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    justify-content: center;
+}
+
+.reels-grid .card {
+    aspect-ratio: 9/16;
+}
+
+/* -------------------- Badge Breathout -------------------- */
+.badge-breathout {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 81, 91, 0.9);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 6px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 2;
+}
+
+.card:hover .badge-breathout {
+    opacity: 1;
+}
+
+/* -------------------- Animations -------------------- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+        /* Slide up effect */
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.card:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.card:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+/* -------------------- Footer -------------------- */
+.footer {
+    position: relative;
+    /* was fixed, but relative is better for checking flow, or keep fixed if user wants sticky. User said 'footer' usually implies bottom of page flow, but legacy was fixed? Let's keep fixed but safer height */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    min-height: 80px;
+    /* Allow growth */
+    height: auto;
+    padding: 10px 0;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    border-top: none;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    /* Key for moving copyright to next line */
+    max-width: 90%;
+}
+
+.copyright {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+    font-size: 0.8rem;
+    opacity: 0.6;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.contact {
+    color: #fff;
+    font-size: 0.95rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-logo {
+    width: 20px;
+    height: 20px;
+    filter: invert(100%);
+    transition: transform 0.3s;
+}
+
+.social-logo:hover {
+    transform: scale(1.2);
+}
+
+/* -------------------- Responsive -------------------- */
+@media (max-width: 1440px) {
+    .grid-container {
+        max-width: 1200px;
+    }
+}
+
+@media (max-width: 900px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 900px;
+    }
+
+    .navbar {
+        gap: 0;
+        justify-content: space-between;
+        padding: 20px;
+    }
+
+    .navbar nav ul {
+        display: none;
+    }
+
+    .navbar .logo {
+        font-size: 1.4rem;
+        letter-spacing: 2px;
+    }
+
+    .footer {
+        height: 65px;
+    }
+
+    .burger {
+        display: flex !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+
+    /* Condensed Footer on Mobile */
+    .footer {
+        height: auto !important;
+        padding: 15px 0;
+        position: relative;
+        /* Unlock from fixed if content is long, or keep fixed if minimal */
+        /* keeping fixed as requested implicitly by user verifying "page projet" behavior usually implies scanning */
+        /* Actually, relative is safer for small screens to prevent overlap */
+        position: fixed;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 5px;
+        line-height: 1.2;
+    }
+
+    .contact {
+        font-size: 0.75rem;
+    }
+
+    .social-icons {
+        margin: 5px 0;
+    }
+
+    .social-logo {
+        width: 16px;
+        height: 16px;
+    }
+
+    .copyright {
+        font-size: 0.6rem;
+        margin-top: 2px;
+    }
+
+    /* Prevent footer overlap */
+    .main,
+    .project-detail-container {
+        padding-bottom: 150px !important;
+    }
+
+    /* Force "Hover" state on Mobile with Animation */
+    .card img {
+        filter: brightness(0.6);
+        transform: scale(1.05);
+        /* Optional: maintain slight zoom if desired, or remove */
+    }
+
+    .card-text {
+        opacity: 0;
+        /* Start invisible for animation */
+        animation: mobileTextReveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        animation-delay: 0.3s;
+        /* Slight delay after card reveal */
+    }
+
+    .card-text h3 {
+        letter-spacing: 2px;
+        /* Slightly spaced but not full expansion */
+    }
+
+    .badge-breathout {
+        opacity: 1;
+    }
+}
+
+@keyframes mobileTextReveal {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+        /* Start slightly lower */
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+        /* End centered */
+    }
+}
+
+/* Unified Legacy Project Styles */
+/* Duplicated imports removal if needed, but browser handles it */
+
+.mariage-detail-container,
+.project-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.project-detail-container h1 {
+    font-family: "Italiana", serif;
+    font-size: 4rem;
+    /* Even larger for impact */
+    margin-bottom: 50px;
+    font-weight: 400;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+/* Video Wrapper (Responsive 16:9) */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 40px;
+    background: #000;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.project-detail-container p {
+    font-size: 1.15rem;
+    /* Slight adjust */
+    line-height: 1.8;
+    /* Better readability for long text */
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.9;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+    .project-detail-container h1 {
+        font-size: 2rem;
+    }
+
+    .project-detail-container p {
+        font-size: 1rem;
+    }
+}
+
+.legacy-copyright {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+    font-size: 0.8rem;
+    opacity: 0.6;
+    letter-spacing: 1px;
+    color: #fff;
+}

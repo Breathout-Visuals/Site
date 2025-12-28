@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr" class="notranslate" translate="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate" />
+    <title>Projet | Zoltan Hays</title>
+    <link rel="stylesheet" href="/src/zoltan/projects-theme.css">
+    <style>
+        body {
+            background-color: #000;
+        }
+
+        /* Loader styles */
+        #loading {
+            position: fixed;
+            inset: 0;
+            background: black;
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: "Italiana", serif;
+            font-size: 2rem;
+            transition: opacity 0.5s;
+        }
+
+        #error-msg {
+            display: none;
+            text-align: center;
+            margin-top: 100px;
+            color: #ff5555;
+        }
+    </style>
+</head>
+
+<body class="page">
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="logo"><a href="/zoltan-hays/">ZOLTAN HAYS</a></div>
+        <nav>
+            <ul>
+                <li><a href="/zoltan-hays/">Portfolio</a></li>
+                <li><a href="/zoltan-hays/#about" data-fr="Qui suis-je" data-en="About Me">Qui suis-je</a></li>
+                <li><a href="/">Breathout</a></li>
+            </ul>
+        </nav>
+
+        <button id="lang-toggle" class="lang-btn">EN</button>
+
+        <div class="burger" style="display: none;">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- Back Arrow -->
+    <div class="back-arrow-container">
+        <a id="back-link" href="/zoltan-hays/">
+            <img src="/zoltan/Logo/left-round-512.png" alt="Retour">
+        </a>
+    </div>
+
+    <!-- Content -->
+    <div id="loading"></div>
+    <div id="error-msg">Projet introuvable / Project not found</div>
+
+    <main class="main" id="main-content" style="opacity: 0; transition: opacity 0.5s;">
+        <div class="project-detail-container">
+            <h1 id="project-title">TITRE PROJET</h1>
+
+            <div class="video-wrapper">
+                <iframe id="video-frame" src="" title="Video Player" allowfullscreen></iframe>
+            </div>
+
+            <div class="credits" id="credits-list">
+                <!-- Credits injected here -->
+            </div>
+
+            <div class="film-description">
+                <p id="project-desc">Description...</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <span class="contact">zoltanhays@gmail.com | 07 78 04 37 69</span>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/zol__tan/" target="_blank">
+                    <img src="/zoltan/Logo/black-instagram-icon.svg" alt="Instagram" class="social-logo">
+                </a>
+                <a href="https://www.linkedin.com/in/zoltan-hays-1028272aa/" target="_blank">
+                    <img src="/zoltan/Logo/linkedin-square-icon.svg" alt="LinkedIn" class="social-logo">
+                </a>
+            </div>
+            <span class="copyright" data-fr="© 2025 Breathout Visuals. Tous droits réservés."
+                data-en="© 2025 Breathout Visuals. All rights reserved.">
+                © 2025 Breathout Visuals. Tous droits réservés.
+            </span>
+        </div>
+    </footer>
+
+    <div class="mobile-menu" style="visibility: hidden; opacity: 0;">
+        <div class="menu-links">
+            <a href="/zoltan-hays/#portfolio" data-fr="Portfolio" data-en="Portfolio">Portfolio</a>
+            <a href="/zoltan-hays/#about" data-fr="Qui suis-je" data-en="About Me">Qui suis-je</a>
+            <a href="/" data-fr="Breathout" data-en="Breathout">Breathout</a>
+        </div>
+        <div class="social-mobile">
+            <a href="https://www.instagram.com/zol__tan/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/zoltan-hays-1028272aa" target="_blank"><i
+                    class="fab fa-linkedin"></i></a>
+        </div>
+    </div>
+
+    <!-- Logic -->
+    <script type="module" src="/src/zoltan/project-loader.js"></script>
+    <script type="module" src="/src/zoltan/zoltan.js"></script>
+</body>
+
+</html>

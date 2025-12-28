@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node scripts/portfolio/generate-data.cjs && vite",
-    "build": "node scripts/portfolio/generate-data.cjs && vite build",
-    "gen": "node scripts/portfolio/generate-data.cjs",
+    "dev": "node scripts/zoltan/generate.js && node scripts/lucas/generate-data.cjs && vite",
+    "build": "node scripts/zoltan/generate.js && node scripts/lucas/generate-data.cjs && vite build",
+    "gen": "node scripts/zoltan/generate.js && node scripts/lucas/generate-data.cjs",
     "preview": "vite preview"
   },
   "devDependencies": {

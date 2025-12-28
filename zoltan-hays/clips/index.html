@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr" class="notranslate" translate="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clips | Zoltan Hays</title>
+    <link rel="stylesheet" href="/src/zoltan/projects-theme.css">
+</head>
+
+<body class="page">
+
+    <header class="navbar">
+        <div class="logo"><a href="/zoltan-hays/">ZOLTAN HAYS</a></div>
+        <nav>
+            <ul>
+                <li><a href="/zoltan-hays/">Portfolio</a></li>
+                <li><a href="/zoltan-hays/#about" data-fr="Qui suis-je" data-en="About Me">Qui suis-je</a></li>
+                <li><a href="/">Breathout</a></li>
+            </ul>
+        </nav>
+
+        <button id="lang-toggle" class="lang-btn">EN</button>
+
+        <div class="burger" style="display: none;">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <div class="back-arrow-container">
+        <a href="/zoltan-hays/">
+            <img src="/zoltan/Logo/left-round-512.png" alt="Retour Portfolio">
+        </a>
+    </div>
+
+    <main class="main">
+        <div class="grid-container">
+            <!-- Dynamic Content -->
+        </div>
+    </main>
+
+    <div class="mobile-menu" style="visibility: hidden; opacity: 0;">
+        <div class="menu-links">
+            <a href="/zoltan-hays/#portfolio" data-fr="Portfolio" data-en="Portfolio">Portfolio</a>
+            <a href="/zoltan-hays/#about" data-fr="Qui suis-je" data-en="About Me">Qui suis-je</a>
+            <a href="/" data-fr="Breathout" data-en="Breathout">Breathout</a>
+        </div>
+        <div class="social-mobile">
+            <a href="https://www.instagram.com/zol__tan/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/zoltan-hays-1028272aa" target="_blank"><i
+                    class="fab fa-linkedin"></i></a>
+        </div>
+    </div>
+
+    <script type="module" src="/src/zoltan/category-loader.js"></script>
+    <script type="module" src="/src/zoltan/zoltan.js"></script>
+    <div class="footer-content">
+        <span class="contact">zoltanhays@gmail.com | 07 78 04 37 69</span>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/zol__tan/" target="_blank">
+                <img src="/zoltan/Logo/black-instagram-icon.svg" alt="Instagram" class="social-logo">
+            </a>
+            <a href="https://www.linkedin.com/in/zoltan-hays-1028272aa/" target="_blank">
+                <img src="/zoltan/Logo/linkedin-square-icon.svg" alt="LinkedIn" class="social-logo">
+            </a>
+        </div>
+        <span class="copyright" data-fr="© 2025 Breathout Visuals. Tous droits réservés."
+            data-en="© 2025 Breathout Visuals. All rights reserved.">
+            © 2025 Breathout Visuals. Tous droits réservés.
+        </span>
+    </div>
+    </footer>
+
+    <script type="module">
+        let lastScroll = 0;
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll <= 0) {
+                navbar.classList.remove('nav-hidden');
+                return;
+            }
+            if (currentScroll > lastScroll && !navbar.classList.contains('nav-hidden')) {
+                navbar.classList.add('nav-hidden');
+            } else if (currentScroll < lastScroll && navbar.classList.contains('nav-hidden')) {
+                navbar.classList.remove('nav-hidden');
+            }
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+
+</html>

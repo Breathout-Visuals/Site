@@ -4,6 +4,8 @@ import './home.css';
 const cursor = document.createElement('div');
 cursor.classList.add('custom-cursor');
 document.body.appendChild(cursor);
+// Safe Activation
+document.body.classList.add('custom-cursor-active');
 
 document.addEventListener('mousemove', (e) => {
     cursor.style.left = e.clientX + 'px';

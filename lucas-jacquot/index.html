@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="/portfolio/assets/favicon.png" />
+  <link rel="icon" type="image/png" href="/lucas/assets/favicon.png" />
   <meta name="viewport" content="width=1100, user-scalable=yes">
   <title>Lucas Jacquot | Filmmaker</title>
   <meta name="description" content="Portfolio of a visual storyteller and filmmaker based in Paris.">
@@ -43,6 +43,66 @@
 </head>
 
 <body>
+
+  <!-- PRELOADER (Inline for instant render) -->
+  <style>
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000000;
+      /* Dark Theme for Portfolio */
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    #preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .preloader-logo {
+      width: 180px;
+      /* Scaled for 1100px viewport */
+      height: auto;
+      opacity: 0.8;
+      animation: pulseLogo 0.8s infinite ease-in-out;
+      /* Much Faster */
+    }
+
+    @keyframes pulseLogo {
+      0% {
+        transform: scale(0.85);
+        opacity: 0.4;
+      }
+
+      50% {
+        transform: scale(1.15);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(0.85);
+        opacity: 0.4;
+      }
+    }
+  </style>
+  <div id="preloader">
+    <img src="/assets/logo-white.png" alt="Loading..." class="preloader-logo">
+  </div>
+  <script>
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      setTimeout(() => {
+        preloader.classList.add('hidden');
+      }, 500); // 500ms buffer for smoother entry
+    });
+  </script>
 
   <header>
     <div class="container">
@@ -280,7 +340,7 @@
             <a class="contact-btn" data-scroll="#contact" data-i18n="contact.btn">Get in touch</a>
           </div>
           <div class="about-image reveal">
-            <img src="/portfolio/assets/lucas-profile.jpg" alt="Lucas Jacquot"
+            <img src="/lucas/assets/lucas-profile.jpg" alt="Lucas Jacquot"
               style="width:100%; height:100%; object-fit:cover; border-radius:4px;" loading="lazy">
           </div>
         </div>
@@ -364,7 +424,7 @@
   <div class="cursor-dot" data-cursor-dot></div>
   <div class="cursor-outline" data-cursor-outline></div>
 
-  <script type="module" src="/src/portfolio/portfolio.js?v=4"></script>
+  <script type="module" src="/src/lucas/portfolio.js?v=4"></script>
 </body>
 
 </html>
