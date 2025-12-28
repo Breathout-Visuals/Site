@@ -73,23 +73,6 @@
     </div>
     </footer>
 
-    <script type="module">
-        let lastScroll = 0;
-        const navbar = document.querySelector('.navbar');
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            if (currentScroll <= 0) {
-                navbar.classList.remove('nav-hidden');
-                return;
-            }
-            if (currentScroll > lastScroll && !navbar.classList.contains('nav-hidden')) {
-                navbar.classList.add('nav-hidden');
-            } else if (currentScroll < lastScroll && navbar.classList.contains('nav-hidden')) {
-                navbar.classList.remove('nav-hidden');
-            }
-            lastScroll = currentScroll;
-        });
-    </script>
 </body>
 
 </html>

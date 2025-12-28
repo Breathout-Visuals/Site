@@ -85,16 +85,7 @@
 
     <script type="module" src="/src/zoltan/category-loader.js"></script>
     <script type="module" src="/src/zoltan/zoltan.js"></script>
-    // Basic Scroll Hide for Legacy Navbar
-    let lastScroll = 0;
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    if (currentScroll <= 0) { navbar.classList.remove('nav-hidden'); return; } if (currentScroll> lastScroll &&
-        !navbar.classList.contains('nav-hidden')) {
-        navbar.classList.add('nav-hidden');
-        } else if (currentScroll < lastScroll && navbar.classList.contains('nav-hidden')) {
-            navbar.classList.remove('nav-hidden'); } lastScroll=currentScroll; }); </script>
+
 </body>
 
 </html>
