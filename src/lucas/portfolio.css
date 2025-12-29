@@ -1455,8 +1455,10 @@ footer {
   /* MOVED FROM HOVER: NONE -> MOBILE LAYOUT */
   /* Fix "I" shape cards: Use Width-based height (vw) instead of Viewport Height (vh) */
   .gallery-track {
-    grid-template-rows: repeat(2, 35vw) !important;
-    grid-auto-columns: 35vw !important;
+    grid-template-rows: repeat(2, 60vw) !important;
+    /* Increased from 35vw to fit large text */
+    grid-auto-columns: 75vw !important;
+    /* Increased from 35vw */
     gap: 2rem !important;
   }
 
@@ -1466,6 +1468,19 @@ footer {
     display: flex !important;
     justify-content: flex-start !important;
     flex-direction: column !important;
+  }
+
+  /* INCREASED FONT SIZE FOR MOBILE CAROUSEL (User Request) */
+  .project-title {
+    font-size: 5.5rem !important;
+    /* Increased from 4rem */
+    line-height: 0.9;
+  }
+
+  .project-category {
+    font-size: 1.3rem !important;
+    /* Increased from 1.1rem */
+    margin-top: 0.5rem;
   }
 }
 

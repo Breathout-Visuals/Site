@@ -2297,7 +2297,278 @@ if (menuToggle && navLinks) {
                 opacity: 0.8 !important;
                 white-space: normal !important; /* Allow wrap if somehow needed, but fit-content prevents it */
             }
+
+            /* --- FORCE HUGE FONTS (USER REQUEST) --- */
+            .project-title {
+                font-size: 5.5rem !important;
+                line-height: 0.9 !important;
+            }
+            .project-category {
+                font-size: 1.3rem !important;
+                margin-top: 0.5rem !important;
+            }
+            
+            /* FORCE HUGE BADGES */
+             .role-badge, .status-badge {
+                font-size: 1rem !important; /* Increased from 0.55rem */
+                padding: 8px 16px !important; /* Increased padding */
+                border-width: 2px !important; /* Thicker border */
+            }
+
+            /* Adjust grid for these huge fonts if needed, though CSS handles it. */
+            /* Let's double force the grid height too just in case */
+            .gallery-track {
+                grid-template-rows: repeat(2, 60vw) !important;
+                grid-auto-columns: 75vw !important;
+            }
+
+            /* --- FORCE HUGE HEADER BUTTONS (USER REQUEST) --- */
+            .mobile-menu-toggle, .lang-btn {
+                 font-size: 2.5rem !important; /* Increased from 1.8rem */
+                 padding: 1.2rem 2.5rem !important; /* Significantly larger padding */
+                 border-width: 3px !important; /* Thicker border */
+            }
+            /* --- FORCE HEADER ALIGNMENT (USER REQUEST) --- */
+            header, nav {
+                align-items: center !important;
+                height: auto !important;
+            }
+            .nav-right {
+                gap: 2rem !important;
+                align-items: center !important;
+                display: flex !important;
+                height: 100% !important; /* Ensure full height match */
+            }
+            /* Reset any margins causing offsets */
+            .logo, .mobile-menu-toggle, .lang-btn {
+                margin: 0 !important;
+                transform: none !important; /* Remove any potential transform offsets */
+                display: flex !important;
+                align-items: center !important;
+            }
+
+            /* --- FORCE HUGE MENU TEXT (USER REQUEST) --- */
+            .nav-links a {
+                 font-size: 4.5rem !important; /* Huge text for menu */
+                 line-height: 1.2 !important;
+            }
+
+            /* --- FORCE CLEAN EDITORIAL FILTERS (USER REQUEST) --- */
+            .project-filters {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+                
+                /* Layout */
+                width: 92% !important;
+                left: 4% !important;
+                right: 4% !important;
+                bottom: 2rem !important;
+                padding: 1rem !important;
+                gap: 0.8rem !important;
+                
+                /* Minimalist Container */
+                background: rgba(0, 0, 0, 0.6) !important; /* Subtle dark tint */
+                backdrop-filter: blur(20px) !important; /* Heavy blur for readability */
+                -webkit-backdrop-filter: blur(20px) !important;
+                border: 1px solid rgba(255, 255, 255, 0.08) !important; /* Very subtle border */
+                border-radius: 24px !important;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.2) !important;
+            }
+            .project-filters::-webkit-scrollbar {
+                display: none !important;
+            }
+
+            .filter-btn {
+                font-family: var(--font-main) !important; /* Ensure main clean font */
+                font-size: 0.95rem !important; /* Refined size, not too huge */
+                text-transform: uppercase !important;
+                letter-spacing: 0.05em !important;
+                font-weight: 500 !important;
+                
+                /* Shape */
+                padding: 0.6rem 1.2rem !important;
+                border-radius: 50px !important; /* Full pill shape */
+                
+                /* Default State: Clean & Ghost */
+                background: transparent !important;
+                color: rgba(255, 255, 255, 0.7) !important;
+                border: 1px solid rgba(255, 255, 255, 0.2) !important;
+                transition: all 0.3s ease !important;
+            }
+            
+            /* Active State: High Contrast */
+            .filter-btn.active {
+                background: #fff !important;
+                color: #000 !important;
+                border-color: #fff !important;
+                font-weight: 700 !important;
+                box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2) !important;
+            }
+
+            /* --- FORCE SUBTITLE SIZE (USER REQUEST) --- */
+            [data-i18n="hero.subtitle"] {
+                font-size: 1.6rem !important; /* Adjusted to 1.6rem */
+                line-height: 1.2 !important;
+                opacity: 0.9 !important;
+                margin-top: 1rem !important;
+                margin-right: auto !important;
+                display: block !important; /* Ensure block for margins */
+            }
+
+            /* --- FORCE OPTIMIZED FOOTER V5 (FINAL SWAP & ICONS) --- */
+            .footer-grid {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                flex-direction: row !important;
+                justify-content: space-between !important; /* Pushes edges apart */
+                gap: 0 !important;
+                text-align: center !important;
+                padding-bottom: 2rem !important;
+                position: relative !important;
+            }
+            
+            /* Hide Name */
+            .f-name { display: none !important; }
+
+            /* SOCIALS (Top - Bigger Icons) */
+            .f-social {
+                order: 1 !important;
+                width: 100% !important;
+                margin-top: 2rem !important;
+                margin-bottom: 2rem !important;
+                gap: 3.5rem !important; /* Wider gap for bigger icons */
+                display: flex !important;
+                justify-content: center !important;
+            }
+            .f-social i {
+                font-size: 2.8rem !important; /* Bigger icons (User Request) */
+                opacity: 1 !important;
+            }
+
+            /* CONTACT INFO (Center) */
+            .f-mail1, .f-mail2, .f-phone {
+                order: 2 !important;
+                width: 100% !important;
+                font-size: 1.75rem !important;
+                line-height: 2 !important;
+                font-family: var(--font-display) !important;
+                letter-spacing: 0.05em !important;
+            }
+            
+            /* CITY (Center) */
+            .f-city {
+                order: 3 !important;
+                width: 100% !important;
+                text-align: center !important;
+                font-size: 1rem !important;
+                opacity: 0.6 !important;
+                margin-top: 2rem !important;
+                margin-bottom: 4rem !important; /* More space before legal */
+                text-transform: uppercase !important;
+                letter-spacing: 0.2em !important;
+            }
+
+            /* LEGAL (Split Left/Right) */
+            /* Copyright goes LEFT (Order 20) */
+            .f-copy {
+                order: 20 !important;
+                width: auto !important;
+                display: inline-block !important;
+                font-size: 0.75rem !important;
+                opacity: 0.4 !important;
+                margin: 0 !important;
+                margin-left: 1rem !important; /* Padding from edge */
+                text-align: left !important;
+            }
+
+            /* Designed By goes RIGHT (Order 21) */
+            .f-credits {
+                order: 21 !important;
+                width: auto !important;
+                display: inline-block !important;
+                font-size: 0.75rem !important;
+                opacity: 0.4 !important;
+                margin: 0 !important;
+                margin-right: 1rem !important; /* Padding from edge */
+                text-align: right !important;
+            }
+
+            /* --- STRICT TOUCH HANDLING (NO STICKY HOVER) --- */
+            
+            /* 1. Desktop Hover (Mouse) */
+            @media (hover: hover) {
+                .f-mail1:hover, .f-mail2:hover, .f-phone:hover, .f-social a:hover, .f-social i:hover {
+                    transform: scale(1.1) !important;
+                    color: white !important;
+                }
+            }
+
+            /* 2. Mobile Touch (Static & Locked) */
+            @media (hover: none) {
+                .f-mail1, .f-mail2, .f-phone, .f-social a, .f-social i {
+                    /* STATIC BASE STATE */
+                    color: #ffffff !important; /* Force White */
+                    text-decoration: none !important;
+                    border: none !important; /* No border */
+                    border-bottom: none !important; /* Explicitly kill bottom border */
+                    box-shadow: none !important; /* Kill shadows */
+                    transform: none !important;
+                    transition: none !important;
+                    animation: none !important;
+                    -webkit-tap-highlight-color: transparent !important;
+                }
+                
+                /* LOCK ALL INTERACTION STATES */
+                .f-mail1:active, .f-mail2:active, .f-phone:active, .f-social a:active, .f-social i:active,
+                .f-mail1:focus, .f-mail2:focus, .f-phone:focus, .f-social a:focus, .f-social i:focus,
+                .f-mail1:visited, .f-mail2:visited, .f-phone:visited, .f-social a:visited, .f-social i:visited {
+                    color: #ffffff !important; /* STAY White */
+                    background: transparent !important;
+                    transform: none !important;
+                    opacity: 1 !important;
+                    text-decoration: none !important;
+                    outline: none !important;
+                    border: none !important;
+                    border-bottom: none !important;
+                    box-shadow: none !important;
+                }
+            }
+
+            /* 3. NEUTRALIZE JS CLASS */
+            .touch-active {
+                transform: none !important;
+                color: #ffffff !important; /* STAY White */
+                transition: none !important;
+                text-decoration: none !important;
+                border-bottom: none !important;
+            }
         }
     `;
+
     document.head.appendChild(style);
+
+    // --- JS TOUCH HANDLERS (RETURN TO NORMAL ON RELEASE) ---
+    const footerTargets = document.querySelectorAll('.f-mail1, .f-mail2, .f-phone, .f-social a, .f-social i');
+
+    footerTargets.forEach(el => {
+        // Function to safely reset
+        const reset = () => {
+            el.classList.remove('touch-active');
+        };
+
+        el.addEventListener('touchstart', (e) => {
+            el.classList.add('touch-active');
+        }, { passive: true });
+
+        el.addEventListener('touchend', reset, { passive: true });
+        el.addEventListener('touchcancel', reset, { passive: true });
+
+        // Failsafe: Remove on click (often fires after touchend)
+        el.addEventListener('click', () => {
+            setTimeout(reset, 50);
+        });
+    });
+
+    // Touch handlers removed (Static behavior)
 })();
