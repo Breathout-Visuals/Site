@@ -1266,8 +1266,22 @@ footer {
 }
 
 .about-image {
-  aspect-ratio: 3/4;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  /* Updated to match inline style intent (vertical portrait) */
   overflow: hidden;
+  border-radius: 4px;
+}
+
+.about-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
 }
 
 /* Footer */
