@@ -138,6 +138,17 @@ document.addEventListener('DOMContentLoaded', () => {
     setupLogoAnimationReplay();
     setupContactAnimation();
     setupExternalLinks();
+    setupContactAnimation();
+    setupExternalLinks();
+
+    // Universal Subtitle Init
+    setupSubtitleInit();
+
+    new InfiniteGallery();
+
+    // Apply initial translation
+    updateContent();
+
     new InfiniteGallery();
 
     // Apply initial translation
@@ -296,11 +307,30 @@ function setupLogoAnimationReplay() {
             line.style.animation = '';
         });
 
-        // Reset Subtitle
+        // Reset Subtitle (Nuclear Option: Clone & Replace)
         if (subtitle) {
-            subtitle.style.animation = 'none';
-            void subtitle.offsetWidth;
-            subtitle.style.animation = '';
+            const newSubtitle = subtitle.cloneNode(true);
+
+            // Clean state
+            newSubtitle.classList.remove('active');
+            newSubtitle.style.animation = 'none';
+            newSubtitle.style.webkitAnimation = 'none';
+
+            // Swap
+            subtitle.parentNode.replaceChild(newSubtitle, subtitle);
+
+            // Force Reflow
+            void newSubtitle.offsetWidth;
+
+            newSubtitle.style.animation = '';
+            newSubtitle.style.webkitAnimation = '';
+
+            // Re-add active if needed for opacity safety
+            setTimeout(() => {
+                newSubtitle.classList.add('active');
+            }, 50);
+        } else {
+            console.error("Subtitle element NOT found!");
         }
     });
 }
@@ -315,6 +345,16 @@ function setupExternalLinks() {
             }
         });
     });
+}
+
+function setupSubtitleInit() {
+    // Universal Init: Force .active class after load to ensure transition fires
+    setTimeout(() => {
+        const subtitle = document.querySelector('.hero .fade-up');
+        if (subtitle) {
+            subtitle.classList.add('active');
+        }
+    }, 500);
 }
 
 
