@@ -149,8 +149,8 @@ body {
 
     /* Glass Effect */
     background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--glass-border);
 
     position: fixed;
@@ -479,8 +479,8 @@ section {
     margin-bottom: 40px;
     line-height: 0.9;
     background: linear-gradient(to bottom right, #fff, #999);
-    background-clip: text;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -600,6 +600,25 @@ section {
     transition: 0.3s;
 }
 
+/* Utility Classes for JS Toggling (Replacing Inline Styles) */
+.hidden {
+    display: none !important;
+}
+
+.visible-flex {
+    display: flex !important;
+}
+
+.invisible {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.icon-white {
+    color: white;
+    font-size: 24px;
+}
+
 .burger.active span:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
 }
@@ -621,8 +640,8 @@ section {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.92);
-    backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
     gap: 40px;
     opacity: 0;
     pointer-events: none;
@@ -669,8 +688,8 @@ section {
     inset: 0;
     background: rgba(5, 5, 5, 0.96);
     /* Deep elegant black */
-    backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
     opacity: 0;
     visibility: hidden;
     /* Prevent paint/interaction when closed */
@@ -741,6 +760,7 @@ section {
     z-index: 900;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
     color: white;
     font-size: 13px;

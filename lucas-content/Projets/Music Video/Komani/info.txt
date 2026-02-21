@@ -4,8 +4,8 @@ Date: August 2025
 Role: director_me
 Status: In Editing
 Credits:
-Description: Music video for Faz’r Elengi shot in four locations, including my first experience supervising drift cars on set. I directed and handled staging.
-Description Fr: Clip vidéo pour l'artiste Faz’r Elengi. Tourné dans quatre lieux différents, avec notamment ma première gestion de voitures de drift sur le plateau. J'ai réalisé le clip et supervisé toute la mise en scène.
+Description: Music video for Faz’r Elengi, shot across multiple locations with contrasting atmospheres. The project combines visual storytelling, raw energy and more complex technical sequences to build a strong, dynamic universe.
+Description Fr: Clip musical pour Faz’r Elengi, tourné dans plusieurs lieux aux ambiances contrastées. Le projet combine narration visuelle, énergie brute et séquences techniques plus complexes, afin de construire un univers fort et rythmé.
 
 
 [CREDITS]

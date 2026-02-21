@@ -5,92 +5,332 @@
     <meta charset="UTF-8">
     <meta name="google" content="notranslate" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="icon" type="image/png" href="/assets/logo-black.png">
-    <title>Breathout Visuals | Creative Production</title>
+    <title>Breathout Visuals | Creative Agency</title>
 </head>
 
 <body>
 
-    <!-- PRELOADER (Inline for instant render) -->
-    <style>
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #050505;
-            /* Dark Theme */
-            z-index: 99999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-
-        #preloader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .preloader-logo {
-            width: 60px;
-            /* Logo Size */
-            height: auto;
-            opacity: 0.8;
-            animation: pulseLogo 0.8s infinite ease-in-out;
-            /* Much Faster */
-        }
-
-        @keyframes pulseLogo {
-            100% {
-                transform: scale(0.95);
-                opacity: 0.6;
-            }
-        }
-    </style>
+    <!-- PRELOADER -->
     <div id="preloader">
-        <img src="/assets/logo-white.png" alt="Loading..." class="preloader-logo">
-    </div>
-    <script>
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            // Small buffer to ensure smoothness
-            setTimeout(() => {
-                preloader.classList.add('hidden');
-            }, 300);
-        });
-    </script>
-
-    <header>
-        <span data-href="/" class="logo custom-link"><img src="/assets/logo-white.png" alt="BREATHOUT"
-                class="logo-img"></span>
-        <span data-href="/mariage/" class="wedding-link custom-link">Wedding</span>
-    </header>
-
-    <div class="hero">
-        <div class="hero-bg"></div>
-        <h1 class="title-display" id="main-title">
-            Visual <i>Stories</i><br>
-            Creative <i>Production</i>
-        </h1>
-
-        <div class="subtitle" id="subtitle">Cannes based Agency</div>
-
-        <nav class="nav-choice" id="nav-choice">
-            <span data-href="/lucas-jacquot/" class="btn-link custom-link">Lucas Jacquot Portfolio</span>
-            <span data-href="/zoltan-hays/" class="btn-link custom-link">Zoltan
-                Hays Portfolio</span>
-        </nav>
-
-        <div class="agency-container" id="agency-link">
-            <span class="btn-link btn-disabled agency-link">Agency (Coming Soon)</span>
+        <div class="loader-content">
+            <span class="loader-text">BREATHOUT</span>
+            <div class="loader-line"></div>
         </div>
     </div>
 
-    <footer>
-        &copy; 2025 Breathout Visuals. All rights reserved.
-    </footer>
+    <!-- HEADER -->
+    <header>
+        <button class="burger-menu" id="burger-trigger" aria-label="Menu">
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+
+        <div class="logo-center">
+            <span class="logo-text">BREATHOUT&trade;</span>
+        </div>
+
+        <div class="header-right">
+            <div class="header-clock">
+                <span class="clock-label">LOCAL /</span>
+                <span id="time-display">00:00:00</span>
+            </div>
+            <a href="/mariage/" class="header-btn">WEDDING</a>
+        </div>
+    </header>
+
+    <!-- MAIN GRID (Landing View) -->
+    <main class="main-grid" id="main-grid">
+        <!-- 8 Placeholder Grid Items (4x2) for aesthetic Agency Vibe -->
+        <div class="grid-item"><img src="https://picsum.photos/seed/bo1/1920/1080" alt="Visual"></div>
+        <div class="grid-item"><img src="https://picsum.photos/seed/bo2/1920/1080" alt="Visual"></div>
+        <div class="grid-item"><img src="https://picsum.photos/seed/bo3/1920/1080" alt="Visual"></div>
+        <div class="grid-item"><img src="https://picsum.photos/seed/bo4/1920/1080" alt="Visual"></div>
+        <div class="grid-item"><img src="https://picsum.photos/seed/bo5/1920/1080" alt="Visual"></div>
+        <div class="grid-item"><img src="https://picsum.photos/seed/bo6/1920/1080" alt="Visual"></div>
+        <div class="grid-item"><img src="https://picsum.photos/seed/bo7/1920/1080" alt="Visual"></div>
+        <div class="grid-item"><img src="https://picsum.photos/seed/bo8/1920/1080" alt="Visual"></div>
+
+        <div class="center-cta">
+            <h1>
+                <span class="word-1">CRAFTING</span>
+                <span class="word-2">IMPACT</span>
+            </h1>
+            <button class="cta-btn" onclick="document.dispatchEvent(new CustomEvent('open-contact'))">ELEVATE MY
+                BRANDING</button>
+        </div>
+
+        <!-- MARQUEE -->
+        <div class="marquee-wrapper">
+            <div class="marquee-track">
+                <span>CREATIVE PRODUCTION &nbsp;&bull;&nbsp; CANNES &nbsp;&bull;&nbsp; PARIS &nbsp;&bull;&nbsp;
+                    WORLDWIDE &nbsp;&bull;&nbsp; </span>
+                <span>CREATIVE PRODUCTION &nbsp;&bull;&nbsp; CANNES &nbsp;&bull;&nbsp; PARIS &nbsp;&bull;&nbsp;
+                    WORLDWIDE &nbsp;&bull;&nbsp; </span>
+                <span>CREATIVE PRODUCTION &nbsp;&bull;&nbsp; CANNES &nbsp;&bull;&nbsp; PARIS &nbsp;&bull;&nbsp;
+                    WORLDWIDE &nbsp;&bull;&nbsp; </span>
+                <span>CREATIVE PRODUCTION &nbsp;&bull;&nbsp; CANNES &nbsp;&bull;&nbsp; PARIS &nbsp;&bull;&nbsp;
+                    WORLDWIDE &nbsp;&bull;&nbsp; </span>
+            </div>
+        </div>
+    </main>
+
+    <!-- OVERLAYS (WINDOWS) -->
+
+    <!-- 1. MENU OVERLAY -->
+    <div class="overlay-window" id="menu-overlay">
+
+        <nav class="main-nav">
+            <button class="nav-item" data-target="home">HOME</button>
+            <button class="nav-item" data-target="team-overlay">TEAM</button>
+            <button class="nav-item" data-target="work-overlay">WHAT'S DONE</button>
+            <button class="nav-item" data-target="todo-overlay">WHAT'S TO DO</button>
+            <button class="nav-item contact-trigger" data-target="contact-overlay">CONTACT US</button>
+        </nav>
+
+        <div class="menu-footer">
+            <!-- LEFT: AGENCY -->
+            <div class="footer-left">
+                <a href="https://instagram.com/breathout_visuals" target="_blank" rel="noopener" class="icon-link"
+                    aria-label="Instagram">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                    </svg>
+                    <span class="icon-text">@BREATHOUT_VISUALS</span>
+                </a>
+            </div>
+
+            <!-- RIGHT: CONTACT -->
+            <div class="footer-right">
+                <a href="mailto:lucas.jacquot@breathoutvisuals.fr" class="icon-link" aria-label="Mail">
+                    <svg class="social-icon small" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                    <span class="icon-text">CONTACT</span>
+                </a>
+
+                <div class="icon-link" aria-label="Phone">
+                    <svg class="social-icon small" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                    </svg>
+                    <span class="icon-text">06 81 56 77 94</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. TEAM OVERLAY -->
+    <div class="overlay-window" id="team-overlay">
+
+        <div class="overlay-content team-pyramid">
+            <div class="overlay-header anim-item">
+                <h2>TEAM</h2>
+                <p class="subtitle">A COLLECTIVE OF VISIONARIES DEDICATED TO VISUAL EXCELLENCE.</p>
+            </div>
+
+            <!-- Row 1: Lucas -->
+            <div class="team-row top-row">
+                <a href="/lucas-jacquot/" class="team-card">
+                    <div class="team-info">
+                        <h3>LUCAS JACQUOT</h3>
+                        <p class="role">FOUNDER</p>
+                        <div class="desc-container">
+                            <p class="desc">SPECIALIZED IN CINEMATIC STORYTELLING AND ATMOSPHERIC LIGHTING.</p>
+                        </div>
+                        <span class="link-arrow">VIEW PORTFOLIO &rarr;</span>
+                    </div>
+                    <div class="team-photo">
+                        <img src="/lucas/assets/lucas-profile.jpg" alt="Lucas">
+                    </div>
+                </a>
+            </div>
+
+            <!-- Row 2: Zoltan & Loic -->
+            <div class="team-row bottom-row">
+                <a href="/zoltan-hays/" class="team-card">
+                    <div class="team-info">
+                        <h3>ZOLTAN HAYS</h3>
+                        <p class="role">LEAD EDITOR</p>
+                        <div class="desc-container">
+                            <p class="desc">MASTER OF RHYTHM AND NARRATIVE PACING.</p>
+                        </div>
+                        <span class="link-arrow">VIEW PORTFOLIO &rarr;</span>
+                    </div>
+                    <div class="team-photo">
+                        <img src="/zoltan/assets/about-zoltan.webp" alt="Zoltan">
+                    </div>
+                </a>
+
+                <div class="team-card">
+                    <div class="team-info">
+                        <h3>LOIC VINCI</h3>
+                        <p class="role">PHOTOGRAPHER</p>
+                        <div class="desc-container">
+                            <p class="desc">CAPTURING THE STILLNESS AND BEAUTY OF THE MOMENT.</p>
+                        </div>
+                    </div>
+                    <div class="team-photo">
+                        <div class="placeholder-photo">PHOTO</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. WORK OVERLAY (WHAT'S DONE) -->
+    <div class="overlay-window" id="work-overlay">
+
+
+        <!-- MAIN GALLERY VIEW -->
+        <div class="work-gallery-view" id="work-gallery-view">
+            <div class="gallery-header anim-item">
+                <h2>WHAT'S DONE</h2>
+                <p class="subtitle">HERE IS OUR UNIVERSE.</p>
+
+                <!-- FILTERS -->
+                <nav class="gallery-filters">
+                    <button class="filter-btn active" data-filter="ALL">ALL</button>
+                    <button class="filter-btn" data-filter="ADS">ADS</button>
+                    <button class="filter-btn" data-filter="SOCIAL_MEDIA">SOCIAL MEDIA</button>
+                    <button class="filter-btn" data-filter="DOCUMENTARIES">DOCS</button>
+                    <button class="filter-btn" data-filter="MUSIC_VIDEOS">MUSIC</button>
+                    <button class="filter-btn" data-filter="CORPORATE">CORP</button>
+                </nav>
+            </div>
+
+            <!-- SCROLLABLE GRID -->
+            <div class="gallery-grid-container anim-item">
+                <div class="gallery-grid" id="main-gallery-grid">
+                    <!-- Cards injected via JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECT DETAIL WINDOW (Re-used Mini-Window context) -->
+        <div class="project-detail-window" id="project-detail-window">
+            <button class="back-btn" id="project-back">&larr; BACK TO GALLERY</button>
+            <div class="project-content">
+                <div class="project-media" id="project-media-container">
+                    <!-- Image/Video goes here -->
+                </div>
+                <div class="project-info">
+                    <h2 id="project-title">PROJECT TITLE</h2>
+                    <h3 id="project-client">CLIENT NAME</h3>
+                    <p id="project-desc">Project description text goes here.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. TODO OVERLAY (WHAT'S TO DO -> SERVICES) -->
+    <div class="overlay-window" id="todo-overlay">
+
+        <div class="overlay-header anim-item">
+            <h2>SERVICES</h2>
+            <p class="subtitle">ELEVATE YOUR BRAND PRESENCE.</p>
+        </div>
+
+        <div class="overlay-content full-width-container">
+            <div class="services-grid">
+                <!-- CARD 01 -->
+                <div class="service-card anim-item">
+                    <div class="service-num">01</div>
+                    <div class="service-content">
+                        <h3>CONTENT<br>CREATION</h3>
+                        <p>High-end video & photo production tailored for social algorithms. Reels, TikToks, and
+                            Editorials that convert.</p>
+                        <ul class="service-list">
+                            <li>4 Reels / Month</li>
+                            <li>Professional Editing</li>
+                            <li>Art Direction</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CARD 02 -->
+                <div class="service-card anim-item">
+                    <div class="service-num">02</div>
+                    <div class="service-content">
+                        <h3>FULL<br>MANAGEMENT</h3>
+                        <p>Complete delegation of your social presence. We handle strategy, planning, and community
+                            engagement.</p>
+                        <ul class="service-list">
+                            <li>Content Strategy</li>
+                            <li>Posting & Scheduling</li>
+                            <li>Community Mgmt</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CARD 03 -->
+                <div class="service-card anim-item">
+                    <div class="service-num">03</div>
+                    <div class="service-content">
+                        <h3>EVENT<br>COVERAGE</h3>
+                        <p>Capture the energy of your events in real-time. Live stories and same-day edits for maximum
+                            hype.</p>
+                        <ul class="service-list">
+                            <li>Live Stories</li>
+                            <li>Recap Movies</li>
+                            <li>Behind The Scenes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- SERVICES CTA (Moved inside grid for Stacking Effect) -->
+                <div class="service-cta-container anim-item">
+                    <button class="cta-btn service-cta-btn" id="services-contact-trigger">ELEVATE MY BRANDING</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. CONTACT OVERLAY -->
+    <div class="overlay-window" id="contact-overlay">
+
+        <div class="overlay-content centered-flex">
+            <div class="contact-editorial">
+                <div class="contact-header anim-item">
+                    <h2>LET'S WORK<br>TOGETHER</h2>
+                </div>
+
+                <div class="contact-main anim-item">
+                    <a href="mailto:lucas.jacquot@breathoutvisuals.fr"
+                        class="huge-mail">LUCAS.JACQUOT@BREATHOUTVISUALS.FR</a>
+                    <a href="mailto:lucas.jacquot@breathoutvisuals.fr" class="cta-btn mobile-contact-btn">CONTACT US</a>
+                </div>
+
+                <div class="contact-meta anim-item">
+                    <div class="meta-col">
+                        <span class="meta-label">PHONE</span>
+                        <span class="meta-val">06 81 56 77 94</span>
+                    </div>
+                    <div class="meta-col">
+                        <span class="meta-label">SOCIAL</span>
+                        <a href="https://instagram.com/breathout_visuals" target="_blank" rel="noopener"
+                            class="meta-val">@BREATHOUT_VISUALS</a>
+                    </div>
+                    <div class="meta-col status-col">
+                        <span class="meta-label">STATUS</span>
+                        <div class="status-indicator">
+                            <span class="status-dot"></span>
+                            <span class="meta-val">AVAILABLE FOR NEW PROJECTS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script type="module" src="/src/home/home.js"></script>
 </body>

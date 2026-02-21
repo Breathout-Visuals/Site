@@ -5,8 +5,8 @@ Role: dop_me
 Status: Delivered
 Project Link: https://youtu.be/tgxDICtOiC8?si=0VFyGOwveazqQdd4
 Credits:
-Description: Music visualizer for Faz’r Elengi, built around a clean performance-driven aesthetic. I worked as Director of Photography.
-Description Fr: Visualizer musical pour Faz’r Elengi. Un concept épuré et ciblé, centré sur la performance et l'esthétique. J'étais Directeur de la Photographie.
+Description: Music visualizer for Faz’r Elengi, designed around a deliberately minimal setup. The visuals focus on the artist’s presence, rhythm and atmosphere, aiming for clarity and aesthetic coherence.
+Description Fr: Visualiser musical pour Faz’r Elengi, conçu autour d’un dispositif volontairement minimal. L’image se concentre sur la présence de l’artiste, le rythme et l’atmosphère, dans une recherche de clarté et de cohérence esthétique.
 
 
 [CREDITS]

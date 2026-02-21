@@ -68,7 +68,11 @@ body {
     pointer-events: none;
     z-index: 9999;
     transform: translate(-50%, -50%);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Centering */
+    /* REMOVED: transition: all 0.3s ... This caused the lag */
+    transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    will-change: transform;
+    /* Hint for browser */
     mix-blend-mode: normal;
 }
 
@@ -117,11 +121,10 @@ body {
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     justify-content: space-between;
-    background: rgba(255, 255, 255, 0.5);
-    /* More visible glass */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.03);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     /* Dark border */
     transition: all 0.4s ease;
 }

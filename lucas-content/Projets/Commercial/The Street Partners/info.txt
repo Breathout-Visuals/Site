@@ -4,8 +4,8 @@ Date: July 2025
 Role: dop_me
 Status: Delivered
 Credits:
-Description: Corporate commercial for The Street Partners, built with a modern visual identity focused on clean branding. I was Director of Photography.
-Description Fr: Publicité pour The Street Partners. Une approche corporate moderne axée sur le branding et une image soignée. J'étais Directeur de la Photographie.
+Description: Corporate commercial created for The Street Partners. A clean, contemporary visual approach designed to enhance branding and convey a clear, elegant and controlled professional image.
+Description Fr: Film publicitaire corporate réalisé pour The Street Partners. Une approche visuelle sobre et contemporaine, pensée pour valoriser le branding et transmettre une image professionnelle claire, élégante et maîtrisée.
 
 
 [CREDITS]

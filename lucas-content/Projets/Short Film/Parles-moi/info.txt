@@ -4,8 +4,8 @@ Date: November 2025
 Role: gaffer_me
 Status: In Editing
 Credits:
-Description: Short film for the Nikon Film Festival 2025, theme “Beauty.” A couple faces emotional fragility after a sudden hospitalisation. I crafted a soft, intimate lighting setup.
-Description Fr: Court-métrage pour le Nikon 2025. Un couple déstabilisé par une hospitalisation soudaine, naviguant entre fragilité et intimité. J'étais Chef Électricien (Gaffer), créant une lumière douce et émotionnelle.
+Description: Short film created for the Nikon Film Festival 2025. The film explores the fragility of a couple facing a sudden hospitalization, focusing on silence, glances and emotional intimacy.
+Description Fr: Court-métrage réalisé pour le Nikon Film Festival 2025. Le film explore la fragilité d’un couple confronté à une hospitalisation soudaine, en s’attachant aux silences, aux regards et à l’intimité émotionnelle.
 
 
 [CREDITS]

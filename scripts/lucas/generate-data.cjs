@@ -12,6 +12,7 @@ const KEY_MAP = {
     'Role': 'role', // Main Role (badge)
     'Status': 'status',
     'Project Link': 'link',
+    'Link': 'link', // Added for flexibility
     'Description': 'desc_en',
     'Description Fr': 'desc_fr',
     'Credits': 'credits' // Legacy single-line credits

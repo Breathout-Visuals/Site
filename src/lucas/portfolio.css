@@ -2124,6 +2124,7 @@ a,
   }
 
   /* Mobile Menu to be added if needed, for now just hidden for simplicity or stack */
+
 }
 
 /* Modal Navigation Arrows */
@@ -2990,5 +2991,130 @@ a,
   /* 4. Active Touch Feedback */
   .related-item.is-pressed {
     transform: scale(1.02) !important;
+  }
+}
+
+/* --- ABOUT SECTION REDESIGN (Mobile Only Integration) --- */
+
+/* Desktop Base (Default visibility) */
+.about-desktop {
+  display: block;
+}
+
+.about-mobile-scroll-track {
+  display: none;
+}
+
+/* Mobile-Only Overrides */
+@media (max-width: 1100px) {
+  .about-desktop {
+    display: none !important;
+  }
+
+  #about.section {
+    padding: 0 !important;
+  }
+
+  .about-mobile-scroll-track {
+    display: block !important;
+    height: 350vh;
+    position: relative;
+    background: #050505;
+    /* Match site bg */
+  }
+
+  .about-sticky-viewport {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .about-sticky-viewport .container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 !important;
+    /* Remove horizontal padding */
+    max-width: none !important;
+    transform: translateY(-4rem);
+    /* Added to shift the entire "system" up and center it visually */
+  }
+
+  .about-content-wrapper {
+    position: relative;
+    width: 100%;
+    padding: 0 8%;
+    text-align: left;
+    z-index: 1;
+  }
+
+  .about-title-styled {
+    font-family: var(--font-display);
+    font-size: 6.5rem;
+    /* +30% */
+    font-weight: 700;
+    margin-bottom: 5rem;
+    transform: translateY(-20px);
+    filter: none !important;
+  }
+
+  .scroll-reveal-block {
+    margin-bottom: 3rem;
+    font-family: var(--font-main);
+    font-size: 2.9rem;
+    /* +30% */
+    line-height: 1.4;
+    color: #e0e0e0;
+  }
+
+  .about-card-overlay-anim {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 845px;
+    /* +30% */
+    z-index: 10;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card-anim-inner {
+    transform-origin: center center;
+    opacity: 0;
+    width: 100%;
+  }
+
+  .card-anim-inner img {
+    width: 100%;
+    border-radius: 25px;
+    box-shadow: 0 60px 120px rgba(0, 0, 0, 0.95);
+    display: block;
+  }
+
+  .about-actions {
+    position: absolute;
+    left: 0;
+    bottom: -350px;
+    /* Lowered to accommodate larger card */
+    width: 100%;
+    text-align: center;
+    z-index: 20;
+    opacity: 0;
+  }
+
+  /* Scale up button */
+  .about-actions .contact-btn {
+    padding: 2.6rem 5.2rem !important;
+    /* +30% */
+    font-size: 2.34rem !important;
+    /* +30% */
   }
 }

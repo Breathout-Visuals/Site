@@ -1,0 +1,7 @@
+Title: Gamma Sound
+Client: Sony Music
+Date: 2024
+Description: A music video for the latest hit single.
+Tags: Music Video, Pop
+Width: 1920
+Height: 1080

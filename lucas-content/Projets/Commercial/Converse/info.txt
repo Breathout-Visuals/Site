@@ -4,8 +4,8 @@ Date: December 2025
 Role: spark_me
 Status: In Editing
 Credits:
-Description: Spec ad by an ESRA team, shot entirely under rain. Required strict, safe electrical handling. I worked as Electrician reinforcement.
-Description Fr: Publicité (Spec Ad) réalisée par une équipe de l'ESRA. Un tournage entièrement sous la pluie, nécessitant une gestion électrique rigoureuse et sécurisée. J'y ai travaillé comme renfort Électro.
+Description: Spec commercial developed in a student context, designed as an immersion into real production conditions. Shot entirely under rain, the project required precise organization and constant technical control. The visuals rely on a raw, contrasted aesthetic aligned with the brand’s urban energy.
+Description Fr: Publicité spec développée dans un cadre étudiant, pensée comme une immersion dans des conditions de production réelles. Le tournage s’est déroulé entièrement sous la pluie, impliquant une organisation précise et une rigueur technique constante. L’image s’appuie sur une esthétique brute et contrastée, en lien direct avec l’énergie urbaine de la marque.
 
 
 [CREDITS]

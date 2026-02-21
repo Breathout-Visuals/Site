@@ -34,7 +34,7 @@
 
         <button id="lang-toggle" class="lang-btn">EN</button>
 
-        <div class="burger" style="display: none;">
+        <div class="burger hidden">
             <span></span>
             <span></span>
             <span></span>
@@ -46,7 +46,7 @@
         <div id="hero" class="hero-spacer">
             <!-- Optional Scroll Indicator -->
             <div class="scroll-indicator">
-                <i class="fa-solid fa-chevron-down" style="color: white; font-size: 24px;"></i>
+                <i class="fa-solid fa-chevron-down icon-white"></i>
             </div>
         </div>
 
@@ -110,7 +110,7 @@
                 <div class="about-text">
                     <h1>
                         <span data-lang="fr">Qui suis-je ?</span>
-                        <span data-lang="en" style="display:none;">About Me</span>
+                        <span data-lang="en" class="hidden">About Me</span>
                     </h1>
 
                     <!-- Version FR -->
@@ -128,7 +128,7 @@
                     </div>
 
                     <!-- Version EN -->
-                    <div data-lang="en" style="display:none;">
+                    <div data-lang="en" class="hidden">
                         <p>
                             My name is <strong>Zoltan Hays</strong> and I am a director, videographer and editor.
                             <br><br>
@@ -152,12 +152,12 @@
                         </div>
 
                         <div class="social-links">
-                            <a href="https://www.instagram.com/zol__tan/" target="_blank" class="social-link"
-                                aria-label="Instagram">
+                            <a href="https://www.instagram.com/zol__tan/" target="_blank" rel="noopener"
+                                class="social-link" aria-label="Instagram" title="Instagram">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="https://www.linkedin.com/in/zoltan-hays-1028272aa" target="_blank"
-                                class="social-link" aria-label="LinkedIn">
+                            <a href="https://www.linkedin.com/in/zoltan-hays-1028272aa" target="_blank" rel="noopener"
+                                class="social-link" aria-label="LinkedIn" title="LinkedIn">
                                 <i class="fab fa-linkedin"></i>
                             </a>
                         </div>
@@ -176,16 +176,17 @@
         </div>
     </footer>
 
-    <div class="mobile-menu" style="visibility: hidden; opacity: 0;">
+    <div class="mobile-menu invisible">
         <nav class="menu-links">
             <a href="#portfolio" data-fr="Portfolio" data-en="Portfolio">Portfolio</a>
             <a href="#about" data-fr="Qui suis-je" data-en="About Me">Qui suis-je</a>
             <a href="/" data-fr="Breathout" data-en="Breathout">Breathout</a>
         </nav>
         <div class="social-mobile">
-            <a href="https://www.instagram.com/zol__tan/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/in/zoltan-hays-1028272aa" target="_blank"><i
-                    class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/zol__tan/" target="_blank" rel="noopener" title="Instagram"
+                aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/zoltan-hays-1028272aa" target="_blank" rel="noopener" title="LinkedIn"
+                aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
         </div>
     </div>
 

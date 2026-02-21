@@ -1,0 +1,144 @@
+/* --- ABOUT SECTION ANIMATION STYLES (Refined) --- */
+
+/* Test Layout Basics (Can be removed on integration) */
+body {
+  background: #000;
+  color: #fff;
+  margin: 0;
+}
+
+/* 1. SCROLL TRACK & VIEWPORT */
+/* Wrapper for the scroll hook */
+.about-scroll-track {
+  height: 350vh;
+  /* Determines animation speed/length */
+  position: relative;
+  /* Debug: background: rgba(50,50,50,0.1); */
+}
+
+/* Sticky Window */
+.about-sticky-viewport {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  width: 100%;
+}
+
+.about-sticky-viewport .container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 2. TEXT CONTENT */
+.about-content-wrapper {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  text-align: left;
+  z-index: 1;
+}
+
+.about-title-styled {
+  font-family: 'Playfair Display', serif;
+  /* Restored Original Font */
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  transform: translateY(-20px);
+  /* Ensure title stays sharp */
+  filter: none !important;
+}
+
+/* Text Blocks */
+.scroll-reveal-block {
+  margin-bottom: 1.5rem;
+  font-family: 'Inter', sans-serif;
+  /* Restored Original Font */
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+.scroll-reveal-block:nth-last-child(2) {
+  margin-bottom: 2rem;
+}
+
+/* 3. CARD ANIMATION */
+.about-card-overlay-anim {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  /* Adjust based on desired card size */
+  z-index: 10;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-anim-inner {
+  transform-origin: center center;
+  opacity: 0;
+  width: 100%;
+}
+
+.card-anim-inner img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+
+/* 4. ACTIONS (Button) */
+.about-actions {
+  position: absolute;
+  left: 0;
+  bottom: -200px;
+  /* Start low */
+  width: 100%;
+  text-align: center;
+  z-index: 20;
+  opacity: 0;
+}
+
+/* Restored Original Button Style */
+.contact-btn {
+  display: inline-block;
+  padding: 1.2rem 2.5rem;
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  text-decoration: none;
+
+  font-family: 'Playfair Display', serif;
+  /* Restored Font */
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+  border-radius: 0;
+  /* Square Corners */
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease, color 0.3s ease;
+}
+
+.contact-btn:hover {
+  background: transparent;
+  color: #fff;
+  transform: scale(1.05);
+  /* Original Hover Scale */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+}
+
+/* 5. UTILITIES */
+/* Hide lang switch on test page */
+#lang-switch {
+  display: none;
+}

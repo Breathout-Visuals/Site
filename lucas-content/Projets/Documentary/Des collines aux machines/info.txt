@@ -4,8 +4,8 @@ Date: May 2025
 Role: director_me
 Status: In Editing
 Credits:
-Description: Festival documentary about modern shepherds facing the tension between tradition and technological evolution. I directed the film.
-Description Fr: Documentaire de festival sur les bergers modernes et les défis qu'ils affrontent aujourd'hui. Un regard authentique sur la tension entre tradition et modernité. J'ai réalisé le film.
+Description: Festival-oriented documentary focusing on contemporary shepherds and the transformation of their way of life. The film explores the coexistence of traditional practices and modern tools, portraying a rural world in transition.
+Description Fr: Documentaire destiné aux festivals consacré aux bergers contemporains et aux mutations de leur mode de vie. Le film explore la cohabitation entre pratiques traditionnelles et outils modernes, dessinant le portrait d’un monde rural en transition.
 
 
 [CREDITS]

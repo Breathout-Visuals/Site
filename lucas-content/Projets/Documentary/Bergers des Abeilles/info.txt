@@ -4,8 +4,8 @@ Date: April 2025
 Role: dop_me
 Status: Delivered
 Credits:
-Description: Festival documentary following beekeepers and the crucial role of bees. Rooted in real fieldwork and traditional craft. I worked as Director of Photography and Camera Operator.
-Description Fr: Documentaire de festival suivant des apiculteurs et le rôle vital des abeilles. Un film ancré dans le travail de terrain et l'artisanat traditionnel. J'étais Directeur de la Photographie et Cadreur.
+Description: Festival-oriented documentary following the daily lives of beekeepers and highlighting the essential role of bees. The film adopts an immersive, field-driven approach, giving space to gestures, landscapes and the passage of time.
+Description Fr: Documentaire destiné aux festivals, suivant le quotidien d’apiculteurs et mettant en lumière le rôle fondamental des abeilles. Le film adopte une approche immersive, ancrée dans le terrain, laissant une large place aux gestes, aux paysages et au temps long.
 
 
 [CREDITS]

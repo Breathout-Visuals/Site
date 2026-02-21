@@ -5,8 +5,8 @@ Role: spark_me
 Status: In Distribution
 Project Link: https://youtu.be/XE4fg93ZOfc
 Credits:
-Description: Short film for the 48h Côte d’Azur contest, on the theme “Dinner.” The story follows an artist confronting her toxic producer. Initially hired as Electrician, I ended up taking full charge of the grip department on set.
-Description Fr: Court-métrage tourné pour le 48h Côte d’Azur, sur le thème « Repas ». L'histoire suit une artiste qui confronte son producteur toxique. Initialement engagé comme Électro, j'ai finalement pris en charge toute la machinerie durant le tournage.
+Description: Short film created for the 48h Côte d’Azur competition, on the theme “Dinner.” The story stages an intimate, tense confrontation between an artist and her producer, exploring power dynamics and manipulation.
+Description Fr: Court-métrage réalisé dans le cadre du 48h Côte d’Azur, sur le thème « Repas ». Le film met en scène une confrontation intime et tendue entre une artiste et son producteur, explorant les rapports de pouvoir et la manipulation.
 
 
 [CREDITS]

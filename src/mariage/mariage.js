@@ -216,8 +216,15 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('custom-cursor-active');
 
     document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
+        // Use transform for performance (Hardware Acceleration)
+        // We keep the -50% centering from CSS, so we just translate to the point.
+        // BUT: transform overwrites the CSS transform: translate(-50%, -50%).
+        // So we must include it in the JS or change the CSS strategy.
+        // Let's rely on Fixed Top/Left 0 and just translate.
+        // To center: X - width/2, but easier to keep CSS translate(-50%, -50%) if we append it?
+        // No, cleaner to exact calc or append.
+        // Let's do:
+        cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
     });
 
     // Global Link Handler (Hides Status Bar URL)

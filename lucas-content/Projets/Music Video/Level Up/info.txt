@@ -4,8 +4,8 @@ Date: September 2025
 Role: cam_dir_me
 Status: Delivered
 Credits:
-Description: Energetic music video for VIO, mixing dance, rhythm and strong visual identity. I directed the video and operated camera.
-Description Fr: Clip vidéo pour l'artiste VIO. Un univers dynamique mêlant danse, rythme et une identité visuelle marquante. J'ai réalisé le vidéo.
+Description: Music video for the artist VIO, driven by constant energy and a strong sense of rhythm. The visual universe blends dance, performance and bold contrasts in support of a confident identity.
+Description Fr: Clip musical pour l’artiste VIO, porté par une énergie constante et un rythme soutenu. L’univers visuel mêle danse, performance et contrastes marqués, au service d’une identité affirmée.
 
 
 [CREDITS]

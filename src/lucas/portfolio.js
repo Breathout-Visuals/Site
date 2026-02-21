@@ -131,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo(0, 0);
 
     setupAnimations();
+    setupAboutMobileAnimation();
     setupLanguageSwitch();
     setupModal();
     setupCursor();
@@ -405,6 +406,15 @@ function setupAnimations() {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
+
+            // SPECIAL CASE: About Section on Mobile
+            if (targetId === '#about' && window.innerWidth <= 1100) {
+                if (typeof window.autoScrollToAbout === 'function') {
+                    window.autoScrollToAbout();
+                    return;
+                }
+            }
+
             const target = document.querySelector(targetId);
             if (target) {
                 target.scrollIntoView({ behavior: 'smooth' });
@@ -1816,6 +1826,15 @@ function setupEmailInteractions() {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
             const targetId = btn.getAttribute('data-scroll');
+
+            // SPECIAL CASE: About Section on Mobile
+            if (targetId === '#about' && window.innerWidth <= 1100) {
+                if (typeof window.autoScrollToAbout === 'function') {
+                    window.autoScrollToAbout();
+                    return;
+                }
+            }
+
             const target = document.querySelector(targetId);
             if (target) {
                 target.scrollIntoView({ behavior: 'smooth' });
@@ -2348,11 +2367,60 @@ if (menuToggle && navLinks) {
                 margin-top: 0.5rem !important;
             }
             
-            /* FORCE HUGE BADGES */
+            /* FORCE HUGE BADGES (UPDATED REQUEST) */
              .role-badge, .status-badge {
-                font-size: 1rem !important; /* Increased from 0.55rem */
-                padding: 8px 16px !important; /* Increased padding */
-                border-width: 2px !important; /* Thicker border */
+                font-size: 1.5rem !important; /* Increased to 1.5rem */
+                padding: 0.8rem 2rem !important; /* Matches +50% scale */
+                border-width: 2px !important;
+            }
+
+            /* --- USER REQUEST: MODAL TEXT +30% (MOBILE ONLY, SCOPED) --- */
+            
+            /* 1. Project Title */
+            #project-modal #modal-title {
+                font-size: 3.9rem !important;
+                line-height: 1 !important;
+            }
+
+            /* 2. Meta Data */
+            #project-modal .modal-meta, 
+            #project-modal .meta-label, 
+            #project-modal .meta-value, 
+            #project-modal #modal-category, 
+            #project-modal #modal-date {
+                font-size: 1.2rem !important;
+            }
+            /* Separator */
+            #project-modal .meta-sep {
+                font-size: 1.2rem !important;
+                margin: 0 0.5rem !important;
+            }
+
+            /* 3. Role In Modal */
+            #project-modal #modal-role {
+                 font-size: 1.2rem !important;
+            }
+
+            /* 4. Description */
+            #project-modal #modal-description {
+                font-size: 1.45rem !important;
+                line-height: 1.6 !important;
+            }
+
+            /* 5. Credits */
+            #project-modal .credits-category-title {
+                font-size: 1.1rem !important; 
+                margin-bottom: 0.8rem !important;
+            }
+            #project-modal .credit-role {
+                font-size: 1rem !important; 
+            }
+            #project-modal .credit-name {
+                font-size: 1.2rem !important; 
+            }
+            #project-modal .credits-row {
+                gap: 1.5rem !important; 
+                margin-bottom: 0.8rem !important;
             }
 
             /* Adjust grid for these huge fonts if needed, though CSS handles it. */
@@ -2612,3 +2680,145 @@ if (menuToggle && navLinks) {
 
     // Touch handlers removed (Static behavior)
 })();
+
+// --- MOBILE-ONLY ABOUT SCROLL ANIMATION ---
+function setupAboutMobileAnimation() {
+    const track = document.querySelector('.about-mobile-scroll-track');
+    if (!track) return;
+
+    // TARGETS
+    const revealTexts = track.querySelectorAll('.scroll-reveal-text, .scroll-reveal-block');
+    const textGroup = track.querySelector('.about-text-group');
+    const actionGroup = track.querySelector('.about-actions');
+    const cardAnimContainer = track.querySelector('.about-card-overlay-anim');
+    const cardInner = track.querySelector('.card-anim-inner');
+
+    const onScroll = () => {
+        // MOBILE ONLY GUARD (Match 1100px forced viewport)
+        if (window.innerWidth > 1100) return;
+
+        const rect = track.getBoundingClientRect();
+        const viewHeight = window.innerHeight;
+        const trackHeight = rect.height;
+
+        let scrolled = -rect.top;
+        if (scrolled < 0) scrolled = 0;
+
+        const totalDistance = trackHeight - viewHeight;
+        let progress = totalDistance > 0 ? scrolled / totalDistance : 0;
+        progress = Math.min(Math.max(progress, 0), 1);
+
+        // --- PHASE 1: TEXT REVEAL (0% to 45%) ---
+        const textPhaseEnd = 0.45;
+        revealTexts.forEach((el, index) => {
+            const step = textPhaseEnd / revealTexts.length;
+            const triggerStart = step * index;
+            const triggerEnd = triggerStart + 0.15;
+
+            let localP = (progress - triggerStart) / (triggerEnd - triggerStart);
+            localP = Math.min(Math.max(localP, 0), 1);
+
+            // Apply Reveal Styles + User requested shift (-4rem) for text/title 
+            // We exclude elements inside .about-actions to keep the button in place
+            const isButton = el.closest('.about-actions');
+            const shift = isButton ? '0px' : '-8rem';
+
+            el.style.opacity = localP;
+            el.style.transform = `translateY(calc(${30 * (1 - localP)}px + ${shift}))`;
+
+            if (progress < textPhaseEnd + 0.1 && localP < 1) {
+                el.style.filter = `blur(${10 * (1 - localP)}px)`;
+            } else {
+                el.style.filter = 'none';
+            }
+        });
+
+        // --- PHASE 2: CARD ENTRANCE & TEXT BLUR (55% to 100%) ---
+        const cardStart = 0.55;
+        const cardEnd = 1.0;
+        let cardP = Math.min(Math.max((progress - cardStart) / (cardEnd - cardStart), 0), 1);
+
+        if (cardAnimContainer) {
+            const startX = -250;
+            const endX = -50;
+            const currentX = startX + ((endX - startX) * cardP);
+            const currentRot = -15 * (1 - cardP);
+
+            if (cardP > 0) {
+                cardAnimContainer.style.opacity = 1;
+                // V4 Change: Lowered Y position by 5rem
+                cardAnimContainer.style.transform = `translate(${currentX}%, calc(-50% + 5rem))`;
+                cardInner.style.transform = `rotate(${currentRot}deg)`;
+                cardInner.style.opacity = 1;
+
+                // V5 CHANGE: DELAYED BLUR
+                const blurStartOffset = 0.3;
+                let blurP = Math.max((cardP - blurStartOffset) / (1 - blurStartOffset), 0);
+
+                if (textGroup) {
+                    textGroup.style.filter = `blur(${blurP * 15}px)`;
+                    textGroup.style.opacity = 1 - (blurP * 0.5);
+                }
+            } else {
+                cardAnimContainer.style.opacity = 0;
+                if (textGroup) {
+                    textGroup.style.filter = 'none';
+                    textGroup.style.opacity = 1;
+                }
+            }
+        }
+
+        // --- PHASE 3: ACTION BUTTON REVEAL (Sync Finish) ---
+        if (actionGroup) {
+            const actionStart = 0.8;
+            const actionEnd = 1.0;
+            let actionP = Math.min(Math.max((progress - actionStart) / (actionEnd - actionStart), 0), 1);
+            actionGroup.style.opacity = actionP;
+            actionGroup.style.transform = `translateY(${30 * (1 - actionP)}px)`;
+        }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // --- AUTO-SCROLL TRIGGER (FOR BURGER MENU) ---
+    window.autoScrollToAbout = () => {
+        // Unlock Scroll if it was locked by mobile menu
+        document.body.style.overflow = '';
+
+        const trackRect = track.getBoundingClientRect();
+        const startY = window.pageYOffset + trackRect.top;
+        const viewHeight = window.innerHeight;
+        const trackHeight = track.offsetHeight;
+
+        // Target: 45% of the animation (Text revealed)
+        const targetProgress = 0.45;
+        const totalDistance = trackHeight - viewHeight;
+        const targetY = startY + (totalDistance * targetProgress);
+
+        // Smooth Auto-Drive Loop
+        let currentY = window.pageYOffset;
+        const speed = 25; // Continuous scroll speed
+
+        const drive = () => {
+            if (Math.abs(window.pageYOffset - targetY) < 10) return; // Arrived
+
+            // If user manually scrolls/interrupts, we could stop, but for now let's force it
+            currentY += (targetY - currentY) * 0.08; // Ease-out jump
+            window.scrollTo(0, currentY);
+
+            if (Math.abs(currentY - targetY) > 5) {
+                requestAnimationFrame(drive);
+            }
+        };
+
+        // Immediate jump to section start if far away
+        if (Math.abs(window.pageYOffset - startY) > viewHeight) {
+            window.scrollTo({ top: startY, behavior: 'auto' });
+            currentY = startY;
+        }
+
+        requestAnimationFrame(drive);
+    };
+
+    onScroll();
+}

@@ -1,7 +1,31 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
+import { exec } from 'child_process';
+
+const contentWatcher = () => ({
+    name: 'content-watcher',
+    configureServer(server) {
+        const targetDir = resolve(__dirname, 'home-content');
+        server.watcher.add(targetDir);
+
+        const generate = (file) => {
+            if (file.includes('home-content')) {
+                console.log(`[Content Watcher] Change detected in ${file}, regenerating data...`);
+                exec('node scripts/home/generate-data.cjs', (err, stdout, stderr) => {
+                    if (err) console.error(`[Gen Error] ${stderr}`);
+                    else console.log(`[Gen Output] ${stdout.trim()}`);
+                });
+            }
+        };
+
+        server.watcher.on('change', generate);
+        server.watcher.on('add', generate);
+        server.watcher.on('unlink', generate);
+    }
+});
 
 export default defineConfig({
+    plugins: [contentWatcher()],
     build: {
         rollupOptions: {
             input: {

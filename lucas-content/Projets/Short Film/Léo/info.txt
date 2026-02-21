@@ -4,8 +4,8 @@ Date: December 2024
 Role: camera_op_me
 Status: Delivered
 Credits:
-Description: Short film for the 2024 Nikon Film Festival, theme “Superhero.” A disabled boy imagines himself walking like the characters from his comics. I worked as Camera Operator.
-Description Fr: Court-métrage pour le Nikon Film Festival 2024, thème « Super-héros ». Un jeune garçon handicapé imagine marcher comme dans ses comics préférés. J'étais Cadreur.
+Description: Short film created for the Nikon Film Festival 2025, on the theme “Superhero.” The story follows a disabled young boy who reimagines his everyday life through imagination, projecting himself into the heroes of his comic books.
+Description Fr: Court-métrage réalisé pour le Nikon Film Festival 2025, sur le thème « Super-héros ». Le récit suit un jeune garçon en situation de handicap qui réinvente son quotidien par l’imaginaire, en se projetant dans les héros de ses bandes dessinées.
 
 
 [CREDITS]

@@ -4,8 +4,8 @@ Date: November 2024
 Role: dop_me
 Status: Delivered
 Credits:
-Description: Minimalist studio-shot music video for Faz’r Elengi, created with very limited equipment. I worked as Director of Photography.
-Description Fr: Clip vidéo pour Faz’r Elengi tourné en studio d'enregistrement. Une création simple mais efficace avec très peu de matériel. J'étais Directeur de la Photographie.
+Description: Music video for Faz’r Elengi, shot in a recording studio. A direct, stripped-down approach designed to fully exploit a confined space and intentionally limited resources.
+Description Fr: Clip musical pour Faz’r Elengi, tourné en studio d’enregistrement. Une approche directe et épurée, pensée pour exploiter au maximum un espace restreint et des moyens volontairement limités.
 
 
 [CREDITS]

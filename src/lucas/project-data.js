@@ -134,8 +134,8 @@ export const projects = [
         "status": "In Editing",
         "link": "",
         "desc": {
-            "fr": "Publicité (Spec Ad) réalisée par une équipe de l'ESRA. Un tournage entièrement sous la pluie, nécessitant une gestion électrique rigoureuse et sécurisée. J'y ai travaillé comme renfort Électro.",
-            "en": "Spec ad by an ESRA team, shot entirely under rain. Required strict, safe electrical handling. I worked as Electrician reinforcement."
+            "fr": "Publicité spec développée dans un cadre étudiant, pensée comme une immersion dans des conditions de production réelles. Le tournage s’est déroulé entièrement sous la pluie, impliquant une organisation précise et une rigueur technique constante. L’image s’appuie sur une esthétique brute et contrastée, en lien direct avec l’énergie urbaine de la marque.",
+            "en": "Spec commercial developed in a student context, designed as an immersion into real production conditions. Shot entirely under rain, the project required precise organization and constant technical control. The visuals rely on a raw, contrasted aesthetic aligned with the brand’s urban energy."
         },
         "credits": "",
         "structuredCredits": [],
@@ -175,8 +175,8 @@ export const projects = [
         "status": "In Editing",
         "link": "",
         "desc": {
-            "fr": "Publicité (Spec Ad) produite par une équipe de l'ESRA, tournée entièrement en studio. Un décor surélevé qui exigeait une grande rigueur technique. J'ai occupé les postes d'Électro et Machiniste.",
-            "en": "Studio-shot ESRA spec ad with an elevated set requiring technical precision. I worked as both Electrician and Grip."
+            "fr": "Publicité spec tournée intégralement en studio, construite autour d’un décor surélevé exigeant une grande précision d’exécution. Le projet repose sur une mise en scène structurée et une attention particulière portée à la cohérence visuelle dans un environnement technique contraignant.",
+            "en": "Studio-shot spec commercial built around an elevated set requiring a high level of execution precision. The project relies on structured staging and strong visual consistency within a technically demanding environment."
         },
         "credits": "",
         "structuredCredits": [],
@@ -221,8 +221,8 @@ export const projects = [
         "status": "Delivered",
         "link": "",
         "desc": {
-            "fr": "Publicité pour The Street Partners. Une approche corporate moderne axée sur le branding et une image soignée. J'étais Directeur de la Photographie.",
-            "en": "Corporate commercial for The Street Partners, built with a modern visual identity focused on clean branding. I was Director of Photography."
+            "fr": "Film publicitaire corporate réalisé pour The Street Partners. Une approche visuelle sobre et contemporaine, pensée pour valoriser le branding et transmettre une image professionnelle claire, élégante et maîtrisée.",
+            "en": "Corporate commercial created for The Street Partners. A clean, contemporary visual approach designed to enhance branding and convey a clear, elegant and controlled professional image."
         },
         "credits": "",
         "structuredCredits": [],
@@ -272,8 +272,8 @@ export const projects = [
         "status": "Delivered",
         "link": "",
         "desc": {
-            "fr": "Documentaire de festival suivant des apiculteurs et le rôle vital des abeilles. Un film ancré dans le travail de terrain et l'artisanat traditionnel. J'étais Directeur de la Photographie et Cadreur.",
-            "en": "Festival documentary following beekeepers and the crucial role of bees. Rooted in real fieldwork and traditional craft. I worked as Director of Photography and Camera Operator."
+            "fr": "Documentaire destiné aux festivals, suivant le quotidien d’apiculteurs et mettant en lumière le rôle fondamental des abeilles. Le film adopte une approche immersive, ancrée dans le terrain, laissant une large place aux gestes, aux paysages et au temps long.",
+            "en": "Festival-oriented documentary following the daily lives of beekeepers and highlighting the essential role of bees. The film adopts an immersive, field-driven approach, giving space to gestures, landscapes and the passage of time."
         },
         "credits": "",
         "structuredCredits": [],
@@ -313,8 +313,8 @@ export const projects = [
         "status": "In Editing",
         "link": "",
         "desc": {
-            "fr": "Documentaire de festival sur les bergers modernes et les défis qu'ils affrontent aujourd'hui. Un regard authentique sur la tension entre tradition et modernité. J'ai réalisé le film.",
-            "en": "Festival documentary about modern shepherds facing the tension between tradition and technological evolution. I directed the film."
+            "fr": "Documentaire destiné aux festivals consacré aux bergers contemporains et aux mutations de leur mode de vie. Le film explore la cohabitation entre pratiques traditionnelles et outils modernes, dessinant le portrait d’un monde rural en transition.",
+            "en": "Festival-oriented documentary focusing on contemporary shepherds and the transformation of their way of life. The film explores the coexistence of traditional practices and modern tools, portraying a rural world in transition."
         },
         "credits": "",
         "structuredCredits": [],
@@ -364,8 +364,8 @@ export const projects = [
         "status": "Delivered",
         "link": "https://youtu.be/tgxDICtOiC8?si=0VFyGOwveazqQdd4",
         "desc": {
-            "fr": "Visualizer musical pour Faz’r Elengi. Un concept épuré et ciblé, centré sur la performance et l'esthétique. J'étais Directeur de la Photographie.",
-            "en": "Music visualizer for Faz’r Elengi, built around a clean performance-driven aesthetic. I worked as Director of Photography."
+            "fr": "Visualiser musical pour Faz’r Elengi, conçu autour d’un dispositif volontairement minimal. L’image se concentre sur la présence de l’artiste, le rythme et l’atmosphère, dans une recherche de clarté et de cohérence esthétique.",
+            "en": "Music visualizer for Faz’r Elengi, designed around a deliberately minimal setup. The visuals focus on the artist’s presence, rhythm and atmosphere, aiming for clarity and aesthetic coherence."
         },
         "credits": "",
         "structuredCredits": [],
@@ -410,8 +410,8 @@ export const projects = [
         "status": "Delivered",
         "link": "",
         "desc": {
-            "fr": "Clip vidéo pour Faz’r Elengi tourné en studio d'enregistrement. Une création simple mais efficace avec très peu de matériel. J'étais Directeur de la Photographie.",
-            "en": "Minimalist studio-shot music video for Faz’r Elengi, created with very limited equipment. I worked as Director of Photography."
+            "fr": "Clip musical pour Faz’r Elengi, tourné en studio d’enregistrement. Une approche directe et épurée, pensée pour exploiter au maximum un espace restreint et des moyens volontairement limités.",
+            "en": "Music video for Faz’r Elengi, shot in a recording studio. A direct, stripped-down approach designed to fully exploit a confined space and intentionally limited resources."
         },
         "credits": "",
         "structuredCredits": [],
@@ -456,8 +456,8 @@ export const projects = [
         "status": "In Editing",
         "link": "",
         "desc": {
-            "fr": "Clip vidéo pour l'artiste Faz’r Elengi. Tourné dans quatre lieux différents, avec notamment ma première gestion de voitures de drift sur le plateau. J'ai réalisé le clip et supervisé toute la mise en scène.",
-            "en": "Music video for Faz’r Elengi shot in four locations, including my first experience supervising drift cars on set. I directed and handled staging."
+            "fr": "Clip musical pour Faz’r Elengi, tourné dans plusieurs lieux aux ambiances contrastées. Le projet combine narration visuelle, énergie brute et séquences techniques plus complexes, afin de construire un univers fort et rythmé.",
+            "en": "Music video for Faz’r Elengi, shot across multiple locations with contrasting atmospheres. The project combines visual storytelling, raw energy and more complex technical sequences to build a strong, dynamic universe."
         },
         "credits": "",
         "structuredCredits": [],
@@ -502,8 +502,8 @@ export const projects = [
         "status": "Delivered",
         "link": "",
         "desc": {
-            "fr": "Clip vidéo pour l'artiste VIO. Un univers dynamique mêlant danse, rythme et une identité visuelle marquante. J'ai réalisé le vidéo.",
-            "en": "Energetic music video for VIO, mixing dance, rhythm and strong visual identity. I directed the video and operated camera."
+            "fr": "Clip musical pour l’artiste VIO, porté par une énergie constante et un rythme soutenu. L’univers visuel mêle danse, performance et contrastes marqués, au service d’une identité affirmée.",
+            "en": "Music video for the artist VIO, driven by constant energy and a strong sense of rhythm. The visual universe blends dance, performance and bold contrasts in support of a confident identity."
         },
         "credits": "",
         "structuredCredits": [],
@@ -548,8 +548,8 @@ export const projects = [
         "status": "In Distribution",
         "link": "https://youtu.be/XE4fg93ZOfc",
         "desc": {
-            "fr": "Court-métrage tourné pour le 48h Côte d’Azur, sur le thème « Repas ». L'histoire suit une artiste qui confronte son producteur toxique. Initialement engagé comme Électro, j'ai finalement pris en charge toute la machinerie durant le tournage.",
-            "en": "Short film for the 48h Côte d’Azur contest, on the theme “Dinner.” The story follows an artist confronting her toxic producer. Initially hired as Electrician, I ended up taking full charge of the grip department on set."
+            "fr": "Court-métrage réalisé dans le cadre du 48h Côte d’Azur, sur le thème « Repas ». Le film met en scène une confrontation intime et tendue entre une artiste et son producteur, explorant les rapports de pouvoir et la manipulation.",
+            "en": "Short film created for the 48h Côte d’Azur competition, on the theme “Dinner.” The story stages an intimate, tense confrontation between an artist and her producer, exploring power dynamics and manipulation."
         },
         "credits": "",
         "structuredCredits": [],
@@ -594,8 +594,8 @@ export const projects = [
         "status": "In Editing",
         "link": "",
         "desc": {
-            "fr": "Court-métrage d'un étudiant de Studio M. L'histoire d'un jeune homme héritant de la maison familiale et confrontant un traumatisme enfoui. J'ai travaillé comme Directeur de la Photographie.",
-            "en": "Short film by a Studio M student. The story follows a young man confronting inherited trauma in his family home. I was Director of Photography."
+            "fr": "Court-métrage étudiant centré sur l’héritage familial et les traumatismes enfouis. À travers un lieu chargé de mémoire, le film suit un personnage confronté à un passé qu’il ne peut plus ignorer. Court-métrage réalisé pour le Nikon Film Festival 2025. Le film explore la transmission, l’image de soi et les liens intergénérationnels à travers une approche sensible et introspective.",
+            "en": "Student short film centered on family heritage and buried trauma. Through a memory-laden location, the film follows a character forced to confront a past he can no longer ignore. Le miroir des générations – Nikon Film Festival 2025 Short film created for the Nikon Film Festival 2025. The film explores transmission, self-image and intergenerational bonds through a sensitive, introspective approach."
         },
         "credits": "",
         "structuredCredits": [],
@@ -645,8 +645,8 @@ export const projects = [
         "status": "In Editing",
         "link": "",
         "desc": {
-            "fr": "Court-métrage réalisé pour le Nikon Film Festival sur le thème « Le Feu ». Le film explore la transmission, la perception de soi et les liens intergénérationnels. J'étais Directeur de la Photographie.",
-            "en": "Short film for the Nikon Film Festival, on the theme “Beauty.” The film explores transmission, self-perception and generational transitions. I was Director of Photography."
+            "fr": "Court-métrage réalisé pour le Nikon Film Festival 2025. Le film explore les notions de transmission, de perception de soi et de liens intergénérationnels, à travers une approche sensible et introspective, centrée sur le regard que l’on porte sur les autres et sur soi-même.",
+            "en": "Short film created for the Nikon Film Festival 2025. The film explores themes of transmission, self-perception and intergenerational relationships through a sensitive, introspective approach focused on how we view others and ourselves."
         },
         "credits": "",
         "structuredCredits": [],
@@ -681,8 +681,8 @@ export const projects = [
         "status": "Delivered",
         "link": "",
         "desc": {
-            "fr": "Court-métrage pour le Nikon Film Festival 2024, thème « Super-héros ». Un jeune garçon handicapé imagine marcher comme dans ses comics préférés. J'étais Cadreur.",
-            "en": "Short film for the 2024 Nikon Film Festival, theme “Superhero.” A disabled boy imagines himself walking like the characters from his comics. I worked as Camera Operator."
+            "fr": "Court-métrage réalisé pour le Nikon Film Festival 2025, sur le thème « Super-héros ». Le récit suit un jeune garçon en situation de handicap qui réinvente son quotidien par l’imaginaire, en se projetant dans les héros de ses bandes dessinées.",
+            "en": "Short film created for the Nikon Film Festival 2025, on the theme “Superhero.” The story follows a disabled young boy who reimagines his everyday life through imagination, projecting himself into the heroes of his comic books."
         },
         "credits": "",
         "structuredCredits": [],
@@ -712,8 +712,8 @@ export const projects = [
         "status": "In Editing",
         "link": "",
         "desc": {
-            "fr": "Court-métrage réalisé pour des festivals, produit en association. L'histoire plonge dans le monde du journalisme niçois des années 1980. J'y ai travaillé comme Chef Machiniste, encadrant une équipe de 2 à 4 techniciens, de la pré-production à l'intense travail de plateau.",
-            "en": "Short film made for festivals under a non-profit association. Set in the world of Nice journalism in the 1980s. I worked as Key Grip, managing a team of 2 to 4 technicians through prep and a demanding shoot."
+            "fr": "Court-métrage destiné aux festivals, produit en association. Le film plonge dans le milieu du journalisme niçois des années 1980, avec une attention particulière portée à l’atmosphère, au contexte historique et aux tensions de l’époque.",
+            "en": "Festival-oriented short film produced through a non-profit association. Set in the world of Nice journalism in the 1980s, with close attention to atmosphere, historical context and period tensions."
         },
         "credits": "",
         "structuredCredits": [],
@@ -748,8 +748,8 @@ export const projects = [
         "status": "Delivered",
         "link": "https://www.youtube.com/watch?v=0o7v2v1dPTc",
         "desc": {
-            "fr": "Court-métrage pour le Festival TousHanscene. Un jeune sourd perd ses appareils auditifs et fait face à une journée d'obstacles. J'étais Cadreur.",
-            "en": "Short film for the TousHanscene Festival. A deaf young man loses his hearing aids and must navigate a difficult day. I worked as Camera Operator."
+            "fr": "Court-métrage réalisé dans le cadre du festival TousHanscène. Le film suit un jeune homme sourd privé de ses appareils auditifs, confronté à une succession d’obstacles dans un environnement peu adapté à sa réalité. Le récit adopte un point de vue immersif, mettant en tension le quotidien et l’isolement sensoriel.",
+            "en": "Festival-oriented short film created for the TousHanscène Festival. The film follows a deaf young man who loses his hearing aids and faces a series of obstacles in an environment poorly adapted to his reality. The narrative adopts an immersive perspective, emphasizing everyday tension and sensory isolation."
         },
         "credits": "",
         "structuredCredits": [],
@@ -789,8 +789,8 @@ export const projects = [
         "status": "In Editing",
         "link": "",
         "desc": {
-            "fr": "Court-métrage pour le Nikon 2025. Un couple déstabilisé par une hospitalisation soudaine, naviguant entre fragilité et intimité. J'étais Chef Électricien (Gaffer), créant une lumière douce et émotionnelle.",
-            "en": "Short film for the Nikon Film Festival 2025, theme “Beauty.” A couple faces emotional fragility after a sudden hospitalisation. I crafted a soft, intimate lighting setup."
+            "fr": "Court-métrage réalisé pour le Nikon Film Festival 2025. Le film explore la fragilité d’un couple confronté à une hospitalisation soudaine, en s’attachant aux silences, aux regards et à l’intimité émotionnelle.",
+            "en": "Short film created for the Nikon Film Festival 2025. The film explores the fragility of a couple facing a sudden hospitalization, focusing on silence, glances and emotional intimacy."
         },
         "credits": "",
         "structuredCredits": [],
@@ -830,8 +830,8 @@ export const projects = [
         "status": "Ongoing",
         "link": "https://youtube.com/@nassimboukrouh?si=zvPcrKR7CY8gO8xt",
         "desc": {
-            "fr": "Série de vidéos YouTube pour un créateur de contenu immobilier. Tournages mobiles à travers la Suisse dans des environnements variés. J'étais Cadreur.",
-            "en": "YouTube real-estate content shot across Switzerland in various environments. I worked as Camera Operator."
+            "fr": "Série de vidéos YouTube dédiées à l’immobilier, tournée à l’international, notamment en Afrique du Sud, en Suisse, en France, au Canada et aux Émirats arabes unis. Un format mobile et dynamique, pensé pour s’adapter à des contextes variés tout en restant accessible et informatif.",
+            "en": "YouTube video series focused on real estate, shot internationally across South Africa, Switzerland, France, Canada and the United Arab Emirates. A mobile, dynamic format designed to adapt to diverse contexts while remaining accessible and informative."
         },
         "credits": "",
         "structuredCredits": [],
@@ -886,8 +886,8 @@ export const projects = [
         "status": "Delivered",
         "link": "https://youtu.be/P_eesdexjfs?si=2KAz39jzmFFlfHg_",
         "desc": {
-            "fr": "Film de mariage tourné au Mas des 5 Fontaines. Un mélange entre captation documentaire et approche cinématographique. J'étais Cadreur et Directeur de la Photographie.",
-            "en": "Wedding film shot at Mas des 5 Fontaines, blending documentary capture and cinematic language. I worked as Camera Operator and Director of Photography."
+            "fr": "Film de mariage tourné au Mas des 5 Fontaines. Une approche sensible mêlant captation documentaire et écriture cinématographique, cherchant à retranscrire l’émotion, les détails et l’atmosphère de la journée.",
+            "en": "Wedding film shot at Mas des 5 Fontaines. A sensitive approach blending documentary capture and cinematic storytelling, aiming to convey emotion, detail and the atmosphere of the day."
         },
         "credits": "",
         "structuredCredits": [],

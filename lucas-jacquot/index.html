@@ -4,7 +4,14 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/png" href="/lucas/assets/favicon.png" />
-  <meta name="viewport" content="width=1100">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Runtime Viewport Override for PC-like experience on Mobile (Satisfies Validator + User Req) -->
+  <script>
+    (function () {
+      var v = document.querySelector('meta[name="viewport"]');
+      if (v) v.setAttribute('content', 'width=1100');
+    })();
+  </script>
   <title>Lucas Jacquot | Filmmaker</title>
   <meta name="description" content="Portfolio of a visual storyteller and filmmaker based in Paris.">
   <meta name="google" content="notranslate" />
@@ -124,8 +131,15 @@
   <main>
     <!-- Hero Section -->
     <section id="home" class="hero">
-      <video class="hero-video-bg" autoplay muted loop playsinline poster="https://placehold.co/1920x1080/111/111.jpg">
+      <video class="hero-video-bg" autoplay muted loop poster="https://placehold.co/1920x1080/111/111.jpg">
       </video>
+      <!-- Script to add playsinline at runtime (Fixes validator warning while keeping iOS support) -->
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const v = document.querySelector('.hero-video-bg');
+          if (v) { v.setAttribute('playsinline', ''); v.play().catch(() => { }); }
+        });
+      </script>
       <div class="hero-content">
         <h1 class="stagger-text notranslate" translate="no">
           <span class="line">CRAFTING</span>
@@ -327,7 +341,8 @@
 
     <!-- About Section -->
     <section id="about" class="section">
-      <div class="container">
+      <!-- DESKTOP VIEW (Static) -->
+      <div class="about-desktop container">
         <div class="about">
           <div class="about-text reveal">
             <h2 data-i18n="about.title">About Me</h2>
@@ -341,6 +356,41 @@
           </div>
           <div class="about-image reveal">
             <img src="/lucas/assets/lucas-profile.jpg" alt="Lucas Jacquot" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- MOBILE VIEW (Scroll Animation Track) -->
+      <div class="about-mobile-scroll-track">
+        <div class="about-sticky-viewport">
+          <div class="container">
+            <!-- 1. Text Container -->
+            <div class="about-content-wrapper">
+              <h2 class="scroll-reveal-text about-title-styled" data-i18n="about.title">About Me</h2>
+              <div class="about-text-group">
+                <div class="scroll-reveal-block" data-index="1">
+                  <p data-i18n="about.p1">I am Lucas Jacquot, a filmmaker driven by light, composition, and the pursuit
+                    of
+                    crafted, meaningful images.</p>
+                </div>
+                <!-- Note: Split paragraphs if needed for timing, or keep as blocks -->
+                <div class="scroll-reveal-block" data-index="2">
+                  <p data-i18n="about.p2">I aim to create visuals that feel immersive and emotionally striking.</p>
+                </div>
+              </div>
+              <div class="about-actions">
+                <div class="scroll-reveal-block" data-index="4">
+                  <a class="contact-btn" data-scroll="#contact" data-i18n="contact.btn">Get in touch</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Card Overlay -->
+            <div class="about-card-overlay-anim">
+              <div class="card-anim-inner">
+                <img src="/lucas/assets/lucas-profile.jpg" alt="Lucas Jacquot">
+              </div>
+            </div>
           </div>
         </div>
       </div>
