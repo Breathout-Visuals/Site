@@ -183,12 +183,11 @@ function renderTeam() {
     const teamOverlay = document.getElementById('team-overlay');
     if (!teamOverlay) return;
 
-    const container = teamOverlay.querySelector('.team-pyramid');
+    const container = teamOverlay.querySelector('.overlay-content');
     if (!container) return;
 
-    const header = container.querySelector('.overlay-header');
+    // We no longer clear/re-append the header as it's static in index.html
     container.innerHTML = '';
-    if (header) container.appendChild(header);
 
     // Sort Team: Lucas -> 1st, Zoltan -> 2nd, others -> last
     const sortedTeam = [...dynamicTeam].sort((a, b) => {
@@ -207,7 +206,7 @@ function renderTeam() {
 
     sortedTeam.forEach((member, index) => {
         const card = document.createElement('div');
-        card.className = `team-card ${member.role.toUpperCase().includes('FOUNDER') ? 'founder-card' : ''}`;
+        card.className = `team-card anim-item ${member.role.toUpperCase().includes('FOUNDER') ? 'founder-card' : ''}`;
 
         // Give each card a default order based on sorted array
         card.style.order = index + 1;
@@ -311,12 +310,12 @@ function renderServices() {
     const grid = servicesOverlay.querySelector('.services-grid');
     if (!grid) return;
 
+    grid.innerHTML = '';
+
     // Clear existing cards but keep CTA if separate? 
     // In HTML, CTA is inside grid. 
     // We should re-add CTA manually or treat it as a special item.
     // Let's clear and rebuild.
-    grid.innerHTML = '';
-
     dynamicServices.forEach((service, index) => {
         const card = document.createElement('div');
         card.className = 'service-card anim-item';

@@ -27,28 +27,6 @@ body {
     height: 100vh;
 }
 
-/* --- OVERLAY WINDOWS --- */
-.overlay-window {
-    position: fixed;
-    inset: 0;
-    background: #050505;
-    z-index: 150;
-    /* Below Header (200), Above Main (10 for bg?) */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.6s;
-    overflow: hidden;
-    /* Prevent body scroll bleed */
-}
-
-.overlay-window.active {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
 
 /* --- LOADER --- */
 #preloader {
@@ -737,66 +715,58 @@ body.nav-open .line:nth-child(2) {
     /* Expand on hover */
 }
 
-/* TEAM SPECIFIC */
+/* --- SHARED OVERLAY HEADERS --- */
 .overlay-header {
     text-align: center;
-    margin-bottom: 80px;
+    margin: 0 !important;
+    /* STRICTLY NO MARGIN TO TOUCH CONTENT */
+    padding: 20px 0;
+    width: 100%;
+    z-index: 50;
+    flex: 0 0 auto;
+    background-color: rgba(255, 0, 0, 0.4) !important;
+    /* DEBUG: RED */
 }
 
 .overlay-header h2 {
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 300;
-    letter-spacing: 1rem;
-    margin-bottom: 30px;
+    letter-spacing: 0.8rem;
+    margin-bottom: 15px;
     text-transform: uppercase;
 }
 
 .overlay-header .subtitle {
     font-size: 0.85rem;
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
-    line-height: 1.8;
+    letter-spacing: 0.25em;
+    line-height: 1.6;
     color: #888;
 }
 
+.overlay-content {
+    flex: 1 1 auto;
+    width: 100%;
+    margin: 0 !important;
+    /* STRICTLY NO MARGIN TO TOUCH HEADER */
+    padding: 0 5% 80px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 255, 0, 0.2) !important;
+    /* DEBUG: GREEN */
+}
+
 /* HIDE SCROLLBARS GLOBALLY IN OVERLAYS */
-.team-pyramid::-webkit-scrollbar,
-.overlay-window::-webkit-scrollbar {
+.overlay-window::-webkit-scrollbar,
+.overlay-content::-webkit-scrollbar {
     display: none;
 }
 
-.team-pyramid,
-.overlay-window {
-    -ms-overflow-style: none;
-    /* IE and Edge */
-    /* scrollbar-width: none;  Removed to clear IDE warning */
-    /* Firefox */
-}
-
-/* TEAM SPECIFIC (PYRAMID) - COMPACTED */
-.team-pyramid {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    gap: 20px;
-    /* Reduced gap further */
-    overflow-y: scroll;
-    /* Allow scroll but hidden */
-    align-items: center;
-    justify-content: flex-start;
-    /* Start from top to avoid top-clipping */
-    padding-bottom: 80px;
-    /* Space for scrolling past bottom */
-    padding-top: 20px;
-}
-
-/* COMPACT HEADER FOR TEAM */
-.team-pyramid .overlay-header {
-    margin-bottom: 40px;
-    /* Drastically reduced from 80px */
+.gallery-filters {
+    margin-bottom: 60px;
 }
 
 .team-wrapper {
@@ -1066,39 +1036,7 @@ body.nav-open .line:nth-child(2) {
 }
 
 /* GALLERY VIEW */
-.work-gallery-view {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 60px 5% 0 5%;
-    /* Reduced top padding (was 80px) */
-    box-sizing: border-box;
-}
 
-.gallery-header {
-    flex: 0 0 auto;
-    text-align: center;
-    margin-bottom: 30px;
-    /* Reduced margin */
-}
-
-.gallery-header h2 {
-    font-size: 3rem;
-    font-weight: 300;
-    letter-spacing: 1rem;
-    margin-bottom: 10px;
-    /* Tighter gap to subtitle */
-    text-transform: uppercase;
-}
-
-.gallery-header .subtitle {
-    font-size: 0.8rem;
-    letter-spacing: 0.4em;
-    color: #888;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-}
 
 /* FILTERS */
 .gallery-filters {
@@ -1126,22 +1064,6 @@ body.nav-open .line:nth-child(2) {
 .filter-btn.active {
     color: #fff;
     border-color: #fff;
-}
-
-/* GRID CONTAINER */
-.gallery-grid-container {
-    flex: 1;
-    overflow-y: auto;
-    /* Scrollable area */
-    padding-bottom: 80px;
-
-    /* Hide Scrollbar */
-    -ms-overflow-style: none;
-    /* scrollbar-width: none;  Removed to clear IDE warning */
-}
-
-.gallery-grid-container::-webkit-scrollbar {
-    display: none;
 }
 
 .gallery-grid {
@@ -1231,10 +1153,14 @@ body.nav-open .line:nth-child(2) {
     transform: translateY(100%);
     /* Slide UP */
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    display: none;
+    /* Hide by default to prevent scroll overflow on mobile */
 }
 
 .project-detail-window.active {
     transform: translateY(0);
+    display: flex;
+    /* Show when active */
 }
 
 .project-content {
@@ -1285,10 +1211,6 @@ body.nav-open .line:nth-child(2) {
     .gallery-grid {
         grid-template-columns: 1fr;
         /* Single column on mobile */
-    }
-
-    .gallery-header h2 {
-        font-size: 2rem;
     }
 
     .gallery-filters {
@@ -1699,14 +1621,6 @@ body.nav-open .line:nth-child(2) {
     }
 }
 
-/* MANIFESTO / TODO STYLE (Now SERVICES GRID) */
-.full-width-container {
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 5%;
-}
-
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1714,7 +1628,6 @@ body.nav-open .line:nth-child(2) {
     padding-bottom: 50px;
 }
 
-/* DESKTOP Centering for Service CTA */
 .service-cta-container {
     grid-column: 1 / -1;
     /* Span full width */
@@ -1794,23 +1707,31 @@ body.nav-open .line:nth-child(2) {
     /* Sticky Header on Mobile */
     .overlay-header {
         position: sticky;
-        top: 100px;
-        /* Lower sticky point to "center" title in space */
-        background: transparent;
-        z-index: 40;
-        /* Above cards */
-        padding-bottom: 20px;
-        padding-top: 10px;
+        top: 60px;
+        z-index: 100;
+        background-color: rgba(255, 0, 0, 0.6) !important;
+        /* DEBUG: RED (Sticky Header Zone) */
+        padding-top: 15px;
+        padding-bottom: 15px;
         margin-bottom: 20px;
-        /* Precise gap for first card */
+        /* Space between text and starting content */
+    }
+
+    .overlay-header h2 {
+        font-size: 2rem;
+        letter-spacing: 0.3rem;
+    }
+
+    .overlay-header .subtitle {
+        font-size: 0.7rem;
+        letter-spacing: 0.15em;
     }
 
     .services-grid {
         display: block;
         padding-bottom: 0;
-        /* Absolute stop */
-        padding-top: 60px;
-        /* Push first card down */
+        padding-top: 0;
+        /* Removed extra padding to keep 0px gap with header */
     }
 
     .service-card {
@@ -1980,22 +1901,17 @@ body.nav-open .line:nth-child(2) {
     }
 
     .overlay-window {
-        padding: 70px 15px 20px;
-        /* More space for header */
+        padding: 60px 0 20px;
+        display: flex !important;
+        flex-direction: column !important;
         overflow-y: auto !important;
-        /* Force scroll */
-        /* -webkit-overflow-scrolling: touch; Removed to clear IDE warning */
-        /* Smooth scroll iOS */
-        display: block;
-        /* Use block instead of flex to allow natural scroll */
     }
 
     .overlay-content {
-        justify-content: flex-start;
-        /* Start from top */
+        padding: 0 15px 80px;
+        margin: 0 !important;
         height: auto;
-        /* Allow growth */
-        padding-bottom: 50px;
+        flex: 1 0 auto;
     }
 
     .team-grid,
@@ -2141,18 +2057,6 @@ body.nav-open .line:nth-child(2) {
         opacity: 0;
     }
 
-    .overlay-header h2 {
-        font-size: 2rem;
-        letter-spacing: 0.3rem;
-    }
-
-    /* Move sub-page headers up by 7rem and Fix background mismatch permanently */
-    .overlay-header {
-        top: calc(100px - 7rem) !important;
-        transform: translateY(-7rem);
-        background: none !important;
-        box-shadow: none !important;
-    }
 
     #team-overlay {
         overflow: hidden !important;
@@ -2167,109 +2071,102 @@ body.nav-open .line:nth-child(2) {
         padding: 0 10px 40px;
         align-content: start;
         height: 100%;
-        /* No !important */
-        transform: translateY(-4.0rem);
     }
 
-    .gallery-header {
-        transform: translateY(-7rem);
-        background: none !important;
-        padding: 0;
-    }
 
     .close-btn {
         left: 15px;
     }
-}
 
-/* --- FINAL MENU FOOTER (LUXURY SPLIT) --- */
-.menu-footer {
-    position: absolute;
-    bottom: 40px;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    /* Split Left/Right */
-    align-items: center;
-    padding: 0 80px;
-    /* Luxurious spacing */
-    box-sizing: border-box;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 30px;
-    background: transparent;
-    z-index: 160;
-}
-
-.footer-left,
-.footer-right {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
-
-.icon-link {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: #ccc;
-    text-decoration: none;
-    cursor: pointer;
-    opacity: 0.6;
-    transition: all 0.3s ease;
-}
-
-.icon-link:hover {
-    opacity: 1;
-    transform: translateY(-2px);
-}
-
-.social-icon {
-    width: 18px;
-    height: 18px;
-    fill: #ccc;
-}
-
-.icon-text {
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-    font-weight: 500;
-    text-transform: uppercase;
-}
-
-@media (max-width: 768px) {
+    /* --- FINAL MENU FOOTER (LUXURY SPLIT) --- */
     .menu-footer {
-        flex-direction: column;
-        gap: 20px;
-        padding: 20px;
-        bottom: 20px;
+        position: absolute;
+        bottom: 40px;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        /* Split Left/Right */
+        align-items: center;
+        padding: 0 80px;
+        /* Luxurious spacing */
+        box-sizing: border-box;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 30px;
+        background: transparent;
+        z-index: 160;
     }
 
     .footer-left,
     .footer-right {
-        gap: 20px;
-        justify-content: center;
+        display: flex;
+        align-items: center;
+        gap: 40px;
     }
 
-    /* Fix Work Grid on Mobile */
-    .work-cat {
-        font-size: 3rem;
+    .icon-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #ccc;
+        text-decoration: none;
+        cursor: pointer;
+        opacity: 0.6;
+        transition: all 0.3s ease;
     }
 
-    .work-title {
-        font-size: 1.2rem;
+    .icon-link:hover {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(-2px);
     }
 
-    /* Always visible on mobile */
-    .highlight-text {
-        font-size: 1.2rem !important;
-        margin: 20px 0 !important;
+    .social-icon {
+        width: 18px;
+        height: 18px;
+        fill: #ccc;
     }
 
-    .close-btn {
-        left: 20px;
+    .icon-text {
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+
+    @media (max-width: 768px) {
+        .menu-footer {
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+            bottom: 20px;
+        }
+
+        .footer-left,
+        .footer-right {
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* Fix Work Grid on Mobile */
+        .work-cat {
+            font-size: 3rem;
+        }
+
+        .work-title {
+            font-size: 1.2rem;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Always visible on mobile */
+        .highlight-text {
+            font-size: 1.2rem !important;
+            margin: 20px 0 !important;
+        }
+
+        .close-btn {
+            left: 20px;
+        }
     }
 }
 
