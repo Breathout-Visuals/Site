@@ -8,6 +8,8 @@ Description: Music video for Faz’r Elengi, shot across multiple locations with
 Description Fr: Clip musical pour Faz’r Elengi, tourné dans plusieurs lieux aux ambiances contrastées. Le projet combine narration visuelle, énergie brute et séquences techniques plus complexes, afin de construire un univers fort et rythmé.
 
 
+Project Link:
+
 [CREDITS]
 producer:
 exec_producer:
@@ -154,3 +156,4 @@ archivist:
 distributor:
 publicist:
 epk:
+

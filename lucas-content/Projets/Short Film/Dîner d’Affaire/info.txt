@@ -2,12 +2,13 @@ Name: Dîner d’Affaire
 Type: Short Film (48h)
 Date: November 2025
 Role: spark_me
-Status: In Distribution
-Project Link: https://youtu.be/XE4fg93ZOfc
+Status: Completed
 Credits:
 Description: Short film created for the 48h Côte d’Azur competition, on the theme “Dinner.” The story stages an intimate, tense confrontation between an artist and her producer, exploring power dynamics and manipulation.
 Description Fr: Court-métrage réalisé dans le cadre du 48h Côte d’Azur, sur le thème « Repas ». Le film met en scène une confrontation intime et tendue entre une artiste et son producteur, explorant les rapports de pouvoir et la manipulation.
 
+
+Project Link: https://youtu.be/XE4fg93ZOfc
 
 [CREDITS]
 producer:

@@ -7,10 +7,15 @@ import proj_0_B from '../../lucas-content/Projets/Commercial/Converse/B.jpg';
 import proj_0_C from '../../lucas-content/Projets/Commercial/Converse/C.jpg';
 import proj_0_D from '../../lucas-content/Projets/Commercial/Converse/D.jpg';
 import proj_1_A from '../../lucas-content/Projets/Commercial/Fishermen Friends/A.jpg';
-import proj_1_B from '../../lucas-content/Projets/Commercial/Fishermen Friends/B.jpg';
-import proj_1_C from '../../lucas-content/Projets/Commercial/Fishermen Friends/C.mp4';
-import proj_1_D from '../../lucas-content/Projets/Commercial/Fishermen Friends/D.mp4';
+import proj_1_B from '../../lucas-content/Projets/Commercial/Fishermen Friends/B.mp4';
+import proj_1_C from '../../lucas-content/Projets/Commercial/Fishermen Friends/C.jpg';
+import proj_1_D from '../../lucas-content/Projets/Commercial/Fishermen Friends/D.jpg';
 import proj_1_E from '../../lucas-content/Projets/Commercial/Fishermen Friends/E.mp4';
+import proj_1_F from '../../lucas-content/Projets/Commercial/Fishermen Friends/F.jpg';
+import proj_1_G from '../../lucas-content/Projets/Commercial/Fishermen Friends/G.jpg';
+import proj_1_H from '../../lucas-content/Projets/Commercial/Fishermen Friends/H.jpg';
+import proj_1_I from '../../lucas-content/Projets/Commercial/Fishermen Friends/I.jpg';
+import proj_1_J from '../../lucas-content/Projets/Commercial/Fishermen Friends/J.mp4';
 import proj_2_A from '../../lucas-content/Projets/Commercial/The Street Partners/A.jpg';
 import proj_2_B from '../../lucas-content/Projets/Commercial/The Street Partners/B.mp4';
 import proj_2_C from '../../lucas-content/Projets/Commercial/The Street Partners/C.jpg';
@@ -59,22 +64,26 @@ import proj_10_C from '../../lucas-content/Projets/Short Film/Fort Intérieur/C.
 import proj_10_D from '../../lucas-content/Projets/Short Film/Fort Intérieur/D.mp4';
 import proj_10_E from '../../lucas-content/Projets/Short Film/Fort Intérieur/E.jpg';
 import proj_10_F from '../../lucas-content/Projets/Short Film/Fort Intérieur/F.jpg';
-import proj_11_A from '../../lucas-content/Projets/Short Film/Le miroir des générations/A.jpg';
-import proj_11_B from '../../lucas-content/Projets/Short Film/Le miroir des générations/B.mp4';
-import proj_11_C from '../../lucas-content/Projets/Short Film/Le miroir des générations/C.jpg';
-import proj_12_A from '../../lucas-content/Projets/Short Film/Léo/A.jpg';
-import proj_12_B from '../../lucas-content/Projets/Short Film/Léo/B.jpg';
-import proj_13_A from '../../lucas-content/Projets/Short Film/Marcello/A.jpg';
-import proj_13_B from '../../lucas-content/Projets/Short Film/Marcello/B.jpg';
-import proj_13_C from '../../lucas-content/Projets/Short Film/Marcello/C.jpg';
-import proj_14_A from '../../lucas-content/Projets/Short Film/Nouvelle Ecoute/A.jpg';
-import proj_14_B from '../../lucas-content/Projets/Short Film/Nouvelle Ecoute/B.mp4';
-import proj_14_C from '../../lucas-content/Projets/Short Film/Nouvelle Ecoute/C.jpg';
-import proj_14_D from '../../lucas-content/Projets/Short Film/Nouvelle Ecoute/D.jpg';
-import proj_15_A from '../../lucas-content/Projets/Short Film/Parles-moi/A.jpg';
-import proj_15_B from '../../lucas-content/Projets/Short Film/Parles-moi/B.mp4';
-import proj_15_C from '../../lucas-content/Projets/Short Film/Parles-moi/C.jpg';
-import proj_15_D from '../../lucas-content/Projets/Short Film/Parles-moi/D.mp4';
+import proj_11_A from '../../lucas-content/Projets/Short Film/Léo/A.jpg';
+import proj_11_B from '../../lucas-content/Projets/Short Film/Léo/B.jpg';
+import proj_12_A from '../../lucas-content/Projets/Short Film/Marcello/A.jpg';
+import proj_12_B from '../../lucas-content/Projets/Short Film/Marcello/B.jpg';
+import proj_12_C from '../../lucas-content/Projets/Short Film/Marcello/C.jpg';
+import proj_13_A from '../../lucas-content/Projets/Short Film/Nouvelle Ecoute/A.jpg';
+import proj_13_B from '../../lucas-content/Projets/Short Film/Nouvelle Ecoute/B.mp4';
+import proj_13_C from '../../lucas-content/Projets/Short Film/Nouvelle Ecoute/C.jpg';
+import proj_13_D from '../../lucas-content/Projets/Short Film/Nouvelle Ecoute/D.jpg';
+import proj_14_A from '../../lucas-content/Projets/Short Film/Parles-moi/A.jpg';
+import proj_14_B from '../../lucas-content/Projets/Short Film/Parles-moi/B.mp4';
+import proj_14_C from '../../lucas-content/Projets/Short Film/Parles-moi/C.jpg';
+import proj_14_D from '../../lucas-content/Projets/Short Film/Parles-moi/D.mp4';
+import proj_15_A from '../../lucas-content/Projets/Short Film/Transmission/A.jpg';
+import proj_15_B from '../../lucas-content/Projets/Short Film/Transmission/B.mp4';
+import proj_15_C from '../../lucas-content/Projets/Short Film/Transmission/C.jpg';
+import proj_15_D from '../../lucas-content/Projets/Short Film/Transmission/D.jpg';
+import proj_15_F from '../../lucas-content/Projets/Short Film/Transmission/F.jpg';
+import proj_15_G from '../../lucas-content/Projets/Short Film/Transmission/G.jpg';
+import proj_15_H from '../../lucas-content/Projets/Short Film/Transmission/H.jpg';
 import proj_16_A from '../../lucas-content/Projets/Social Media/Nassim Boukrouh/A.jpg';
 import proj_16_B from '../../lucas-content/Projets/Social Media/Nassim Boukrouh/B.jpg';
 import proj_16_C from '../../lucas-content/Projets/Social Media/Nassim Boukrouh/C.mp4';
@@ -167,13 +176,13 @@ export const projects = [
         "id": 101,
         "title": "Fishermen Friends",
         "category": "commercial",
-        "role": "grip_me",
+        "role": "spark_me",
         "date": {
             "fr": "December 2025",
             "en": "December 2025"
         },
-        "status": "In Editing",
-        "link": "",
+        "status": "Completed",
+        "link": "https://www.instagram.com/reel/DVTdTtMjHt5/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
         "desc": {
             "fr": "Publicité spec tournée intégralement en studio, construite autour d’un décor surélevé exigeant une grande précision d’exécution. Le projet repose sur une mise en scène structurée et une attention particulière portée à la cohérence visuelle dans un environnement technique contraignant.",
             "en": "Studio-shot spec commercial built around an elevated set requiring a high level of execution precision. The project relies on structured staging and strong visual consistency within a technically demanding environment."
@@ -188,23 +197,48 @@ export const projects = [
                 "poster": ""
             },
             {
-                "type": "image",
+                "type": "video",
                 "src": proj_1_B,
                 "poster": ""
             },
             {
-                "type": "video",
+                "type": "image",
                 "src": proj_1_C,
                 "poster": ""
             },
             {
-                "type": "video",
+                "type": "image",
                 "src": proj_1_D,
                 "poster": ""
             },
             {
                 "type": "video",
                 "src": proj_1_E,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_1_F,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_1_G,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_1_H,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_1_I,
+                "poster": ""
+            },
+            {
+                "type": "video",
+                "src": proj_1_J,
                 "poster": ""
             }
         ]
@@ -362,7 +396,7 @@ export const projects = [
             "en": "August 2025"
         },
         "status": "Delivered",
-        "link": "https://youtu.be/tgxDICtOiC8?si=0VFyGOwveazqQdd4",
+        "link": "",
         "desc": {
             "fr": "Visualiser musical pour Faz’r Elengi, conçu autour d’un dispositif volontairement minimal. L’image se concentre sur la présence de l’artiste, le rythme et l’atmosphère, dans une recherche de clarté et de cohérence esthétique.",
             "en": "Music visualizer for Faz’r Elengi, designed around a deliberately minimal setup. The visuals focus on the artist’s presence, rhythm and atmosphere, aiming for clarity and aesthetic coherence."
@@ -545,7 +579,7 @@ export const projects = [
             "fr": "November 2025",
             "en": "November 2025"
         },
-        "status": "In Distribution",
+        "status": "Completed",
         "link": "https://youtu.be/XE4fg93ZOfc",
         "desc": {
             "fr": "Court-métrage réalisé dans le cadre du 48h Côte d’Azur, sur le thème « Repas ». Le film met en scène une confrontation intime et tendue entre une artiste et son producteur, explorant les rapports de pouvoir et la manipulation.",
@@ -635,42 +669,6 @@ export const projects = [
     },
     {
         "id": 111,
-        "title": "Le miroir des générations",
-        "category": "short_film",
-        "role": "dop_me",
-        "date": {
-            "fr": "December 2025",
-            "en": "December 2025"
-        },
-        "status": "In Editing",
-        "link": "",
-        "desc": {
-            "fr": "Court-métrage réalisé pour le Nikon Film Festival 2025. Le film explore les notions de transmission, de perception de soi et de liens intergénérationnels, à travers une approche sensible et introspective, centrée sur le regard que l’on porte sur les autres et sur soi-même.",
-            "en": "Short film created for the Nikon Film Festival 2025. The film explores themes of transmission, self-perception and intergenerational relationships through a sensitive, introspective approach focused on how we view others and ourselves."
-        },
-        "credits": "",
-        "structuredCredits": [],
-        "media": proj_11_A,
-        "collection": [
-            {
-                "type": "image",
-                "src": proj_11_A,
-                "poster": ""
-            },
-            {
-                "type": "video",
-                "src": proj_11_B,
-                "poster": ""
-            },
-            {
-                "type": "image",
-                "src": proj_11_C,
-                "poster": ""
-            }
-        ]
-    },
-    {
-        "id": 112,
         "title": "Léo",
         "category": "short_film",
         "role": "camera_op_me",
@@ -686,22 +684,22 @@ export const projects = [
         },
         "credits": "",
         "structuredCredits": [],
-        "media": proj_12_A,
+        "media": proj_11_A,
         "collection": [
             {
                 "type": "image",
-                "src": proj_12_A,
+                "src": proj_11_A,
                 "poster": ""
             },
             {
                 "type": "image",
-                "src": proj_12_B,
+                "src": proj_11_B,
                 "poster": ""
             }
         ]
     },
     {
-        "id": 113,
+        "id": 112,
         "title": "Marcello",
         "category": "short_film",
         "role": "key_grip_me",
@@ -717,27 +715,27 @@ export const projects = [
         },
         "credits": "",
         "structuredCredits": [],
-        "media": proj_13_A,
+        "media": proj_12_A,
         "collection": [
             {
                 "type": "image",
-                "src": proj_13_A,
+                "src": proj_12_A,
                 "poster": ""
             },
             {
                 "type": "image",
-                "src": proj_13_B,
+                "src": proj_12_B,
                 "poster": ""
             },
             {
                 "type": "image",
-                "src": proj_13_C,
+                "src": proj_12_C,
                 "poster": ""
             }
         ]
     },
     {
-        "id": 114,
+        "id": 113,
         "title": "Nouvelle Ecoute",
         "category": "short_film",
         "role": "camera_op_me",
@@ -750,6 +748,47 @@ export const projects = [
         "desc": {
             "fr": "Court-métrage réalisé dans le cadre du festival TousHanscène. Le film suit un jeune homme sourd privé de ses appareils auditifs, confronté à une succession d’obstacles dans un environnement peu adapté à sa réalité. Le récit adopte un point de vue immersif, mettant en tension le quotidien et l’isolement sensoriel.",
             "en": "Festival-oriented short film created for the TousHanscène Festival. The film follows a deaf young man who loses his hearing aids and faces a series of obstacles in an environment poorly adapted to his reality. The narrative adopts an immersive perspective, emphasizing everyday tension and sensory isolation."
+        },
+        "credits": "",
+        "structuredCredits": [],
+        "media": proj_13_A,
+        "collection": [
+            {
+                "type": "image",
+                "src": proj_13_A,
+                "poster": ""
+            },
+            {
+                "type": "video",
+                "src": proj_13_B,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_13_C,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_13_D,
+                "poster": ""
+            }
+        ]
+    },
+    {
+        "id": 114,
+        "title": "Parles-moi",
+        "category": "short_film",
+        "role": "gaffer_me",
+        "date": {
+            "fr": "November 2025",
+            "en": "November 2025"
+        },
+        "status": "Completed",
+        "link": "https://youtu.be/LFv09FZMiSM",
+        "desc": {
+            "fr": "Court-métrage réalisé pour le Nikon Film Festival 2025. Le film explore la fragilité d’un couple confronté à une hospitalisation soudaine, en s’attachant aux silences, aux regards et à l’intimité émotionnelle.",
+            "en": "Short film created for the Nikon Film Festival 2025. The film explores the fragility of a couple facing a sudden hospitalization, focusing on silence, glances and emotional intimacy."
         },
         "credits": "",
         "structuredCredits": [],
@@ -771,7 +810,7 @@ export const projects = [
                 "poster": ""
             },
             {
-                "type": "image",
+                "type": "video",
                 "src": proj_14_D,
                 "poster": ""
             }
@@ -779,18 +818,18 @@ export const projects = [
     },
     {
         "id": 115,
-        "title": "Parles-moi",
+        "title": "Transmission",
         "category": "short_film",
-        "role": "gaffer_me",
+        "role": "dop_me",
         "date": {
-            "fr": "November 2025",
-            "en": "November 2025"
+            "fr": "December 2025",
+            "en": "December 2025"
         },
-        "status": "In Editing",
-        "link": "",
+        "status": "Completed",
+        "link": "https://youtu.be/-Emi3lXQOys",
         "desc": {
-            "fr": "Court-métrage réalisé pour le Nikon Film Festival 2025. Le film explore la fragilité d’un couple confronté à une hospitalisation soudaine, en s’attachant aux silences, aux regards et à l’intimité émotionnelle.",
-            "en": "Short film created for the Nikon Film Festival 2025. The film explores the fragility of a couple facing a sudden hospitalization, focusing on silence, glances and emotional intimacy."
+            "fr": "Court-métrage réalisé pour le Nikon Film Festival 2025. Le film explore les notions de transmission, de perception de soi et de liens intergénérationnels, à travers une approche sensible et introspective, centrée sur le regard que l’on porte sur les autres et sur soi-même.",
+            "en": "Short film created for the Nikon Film Festival 2025. The film explores themes of transmission, self-perception and intergenerational relationships through a sensitive, introspective approach focused on how we view others and ourselves."
         },
         "credits": "",
         "structuredCredits": [],
@@ -812,8 +851,23 @@ export const projects = [
                 "poster": ""
             },
             {
-                "type": "video",
+                "type": "image",
                 "src": proj_15_D,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_15_F,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_15_G,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_15_H,
                 "poster": ""
             }
         ]
@@ -824,11 +878,11 @@ export const projects = [
         "category": "social_media",
         "role": "camera_op_me",
         "date": {
-            "fr": "Current",
-            "en": "Current"
+            "fr": "2025",
+            "en": "2025"
         },
-        "status": "Ongoing",
-        "link": "https://youtube.com/@nassimboukrouh?si=zvPcrKR7CY8gO8xt",
+        "status": "Completed",
+        "link": "",
         "desc": {
             "fr": "Série de vidéos YouTube dédiées à l’immobilier, tournée à l’international, notamment en Afrique du Sud, en Suisse, en France, au Canada et aux Émirats arabes unis. Un format mobile et dynamique, pensé pour s’adapter à des contextes variés tout en restant accessible et informatif.",
             "en": "YouTube video series focused on real estate, shot internationally across South Africa, Switzerland, France, Canada and the United Arab Emirates. A mobile, dynamic format designed to adapt to diverse contexts while remaining accessible and informative."
@@ -884,7 +938,7 @@ export const projects = [
             "en": "July 2025"
         },
         "status": "Delivered",
-        "link": "https://youtu.be/P_eesdexjfs?si=2KAz39jzmFFlfHg_",
+        "link": "",
         "desc": {
             "fr": "Film de mariage tourné au Mas des 5 Fontaines. Une approche sensible mêlant captation documentaire et écriture cinématographique, cherchant à retranscrire l’émotion, les détails et l’atmosphère de la journée.",
             "en": "Wedding film shot at Mas des 5 Fontaines. A sensitive approach blending documentary capture and cinematic storytelling, aiming to convey emotion, detail and the atmosphere of the day."

@@ -1,13 +1,14 @@
 Name: Nassim Boukrouh
 Type: YouTube Content
-Date: Current
+Date: 2025
 Role: camera_op_me
-Status: Ongoing
-Project Link: https://youtube.com/@nassimboukrouh?si=zvPcrKR7CY8gO8xt
+Status: Completed
 Credits:
 Description: YouTube video series focused on real estate, shot internationally across South Africa, Switzerland, France, Canada and the United Arab Emirates. A mobile, dynamic format designed to adapt to diverse contexts while remaining accessible and informative.
 Description Fr: Série de vidéos YouTube dédiées à l’immobilier, tournée à l’international, notamment en Afrique du Sud, en Suisse, en France, au Canada et aux Émirats arabes unis. Un format mobile et dynamique, pensé pour s’adapter à des contextes variés tout en restant accessible et informatif.
 
+
+Project Link:
 
 [CREDITS]
 producer:

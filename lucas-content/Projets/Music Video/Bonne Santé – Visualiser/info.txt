@@ -3,11 +3,12 @@ Type: Music Video
 Date: August 2025
 Role: dop_me
 Status: Delivered
-Project Link: https://youtu.be/tgxDICtOiC8?si=0VFyGOwveazqQdd4
 Credits:
 Description: Music visualizer for Faz’r Elengi, designed around a deliberately minimal setup. The visuals focus on the artist’s presence, rhythm and atmosphere, aiming for clarity and aesthetic coherence.
 Description Fr: Visualiser musical pour Faz’r Elengi, conçu autour d’un dispositif volontairement minimal. L’image se concentre sur la présence de l’artiste, le rythme et l’atmosphère, dans une recherche de clarté et de cohérence esthétique.
 
+
+Project Link:
 
 [CREDITS]
 producer:

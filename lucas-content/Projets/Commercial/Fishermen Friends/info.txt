@@ -1,12 +1,14 @@
 Name: Fishermen Friends
 Type: Spec Ad
 Date: December 2025
-Role: grip_me
-Status: In Editing
+Role: spark_me
+Status: Completed
 Credits:
 Description: Studio-shot spec commercial built around an elevated set requiring a high level of execution precision. The project relies on structured staging and strong visual consistency within a technically demanding environment.
 Description Fr: Publicité spec tournée intégralement en studio, construite autour d’un décor surélevé exigeant une grande précision d’exécution. Le projet repose sur une mise en scène structurée et une attention particulière portée à la cohérence visuelle dans un environnement technique contraignant.
 
+
+Project Link: https://www.instagram.com/reel/DVTdTtMjHt5/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==
 
 [CREDITS]
 producer:
@@ -154,3 +156,4 @@ archivist:
 distributor:
 publicist:
 epk:
+

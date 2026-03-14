@@ -8,6 +8,8 @@ Description: Music video for Faz’r Elengi, shot in a recording studio. A direc
 Description Fr: Clip musical pour Faz’r Elengi, tourné en studio d’enregistrement. Une approche directe et épurée, pensée pour exploiter au maximum un espace restreint et des moyens volontairement limités.
 
 
+Project Link:
+
 [CREDITS]
 producer:
 exec_producer:
@@ -154,3 +156,4 @@ archivist:
 distributor:
 publicist:
 epk:
+

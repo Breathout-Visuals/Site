@@ -8,6 +8,8 @@ Description: Spec commercial developed in a student context, designed as an imme
 Description Fr: Publicité spec développée dans un cadre étudiant, pensée comme une immersion dans des conditions de production réelles. Le tournage s’est déroulé entièrement sous la pluie, impliquant une organisation précise et une rigueur technique constante. L’image s’appuie sur une esthétique brute et contrastée, en lien direct avec l’énergie urbaine de la marque.
 
 
+Project Link:
+
 [CREDITS]
 producer:
 exec_producer:
@@ -154,3 +156,4 @@ archivist:
 distributor:
 publicist:
 epk:
+

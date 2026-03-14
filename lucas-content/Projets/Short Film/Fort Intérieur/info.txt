@@ -8,6 +8,8 @@ Description: Student short film centered on family heritage and buried trauma. T
 Description Fr: Court-métrage étudiant centré sur l’héritage familial et les traumatismes enfouis. À travers un lieu chargé de mémoire, le film suit un personnage confronté à un passé qu’il ne peut plus ignorer. Court-métrage réalisé pour le Nikon Film Festival 2025. Le film explore la transmission, l’image de soi et les liens intergénérationnels à travers une approche sensible et introspective.
 
 
+Project Link:
+
 [CREDITS]
 producer:
 exec_producer:
@@ -154,3 +156,4 @@ archivist:
 distributor:
 publicist:
 epk:
+

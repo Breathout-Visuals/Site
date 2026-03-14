@@ -8,6 +8,8 @@ Description: Festival-oriented documentary focusing on contemporary shepherds an
 Description Fr: Documentaire destiné aux festivals consacré aux bergers contemporains et aux mutations de leur mode de vie. Le film explore la cohabitation entre pratiques traditionnelles et outils modernes, dessinant le portrait d’un monde rural en transition.
 
 
+Project Link:
+
 [CREDITS]
 producer:
 exec_producer:
@@ -154,3 +156,4 @@ archivist:
 distributor:
 publicist:
 epk:
+

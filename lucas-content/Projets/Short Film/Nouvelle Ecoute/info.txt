@@ -3,11 +3,12 @@ Type: Short Film
 Date: November 2025
 Role: camera_op_me
 Status: Delivered
-Project Link: https://www.youtube.com/watch?v=0o7v2v1dPTc
 Credits:
 Description: Festival-oriented short film created for the TousHanscène Festival. The film follows a deaf young man who loses his hearing aids and faces a series of obstacles in an environment poorly adapted to his reality. The narrative adopts an immersive perspective, emphasizing everyday tension and sensory isolation.
 Description Fr: Court-métrage réalisé dans le cadre du festival TousHanscène. Le film suit un jeune homme sourd privé de ses appareils auditifs, confronté à une succession d’obstacles dans un environnement peu adapté à sa réalité. Le récit adopte un point de vue immersif, mettant en tension le quotidien et l’isolement sensoriel.
 
+
+Project Link: https://www.youtube.com/watch?v=0o7v2v1dPTc
 
 [CREDITS]
 producer:
