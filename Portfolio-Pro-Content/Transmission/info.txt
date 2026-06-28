@@ -1,0 +1,11 @@
+Name: Transmission
+Client: Nikon Film Festival
+Category: Short Film
+Date: Décembre 2025
+Role: Directeur de la Photographie
+Video: https://youtu.be/-Emi3lXQOys
+Description FR: Court-métrage réalisé pour le Nikon Film Festival 2025. Le film explore les notions de transmission, de perception de soi et de liens intergénérationnels, à travers une approche sensible et introspective.
+Description EN: Short film created for the Nikon Film Festival 2025. The film explores themes of transmission, self-perception and intergenerational relationships through a sensitive, introspective approach.
+Featured: true
+Order: 2
+Thumbnail URL: https://picsum.photos/seed/transmission2025/1200/675

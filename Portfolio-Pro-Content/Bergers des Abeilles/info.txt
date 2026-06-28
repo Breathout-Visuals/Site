@@ -1,0 +1,10 @@
+Name: Bergers des Abeilles
+Client: Production Indépendante
+Category: Documentary
+Date: 2024
+Role: Directeur de la Photographie
+Description FR: Documentaire sur l'apiculture traditionnelle en France rurale. Un regard poétique sur le rapport entre l'homme, la nature et le temps.
+Description EN: Documentary about traditional beekeeping in rural France. A poetic look at the relationship between people, nature and time.
+Featured: false
+Order: 5
+Thumbnail URL: https://picsum.photos/seed/bergersabeilles/1200/675

@@ -1,0 +1,10 @@
+Name: Nassim Boukrouh
+Client: Nassim Boukrouh
+Category: Social Media
+Date: 2025
+Role: Cadreur
+Description FR: Série de vidéos YouTube dédiées à l'immobilier, tournée à l'international : Afrique du Sud, Suisse, France, Canada et Émirats arabes unis.
+Description EN: YouTube video series focused on real estate, shot internationally across South Africa, Switzerland, France, Canada and the UAE.
+Featured: false
+Order: 6
+Thumbnail URL: https://picsum.photos/seed/nassimbouk/1200/675

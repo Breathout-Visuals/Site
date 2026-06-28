@@ -1,0 +1,11 @@
+Name: Komani
+Client: Komani
+Category: Music Video
+Date: 2024
+Role: Réalisateur
+Video: https://youtu.be/dQw4w9WgXcQ
+Description FR: Clip musical réalisé avec une direction artistique soignée, mêlant images urbaines et atmosphères nocturnes pour un rendu cinématographique.
+Description EN: Music video directed with careful art direction, blending urban imagery and nocturnal atmospheres for a cinematic result.
+Featured: true
+Order: 3
+Thumbnail URL: https://picsum.photos/seed/komani2024/1200/675

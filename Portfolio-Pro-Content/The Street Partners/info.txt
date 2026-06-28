@@ -1,0 +1,10 @@
+Name: The Street Partners
+Client: The Street Partners
+Category: Commercial
+Date: 2024
+Role: Directeur de la Photographie
+Description FR: Contenu publicitaire lifestyle pour une marque streetwear parisienne. Tournage en extérieur sur plusieurs jours dans différents quartiers de Paris.
+Description EN: Lifestyle advertising content for a Parisian streetwear brand. Multi-day outdoor shoot across different Paris neighborhoods.
+Featured: false
+Order: 4
+Thumbnail URL: https://picsum.photos/seed/streetpartners/1200/675

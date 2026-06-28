@@ -1,0 +1,20 @@
+# Modèle de fichier info.txt pour Portfolio Pro
+# Les lignes commençant par # sont ignorées.
+# Renomme ce fichier en "info.txt" dans le dossier de ton projet.
+
+Name: Nom du Projet (Obligatoire)
+Client: Nom du Client (Optionnel)
+Category: commercial (Valeurs possibles: commercial, short_film, music_video, doc, social_media, wedding, photo, event)
+Date: 2025
+Video: https://vimeo.com/... (Lien vidéo principal, Optionnel)
+Description FR: Description de ton projet en français.
+Description EN: Description of your project in english.
+Featured: true (Mettre true pour l'afficher en page d'accueil, sinon laisser vide)
+Order: 1 (Ordre d'affichage, 1 pour le premier. 999 par défaut)
+Thumbnail URL: (Lien de la miniature si tu ne mets pas de fichier thumbnail.jpg dans le dossier)
+Hero URL: (Lien de l'image de couverture si tu ne mets pas de fichier hero.jpg dans le dossier)
+
+[CREDITS]
+director: Jean Dupont
+dop: Marie Curie
+producer: Breathout Visuals

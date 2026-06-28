@@ -67,6 +67,8 @@ function parseInfoTxt(filePath) {
             }
         } else {
             // META MODE (Standard)
+            let isNewKey = false;
+            
             if (match) {
                 const rawKey = match[1].trim();
                 const value = match[2].trim();
@@ -74,17 +76,19 @@ function parseInfoTxt(filePath) {
                 if (KEY_MAP[rawKey]) {
                     currentKey = KEY_MAP[rawKey];
                     data.meta[currentKey] = value;
+                    isNewKey = true;
                 } else if (rawKey.toLowerCase().startsWith('credit ')) {
                     // Backward compatibility: "Credit Role: Name"
                     const role = rawKey.substring(7).trim(); // Remove "Credit "
                     data.credits[role] = value;
                     currentKey = null;
-                } else {
-                    currentKey = null;
+                    isNewKey = true;
                 }
-            } else if (currentKey && trimmed) {
-                // Append multi-line description
-                data.meta[currentKey] += ' ' + trimmed;
+            }
+            
+            if (!isNewKey && currentKey && trimmed) {
+                // Append multi-line description (even if it contains a colon)
+                data.meta[currentKey] += (data.meta[currentKey] && !data.meta[currentKey].endsWith(' ') ? ' ' : '') + trimmed;
             }
         }
     });
@@ -133,7 +137,7 @@ function generateImportsAndData() {
             if (!relativePath.startsWith('.')) relativePath = './' + relativePath;
 
             const varName = `${projectVarName}_cover`;
-            imports.push(`import ${varName} from '${relativePath}';`);
+            imports.push(`import ${varName} from ${JSON.stringify(relativePath)};`);
             coverVar = varName;
         }
 
@@ -145,7 +149,7 @@ function generateImportsAndData() {
             if (!relativePath.startsWith('.')) relativePath = './' + relativePath;
 
             const varName = `${projectVarName}_${letter}`;
-            imports.push(`import ${varName} from '${relativePath}';`);
+            imports.push(`import ${varName} from ${JSON.stringify(relativePath)};`);
             mediaVars[letter] = varName;
         });
 
@@ -253,7 +257,7 @@ function generateImportsAndData() {
                 if (!relativePath.startsWith('.')) relativePath = './' + relativePath;
 
                 const varName = `reel_${number}`;
-                imports.push(`import ${varName} from '${relativePath}';`);
+                imports.push(`import ${varName} from ${JSON.stringify(relativePath)};`);
 
                 const isVideo = match.match(/\.(mp4|webm)$/i);
                 let posterVar = "''";
@@ -266,7 +270,7 @@ function generateImportsAndData() {
                         if (!posterPath.startsWith('.')) posterPath = './' + posterPath;
 
                         const posterVarName = `reel_poster_${number}`;
-                        imports.push(`import ${posterVarName} from '${posterPath}';`);
+                        imports.push(`import ${posterVarName} from ${JSON.stringify(posterPath)};`);
                         posterVar = posterVarName;
                     }
                 }
