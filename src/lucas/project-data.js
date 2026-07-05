@@ -76,42 +76,40 @@ import proj_12_C from "../../lucas-content/Projets/Short Film/Lady Extravagante/
 import proj_12_D from "../../lucas-content/Projets/Short Film/Lady Extravagante/D.jpg";
 import proj_12_E from "../../lucas-content/Projets/Short Film/Lady Extravagante/E.mp4";
 import proj_12_F from "../../lucas-content/Projets/Short Film/Lady Extravagante/F.jpg";
-import proj_13_A from "../../lucas-content/Projets/Short Film/Léo/A.jpg";
-import proj_13_B from "../../lucas-content/Projets/Short Film/Léo/B.jpg";
-import proj_14_A from "../../lucas-content/Projets/Short Film/Marcello/A.jpg";
-import proj_14_B from "../../lucas-content/Projets/Short Film/Marcello/B.jpg";
-import proj_14_C from "../../lucas-content/Projets/Short Film/Marcello/C.jpg";
-import proj_15_A from "../../lucas-content/Projets/Short Film/Merci pour l'hiver/A.jpg";
-import proj_15_B from "../../lucas-content/Projets/Short Film/Merci pour l'hiver/B.jpg";
-import proj_15_C from "../../lucas-content/Projets/Short Film/Merci pour l'hiver/C.mp4";
-import proj_16_A from "../../lucas-content/Projets/Short Film/Nouvelle Ecoute/A.jpg";
-import proj_16_B from "../../lucas-content/Projets/Short Film/Nouvelle Ecoute/B.mp4";
-import proj_16_C from "../../lucas-content/Projets/Short Film/Nouvelle Ecoute/C.jpg";
-import proj_16_D from "../../lucas-content/Projets/Short Film/Nouvelle Ecoute/D.jpg";
-import proj_17_A from "../../lucas-content/Projets/Short Film/Parles-moi/A.jpg";
-import proj_17_B from "../../lucas-content/Projets/Short Film/Parles-moi/B.mp4";
-import proj_17_C from "../../lucas-content/Projets/Short Film/Parles-moi/C.jpg";
-import proj_17_D from "../../lucas-content/Projets/Short Film/Parles-moi/D.mp4";
-import proj_18_A from "../../lucas-content/Projets/Short Film/Transmission/A.jpg";
-import proj_18_B from "../../lucas-content/Projets/Short Film/Transmission/B.mp4";
-import proj_18_C from "../../lucas-content/Projets/Short Film/Transmission/C.jpg";
-import proj_18_D from "../../lucas-content/Projets/Short Film/Transmission/D.jpg";
-import proj_18_F from "../../lucas-content/Projets/Short Film/Transmission/F.jpg";
-import proj_18_G from "../../lucas-content/Projets/Short Film/Transmission/G.jpg";
-import proj_18_H from "../../lucas-content/Projets/Short Film/Transmission/H.jpg";
-import proj_19_A from "../../lucas-content/Projets/Social Media/Nassim Boukrouh/A.jpg";
-import proj_19_B from "../../lucas-content/Projets/Social Media/Nassim Boukrouh/B.jpg";
-import proj_19_C from "../../lucas-content/Projets/Social Media/Nassim Boukrouh/C.mp4";
-import proj_19_D from "../../lucas-content/Projets/Social Media/Nassim Boukrouh/D.mp4";
-import proj_19_E from "../../lucas-content/Projets/Social Media/Nassim Boukrouh/E.mp4";
-import proj_19_F from "../../lucas-content/Projets/Social Media/Nassim Boukrouh/F.mp4";
-import proj_19_G from "../../lucas-content/Projets/Social Media/Nassim Boukrouh/G.jpg";
-import proj_20_A from "../../lucas-content/Projets/Weddings/M&L/A.jpg";
-import proj_20_B from "../../lucas-content/Projets/Weddings/M&L/B.jpg";
-import proj_20_C from "../../lucas-content/Projets/Weddings/M&L/C.mp4";
-import proj_20_D from "../../lucas-content/Projets/Weddings/M&L/D.jpg";
-import proj_20_E from "../../lucas-content/Projets/Weddings/M&L/E.jpg";
-import proj_20_F from "../../lucas-content/Projets/Weddings/M&L/F.mp4";
+import proj_13_A from "../../lucas-content/Projets/Short Film/Marcello/A.jpg";
+import proj_13_B from "../../lucas-content/Projets/Short Film/Marcello/B.jpg";
+import proj_13_C from "../../lucas-content/Projets/Short Film/Marcello/C.jpg";
+import proj_14_A from "../../lucas-content/Projets/Short Film/Merci pour l'hiver/A.jpg";
+import proj_14_B from "../../lucas-content/Projets/Short Film/Merci pour l'hiver/B.jpg";
+import proj_14_C from "../../lucas-content/Projets/Short Film/Merci pour l'hiver/C.mp4";
+import proj_15_A from "../../lucas-content/Projets/Short Film/Nouvelle Ecoute/A.jpg";
+import proj_15_B from "../../lucas-content/Projets/Short Film/Nouvelle Ecoute/B.mp4";
+import proj_15_C from "../../lucas-content/Projets/Short Film/Nouvelle Ecoute/C.jpg";
+import proj_15_D from "../../lucas-content/Projets/Short Film/Nouvelle Ecoute/D.jpg";
+import proj_16_A from "../../lucas-content/Projets/Short Film/Parles-moi/A.jpg";
+import proj_16_B from "../../lucas-content/Projets/Short Film/Parles-moi/B.mp4";
+import proj_16_C from "../../lucas-content/Projets/Short Film/Parles-moi/C.jpg";
+import proj_16_D from "../../lucas-content/Projets/Short Film/Parles-moi/D.mp4";
+import proj_17_A from "../../lucas-content/Projets/Short Film/Transmission/A.jpg";
+import proj_17_B from "../../lucas-content/Projets/Short Film/Transmission/B.mp4";
+import proj_17_C from "../../lucas-content/Projets/Short Film/Transmission/C.jpg";
+import proj_17_D from "../../lucas-content/Projets/Short Film/Transmission/D.jpg";
+import proj_17_F from "../../lucas-content/Projets/Short Film/Transmission/F.jpg";
+import proj_17_G from "../../lucas-content/Projets/Short Film/Transmission/G.jpg";
+import proj_17_H from "../../lucas-content/Projets/Short Film/Transmission/H.jpg";
+import proj_18_A from "../../lucas-content/Projets/Social Media/Nassim Boukrouh/A.jpg";
+import proj_18_B from "../../lucas-content/Projets/Social Media/Nassim Boukrouh/B.jpg";
+import proj_18_C from "../../lucas-content/Projets/Social Media/Nassim Boukrouh/C.mp4";
+import proj_18_D from "../../lucas-content/Projets/Social Media/Nassim Boukrouh/D.mp4";
+import proj_18_E from "../../lucas-content/Projets/Social Media/Nassim Boukrouh/E.mp4";
+import proj_18_F from "../../lucas-content/Projets/Social Media/Nassim Boukrouh/F.mp4";
+import proj_18_G from "../../lucas-content/Projets/Social Media/Nassim Boukrouh/G.jpg";
+import proj_19_A from "../../lucas-content/Projets/Weddings/M&L/A.jpg";
+import proj_19_B from "../../lucas-content/Projets/Weddings/M&L/B.jpg";
+import proj_19_C from "../../lucas-content/Projets/Weddings/M&L/C.mp4";
+import proj_19_D from "../../lucas-content/Projets/Weddings/M&L/D.jpg";
+import proj_19_E from "../../lucas-content/Projets/Weddings/M&L/E.jpg";
+import proj_19_F from "../../lucas-content/Projets/Weddings/M&L/F.mp4";
 import reel_1 from "../../lucas-content/Instagram Reel/1.mp4";
 import reel_poster_1 from "../../lucas-content/Instagram Reel/1.jpg";
 import reel_2 from "../../lucas-content/Instagram Reel/2.mp4";
@@ -406,7 +404,7 @@ export const projects = [
             "en": "August 2025"
         },
         "status": "Delivered",
-        "link": "",
+        "link": "https://youtu.be/tgxDICtOiC8?si=jc08L-4kW2mw9f5q",
         "desc": {
             "fr": "Visualiser musical pour Faz’r Elengi, conçu autour d’un dispositif volontairement minimal. L’image se concentre sur la présence de l’artiste, le rythme et l’atmosphère, dans une recherche de clarté et de cohérence esthétique.",
             "en": "Music visualizer for Faz’r Elengi, designed around a deliberately minimal setup. The visuals focus on the artist’s presence, rhythm and atmosphere, aiming for clarity and aesthetic coherence."
@@ -786,18 +784,18 @@ export const projects = [
     },
     {
         "id": 113,
-        "title": "Léo",
+        "title": "Marcello",
         "category": "short_film",
-        "role": "camera_op_me",
+        "role": "key_grip_me",
         "date": {
-            "fr": "December 2024",
-            "en": "December 2024"
+            "fr": "September 2025",
+            "en": "September 2025"
         },
-        "status": "Delivered",
+        "status": "In Editing",
         "link": "",
         "desc": {
-            "fr": "Court-métrage réalisé pour le Nikon Film Festival 2025, sur le thème « Super-héros ». Le récit suit un jeune garçon en situation de handicap qui réinvente son quotidien par l’imaginaire, en se projetant dans les héros de ses bandes dessinées.",
-            "en": "Short film created for the Nikon Film Festival 2025, on the theme “Superhero.” The story follows a disabled young boy who reimagines his everyday life through imagination, projecting himself into the heroes of his comic books."
+            "fr": "Court-métrage destiné aux festivals, produit en association. Le film plonge dans le milieu du journalisme niçois des années 1980, avec une attention particulière portée à l’atmosphère, au contexte historique et aux tensions de l’époque.",
+            "en": "Festival-oriented short film produced through a non-profit association. Set in the world of Nice journalism in the 1980s, with close attention to atmosphere, historical context and period tensions."
         },
         "credits": "",
         "structuredCredits": [],
@@ -812,23 +810,28 @@ export const projects = [
                 "type": "image",
                 "src": proj_13_B,
                 "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_13_C,
+                "poster": ""
             }
         ]
     },
     {
         "id": 114,
-        "title": "Marcello",
+        "title": "Merci pour l'hiver",
         "category": "short_film",
-        "role": "key_grip_me",
+        "role": "grip_me",
         "date": {
-            "fr": "September 2025",
-            "en": "September 2025"
+            "fr": "May 2026",
+            "en": "May 2026"
         },
-        "status": "In Editing",
+        "status": "En montage",
         "link": "",
         "desc": {
-            "fr": "Court-métrage destiné aux festivals, produit en association. Le film plonge dans le milieu du journalisme niçois des années 1980, avec une attention particulière portée à l’atmosphère, au contexte historique et aux tensions de l’époque.",
-            "en": "Festival-oriented short film produced through a non-profit association. Set in the world of Nice journalism in the 1980s, with close attention to atmosphere, historical context and period tensions."
+            "fr": "**Merci pour l’hiver** est un film étudiant de fin d’année réalisé avec des moyens importants, porté par une ambition cinématographique forte. Le film raconte une histoire d’amour marquée par la rupture et les traces laissées par une relation qui s’est mal terminée. La production a mobilisé une équipe et un dispositif technique ambitieux, avec notamment l’utilisation de grue, steadicam et différents outils de mise en scène afin de donner une dimension plus professionnelle au projet.",
+            "en": "**Merci pour l'hiver** is an ambitious year-end student film, driven by a strong cinematic vision. The film tells a love story marked by a breakup and the lingering traces of a relationship that ended badly. The production mobilized an ambitious crew and technical setup, including the use of cranes, steadicams, and various staging tools to give the project a highly professional dimension."
         },
         "credits": "",
         "structuredCredits": [],
@@ -845,7 +848,7 @@ export const projects = [
                 "poster": ""
             },
             {
-                "type": "image",
+                "type": "video",
                 "src": proj_14_C,
                 "poster": ""
             }
@@ -853,42 +856,6 @@ export const projects = [
     },
     {
         "id": 115,
-        "title": "Merci pour l'hiver",
-        "category": "short_film",
-        "role": "grip_me",
-        "date": {
-            "fr": "May 2026",
-            "en": "May 2026"
-        },
-        "status": "En montage",
-        "link": "",
-        "desc": {
-            "fr": "**Merci pour l’hiver** est un film étudiant de fin d’année réalisé avec des moyens importants, porté par une ambition cinématographique forte. Le film raconte une histoire d’amour marquée par la rupture et les traces laissées par une relation qui s’est mal terminée. La production a mobilisé une équipe et un dispositif technique ambitieux, avec notamment l’utilisation de grue, steadicam et différents outils de mise en scène afin de donner une dimension plus professionnelle au projet.",
-            "en": "**Merci pour l'hiver** is an ambitious year-end student film, driven by a strong cinematic vision. The film tells a love story marked by a breakup and the lingering traces of a relationship that ended badly. The production mobilized an ambitious crew and technical setup, including the use of cranes, steadicams, and various staging tools to give the project a highly professional dimension."
-        },
-        "credits": "",
-        "structuredCredits": [],
-        "media": proj_15_A,
-        "collection": [
-            {
-                "type": "image",
-                "src": proj_15_A,
-                "poster": ""
-            },
-            {
-                "type": "image",
-                "src": proj_15_B,
-                "poster": ""
-            },
-            {
-                "type": "video",
-                "src": proj_15_C,
-                "poster": ""
-            }
-        ]
-    },
-    {
-        "id": 116,
         "title": "Nouvelle Ecoute",
         "category": "short_film",
         "role": "camera_op_me",
@@ -901,6 +868,47 @@ export const projects = [
         "desc": {
             "fr": "Court-métrage réalisé dans le cadre du festival TousHanscène. Le film suit un jeune homme sourd privé de ses appareils auditifs, confronté à une succession d’obstacles dans un environnement peu adapté à sa réalité. Le récit adopte un point de vue immersif, mettant en tension le quotidien et l’isolement sensoriel.",
             "en": "Festival-oriented short film created for the TousHanscène Festival. The film follows a deaf young man who loses his hearing aids and faces a series of obstacles in an environment poorly adapted to his reality. The narrative adopts an immersive perspective, emphasizing everyday tension and sensory isolation."
+        },
+        "credits": "",
+        "structuredCredits": [],
+        "media": proj_15_A,
+        "collection": [
+            {
+                "type": "image",
+                "src": proj_15_A,
+                "poster": ""
+            },
+            {
+                "type": "video",
+                "src": proj_15_B,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_15_C,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_15_D,
+                "poster": ""
+            }
+        ]
+    },
+    {
+        "id": 116,
+        "title": "Parles-moi",
+        "category": "short_film",
+        "role": "gaffer_me",
+        "date": {
+            "fr": "November 2025",
+            "en": "November 2025"
+        },
+        "status": "Completed",
+        "link": "https://youtu.be/LFv09FZMiSM",
+        "desc": {
+            "fr": "Court-métrage réalisé pour le Nikon Film Festival 2025. Le film explore la fragilité d’un couple confronté à une hospitalisation soudaine, en s’attachant aux silences, aux regards et à l’intimité émotionnelle.",
+            "en": "Short film created for the Nikon Film Festival 2025. The film explores the fragility of a couple facing a sudden hospitalization, focusing on silence, glances and emotional intimacy."
         },
         "credits": "",
         "structuredCredits": [],
@@ -922,7 +930,7 @@ export const projects = [
                 "poster": ""
             },
             {
-                "type": "image",
+                "type": "video",
                 "src": proj_16_D,
                 "poster": ""
             }
@@ -930,18 +938,18 @@ export const projects = [
     },
     {
         "id": 117,
-        "title": "Parles-moi",
+        "title": "Transmission",
         "category": "short_film",
-        "role": "gaffer_me",
+        "role": "dop_me",
         "date": {
-            "fr": "November 2025",
-            "en": "November 2025"
+            "fr": "December 2025",
+            "en": "December 2025"
         },
         "status": "Completed",
-        "link": "https://youtu.be/LFv09FZMiSM",
+        "link": "https://youtu.be/-Emi3lXQOys",
         "desc": {
-            "fr": "Court-métrage réalisé pour le Nikon Film Festival 2025. Le film explore la fragilité d’un couple confronté à une hospitalisation soudaine, en s’attachant aux silences, aux regards et à l’intimité émotionnelle.",
-            "en": "Short film created for the Nikon Film Festival 2025. The film explores the fragility of a couple facing a sudden hospitalization, focusing on silence, glances and emotional intimacy."
+            "fr": "Court-métrage réalisé pour le Nikon Film Festival 2025. Le film explore les notions de transmission, de perception de soi et de liens intergénérationnels, à travers une approche sensible et introspective, centrée sur le regard que l’on porte sur les autres et sur soi-même.",
+            "en": "Short film created for the Nikon Film Festival 2025. The film explores themes of transmission, self-perception and intergenerational relationships through a sensitive, introspective approach focused on how we view others and ourselves."
         },
         "credits": "",
         "structuredCredits": [],
@@ -963,70 +971,29 @@ export const projects = [
                 "poster": ""
             },
             {
-                "type": "video",
+                "type": "image",
                 "src": proj_17_D,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_17_F,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_17_G,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_17_H,
                 "poster": ""
             }
         ]
     },
     {
         "id": 118,
-        "title": "Transmission",
-        "category": "short_film",
-        "role": "dop_me",
-        "date": {
-            "fr": "December 2025",
-            "en": "December 2025"
-        },
-        "status": "Completed",
-        "link": "https://youtu.be/-Emi3lXQOys",
-        "desc": {
-            "fr": "Court-métrage réalisé pour le Nikon Film Festival 2025. Le film explore les notions de transmission, de perception de soi et de liens intergénérationnels, à travers une approche sensible et introspective, centrée sur le regard que l’on porte sur les autres et sur soi-même.",
-            "en": "Short film created for the Nikon Film Festival 2025. The film explores themes of transmission, self-perception and intergenerational relationships through a sensitive, introspective approach focused on how we view others and ourselves."
-        },
-        "credits": "",
-        "structuredCredits": [],
-        "media": proj_18_A,
-        "collection": [
-            {
-                "type": "image",
-                "src": proj_18_A,
-                "poster": ""
-            },
-            {
-                "type": "video",
-                "src": proj_18_B,
-                "poster": ""
-            },
-            {
-                "type": "image",
-                "src": proj_18_C,
-                "poster": ""
-            },
-            {
-                "type": "image",
-                "src": proj_18_D,
-                "poster": ""
-            },
-            {
-                "type": "image",
-                "src": proj_18_F,
-                "poster": ""
-            },
-            {
-                "type": "image",
-                "src": proj_18_G,
-                "poster": ""
-            },
-            {
-                "type": "image",
-                "src": proj_18_H,
-                "poster": ""
-            }
-        ]
-    },
-    {
-        "id": 119,
         "title": "Nassim Boukrouh",
         "category": "social_media",
         "role": "camera_op_me",
@@ -1039,6 +1006,62 @@ export const projects = [
         "desc": {
             "fr": "Série de vidéos YouTube dédiées à l’immobilier, tournée à l’international, notamment en Afrique du Sud, en Suisse, en France, au Canada et aux Émirats arabes unis. Un format mobile et dynamique, pensé pour s’adapter à des contextes variés tout en restant accessible et informatif.",
             "en": "YouTube video series focused on real estate, shot internationally across South Africa, Switzerland, France, Canada and the United Arab Emirates. A mobile, dynamic format designed to adapt to diverse contexts while remaining accessible and informative."
+        },
+        "credits": "",
+        "structuredCredits": [],
+        "media": proj_18_A,
+        "collection": [
+            {
+                "type": "image",
+                "src": proj_18_A,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_18_B,
+                "poster": ""
+            },
+            {
+                "type": "video",
+                "src": proj_18_C,
+                "poster": ""
+            },
+            {
+                "type": "video",
+                "src": proj_18_D,
+                "poster": ""
+            },
+            {
+                "type": "video",
+                "src": proj_18_E,
+                "poster": ""
+            },
+            {
+                "type": "video",
+                "src": proj_18_F,
+                "poster": ""
+            },
+            {
+                "type": "image",
+                "src": proj_18_G,
+                "poster": ""
+            }
+        ]
+    },
+    {
+        "id": 119,
+        "title": "M&L",
+        "category": "wedding",
+        "role": "dop_me",
+        "date": {
+            "fr": "July 2025",
+            "en": "July 2025"
+        },
+        "status": "Delivered",
+        "link": "https://youtu.be/P_eesdexjfs?si=XZgBzbj4_jNqJE2F",
+        "desc": {
+            "fr": "Film de mariage tourné au Mas des 5 Fontaines. Une approche sensible mêlant captation documentaire et écriture cinématographique, cherchant à retranscrire l’émotion, les détails et l’atmosphère de la journée.",
+            "en": "Wedding film shot at Mas des 5 Fontaines. A sensitive approach blending documentary capture and cinematic storytelling, aiming to convey emotion, detail and the atmosphere of the day."
         },
         "credits": "",
         "structuredCredits": [],
@@ -1060,74 +1083,18 @@ export const projects = [
                 "poster": ""
             },
             {
-                "type": "video",
+                "type": "image",
                 "src": proj_19_D,
                 "poster": ""
             },
             {
-                "type": "video",
+                "type": "image",
                 "src": proj_19_E,
                 "poster": ""
             },
             {
                 "type": "video",
                 "src": proj_19_F,
-                "poster": ""
-            },
-            {
-                "type": "image",
-                "src": proj_19_G,
-                "poster": ""
-            }
-        ]
-    },
-    {
-        "id": 120,
-        "title": "M&L",
-        "category": "wedding",
-        "role": "dop_me",
-        "date": {
-            "fr": "July 2025",
-            "en": "July 2025"
-        },
-        "status": "Delivered",
-        "link": "",
-        "desc": {
-            "fr": "Film de mariage tourné au Mas des 5 Fontaines. Une approche sensible mêlant captation documentaire et écriture cinématographique, cherchant à retranscrire l’émotion, les détails et l’atmosphère de la journée.",
-            "en": "Wedding film shot at Mas des 5 Fontaines. A sensitive approach blending documentary capture and cinematic storytelling, aiming to convey emotion, detail and the atmosphere of the day."
-        },
-        "credits": "",
-        "structuredCredits": [],
-        "media": proj_20_A,
-        "collection": [
-            {
-                "type": "image",
-                "src": proj_20_A,
-                "poster": ""
-            },
-            {
-                "type": "image",
-                "src": proj_20_B,
-                "poster": ""
-            },
-            {
-                "type": "video",
-                "src": proj_20_C,
-                "poster": ""
-            },
-            {
-                "type": "image",
-                "src": proj_20_D,
-                "poster": ""
-            },
-            {
-                "type": "image",
-                "src": proj_20_E,
-                "poster": ""
-            },
-            {
-                "type": "video",
-                "src": proj_20_F,
                 "poster": ""
             }
         ]

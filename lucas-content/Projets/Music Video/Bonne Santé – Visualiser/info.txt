@@ -8,7 +8,7 @@ Description: Music visualizer for Faz’r Elengi, designed around a deliberately
 Description Fr: Visualiser musical pour Faz’r Elengi, conçu autour d’un dispositif volontairement minimal. L’image se concentre sur la présence de l’artiste, le rythme et l’atmosphère, dans une recherche de clarté et de cohérence esthétique.
 
 
-Project Link:
+Project Link: https://youtu.be/tgxDICtOiC8?si=jc08L-4kW2mw9f5q
 
 [CREDITS]
 producer:
@@ -156,3 +156,4 @@ archivist:
 distributor:
 publicist:
 epk:
+
