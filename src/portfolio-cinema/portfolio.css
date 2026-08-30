@@ -3139,47 +3139,33 @@ body, html {
 
 
 
+
 /* --- MODAL DA TEST --- */
-/* The modal is fixed and takes the whole screen. Background is completely opaque for deep immersion. */
 .test-modal-overlay {
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    background: #050505;
-    z-index: 9000; /* Keeps it strictly BELOW the custom cursor which is at 9999 */
-    display: none;
-    overflow-y: auto;
-    opacity: 0; transition: opacity 0.4s ease;
+    background: #000; z-index: 9000; display: none; opacity: 0;
+    transition: opacity 0.4s ease; overflow: hidden; /* No scroll globally */
 }
 .test-modal-overlay.active { display: block; opacity: 1; }
 
 .test-split-layout {
-    display: flex;
-    width: 100%;
-    min-height: 100vh;
+    display: flex; width: 100vw; height: 100vh;
 }
 
-/* LEFT PANEL (FIXED) */
+/* LEFT PANEL */
 .test-left-panel {
-    width: 40%;
-    height: 100vh;
-    position: sticky;
-    top: 0;
-    display: flex;
-    align-items: center;
-    padding: 60px 80px;
-    background: #050505;
+    width: 35%; height: 100vh; display: flex; align-items: center;
+    padding: 60px; background: #000;
     border-right: 1px solid rgba(255,255,255,0.05);
+    overflow-y: auto; /* Just in case text is huge */
 }
-.test-left-content {
-    width: 100%;
-    max-width: 450px;
-    margin: 0 auto;
-}
+.test-left-content { width: 100%; max-width: 450px; margin: 0 auto; }
 .test-meta-line {
     font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px;
     color: rgba(255,255,255,0.4); margin-bottom: 20px;
 }
 .test-title {
-    font-size: 4rem; font-weight: 300; letter-spacing: 2px; line-height: 1;
+    font-size: 3.5rem; font-weight: 300; letter-spacing: 2px; line-height: 1.1;
     margin-bottom: 15px; text-transform: uppercase; color: #fff;
 }
 .test-tags {
@@ -3188,78 +3174,76 @@ body, html {
     padding-bottom: 30px; margin-bottom: 30px;
 }
 .test-desc {
-    font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.6);
-    font-weight: 300; margin-bottom: 50px; text-align: justify;
+    font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.7);
+    font-weight: 300; margin-bottom: 40px; text-align: justify;
 }
 
-/* Accordion in Left Panel */
+/* ACCORDION */
 .test-tech-specs { border-top: 1px solid rgba(255,255,255,0.1); }
 .test-tech-specs summary {
     padding: 20px 0; font-size: 0.85rem; font-weight: 400; text-transform: uppercase; letter-spacing: 2px;
     display: flex; justify-content: space-between; align-items: center;
-    cursor: none; /* Let custom cursor handle this */
-    list-style: none; border-bottom: 1px solid rgba(255,255,255,0.1);
+    cursor: none; list-style: none; border-bottom: 1px solid rgba(255,255,255,0.1);
     color: #fff; transition: color 0.3s;
 }
 .test-tech-specs summary:hover { color: #aaa; }
 .test-tech-specs summary::-webkit-details-marker { display: none; }
 .test-tech-specs summary i { font-size: 0.8rem; transition: transform 0.3s; }
 .test-tech-specs[open] summary i { transform: rotate(45deg); }
-
-.test-tech-specs-content {
-    padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-.tech-item { margin-bottom: 20px; font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.4; }
+.test-tech-specs-content { padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.tech-item { margin-bottom: 15px; font-size: 0.85rem; color: rgba(255,255,255,0.8); line-height: 1.4; }
 .tech-item span {
-    display: block; font-size: 0.65rem; color: rgba(255,255,255,0.3);
-    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;
+    display: block; font-size: 0.65rem; color: rgba(255,255,255,0.4);
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px;
 }
 
-/* RIGHT PANEL (SCROLLING) */
+/* RIGHT PANEL - BENTO GRID */
 .test-right-panel {
-    width: 60%;
-    padding: 60px 80px;
-    display: flex;
-    flex-direction: column;
-    gap: 80px;
-    background: #020202; /* Very subtle contrast against left panel */
-}
-.test-hero-img {
-    width: 100%; aspect-ratio: 16/9; object-fit: cover; filter: brightness(0.9);
+    width: 65%; height: 100vh; padding: 40px 40px 40px 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 15px; background: #000;
 }
 
-.test-section-title {
-    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px;
-    color: rgba(255,255,255,0.4); margin-bottom: 30px;
+.test-media-cell {
+    position: relative; overflow: hidden; border-radius: 4px; /* subtle rounded edges */
+    background: #111;
+}
+.test-media-cell img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.8s ease;
+}
+.test-media-cell:hover img { transform: scale(1.05); }
+
+.test-hero-cell { grid-column: 1 / span 4; grid-row: 1 / span 2; }
+.test-bts-cell { grid-column: auto; grid-row: 3; }
+.test-related-cell { grid-column: auto; grid-row: 3; cursor: none; }
+
+.test-cell-label {
+    position: absolute; top: 15px; left: 15px; z-index: 2;
+    background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
+    padding: 5px 12px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px;
+    color: #fff; pointer-events: none;
 }
 
-.test-bts-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+/* Specific styling for related cell */
+.test-related-cell::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
+    opacity: 0; transition: opacity 0.3s;
 }
-.test-bts-grid img {
-    width: 100%; height: 100%; object-fit: cover; aspect-ratio: 3/2;
-    filter: grayscale(80%); transition: filter 0.5s ease;
+.test-related-cell:hover::after { opacity: 1; }
+.test-cell-title {
+    position: absolute; bottom: 20px; left: 20px; z-index: 3;
+    font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: #fff;
+    opacity: 0; transition: opacity 0.3s, transform 0.3s; transform: translateY(10px);
 }
-.test-bts-grid img:hover { filter: grayscale(0%); }
-
-.test-related-flex {
-    display: flex; gap: 30px;
-}
-.test-related-card { flex: 1; cursor: none; }
-.test-related-card img {
-    width: 100%; aspect-ratio: 4/3; object-fit: cover;
-    opacity: 0.5; transition: opacity 0.4s ease;
-}
-.test-related-card:hover img { opacity: 1; }
-.test-card-title {
-    margin-top: 20px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;
-    color: #fff; opacity: 0.7; transition: opacity 0.3s;
-}
-.test-related-card:hover .test-card-title { opacity: 1; }
+.test-related-cell:hover .test-cell-title { opacity: 1; transform: translateY(0); }
 
 /* CLOSE BTN */
 .test-close-btn {
-    position: fixed; top: 40px; right: 40px; z-index: 10001;
+    position: absolute; top: 30px; right: 40px; z-index: 10001;
     background: none; border: none; color: #fff; font-size: 32px;
     cursor: none; opacity: 0.5; transition: opacity 0.3s;
 }
@@ -3267,11 +3251,7 @@ body, html {
 
 @media (max-width: 1100px) {
     .test-split-layout { flex-direction: column; }
-    .test-left-panel { width: 100%; height: auto; position: static; padding: 40px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .test-right-panel { width: 100%; padding: 40px; gap: 60px; }
-    .test-title { font-size: 3rem; }
-}
-@media (max-width: 768px) {
-    .test-bts-grid { grid-template-columns: 1fr; }
-    .test-related-flex { flex-direction: column; }
+    .test-left-panel { width: 100%; height: 50vh; padding: 40px; }
+    .test-right-panel { width: 100%; height: 50vh; padding: 40px; }
+    .test-title { font-size: 2.5rem; }
 }

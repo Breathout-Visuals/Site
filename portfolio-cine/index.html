@@ -479,13 +479,14 @@
 
 
 
-<button id="open-test-modal" style="position:fixed; bottom:20px; left:20px; z-index:8000; padding:15px 30px; background:#fff; color:#000; border:none; font-weight:bold; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">TEST DA SPLIT-SCREEN</button>
+
+<button id="open-test-modal" style="position:fixed; bottom:20px; left:20px; z-index:8000; padding:15px 30px; background:#fff; color:#000; border:none; font-weight:bold; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">TEST DA BENTO (SANS SCROLL)</button>
 
 <div class="test-modal-overlay" id="da-test-modal">
   <button class="test-close-btn" id="close-test-modal"><i class="fa-solid fa-xmark"></i></button>
 
   <div class="test-split-layout">
-    <!-- LEFT PANEL -->
+    <!-- LEFT PANEL (Text & Tech) -->
     <div class="test-left-panel">
       <div class="test-left-content">
         <div class="test-meta-line">Dir. Photographie — 2024</div>
@@ -508,31 +509,32 @@
       </div>
     </div>
 
-    <!-- RIGHT PANEL -->
+    <!-- RIGHT PANEL (Bento Grid - Fits 100vh exactly) -->
     <div class="test-right-panel">
-      <img class="test-hero-img" src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&w=1600&q=80" alt="Hero">
+      <!-- Main Video/Image -->
+      <div class="test-media-cell test-hero-cell">
+        <div class="test-cell-label">Main Feature</div>
+        <img src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&w=1600&q=80" alt="Hero">
+      </div>
       
-      <div class="test-bts-wrapper">
-        <h3 class="test-section-title">Behind The Scenes</h3>
-        <div class="test-bts-grid">
-          <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80" alt="BTS">
-          <img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=800&q=80" alt="BTS">
-          <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" alt="BTS" style="grid-column: 1 / -1; aspect-ratio: 21/9;">
-        </div>
+      <!-- Behind The Scenes -->
+      <div class="test-media-cell test-bts-cell">
+        <div class="test-cell-label">Behind The Scenes</div>
+        <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80" alt="BTS">
+      </div>
+      <div class="test-media-cell test-bts-cell">
+        <img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=800&q=80" alt="BTS">
       </div>
 
-      <div class="test-related-wrapper">
-        <h3 class="test-section-title">Voir Aussi</h3>
-        <div class="test-related-flex">
-          <div class="test-related-card">
-            <img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=600&q=80" alt="Related">
-            <div class="test-card-title">Projet Alpha</div>
-          </div>
-          <div class="test-related-card">
-            <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=600&q=80" alt="Related">
-            <div class="test-card-title">Projet Beta</div>
-          </div>
-        </div>
+      <!-- Related Projects (Voir Aussi) -->
+      <div class="test-media-cell test-related-cell">
+        <div class="test-cell-label">Voir Aussi</div>
+        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" alt="Related">
+        <div class="test-cell-title">Projet Alpha</div>
+      </div>
+      <div class="test-media-cell test-related-cell">
+        <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&w=800&q=80" alt="Related">
+        <div class="test-cell-title">Projet Beta</div>
       </div>
     </div>
   </div>
@@ -549,6 +551,7 @@
   });
 </script>
 </body>
+
 
 
 
