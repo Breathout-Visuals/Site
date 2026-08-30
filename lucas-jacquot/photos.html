@@ -220,8 +220,14 @@
       }
     </script>
 
-<section id="photo-gallery" class="photo-section">
-      <div class="photo-grid">
+<section id="photo-gallery" class="photo-section" style="position: relative;">
+
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; text-align: center; width: 100%;">
+        <h1 style="font-family: var(--font-display); font-size: 5vw; color: #fff; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; text-shadow: 0 10px 30px rgba(0,0,0,0.5);">Work In Progress</h1>
+        <p style="font-family: var(--font-main); color: rgba(255,255,255,0.6); font-size: 1.2rem; max-width: 600px; margin: 0 auto; letter-spacing: 0.05em;">Galerie en cours de construction</p>
+    </div>
+
+      <div class="photo-grid" style="opacity: 0.15; filter: blur(8px); pointer-events: none; user-select: none;">
         <div class="photo-item"><img src="https://picsum.photos/600/600?random=1" loading="lazy" alt="Photo 1"></div>
         <div class="photo-item"><img src="https://picsum.photos/600/900?random=2" loading="lazy" alt="Photo 2"></div>
         <div class="photo-item"><img src="https://picsum.photos/600/600?random=3" loading="lazy" alt="Photo 3"></div>
