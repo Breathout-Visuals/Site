@@ -3138,155 +3138,140 @@ body, html {
 }
 
 
+
 /* --- MODAL DA TEST --- */
+/* The modal is fixed and takes the whole screen. Background is completely opaque for deep immersion. */
 .test-modal-overlay {
-    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(10px);
-    z-index: 10000; display: none;
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: #050505;
+    z-index: 9000; /* Keeps it strictly BELOW the custom cursor which is at 9999 */
+    display: none;
     overflow-y: auto;
-    padding: 60px 20px;
     opacity: 0; transition: opacity 0.4s ease;
-    cursor: auto !important; /* Allow normal mouse cursor */
-}
-.test-modal-overlay * {
-    cursor: auto; /* Ensure no pointer-events:none inherits */
 }
 .test-modal-overlay.active { display: block; opacity: 1; }
 
-.test-modal-container {
-    background: #000;
-    color: #fff;
-    width: 100%; max-width: 1200px;
+.test-split-layout {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* LEFT PANEL (FIXED) */
+.test-left-panel {
+    width: 40%;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    padding: 60px 80px;
+    background: #050505;
+    border-right: 1px solid rgba(255,255,255,0.05);
+}
+.test-left-content {
+    width: 100%;
+    max-width: 450px;
     margin: 0 auto;
-    position: relative;
-    border-radius: 0; /* Sharp corners for Luxe feel */
-    box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+}
+.test-meta-line {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px;
+    color: rgba(255,255,255,0.4); margin-bottom: 20px;
+}
+.test-title {
+    font-size: 4rem; font-weight: 300; letter-spacing: 2px; line-height: 1;
+    margin-bottom: 15px; text-transform: uppercase; color: #fff;
+}
+.test-tags {
+    font-size: 0.8rem; color: #fff; letter-spacing: 1px;
+    text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 30px; margin-bottom: 30px;
+}
+.test-desc {
+    font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.6);
+    font-weight: 300; margin-bottom: 50px; text-align: justify;
 }
 
-.test-close-btn {
-    position: fixed; top: 30px; right: 40px;
-    width: 50px; height: 50px;
-    border-radius: 0;
-    background: transparent; color: #fff;
-    border: 1px solid rgba(255,255,255,0.2);
-    font-size: 24px; cursor: pointer !important;
-    display: flex; justify-content: center; align-items: center;
-    z-index: 10010; transition: all 0.3s ease;
-}
-.test-close-btn:hover { background: #fff; color: #000; }
-
-.test-modal-nav {
-    position: fixed; top: 50%; transform: translateY(-50%);
-    background: transparent; color: #fff; border: none;
-    font-size: 30px; cursor: pointer !important; z-index: 10010;
-    opacity: 0.3; transition: opacity 0.3s;
-}
-.test-modal-nav:hover { opacity: 1; }
-.test-modal-nav.prev { left: 40px; }
-.test-modal-nav.next { right: 40px; }
-
-.test-modal-content { padding: 80px 100px; }
-
-.test-modal-header { text-align: center; margin-bottom: 70px; }
-.test-modal-header h2 {
-    font-size: 3.5rem; font-weight: 300; letter-spacing: 4px;
-    margin-bottom: 25px; text-transform: uppercase;
-}
-.test-modal-meta {
-    font-size: 0.85rem; color: rgba(255,255,255,0.6);
-    text-transform: uppercase; letter-spacing: 3px;
-    display: flex; justify-content: center; gap: 20px; align-items: center;
-}
-.test-modal-meta span.sep { width: 1px; height: 15px; background: rgba(255,255,255,0.3); }
-
-.test-modal-main-media img {
-    width: 100%; height: auto; display: block;
-    margin-bottom: 60px; border-radius: 0;
-}
-
-.test-modal-desc {
-    font-size: 1.1rem; line-height: 2; font-weight: 300;
-    color: rgba(255,255,255,0.8);
-    margin: 0 auto 80px auto; text-align: center; max-width: 800px;
-}
-
-/* Accordion */
-.test-tech-specs {
-    max-width: 900px; margin: 0 auto 80px auto;
-    border-top: 1px solid rgba(255,255,255,0.15);
-}
+/* Accordion in Left Panel */
+.test-tech-specs { border-top: 1px solid rgba(255,255,255,0.1); }
 .test-tech-specs summary {
-    padding: 30px 0; font-size: 1.1rem; font-weight: 300;
-    text-transform: uppercase; letter-spacing: 3px;
-    cursor: pointer !important; list-style: none;
+    padding: 20px 0; font-size: 0.85rem; font-weight: 400; text-transform: uppercase; letter-spacing: 2px;
     display: flex; justify-content: space-between; align-items: center;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
-    transition: color 0.3s;
+    cursor: none; /* Let custom cursor handle this */
+    list-style: none; border-bottom: 1px solid rgba(255,255,255,0.1);
+    color: #fff; transition: color 0.3s;
 }
 .test-tech-specs summary:hover { color: #aaa; }
 .test-tech-specs summary::-webkit-details-marker { display: none; }
-.test-tech-specs summary i { transition: transform 0.3s; font-size: 1rem; }
+.test-tech-specs summary i { font-size: 0.8rem; transition: transform 0.3s; }
 .test-tech-specs[open] summary i { transform: rotate(45deg); }
 
 .test-tech-specs-content {
-    padding: 40px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-.test-tech-specs-content ul {
-    list-style: none; padding: 0; margin: 0;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
-}
-.test-tech-specs-content li { font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.8; }
-.test-tech-specs-content strong {
-    color: #fff; font-weight: 400; text-transform: uppercase;
-    font-size: 0.75rem; letter-spacing: 2px; display: block; margin-bottom: 10px;
+.tech-item { margin-bottom: 20px; font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.4; }
+.tech-item span {
+    display: block; font-size: 0.65rem; color: rgba(255,255,255,0.3);
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;
 }
 
-/* BTS */
-.test-bts-section { margin-bottom: 100px; }
-.test-bts-section h3 {
-    font-size: 1.2rem; font-weight: 300; text-transform: uppercase; letter-spacing: 4px;
-    margin-bottom: 50px; text-align: center; color: rgba(255,255,255,0.8);
+/* RIGHT PANEL (SCROLLING) */
+.test-right-panel {
+    width: 60%;
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    background: #020202; /* Very subtle contrast against left panel */
 }
+.test-hero-img {
+    width: 100%; aspect-ratio: 16/9; object-fit: cover; filter: brightness(0.9);
+}
+
+.test-section-title {
+    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px;
+    color: rgba(255,255,255,0.4); margin-bottom: 30px;
+}
+
 .test-bts-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 2px; /* Cinematic tight gap */
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
 }
 .test-bts-grid img {
-    width: 100%; aspect-ratio: 16/10; object-fit: cover;
-    filter: grayscale(30%); transition: filter 0.6s ease;
+    width: 100%; height: 100%; object-fit: cover; aspect-ratio: 3/2;
+    filter: grayscale(80%); transition: filter 0.5s ease;
 }
 .test-bts-grid img:hover { filter: grayscale(0%); }
 
-/* Related */
-.test-related {
-    padding-top: 80px; border-top: 1px solid rgba(255,255,255,0.15);
+.test-related-flex {
+    display: flex; gap: 30px;
 }
-.test-related h4 {
-    font-size: 1.1rem; font-weight: 300; text-transform: uppercase; letter-spacing: 4px;
-    margin-bottom: 50px; text-align: center; color: rgba(255,255,255,0.8);
+.test-related-card { flex: 1; cursor: none; }
+.test-related-card img {
+    width: 100%; aspect-ratio: 4/3; object-fit: cover;
+    opacity: 0.5; transition: opacity 0.4s ease;
 }
-.test-related-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;
+.test-related-card:hover img { opacity: 1; }
+.test-card-title {
+    margin-top: 20px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;
+    color: #fff; opacity: 0.7; transition: opacity 0.3s;
 }
-.test-related-item { position: relative; cursor: pointer !important; overflow: hidden; }
-.test-related-item img {
-    width: 100%; aspect-ratio: 16/9; object-fit: cover;
-    opacity: 0.5; transition: all 0.6s ease; transform: scale(1.02);
-}
-.test-related-item:hover img { opacity: 1; transform: scale(1); }
-.test-related-title {
-    position: absolute; bottom: 30px; left: 0; right: 0; text-align: center;
-    font-size: 1rem; font-weight: 300; text-transform: uppercase; letter-spacing: 2px;
-    opacity: 0; transition: opacity 0.4s ease; transform: translateY(10px);
-}
-.test-related-item:hover .test-related-title { opacity: 1; transform: translateY(0); }
+.test-related-card:hover .test-card-title { opacity: 1; }
 
-@media (max-width: 900px) {
-    .test-modal-content { padding: 40px 30px; }
-    .test-modal-header h2 { font-size: 2rem; }
-    .test-tech-specs-content ul { grid-template-columns: 1fr; }
+/* CLOSE BTN */
+.test-close-btn {
+    position: fixed; top: 40px; right: 40px; z-index: 10001;
+    background: none; border: none; color: #fff; font-size: 32px;
+    cursor: none; opacity: 0.5; transition: opacity 0.3s;
+}
+.test-close-btn:hover { opacity: 1; }
+
+@media (max-width: 1100px) {
+    .test-split-layout { flex-direction: column; }
+    .test-left-panel { width: 100%; height: auto; position: static; padding: 40px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .test-right-panel { width: 100%; padding: 40px; gap: 60px; }
+    .test-title { font-size: 3rem; }
+}
+@media (max-width: 768px) {
     .test-bts-grid { grid-template-columns: 1fr; }
-    .test-related-grid { grid-template-columns: 1fr; }
-    .test-modal-nav { display: none; }
+    .test-related-flex { flex-direction: column; }
 }

@@ -478,91 +478,62 @@
 
 
 
-<button id="open-test-modal" style="position:fixed; bottom:20px; left:20px; z-index:9000; padding:15px 30px; background:#000; color:#fff; border:1px solid #fff; border-radius:0; font-weight:300; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">TEST DA LUXE</button>
+
+<button id="open-test-modal" style="position:fixed; bottom:20px; left:20px; z-index:8000; padding:15px 30px; background:#fff; color:#000; border:none; font-weight:bold; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">TEST DA SPLIT-SCREEN</button>
 
 <div class="test-modal-overlay" id="da-test-modal">
   <button class="test-close-btn" id="close-test-modal"><i class="fa-solid fa-xmark"></i></button>
-  <button class="test-modal-nav prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
-  <button class="test-modal-nav next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
 
-  <div class="test-modal-container">
-    <div class="test-modal-content">
-      
-      <!-- HEADER: Basic Info -->
-      <div class="test-modal-header">
-        <h2>Dîner d'Affaire</h2>
-        <div class="test-modal-meta">
-          <span>Directeur de la Photographie</span>
-          <span class="sep"></span>
-          <span>Fiction</span>
-          <span class="sep"></span>
-          <span>2024</span>
-        </div>
+  <div class="test-split-layout">
+    <!-- LEFT PANEL -->
+    <div class="test-left-panel">
+      <div class="test-left-content">
+        <div class="test-meta-line">Dir. Photographie — 2024</div>
+        <h2 class="test-title">Dîner d'Affaire</h2>
+        <div class="test-tags">Fiction / Court-Métrage</div>
+        
+        <p class="test-desc">
+          Un huis clos sous haute tension raconté au travers d'une esthétique froide et contrastée. L'image a été pensée pour isoler les personnages et faire ressentir la pression psychologique du scénario.
+        </p>
+        
+        <details class="test-tech-specs">
+          <summary>Fiche Technique <i class="fa-solid fa-plus"></i></summary>
+          <div class="test-tech-specs-content">
+            <div class="tech-item"><span>Caméra</span>ARRI Alexa Mini LF</div>
+            <div class="tech-item"><span>Optiques</span>Cooke Anamorphic /i Prime</div>
+            <div class="tech-item"><span>Format</span>2.39:1</div>
+            <div class="tech-item"><span>Étalonnage</span>DaVinci Resolve</div>
+          </div>
+        </details>
       </div>
-      
-      <!-- MAIN MEDIA -->
-      <div class="test-modal-main-media">
-        <img src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&w=1600&q=80" alt="Main Frame">
-      </div>
-      
-      <!-- DESCRIPTION -->
-      <div class="test-modal-desc">
-        Un huis clos sous haute tension raconté au travers d'une esthétique froide et contrastée. L'image a été pensée pour isoler les personnages et faire ressentir la pression psychologique du scénario.
-      </div>
-      
-      <!-- TECHNICAL SPECS (Accordion) -->
-      <details class="test-tech-specs">
-        <summary>Spécifications Techniques <i class="fa-solid fa-plus"></i></summary>
-        <div class="test-tech-specs-content">
-          <ul>
-            <li>
-              <strong>Caméra</strong>
-              ARRI Alexa Mini LF
-            </li>
-            <li>
-              <strong>Optiques</strong>
-              Cooke Anamorphic /i Prime (40mm, 65mm MACRO)
-            </li>
-            <li>
-              <strong>Ratio</strong>
-              2.39:1
-            </li>
-            <li>
-              <strong>Étalonnage</strong>
-              DaVinci Resolve (FilmPrint 2383)
-            </li>
-          </ul>
-        </div>
-      </details>
+    </div>
 
-      <!-- BEHIND THE SCENES -->
-      <div class="test-bts-section">
-        <h3>Behind The Scenes</h3>
+    <!-- RIGHT PANEL -->
+    <div class="test-right-panel">
+      <img class="test-hero-img" src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&w=1600&q=80" alt="Hero">
+      
+      <div class="test-bts-wrapper">
+        <h3 class="test-section-title">Behind The Scenes</h3>
         <div class="test-bts-grid">
-          <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80" alt="BTS 1">
-          <img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=800&q=80" alt="BTS 2">
+          <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80" alt="BTS">
+          <img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=800&q=80" alt="BTS">
+          <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" alt="BTS" style="grid-column: 1 / -1; aspect-ratio: 21/9;">
         </div>
       </div>
 
-      <!-- RELATED PROJECTS -->
-      <div class="test-related">
-        <h4>Voir aussi</h4>
-        <div class="test-related-grid">
-          <div class="test-related-item">
-            <img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=600&q=80" alt="Related 1">
-            <div class="test-related-title">Projet Alpha</div>
+      <div class="test-related-wrapper">
+        <h3 class="test-section-title">Voir Aussi</h3>
+        <div class="test-related-flex">
+          <div class="test-related-card">
+            <img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=600&q=80" alt="Related">
+            <div class="test-card-title">Projet Alpha</div>
           </div>
-          <div class="test-related-item">
-            <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=600&q=80" alt="Related 2">
-            <div class="test-related-title">Projet Beta</div>
-          </div>
-          <div class="test-related-item">
-            <img src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&w=600&q=80" alt="Related 3">
-            <div class="test-related-title">Projet Gamma</div>
+          <div class="test-related-card">
+            <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=600&q=80" alt="Related">
+            <div class="test-card-title">Projet Beta</div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
@@ -576,14 +547,9 @@
     document.getElementById('da-test-modal').classList.remove('active');
     document.body.style.overflow = '';
   });
-  document.getElementById('da-test-modal').addEventListener('click', (e) => {
-    if(e.target.id === 'da-test-modal') {
-      document.getElementById('da-test-modal').classList.remove('active');
-      document.body.style.overflow = '';
-    }
-  });
 </script>
 </body>
+
 
 
 
