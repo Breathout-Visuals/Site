@@ -3140,6 +3140,7 @@ body, html {
 
 
 
+
 /* --- MODAL DA TEST --- */
 .test-modal-overlay {
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -3148,16 +3149,14 @@ body, html {
 }
 .test-modal-overlay.active { display: block; opacity: 1; }
 
-.test-split-layout {
-    display: flex; width: 100vw; height: 100vh;
-}
+.test-split-layout { display: flex; width: 100vw; height: 100vh; }
 
 /* LEFT PANEL */
 .test-left-panel {
     width: 35%; height: 100vh; display: flex; align-items: center;
     padding: 60px; background: #000;
     border-right: 1px solid rgba(255,255,255,0.05);
-    overflow-y: auto; /* Just in case text is huge */
+    overflow-y: auto;
 }
 .test-left-content { width: 100%; max-width: 450px; margin: 0 auto; }
 .test-meta-line {
@@ -3197,49 +3196,49 @@ body, html {
     text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px;
 }
 
-/* RIGHT PANEL - BENTO GRID */
+/* RELATED PROJECTS IN LEFT PANEL */
+.test-related-left {
+    margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);
+}
+.test-related-title-left {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px;
+    color: rgba(255,255,255,0.4); margin-bottom: 20px;
+}
+.test-related-flex-left { display: flex; gap: 15px; }
+.test-related-card-left {
+    flex: 1; cursor: none; position: relative; overflow: hidden; border-radius: 4px;
+}
+.test-related-card-left img {
+    width: 100%; aspect-ratio: 16/9; object-fit: cover; opacity: 0.5; transition: opacity 0.4s, transform 0.6s;
+}
+.test-related-card-left:hover img { opacity: 1; transform: scale(1.05); }
+.test-related-card-left span {
+    position: absolute; bottom: 10px; left: 10px; z-index: 2;
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #fff;
+    opacity: 0; transform: translateY(5px); transition: all 0.3s;
+}
+.test-related-card-left:hover span { opacity: 1; transform: translateY(0); }
+.test-related-card-left::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
+    opacity: 0; transition: opacity 0.3s; pointer-events: none;
+}
+.test-related-card-left:hover::after { opacity: 1; }
+
+/* RIGHT PANEL (PiP Swap Interaction) */
 .test-right-panel {
-    width: 65%; height: 100vh; padding: 40px 40px 40px 0;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 15px; background: #000;
+    width: 65%; height: 100vh; padding: 40px 40px 40px 0; background: #000;
 }
 
-.test-media-cell {
-    position: relative; overflow: hidden; border-radius: 4px; /* subtle rounded edges */
-    background: #111;
-}
-.test-media-cell img {
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.8s ease;
-}
-.test-media-cell:hover img { transform: scale(1.05); }
-
-.test-hero-cell { grid-column: 1 / span 4; grid-row: 1 / span 2; }
-.test-bts-cell { grid-column: auto; grid-row: 3; }
-.test-related-cell { grid-column: auto; grid-row: 3; cursor: none; }
-
-.test-cell-label {
+.test-view-label {
     position: absolute; top: 15px; left: 15px; z-index: 2;
     background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
     padding: 5px 12px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px;
-    color: #fff; pointer-events: none;
+    color: #fff; pointer-events: none; transition: all 0.3s;
 }
 
-/* Specific styling for related cell */
-.test-related-cell::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
-    opacity: 0; transition: opacity 0.3s;
-}
-.test-related-cell:hover::after { opacity: 1; }
-.test-cell-title {
-    position: absolute; bottom: 20px; left: 20px; z-index: 3;
-    font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: #fff;
-    opacity: 0; transition: opacity 0.3s, transform 0.3s; transform: translateY(10px);
-}
-.test-related-cell:hover .test-cell-title { opacity: 1; transform: translateY(0); }
+.test-pip-container:hover { transform: scale(1.03) translateY(-5px) !important; }
+.test-pip-container:hover img { transform: scale(1.05); }
 
 /* CLOSE BTN */
 .test-close-btn {
@@ -3253,5 +3252,5 @@ body, html {
     .test-split-layout { flex-direction: column; }
     .test-left-panel { width: 100%; height: 50vh; padding: 40px; }
     .test-right-panel { width: 100%; height: 50vh; padding: 40px; }
-    .test-title { font-size: 2.5rem; }
+    .test-pip-container { width: 180px !important; bottom: 60px !important; right: 60px !important; }
 }

@@ -480,13 +480,14 @@
 
 
 
-<button id="open-test-modal" style="position:fixed; bottom:20px; left:20px; z-index:8000; padding:15px 30px; background:#fff; color:#000; border:none; font-weight:bold; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">TEST DA BENTO (SANS SCROLL)</button>
+
+<button id="open-test-modal" style="position:fixed; bottom:20px; left:20px; z-index:8000; padding:15px 30px; background:#fff; color:#000; border:none; font-weight:bold; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">TEST DA (PIP SWAP)</button>
 
 <div class="test-modal-overlay" id="da-test-modal">
   <button class="test-close-btn" id="close-test-modal"><i class="fa-solid fa-xmark"></i></button>
 
   <div class="test-split-layout">
-    <!-- LEFT PANEL (Text & Tech) -->
+    <!-- LEFT PANEL (Text, Tech & Related) -->
     <div class="test-left-panel">
       <div class="test-left-content">
         <div class="test-meta-line">Dir. Photographie — 2024</div>
@@ -506,36 +507,40 @@
             <div class="tech-item"><span>Étalonnage</span>DaVinci Resolve</div>
           </div>
         </details>
+
+        <!-- RELATED PROJECTS MOVED HERE -->
+        <div class="test-related-left">
+          <h4 class="test-related-title-left">Voir Aussi</h4>
+          <div class="test-related-flex-left">
+            <div class="test-related-card-left">
+              <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80" alt="Related">
+              <span>Projet Alpha</span>
+            </div>
+            <div class="test-related-card-left">
+              <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&w=600&q=80" alt="Related">
+              <span>Projet Beta</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <!-- RIGHT PANEL (Bento Grid - Fits 100vh exactly) -->
-    <div class="test-right-panel">
-      <!-- Main Video/Image -->
-      <div class="test-media-cell test-hero-cell">
-        <div class="test-cell-label">Main Feature</div>
-        <img src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&w=1600&q=80" alt="Hero">
-      </div>
+    <!-- RIGHT PANEL (Main Media + PiP Thumbnail Swap) -->
+    <div class="test-right-panel" style="display: block; position: relative;">
       
-      <!-- Behind The Scenes -->
-      <div class="test-media-cell test-bts-cell">
-        <div class="test-cell-label">Behind The Scenes</div>
-        <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80" alt="BTS">
-      </div>
-      <div class="test-media-cell test-bts-cell">
-        <img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=800&q=80" alt="BTS">
+      <!-- Main Large Media -->
+      <div class="test-main-media-container" style="position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 4px;">
+        <div class="test-view-label" id="main-view-label">Final Cut</div>
+        <img id="main-large-img" src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&w=1600&q=80" alt="Main" style="width: 100%; height: 100%; object-fit: cover; transition: opacity 0.4s ease;">
       </div>
 
-      <!-- Related Projects (Voir Aussi) -->
-      <div class="test-media-cell test-related-cell">
-        <div class="test-cell-label">Voir Aussi</div>
-        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" alt="Related">
-        <div class="test-cell-title">Projet Alpha</div>
+      <!-- PiP (Picture in Picture) Thumbnail for BTS -->
+      <div class="test-pip-container" id="swap-trigger" style="position: absolute; bottom: 80px; right: 80px; width: 300px; aspect-ratio: 16/9; z-index: 10; cursor: none; border-radius: 4px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.9); border: 1px solid rgba(255,255,255,0.2); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);">
+        <div class="test-view-label" id="pip-view-label" style="background: #fff; color: #000;">Behind The Scenes</div>
+        <img id="pip-small-img" src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80" alt="BTS" style="width: 100%; height: 100%; object-fit: cover; transition: opacity 0.4s ease, transform 0.6s ease;">
       </div>
-      <div class="test-media-cell test-related-cell">
-        <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&w=800&q=80" alt="Related">
-        <div class="test-cell-title">Projet Beta</div>
-      </div>
+
     </div>
   </div>
 </div>
@@ -545,12 +550,46 @@
     document.getElementById('da-test-modal').classList.add('active');
     document.body.style.overflow = 'hidden';
   });
+  
   document.getElementById('close-test-modal').addEventListener('click', () => {
     document.getElementById('da-test-modal').classList.remove('active');
     document.body.style.overflow = '';
   });
+
+  // SWAP LOGIC
+  document.getElementById('swap-trigger').addEventListener('click', () => {
+    const mainImg = document.getElementById('main-large-img');
+    const pipImg = document.getElementById('pip-small-img');
+    const mainLabel = document.getElementById('main-view-label');
+    const pipLabel = document.getElementById('pip-view-label');
+    
+    // Fade out
+    mainImg.style.opacity = 0;
+    pipImg.style.opacity = 0;
+    
+    setTimeout(() => {
+      // Swap sources
+      const tempSrc = mainImg.src;
+      mainImg.src = pipImg.src;
+      pipImg.src = tempSrc;
+      
+      // Swap labels
+      if (mainLabel.innerText === "Final Cut") {
+          mainLabel.innerText = "Behind The Scenes";
+          pipLabel.innerText = "Switch to Final Cut";
+      } else {
+          mainLabel.innerText = "Final Cut";
+          pipLabel.innerText = "Behind The Scenes";
+      }
+      
+      // Fade in
+      mainImg.style.opacity = 1;
+      pipImg.style.opacity = 1;
+    }, 400); // matches CSS transition time
+  });
 </script>
 </body>
+
 
 
 
