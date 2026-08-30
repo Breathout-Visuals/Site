@@ -3136,3 +3136,12 @@ a,
     /* +30% */
   }
 }
+
+/* Hide scrollbar globally */
+::-webkit-scrollbar {
+  display: none;
+}
+body, html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
