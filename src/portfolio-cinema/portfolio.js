@@ -166,7 +166,7 @@ function getRoleName(key) {
     if (!key) return "";
 
     // 1. Try Lookup
-    let val = LIBRARY.roles_me[key] || LIBRARY.roles_credits[key];
+    let val = LIBRARY.roles_me[key.trim().toLowerCase()] || LIBRARY.roles_credits[key.trim().toLowerCase()];
 
     // 2. If valid object, return current lang
     if (val && typeof val === 'object') {
@@ -278,9 +278,9 @@ function updateContent() {
             // Update Category / Subtitle
             const catEl = card.querySelector('.project-category');
             if (catEl) {
-                const typeObj = project.type ? LIBRARY.types[project.type] : null;
-                const subcatObj = project.subcategory ? LIBRARY.subcategories[project.subcategory] : null;
-                const catObj = project.category ? LIBRARY.categories[project.category] : null;
+                const typeObj = project.type ? LIBRARY.types[project.type.trim().toLowerCase()] : null;
+                const subcatObj = project.subcategory ? LIBRARY.subcategories[project.subcategory.trim().toLowerCase()] : null;
+                const catObj = project.category ? LIBRARY.categories[project.category.trim().toLowerCase()] : null;
                 
                 let catName = "";
                 if (typeObj) {
@@ -721,8 +721,8 @@ function setupModal() {
             const metaBlock = document.createElement('div');
             metaBlock.className = 'modal-meta-block';
 
-            const subObj = project.subcategory ? LIBRARY.subcategories[project.subcategory] : null;
-            const fallbackCatObj = LIBRARY.categories[project.category];
+            const subObj = project.subcategory ? LIBRARY.subcategories[project.subcategory.trim().toLowerCase()] : null;
+            const fallbackCatObj = LIBRARY.categories[project.category.trim().toLowerCase()];
             const catObj = subObj || fallbackCatObj;
             const catName = catObj ? (catObj[currentLang] || catObj.en) : project.category;
 
@@ -770,8 +770,8 @@ function setupModal() {
             // Collection (Social): Keep simple or default
             if (defaultMeta) {
                 defaultMeta.style.display = 'flex'; // Show default "Category • Date"
-                const subObj = project.subcategory ? LIBRARY.subcategories[project.subcategory] : null;
-            const fallbackCatObj = LIBRARY.categories[project.category];
+                const subObj = project.subcategory ? LIBRARY.subcategories[project.subcategory.trim().toLowerCase()] : null;
+            const fallbackCatObj = LIBRARY.categories[project.category.trim().toLowerCase()];
             const catObj = subObj || fallbackCatObj;
             const catName = catObj ? (catObj[currentLang] || catObj.en) : project.category;
                 document.getElementById('modal-category').textContent = catName;
@@ -2034,9 +2034,9 @@ class InfiniteGallery {
         article.setAttribute('data-id', project.id);
 
         // Logic: Type -> Subcategory -> Category
-        const typeObj = project.type ? LIBRARY.types[project.type] : null;
-        const subcatObj = project.subcategory ? LIBRARY.subcategories[project.subcategory] : null;
-        const catObj = project.category ? LIBRARY.categories[project.category] : null;
+        const typeObj = project.type ? LIBRARY.types[project.type.trim().toLowerCase()] : null;
+        const subcatObj = project.subcategory ? LIBRARY.subcategories[project.subcategory.trim().toLowerCase()] : null;
+        const catObj = project.category ? LIBRARY.categories[project.category.trim().toLowerCase()] : null;
         
         let catName = "";
         if (typeObj) {
