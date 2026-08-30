@@ -18,9 +18,9 @@ export const LIBRARY = {
     categories: {
         all:  { en: "All",            fr: "Tout",              extra: "" },
         fic:  { en: "Fiction",        fr: "Fiction",           extra: "" },
-        crp:  { en: "Corporate",      fr: "Corporate",         extra: "" },
+        crp:  { en: "Corporate",      fr: "Entreprise",         extra: "" },
         doc:  { en: "Documentary",    fr: "Documentaire",      extra: "" },
-        clp:  { en: "Music Video",    fr: "Clip Musical",      extra: "" },
+        clp:  { en: "Music Video",    fr: "Clip",      		extra: "" },
         soc:  { en: "Social Media",   fr: "Réseaux Sociaux",   extra: "" },
         wed:  { en: "Wedding",        fr: "Mariage",           extra: "" }
     },

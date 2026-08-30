@@ -14,7 +14,7 @@ let currentFilteredProjects = projects; // Global filtered list
 // --- Translations ---
 const translations = {
     fr: {
-        nav: { work: "Projets", about: "À Propos", contact: "Contact" },
+        nav: { work: "Projets", photo: "Photos", about: "À Propos", contact: "Contact" },
         hero: { subtitle: "Capturer l'instant, sublimer le récit." },
         filter: { all: "Tout" },
         
@@ -115,7 +115,7 @@ function getRoleName(key) {
     if (!key) return "";
 
     // 1. Try Lookup
-    let val = LIBRARY.roles_me[key.trim().toLowerCase()] || LIBRARY.roles_credits[key.trim().toLowerCase()];
+    let val = LIBRARY.roles_me[key.trim().toLowerCase()] || null;
 
     // 2. If valid object, return current lang
     if (val && typeof val === 'object') {
@@ -735,7 +735,7 @@ function setupModal() {
         }
 
         // Handle role badge
-        const roleBadgeData = LIBRARY.roles_me[project.role] || LIBRARY.roles_credits[project.role] || project.role;
+        const roleBadgeData = LIBRARY.roles_me[project.role.trim().toLowerCase()] || null || project.role;
         const pRoleBadge = (typeof roleBadgeData === 'object')
             ? (roleBadgeData[currentLang] || roleBadgeData.en || "")
             : (roleBadgeData || "Filmmaker");

@@ -272,6 +272,100 @@ export const projects = [
     ]
 },
 {
+    "id": 110,
+    "title": "Run",
+    "category": "clp",
+    "subcategory": "",
+    "type": "",
+    "role": "dop",
+    "date": {
+        "raw": "08 2026",
+        "month": "08",
+        "year": "2026"
+    },
+    "sortWeight": 202608,
+    "status": "edit",
+    "link": "",
+    "desc": {
+        "fr": "Description à venir.",
+        "en": "Description coming soon."
+    },
+    "structuredCredits": [],
+    "media": proj_10_A,
+    "collection": [
+        {
+            "type": "image",
+            "src": proj_10_A,
+            "poster": ""
+        },
+        {
+            "type": "image",
+            "src": proj_10_B,
+            "poster": ""
+        },
+        {
+            "type": "image",
+            "src": proj_10_C,
+            "poster": ""
+        },
+        {
+            "type": "image",
+            "src": proj_10_D,
+            "poster": ""
+        },
+        {
+            "type": "image",
+            "src": proj_10_E,
+            "poster": ""
+        },
+        {
+            "type": "image",
+            "src": proj_10_F,
+            "poster": ""
+        },
+        {
+            "type": "image",
+            "src": proj_10_G,
+            "poster": ""
+        },
+        {
+            "type": "image",
+            "src": proj_10_H,
+            "poster": ""
+        },
+        {
+            "type": "image",
+            "src": proj_10_I,
+            "poster": ""
+        },
+        {
+            "type": "image",
+            "src": proj_10_J,
+            "poster": ""
+        },
+        {
+            "type": "image",
+            "src": proj_10_K,
+            "poster": ""
+        },
+        {
+            "type": "image",
+            "src": proj_10_L,
+            "poster": ""
+        },
+        {
+            "type": "image",
+            "src": proj_10_M,
+            "poster": ""
+        },
+        {
+            "type": "image",
+            "src": proj_10_N,
+            "poster": ""
+        }
+    ]
+},
+{
     "id": 101,
     "title": "DAVID DAVID",
     "category": "crp",
@@ -1256,15 +1350,15 @@ export const projects = [
     "id": 120,
     "title": "Nassim Boukrouh",
     "category": "soc",
-    "subcategory": "vrt",
-    "type": "yt",
+    "subcategory": "yt",
+    "type": "",
     "role": "fmk",
     "date": {
-        "raw": "2025",
-        "month": "",
+        "raw": "01 2025",
+        "month": "01",
         "year": "2025"
     },
-    "sortWeight": 202500,
+    "sortWeight": 202501,
     "status": "",
     "link": "",
     "desc": {
@@ -1356,100 +1450,6 @@ export const projects = [
         {
             "type": "video",
             "src": proj_7_E,
-            "poster": ""
-        }
-    ]
-},
-{
-    "id": 110,
-    "title": "Run",
-    "category": "clp",
-    "subcategory": "",
-    "type": "",
-    "role": "dop",
-    "date": {
-        "raw": "August 2026",
-        "month": "August",
-        "year": "2026"
-    },
-    "sortWeight": null,
-    "status": "edit",
-    "link": "",
-    "desc": {
-        "fr": "Description à venir.",
-        "en": "Description coming soon."
-    },
-    "structuredCredits": [],
-    "media": proj_10_A,
-    "collection": [
-        {
-            "type": "image",
-            "src": proj_10_A,
-            "poster": ""
-        },
-        {
-            "type": "image",
-            "src": proj_10_B,
-            "poster": ""
-        },
-        {
-            "type": "image",
-            "src": proj_10_C,
-            "poster": ""
-        },
-        {
-            "type": "image",
-            "src": proj_10_D,
-            "poster": ""
-        },
-        {
-            "type": "image",
-            "src": proj_10_E,
-            "poster": ""
-        },
-        {
-            "type": "image",
-            "src": proj_10_F,
-            "poster": ""
-        },
-        {
-            "type": "image",
-            "src": proj_10_G,
-            "poster": ""
-        },
-        {
-            "type": "image",
-            "src": proj_10_H,
-            "poster": ""
-        },
-        {
-            "type": "image",
-            "src": proj_10_I,
-            "poster": ""
-        },
-        {
-            "type": "image",
-            "src": proj_10_J,
-            "poster": ""
-        },
-        {
-            "type": "image",
-            "src": proj_10_K,
-            "poster": ""
-        },
-        {
-            "type": "image",
-            "src": proj_10_L,
-            "poster": ""
-        },
-        {
-            "type": "image",
-            "src": proj_10_M,
-            "poster": ""
-        },
-        {
-            "type": "image",
-            "src": proj_10_N,
             "poster": ""
         }
     ]
