@@ -80,6 +80,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.scrollTo(0, 0);
 
+    // Handle cross-page section navigation invisibly
+    setTimeout(() => {
+        const scrollTo = sessionStorage.getItem('scrollTo');
+        if (scrollTo) {
+            sessionStorage.removeItem('scrollTo');
+            const target = document.querySelector(scrollTo);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    }, 200);
+
     setupAnimations();
     setupAboutMobileAnimation();
     setupLanguageSwitch();
