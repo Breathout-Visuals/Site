@@ -3,9 +3,20 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/portfolio-cine/photos",
+      "source": "/lucas-jacquot",
+      "destination": "/portfolio-cine/index.html"
+    },
+    {
+      "source": "/lucas-jacquot/",
+      "destination": "/portfolio-cine/index.html"
+    },
+    {
+      "source": "/lucas-jacquot/photos",
       "destination": "/portfolio-cine/photos.html"
+    },
+    {
+      "source": "/lucas-jacquot/(.*)",
+      "destination": "/portfolio-cine/$1"
     }
   ]
 }
-

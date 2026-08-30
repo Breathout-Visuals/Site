@@ -17,6 +17,14 @@ const contentWatcher = () => ({
         server.watcher.add(ppDir);
         server.watcher.add(lucasDir);
 
+        server.middlewares.use((req, res, next) => {
+            if (req.url.startsWith('/lucas-jacquot')) {
+                req.url = req.url.replace('/lucas-jacquot', '/portfolio-cine');
+            }
+            next();
+        });
+
+
         const generate = (file) => {
             // Normalize path for Windows compatibility
             const normalizedFile = file.replace(/\\/g, '/');
