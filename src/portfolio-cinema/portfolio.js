@@ -9,16 +9,6 @@ injectAnalytics();
 injectSpeedInsights();
 
 // --- Constants ---
-const STATUS = {
-    EDITING: "En montage",
-    DELIVERED: "Délivré",
-    DISTRIBUTION: "En distribution",
-    ONGOING: "En cours"
-};
-
-
-
-
 let currentFilteredProjects = projects; // Global filtered list
 
 // --- Translations ---
@@ -651,7 +641,7 @@ function setupModal() {
         let statusBadgeHtml = '';
         if (project.status === 'edit') {
             const statusLabel = LIBRARY.statuses.edit[currentLang] || LIBRARY.statuses.edit.en;
-            statusBadgeHtml = `<span class="status-badge" data-i18n="status.editing">${statusLabel}</span>`;
+            statusBadgeHtml = `<span class="status-badge" data-i18n="status.edit">${statusLabel}</span>`;
         }
 
         titleEl.innerHTML = `${project.title}&nbsp;${statusBadgeHtml}`;
@@ -2016,7 +2006,7 @@ class InfiniteGallery {
         if (project.status === 'edit') {
             const statusLabel = LIBRARY.statuses.edit[currentLang] || LIBRARY.statuses.edit.en;
             // Add data-i18n for auto-translation on switch
-            statusBadgeHtml = `<span class="status-badge" data-i18n="status.editing">${statusLabel}</span>`;
+            statusBadgeHtml = `<span class="status-badge" data-i18n="status.edit">${statusLabel}</span>`;
         }
 
         // Resolve Media (Handle Carousel Array)
