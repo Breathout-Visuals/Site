@@ -3141,116 +3141,89 @@ body, html {
 
 
 
+
 /* --- MODAL DA TEST --- */
 .test-modal-overlay {
-    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    background: #000; z-index: 9000; display: none; opacity: 0;
-    transition: opacity 0.4s ease; overflow: hidden; /* No scroll globally */
+    position: fixed; inset: 0; background: #030303; z-index: 9000;
+    display: none; opacity: 0; transition: opacity 0.4s ease; overflow: hidden;
 }
 .test-modal-overlay.active { display: block; opacity: 1; }
 
-.test-split-layout { display: flex; width: 100vw; height: 100vh; }
-
-/* LEFT PANEL */
-.test-left-panel {
-    width: 35%; height: 100vh; display: flex; align-items: center;
-    padding: 60px; background: #000;
-    border-right: 1px solid rgba(255,255,255,0.05);
-    overflow-y: auto;
+/* Cinematic Media Layer - UNCROPPED */
+.test-cinematic-layer {
+    position: absolute; inset: 0; display: flex; justify-content: center; align-items: center;
+    padding-bottom: 120px; /* shift up slightly so HUD text doesn't overlap important parts */
 }
-.test-left-content { width: 100%; max-width: 450px; margin: 0 auto; }
-.test-meta-line {
+.test-cinematic-layer img {
+    max-width: 95vw; max-height: 80vh; object-fit: contain; /* PERFECT for 21:9 */
+}
+
+/* HUD LAYER */
+.test-hud-layer {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 60px;
+    background: linear-gradient(to top, rgba(3,3,3,1) 0%, rgba(3,3,3,0.8) 50%, rgba(3,3,3,0) 100%);
+    display: flex; justify-content: space-between; align-items: flex-end;
+    pointer-events: none; /* Let clicks pass through empty gradient */
+}
+.test-hud-layer > * { pointer-events: auto; } /* Re-enable for content */
+
+/* HUD Left: Info (No more lines/borders!) */
+.test-hud-left { max-width: 550px; }
+.test-hud-meta {
     font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px;
-    color: rgba(255,255,255,0.4); margin-bottom: 20px;
+    color: rgba(255,255,255,0.4); margin-bottom: 15px; font-weight: 300;
 }
-.test-title {
-    font-size: 3.5rem; font-weight: 300; letter-spacing: 2px; line-height: 1.1;
-    margin-bottom: 15px; text-transform: uppercase; color: #fff;
+.test-hud-title {
+    font-size: 3.5rem; font-weight: 300; letter-spacing: 1px; color: #fff;
+    margin-bottom: 15px; text-transform: uppercase; line-height: 1;
 }
-.test-tags {
-    font-size: 0.8rem; color: #fff; letter-spacing: 1px;
-    text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 30px; margin-bottom: 30px;
+.test-hud-desc {
+    font-size: 1rem; line-height: 1.6; color: rgba(255,255,255,0.6);
+    font-weight: 300; margin-bottom: 30px; text-align: justify;
 }
-.test-desc {
-    font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.7);
-    font-weight: 300; margin-bottom: 40px; text-align: justify;
-}
-
-/* ACCORDION */
-.test-tech-specs { border-top: 1px solid rgba(255,255,255,0.1); }
-.test-tech-specs summary {
-    padding: 20px 0; font-size: 0.85rem; font-weight: 400; text-transform: uppercase; letter-spacing: 2px;
-    display: flex; justify-content: space-between; align-items: center;
-    cursor: none; list-style: none; border-bottom: 1px solid rgba(255,255,255,0.1);
-    color: #fff; transition: color 0.3s;
-}
-.test-tech-specs summary:hover { color: #aaa; }
-.test-tech-specs summary::-webkit-details-marker { display: none; }
-.test-tech-specs summary i { font-size: 0.8rem; transition: transform 0.3s; }
-.test-tech-specs[open] summary i { transform: rotate(45deg); }
-.test-tech-specs-content { padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
-.tech-item { margin-bottom: 15px; font-size: 0.85rem; color: rgba(255,255,255,0.8); line-height: 1.4; }
-.tech-item span {
-    display: block; font-size: 0.65rem; color: rgba(255,255,255,0.4);
-    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px;
-}
-
-/* RELATED PROJECTS IN LEFT PANEL */
-.test-related-left {
-    margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);
-}
-.test-related-title-left {
+.test-hud-tech {
     font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px;
-    color: rgba(255,255,255,0.4); margin-bottom: 20px;
-}
-.test-related-flex-left { display: flex; gap: 15px; }
-.test-related-card-left {
-    flex: 1; cursor: none; position: relative; overflow: hidden; border-radius: 4px;
-}
-.test-related-card-left img {
-    width: 100%; aspect-ratio: 16/9; object-fit: cover; opacity: 0.5; transition: opacity 0.4s, transform 0.6s;
-}
-.test-related-card-left:hover img { opacity: 1; transform: scale(1.05); }
-.test-related-card-left span {
-    position: absolute; bottom: 10px; left: 10px; z-index: 2;
-    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #fff;
-    opacity: 0; transform: translateY(5px); transition: all 0.3s;
-}
-.test-related-card-left:hover span { opacity: 1; transform: translateY(0); }
-.test-related-card-left::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
-    opacity: 0; transition: opacity 0.3s; pointer-events: none;
-}
-.test-related-card-left:hover::after { opacity: 1; }
-
-/* RIGHT PANEL (PiP Swap Interaction) */
-.test-right-panel {
-    width: 65%; height: 100vh; padding: 40px 40px 40px 0; background: #000;
+    color: rgba(255,255,255,0.5); font-weight: 300;
 }
 
-.test-view-label {
-    position: absolute; top: 15px; left: 15px; z-index: 2;
-    background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
-    padding: 5px 12px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px;
-    color: #fff; pointer-events: none; transition: all 0.3s;
+/* HUD Right: PiP & Related */
+.test-hud-right { display: flex; flex-direction: column; align-items: flex-end; gap: 40px; }
+
+/* PiP Thumbnail */
+.test-pip-wrapper {
+    position: relative; width: 280px; aspect-ratio: 16/9; cursor: none;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 2px;
+}
+.test-pip-wrapper:hover { transform: scale(1.05) translateY(-5px); }
+.test-pip-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+.test-pip-label {
+    position: absolute; top: -10px; right: -10px; background: #fff; color: #000;
+    font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px;
+    z-index: 10; box-shadow: 0 5px 15px rgba(0,0,0,0.3); font-weight: bold;
 }
 
-.test-pip-container:hover { transform: scale(1.03) translateY(-5px) !important; }
-.test-pip-container:hover img { transform: scale(1.05); }
-
-/* CLOSE BTN */
-.test-close-btn {
-    position: absolute; top: 30px; right: 40px; z-index: 10001;
-    background: none; border: none; color: #fff; font-size: 32px;
-    cursor: none; opacity: 0.5; transition: opacity 0.3s;
+/* Related Nav */
+.test-related-wrapper { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+.test-related-title { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.3); }
+.test-related-list { display: flex; gap: 15px; }
+.test-related-item { position: relative; width: 130px; aspect-ratio: 16/9; cursor: none; overflow: hidden; border-radius: 2px; }
+.test-related-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; transition: all 0.4s; }
+.test-related-item:hover img { opacity: 1; transform: scale(1.05); }
+.test-related-item .hover-title {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    text-align: center; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: #fff;
+    background: rgba(0,0,0,0.7); opacity: 0; transition: opacity 0.3s; padding: 10px;
 }
+.test-related-item:hover .hover-title { opacity: 1; }
+
+/* Close */
+.test-close-btn { position: absolute; top: 40px; right: 40px; font-size: 32px; color: #fff; background: none; border: none; cursor: none; opacity: 0.3; transition: opacity 0.3s; z-index: 10001; }
 .test-close-btn:hover { opacity: 1; }
 
 @media (max-width: 1100px) {
-    .test-split-layout { flex-direction: column; }
-    .test-left-panel { width: 100%; height: 50vh; padding: 40px; }
-    .test-right-panel { width: 100%; height: 50vh; padding: 40px; }
-    .test-pip-container { width: 180px !important; bottom: 60px !important; right: 60px !important; }
+    .test-hud-layer { flex-direction: column; align-items: flex-start; gap: 40px; }
+    .test-hud-right { align-items: flex-start; }
+    .test-pip-wrapper { width: 200px; }
 }

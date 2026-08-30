@@ -481,67 +481,61 @@
 
 
 
-<button id="open-test-modal" style="position:fixed; bottom:20px; left:20px; z-index:8000; padding:15px 30px; background:#fff; color:#000; border:none; font-weight:bold; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">TEST DA (PIP SWAP)</button>
+
+<button id="open-test-modal" style="position:fixed; bottom:20px; left:20px; z-index:8000; padding:15px 30px; background:#fff; color:#000; border:none; font-weight:bold; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">TEST DA CINEMATIC HUD</button>
 
 <div class="test-modal-overlay" id="da-test-modal">
   <button class="test-close-btn" id="close-test-modal"><i class="fa-solid fa-xmark"></i></button>
 
-  <div class="test-split-layout">
-    <!-- LEFT PANEL (Text, Tech & Related) -->
-    <div class="test-left-panel">
-      <div class="test-left-content">
-        <div class="test-meta-line">Dir. Photographie — 2024</div>
-        <h2 class="test-title">Dîner d'Affaire</h2>
-        <div class="test-tags">Fiction / Court-Métrage</div>
-        
-        <p class="test-desc">
-          Un huis clos sous haute tension raconté au travers d'une esthétique froide et contrastée. L'image a été pensée pour isoler les personnages et faire ressentir la pression psychologique du scénario.
-        </p>
-        
-        <details class="test-tech-specs">
-          <summary>Fiche Technique <i class="fa-solid fa-plus"></i></summary>
-          <div class="test-tech-specs-content">
-            <div class="tech-item"><span>Caméra</span>ARRI Alexa Mini LF</div>
-            <div class="tech-item"><span>Optiques</span>Cooke Anamorphic /i Prime</div>
-            <div class="tech-item"><span>Format</span>2.39:1</div>
-            <div class="tech-item"><span>Étalonnage</span>DaVinci Resolve</div>
-          </div>
-        </details>
+  <!-- UN-CROPPED MEDIA LAYER -->
+  <div class="test-cinematic-layer">
+    <div class="test-view-label" id="main-view-label" style="position: absolute; top: 40px; left: 40px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem;">Final Cut</div>
+    <!-- Note: Object-fit contain ensures NO CROPPING for 21:9 images -->
+    <img id="main-large-img" src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&w=2000&q=80" alt="Main" style="transition: opacity 0.4s ease;">
+  </div>
 
-        <!-- RELATED PROJECTS MOVED HERE -->
-        <div class="test-related-left">
-          <h4 class="test-related-title-left">Voir Aussi</h4>
-          <div class="test-related-flex-left">
-            <div class="test-related-card-left">
-              <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80" alt="Related">
-              <span>Projet Alpha</span>
-            </div>
-            <div class="test-related-card-left">
-              <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&w=600&q=80" alt="Related">
-              <span>Projet Beta</span>
-            </div>
+  <!-- HUD LAYER (INFO + NAVIGATION) -->
+  <div class="test-hud-layer">
+    
+    <!-- Left: Project Info -->
+    <div class="test-hud-left">
+      <div class="test-hud-meta">Dir. Photographie &nbsp;—&nbsp; Fiction &nbsp;—&nbsp; 2024</div>
+      <h2 class="test-hud-title">Dîner d'Affaire</h2>
+      <p class="test-hud-desc">
+        Un huis clos sous haute tension raconté au travers d'une esthétique froide et contrastée. L'image a été pensée pour isoler les personnages et faire ressentir la pression psychologique du scénario.
+      </p>
+      <!-- Tech specs inline (No accordion, no jumping, no Étalonnage) -->
+      <div class="test-hud-tech">
+        ARRI Alexa Mini LF &nbsp;•&nbsp; Cooke Anamorphic /i Prime &nbsp;•&nbsp; 2.39:1
+      </div>
+    </div>
+
+    <!-- Right: PiP Swap & Related -->
+    <div class="test-hud-right">
+      
+      <!-- PiP -->
+      <div class="test-pip-wrapper" id="swap-trigger">
+        <div class="test-pip-label" id="pip-view-label">Behind The Scenes</div>
+        <img id="pip-small-img" src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80" alt="BTS" style="transition: opacity 0.4s ease;">
+      </div>
+
+      <!-- Voir Aussi (Smaller, purely navigational) -->
+      <div class="test-related-wrapper">
+        <div class="test-related-title">Voir Aussi</div>
+        <div class="test-related-list">
+          <div class="test-related-item">
+            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=400&q=80" alt="Related">
+            <span class="hover-title">Projet Alpha</span>
+          </div>
+          <div class="test-related-item">
+            <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&w=400&q=80" alt="Related">
+            <span class="hover-title">Projet Beta</span>
           </div>
         </div>
-
-      </div>
-    </div>
-
-    <!-- RIGHT PANEL (Main Media + PiP Thumbnail Swap) -->
-    <div class="test-right-panel" style="display: block; position: relative;">
-      
-      <!-- Main Large Media -->
-      <div class="test-main-media-container" style="position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 4px;">
-        <div class="test-view-label" id="main-view-label">Final Cut</div>
-        <img id="main-large-img" src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&w=1600&q=80" alt="Main" style="width: 100%; height: 100%; object-fit: cover; transition: opacity 0.4s ease;">
-      </div>
-
-      <!-- PiP (Picture in Picture) Thumbnail for BTS -->
-      <div class="test-pip-container" id="swap-trigger" style="position: absolute; bottom: 80px; right: 80px; width: 300px; aspect-ratio: 16/9; z-index: 10; cursor: none; border-radius: 4px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.9); border: 1px solid rgba(255,255,255,0.2); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);">
-        <div class="test-view-label" id="pip-view-label" style="background: #fff; color: #000;">Behind The Scenes</div>
-        <img id="pip-small-img" src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80" alt="BTS" style="width: 100%; height: 100%; object-fit: cover; transition: opacity 0.4s ease, transform 0.6s ease;">
       </div>
 
     </div>
+
   </div>
 </div>
 
@@ -585,10 +579,11 @@
       // Fade in
       mainImg.style.opacity = 1;
       pipImg.style.opacity = 1;
-    }, 400); // matches CSS transition time
+    }, 400);
   });
 </script>
 </body>
+
 
 
 
