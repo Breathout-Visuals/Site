@@ -43,8 +43,8 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 // Lucas Jacquot Cinema Portfolio
-                lucas: resolve(__dirname, 'lucas-jacquot/index.html'),
-                lucas_photos: resolve(__dirname, 'lucas-jacquot/photos.html'),
+                lucas: resolve(__dirname, 'portfolio-cine/index.html'),
+                lucas_photos: resolve(__dirname, 'portfolio-cine/photos.html'),
                 // Portfolio Pro (Breathout Visuals)
                 portfolio_pro:         resolve(__dirname, 'index.html'),
                 portfolio_pro_project: resolve(__dirname, 'portfolio-freelance/project.html'),
@@ -54,3 +54,4 @@ export default defineConfig({
         },
     },
 });
+

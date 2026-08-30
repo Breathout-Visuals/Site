@@ -3,8 +3,9 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/lucas-jacquot/photos",
-      "destination": "/lucas-jacquot/photos.html"
+      "source": "/portfolio-cine/photos",
+      "destination": "/portfolio-cine/photos.html"
     }
   ]
 }
+
