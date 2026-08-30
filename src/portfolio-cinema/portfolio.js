@@ -9,15 +9,6 @@ injectAnalytics();
 injectSpeedInsights();
 
 // --- Constants ---
-const CATEGORIES = {
-    SHORT_FILM: "short_film",
-    COMMERCIAL: "commercial",
-    MUSIC_VIDEO: "music_video",
-    DOCUMENTARY: "documentary",
-    SOCIAL: "social_media",
-    WEDDING: "wedding"
-};
-
 const STATUS = {
     EDITING: "En montage",
     DELIVERED: "Délivré",
@@ -36,23 +27,7 @@ const translations = {
         nav: { work: "Projets", about: "À Propos", contact: "Contact" },
         hero: { subtitle: "Capturer l'instant, sublimer le récit." },
         filter: { all: "Tout" },
-        cat: {
-            [CATEGORIES.MUSIC_VIDEO]: "Clip Musical",
-            [CATEGORIES.DOCUMENTARY]: "Documentaire",
-            [CATEGORIES.COMMERCIAL]: "Publicité",
-            [CATEGORIES.SHORT_FILM]: "Court-Métrage",
-            [CATEGORIES.SOCIAL]: "Réseaux Sociaux",
-            [CATEGORIES.WEDDING]: "Mariage",
-            sub: {
-                nikon: "Nikon",
-                h48: "48h",
-                indie: "Indé",
-                visualizer: "Visualizer",
-                clip: "Clip",
-                reel: "Reel Instagram",
-                youtube: "Contenu Youtube"
-            }
-        },
+        
         about: {
             title: "À Propos",
             p1: "Je suis Lucas Jacquot, un filmmaker animé par la lumière, la composition et la quête d'images soignées et porteuses de sens. Ces deux dernières années, j'ai façonné des expériences visuelles à travers des clips, des documentaires et du travail de machinerie sur plateau.",
@@ -80,23 +55,7 @@ const translations = {
         nav: { work: "Work", photo: "Photo", about: "About", contact: "Contact" },
         hero: { subtitle: "Capturing moments, crafting narratives." },
         filter: { all: "All" },
-        cat: {
-            [CATEGORIES.MUSIC_VIDEO]: "Music Video",
-            [CATEGORIES.DOCUMENTARY]: "Documentary",
-            [CATEGORIES.COMMERCIAL]: "Commercial",
-            [CATEGORIES.SHORT_FILM]: "Short Film",
-            [CATEGORIES.SOCIAL]: "Social Media",
-            [CATEGORIES.WEDDING]: "Wedding",
-            sub: {
-                nikon: "Nikon",
-                h48: "48h",
-                indie: "Indie",
-                visualizer: "Visualizer",
-                clip: "Clip",
-                reel: "Instagram Reel",
-                youtube: "Youtube Content"
-            }
-        },
+        
         about: {
             title: "About Me",
             p1: "I am Lucas Jacquot, a filmmaker driven by light, composition, and the pursuit of crafted, meaningful images. For the past two years, I’ve been shaping visual experiences across music videos, documentaries, and on-set grip work, always with a focus on atmosphere and precision.",
@@ -2077,7 +2036,7 @@ class InfiniteGallery {
       <img src="${displaySrc}" alt="${project.title}" class="project-media">
       <div class="project-info">
         <h3 class="project-title">${project.title}</h3>
-        <span class="project-category" data-i18n="cat.${project.category}">${catName}</span>
+        <span class="project-category" >${catName}</span>
       </div>
     `;
         return article;

@@ -46,7 +46,6 @@ export const LIBRARY = {
     // 3. TYPES (Festivals, concours...)
     // ------------------------------------------------------------------------
     types: {
-        yt: { en: "Youtube", fr: "Youtube", extra: "" },
         nk25: { en: "Nikon Film Fest 2025", fr: "Nikon Film Fest 2025", extra: "" },
         nk26: { en: "Nikon Film Fest 2026", fr: "Nikon Film Fest 2026", extra: "" },
         pf26: { en: "Plein Format Fest 2026", fr: "Plein Format Fest 2026", extra: "" },
@@ -84,73 +83,8 @@ export const LIBRARY = {
         grp:  { en: "Grip",                     fr: "Machiniste",                 extra: "" }
     },
 
-    // ------------------------------------------------------------------------
-    // 6. MÉTIERS GÉNÉRAUX (Crew ~50 pers)
-    // ------------------------------------------------------------------------
-    roles_credits: {
-        // Production
-        prod:     { en: "Producer",                fr: "Producteur",                 extra: "" },
-        xprod:    { en: "Executive Producer",      fr: "Producteur Exécutif",        extra: "" },
-        lprod:    { en: "Line Producer",           fr: "Directeur de Production",    extra: "" },
-        pman:     { en: "Production Manager",      fr: "Régisseur Général",          extra: "" },
-        pcoor:    { en: "Production Coordinator",  fr: "Coordinateur de Production", extra: "" },
-        locm:     { en: "Location Manager",        fr: "Régisseur Lieux",            extra: "" },
+    
         
-        // Mise en scène (Direction)
-        dir:      { en: "Director",                fr: "Réalisateur",                extra: "" },
-        ad1:      { en: "1st Assistant Dir.",      fr: "1er Assistant Réal.",        extra: "" },
-        ad2:      { en: "2nd Assistant Dir.",      fr: "2nd Assistant Réal.",        extra: "" },
-        scrp:     { en: "Script Supervisor",       fr: "Scripte",                    extra: "" },
-        cstg:     { en: "Casting Director",        fr: "Directeur de Casting",       extra: "" },
-        
-        // Image (Camera)
-        dop:      { en: "Director of Photography", fr: "Directeur de la Photo",      extra: "" },
-        cam:      { en: "Camera Operator",         fr: "Cadreur",                    extra: "" },
-        ac1:      { en: "1st AC (Focus Puller)",   fr: "1er Assistant Caméra",       extra: "" },
-        ac2:      { en: "2nd AC",                  fr: "2nd Assistant Caméra",       extra: "" },
-        std:      { en: "Steadicam Operator",      fr: "Opérateur Steadicam",        extra: "" },
-        dit:      { en: "DIT",                     fr: "DIT",                        extra: "" },
-        phot:     { en: "Set Photographer",        fr: "Photographe de Plateau",     extra: "" },
-
-        // Lumière (Electric)
-        gaf:      { en: "Gaffer",                  fr: "Chef Électricien",           extra: "" },
-        bbe:      { en: "Best Boy Electric",       fr: "Second Électricien",         extra: "" },
-        spk:      { en: "Spark",                   fr: "Électricien",                extra: "" },
-        
-        // Machinerie (Grip)
-        kgr:      { en: "Key Grip",                fr: "Chef Machiniste",            extra: "" },
-        bbg:      { en: "Best Boy Grip",           fr: "Second Machiniste",          extra: "" },
-        grp:      { en: "Grip",                    fr: "Machiniste",                 extra: "" },
-        
-        // Déco (Art Dept)
-        pdes:     { en: "Production Designer",     fr: "Chef Décorateur",            extra: "" },
-        artd:     { en: "Art Director",            fr: "Directeur Artistique",       extra: "" },
-        sdec:     { en: "Set Decorator",           fr: "Ensemblier",                 extra: "" },
-        prop:     { en: "Props Master",            fr: "Accessoiriste",              extra: "" },
-        
-        // HMC (Hair, Makeup, Costumes)
-        cost:     { en: "Costume Designer",        fr: "Chef Costumier",             extra: "" },
-        ward:     { en: "Wardrobe",                fr: "Habilleur",                  extra: "" },
-        muah:     { en: "Key Makeup & Hair",       fr: "Chef Maquilleur / Coiffeur", extra: "" },
-        mkup:     { en: "Makeup Artist",           fr: "Maquilleur",                 extra: "" },
-        hair:     { en: "Hair Stylist",            fr: "Coiffeur",                   extra: "" },
-        
-        // Son (Sound)
-        snd:      { en: "Sound Mixer",             fr: "Chef Opérateur Son",         extra: "" },
-        boom:     { en: "Boom Operator",           fr: "Perchman",                   extra: "" },
-        
-        // Post-Production
-        edt:      { en: "Editor",                  fr: "Chef Monteur",               extra: "" },
-        aedt:     { en: "Assistant Editor",        fr: "Assistant Monteur",          extra: "" },
-        col:      { en: "Colorist",                fr: "Étalonneur",                 extra: "" },
-        sndd:     { en: "Sound Designer",          fr: "Sound Designer",             extra: "" },
-        mix:      { en: "Re-recording Mixer",      fr: "Mixeur Son",                 extra: "" },
-        vfxs:     { en: "VFX Supervisor",          fr: "Superviseur VFX",            extra: "" },
-        comp:     { en: "Compositor",              fr: "Truquiste (Compositing)",    extra: "" },
-        
-        // Musique
-        cmp:      { en: "Composer",                fr: "Compositeur",                extra: "" }
-    },
 
     // ------------------------------------------------------------------------
     // 7. STATUT DU PROJET
