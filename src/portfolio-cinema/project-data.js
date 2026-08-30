@@ -1,137 +1,137 @@
 /* DYNAMICALLY GENERATED */
 
-import proj_0_A from "../../portfolio-cinema-content/Projets/Commercial/Converse/A.jpg";
-import proj_0_B from "../../portfolio-cinema-content/Projets/Commercial/Converse/B.jpg";
-import proj_0_C from "../../portfolio-cinema-content/Projets/Commercial/Converse/C.jpg";
-import proj_0_D from "../../portfolio-cinema-content/Projets/Commercial/Converse/D.jpg";
-import proj_1_A from "../../portfolio-cinema-content/Projets/Commercial/DAVID DAVID/A.png";
-import proj_1_B from "../../portfolio-cinema-content/Projets/Commercial/DAVID DAVID/B.png";
-import proj_1_C from "../../portfolio-cinema-content/Projets/Commercial/DAVID DAVID/C.png";
-import proj_1_D from "../../portfolio-cinema-content/Projets/Commercial/DAVID DAVID/D.png";
-import proj_1_E from "../../portfolio-cinema-content/Projets/Commercial/DAVID DAVID/E.png";
-import proj_1_F from "../../portfolio-cinema-content/Projets/Commercial/DAVID DAVID/F.png";
-import proj_1_G from "../../portfolio-cinema-content/Projets/Commercial/DAVID DAVID/G.png";
-import proj_1_H from "../../portfolio-cinema-content/Projets/Commercial/DAVID DAVID/H.png";
-import proj_2_A from "../../portfolio-cinema-content/Projets/Commercial/Fishermen Friends/A.jpg";
-import proj_2_B from "../../portfolio-cinema-content/Projets/Commercial/Fishermen Friends/B.jpg";
-import proj_2_C from "../../portfolio-cinema-content/Projets/Commercial/Fishermen Friends/C.mp4";
-import proj_2_D from "../../portfolio-cinema-content/Projets/Commercial/Fishermen Friends/D.jpg";
-import proj_2_E from "../../portfolio-cinema-content/Projets/Commercial/Fishermen Friends/E.mp4";
-import proj_2_F from "../../portfolio-cinema-content/Projets/Commercial/Fishermen Friends/F.jpg";
-import proj_2_G from "../../portfolio-cinema-content/Projets/Commercial/Fishermen Friends/G.jpg";
-import proj_2_H from "../../portfolio-cinema-content/Projets/Commercial/Fishermen Friends/H.jpg";
-import proj_2_I from "../../portfolio-cinema-content/Projets/Commercial/Fishermen Friends/I.mp4";
-import proj_3_A from "../../portfolio-cinema-content/Projets/Commercial/The Street Partners/A.jpg";
-import proj_3_B from "../../portfolio-cinema-content/Projets/Commercial/The Street Partners/B.mp4";
-import proj_3_C from "../../portfolio-cinema-content/Projets/Commercial/The Street Partners/C.jpg";
-import proj_3_D from "../../portfolio-cinema-content/Projets/Commercial/The Street Partners/D.jpg";
-import proj_3_E from "../../portfolio-cinema-content/Projets/Commercial/The Street Partners/E.mp4";
-import proj_3_F from "../../portfolio-cinema-content/Projets/Commercial/The Street Partners/F.jpg";
-import proj_4_A from "../../portfolio-cinema-content/Projets/Documentary/Bergers des Abeilles/A.jpg";
-import proj_4_B from "../../portfolio-cinema-content/Projets/Documentary/Bergers des Abeilles/B.jpg";
-import proj_4_C from "../../portfolio-cinema-content/Projets/Documentary/Bergers des Abeilles/C.mp4";
-import proj_4_D from "../../portfolio-cinema-content/Projets/Documentary/Bergers des Abeilles/D.jpg";
-import proj_5_A from "../../portfolio-cinema-content/Projets/Documentary/Des collines aux machines/A.jpg";
-import proj_5_B from "../../portfolio-cinema-content/Projets/Documentary/Des collines aux machines/B.mp4";
-import proj_5_C from "../../portfolio-cinema-content/Projets/Documentary/Des collines aux machines/C.jpg";
-import proj_5_D from "../../portfolio-cinema-content/Projets/Documentary/Des collines aux machines/D.mp4";
-import proj_5_E from "../../portfolio-cinema-content/Projets/Documentary/Des collines aux machines/E.jpg";
-import proj_5_F from "../../portfolio-cinema-content/Projets/Documentary/Des collines aux machines/F.jpg";
-import proj_6_A from "../../portfolio-cinema-content/Projets/Music Video/Bonne Santé – Visualiser/A.jpg";
-import proj_6_B from "../../portfolio-cinema-content/Projets/Music Video/Bonne Santé – Visualiser/B.mp4";
-import proj_6_C from "../../portfolio-cinema-content/Projets/Music Video/Bonne Santé – Visualiser/C.jpg";
-import proj_6_D from "../../portfolio-cinema-content/Projets/Music Video/Bonne Santé – Visualiser/D.jpg";
-import proj_6_E from "../../portfolio-cinema-content/Projets/Music Video/Bonne Santé – Visualiser/E.jpg";
-import proj_7_A from "../../portfolio-cinema-content/Projets/Music Video/Jamais/A.jpg";
-import proj_7_B from "../../portfolio-cinema-content/Projets/Music Video/Jamais/B.jpg";
-import proj_7_C from "../../portfolio-cinema-content/Projets/Music Video/Jamais/C.mp4";
-import proj_7_D from "../../portfolio-cinema-content/Projets/Music Video/Jamais/D.jpg";
-import proj_7_E from "../../portfolio-cinema-content/Projets/Music Video/Jamais/E.mp4";
-import proj_8_cover from "../../portfolio-cinema-content/Projets/Music Video/Komani/cover.jpg";
-import proj_8_A from "../../portfolio-cinema-content/Projets/Music Video/Komani/A.jpg";
-import proj_8_B from "../../portfolio-cinema-content/Projets/Music Video/Komani/B.mp4";
-import proj_8_C from "../../portfolio-cinema-content/Projets/Music Video/Komani/C.jpg";
-import proj_8_D from "../../portfolio-cinema-content/Projets/Music Video/Komani/D.jpg";
-import proj_8_E from "../../portfolio-cinema-content/Projets/Music Video/Komani/E.mp4";
-import proj_9_A from "../../portfolio-cinema-content/Projets/Music Video/Level Up/A.jpg";
-import proj_9_B from "../../portfolio-cinema-content/Projets/Music Video/Level Up/B.jpg";
-import proj_9_C from "../../portfolio-cinema-content/Projets/Music Video/Level Up/C.mp4";
-import proj_9_D from "../../portfolio-cinema-content/Projets/Music Video/Level Up/D.jpg";
-import proj_9_E from "../../portfolio-cinema-content/Projets/Music Video/Level Up/E.jpg";
-import proj_10_A from "../../portfolio-cinema-content/Projets/Music Video/Run/A.jpg";
-import proj_10_B from "../../portfolio-cinema-content/Projets/Music Video/Run/B.jpg";
-import proj_10_C from "../../portfolio-cinema-content/Projets/Music Video/Run/C.jpg";
-import proj_10_D from "../../portfolio-cinema-content/Projets/Music Video/Run/D.jpg";
-import proj_10_E from "../../portfolio-cinema-content/Projets/Music Video/Run/E.jpg";
-import proj_10_F from "../../portfolio-cinema-content/Projets/Music Video/Run/F.jpg";
-import proj_10_G from "../../portfolio-cinema-content/Projets/Music Video/Run/G.jpg";
-import proj_10_H from "../../portfolio-cinema-content/Projets/Music Video/Run/H.jpg";
-import proj_10_I from "../../portfolio-cinema-content/Projets/Music Video/Run/I.jpg";
-import proj_10_J from "../../portfolio-cinema-content/Projets/Music Video/Run/J.jpg";
-import proj_10_K from "../../portfolio-cinema-content/Projets/Music Video/Run/K.jpg";
-import proj_10_L from "../../portfolio-cinema-content/Projets/Music Video/Run/L.jpg";
-import proj_10_M from "../../portfolio-cinema-content/Projets/Music Video/Run/M.jpg";
-import proj_10_N from "../../portfolio-cinema-content/Projets/Music Video/Run/N.jpg";
-import proj_11_A from "../../portfolio-cinema-content/Projets/Short Film/Dîner d’Affaire/A.jpg";
-import proj_11_B from "../../portfolio-cinema-content/Projets/Short Film/Dîner d’Affaire/B.jpg";
-import proj_11_C from "../../portfolio-cinema-content/Projets/Short Film/Dîner d’Affaire/C.mp4";
-import proj_11_D from "../../portfolio-cinema-content/Projets/Short Film/Dîner d’Affaire/D.jpg";
-import proj_11_E from "../../portfolio-cinema-content/Projets/Short Film/Dîner d’Affaire/E.jpg";
-import proj_12_A from "../../portfolio-cinema-content/Projets/Short Film/Encore un peu de nous/A.jpg";
-import proj_12_B from "../../portfolio-cinema-content/Projets/Short Film/Encore un peu de nous/B.jpg";
-import proj_12_C from "../../portfolio-cinema-content/Projets/Short Film/Encore un peu de nous/C.jpg";
-import proj_12_D from "../../portfolio-cinema-content/Projets/Short Film/Encore un peu de nous/D.jpg";
-import proj_12_E from "../../portfolio-cinema-content/Projets/Short Film/Encore un peu de nous/E.jpg";
-import proj_12_F from "../../portfolio-cinema-content/Projets/Short Film/Encore un peu de nous/F.jpg";
-import proj_13_A from "../../portfolio-cinema-content/Projets/Short Film/Fort Intérieur/A.jpg";
-import proj_13_B from "../../portfolio-cinema-content/Projets/Short Film/Fort Intérieur/B.jpg";
-import proj_13_C from "../../portfolio-cinema-content/Projets/Short Film/Fort Intérieur/C.jpg";
-import proj_13_D from "../../portfolio-cinema-content/Projets/Short Film/Fort Intérieur/D.mp4";
-import proj_13_E from "../../portfolio-cinema-content/Projets/Short Film/Fort Intérieur/E.jpg";
-import proj_13_F from "../../portfolio-cinema-content/Projets/Short Film/Fort Intérieur/F.jpg";
-import proj_14_A from "../../portfolio-cinema-content/Projets/Short Film/Homonculus/A.jpg";
-import proj_14_B from "../../portfolio-cinema-content/Projets/Short Film/Homonculus/B.jpg";
-import proj_14_C from "../../portfolio-cinema-content/Projets/Short Film/Homonculus/C.mp4";
-import proj_14_D from "../../portfolio-cinema-content/Projets/Short Film/Homonculus/D.jpg";
-import proj_14_E from "../../portfolio-cinema-content/Projets/Short Film/Homonculus/E.mp4";
-import proj_14_F from "../../portfolio-cinema-content/Projets/Short Film/Homonculus/F.mp4";
-import proj_14_G from "../../portfolio-cinema-content/Projets/Short Film/Homonculus/G.mp4";
-import proj_15_A from "../../portfolio-cinema-content/Projets/Short Film/Lady Extravagante/A.jpg";
-import proj_15_B from "../../portfolio-cinema-content/Projets/Short Film/Lady Extravagante/B.jpg";
-import proj_15_C from "../../portfolio-cinema-content/Projets/Short Film/Lady Extravagante/C.mp4";
-import proj_15_D from "../../portfolio-cinema-content/Projets/Short Film/Lady Extravagante/D.jpg";
-import proj_15_E from "../../portfolio-cinema-content/Projets/Short Film/Lady Extravagante/E.mp4";
-import proj_15_F from "../../portfolio-cinema-content/Projets/Short Film/Lady Extravagante/F.jpg";
-import proj_16_A from "../../portfolio-cinema-content/Projets/Short Film/Marcello/A.jpg";
-import proj_16_B from "../../portfolio-cinema-content/Projets/Short Film/Marcello/B.jpg";
-import proj_16_C from "../../portfolio-cinema-content/Projets/Short Film/Marcello/C.jpg";
-import proj_17_A from "../../portfolio-cinema-content/Projets/Short Film/Merci pour l'hiver/A.jpg";
-import proj_17_B from "../../portfolio-cinema-content/Projets/Short Film/Merci pour l'hiver/B.jpg";
-import proj_17_C from "../../portfolio-cinema-content/Projets/Short Film/Merci pour l'hiver/C.mp4";
-import proj_18_A from "../../portfolio-cinema-content/Projets/Short Film/Parles-moi/A.jpg";
-import proj_18_B from "../../portfolio-cinema-content/Projets/Short Film/Parles-moi/B.mp4";
-import proj_18_C from "../../portfolio-cinema-content/Projets/Short Film/Parles-moi/C.jpg";
-import proj_18_D from "../../portfolio-cinema-content/Projets/Short Film/Parles-moi/D.mp4";
-import proj_19_A from "../../portfolio-cinema-content/Projets/Short Film/Transmission/A.jpg";
-import proj_19_B from "../../portfolio-cinema-content/Projets/Short Film/Transmission/B.mp4";
-import proj_19_C from "../../portfolio-cinema-content/Projets/Short Film/Transmission/C.jpg";
-import proj_19_D from "../../portfolio-cinema-content/Projets/Short Film/Transmission/D.jpg";
-import proj_19_F from "../../portfolio-cinema-content/Projets/Short Film/Transmission/F.jpg";
-import proj_19_G from "../../portfolio-cinema-content/Projets/Short Film/Transmission/G.jpg";
-import proj_19_H from "../../portfolio-cinema-content/Projets/Short Film/Transmission/H.jpg";
-import proj_20_A from "../../portfolio-cinema-content/Projets/Social Media/Nassim Boukrouh/A.jpg";
-import proj_20_B from "../../portfolio-cinema-content/Projets/Social Media/Nassim Boukrouh/B.jpg";
-import proj_20_C from "../../portfolio-cinema-content/Projets/Social Media/Nassim Boukrouh/C.mp4";
-import proj_20_D from "../../portfolio-cinema-content/Projets/Social Media/Nassim Boukrouh/D.mp4";
-import proj_20_E from "../../portfolio-cinema-content/Projets/Social Media/Nassim Boukrouh/E.mp4";
-import proj_20_F from "../../portfolio-cinema-content/Projets/Social Media/Nassim Boukrouh/F.mp4";
-import proj_20_G from "../../portfolio-cinema-content/Projets/Social Media/Nassim Boukrouh/G.jpg";
-import proj_21_A from "../../portfolio-cinema-content/Projets/Weddings/M&L/A.jpg";
-import proj_21_B from "../../portfolio-cinema-content/Projets/Weddings/M&L/B.jpg";
-import proj_21_C from "../../portfolio-cinema-content/Projets/Weddings/M&L/C.mp4";
-import proj_21_D from "../../portfolio-cinema-content/Projets/Weddings/M&L/D.jpg";
-import proj_21_E from "../../portfolio-cinema-content/Projets/Weddings/M&L/E.jpg";
-import proj_21_F from "../../portfolio-cinema-content/Projets/Weddings/M&L/F.mp4";
+import proj_0_A from "../../portfolio-cinema-content/Projets/clp/Bonne Santé – Visualiser/A.jpg";
+import proj_0_B from "../../portfolio-cinema-content/Projets/clp/Bonne Santé – Visualiser/B.mp4";
+import proj_0_C from "../../portfolio-cinema-content/Projets/clp/Bonne Santé – Visualiser/C.jpg";
+import proj_0_D from "../../portfolio-cinema-content/Projets/clp/Bonne Santé – Visualiser/D.jpg";
+import proj_0_E from "../../portfolio-cinema-content/Projets/clp/Bonne Santé – Visualiser/E.jpg";
+import proj_1_A from "../../portfolio-cinema-content/Projets/clp/Jamais/A.jpg";
+import proj_1_B from "../../portfolio-cinema-content/Projets/clp/Jamais/B.jpg";
+import proj_1_C from "../../portfolio-cinema-content/Projets/clp/Jamais/C.mp4";
+import proj_1_D from "../../portfolio-cinema-content/Projets/clp/Jamais/D.jpg";
+import proj_1_E from "../../portfolio-cinema-content/Projets/clp/Jamais/E.mp4";
+import proj_2_cover from "../../portfolio-cinema-content/Projets/clp/Komani/cover.jpg";
+import proj_2_A from "../../portfolio-cinema-content/Projets/clp/Komani/A.jpg";
+import proj_2_B from "../../portfolio-cinema-content/Projets/clp/Komani/B.mp4";
+import proj_2_C from "../../portfolio-cinema-content/Projets/clp/Komani/C.jpg";
+import proj_2_D from "../../portfolio-cinema-content/Projets/clp/Komani/D.jpg";
+import proj_2_E from "../../portfolio-cinema-content/Projets/clp/Komani/E.mp4";
+import proj_3_A from "../../portfolio-cinema-content/Projets/clp/Level Up/A.jpg";
+import proj_3_B from "../../portfolio-cinema-content/Projets/clp/Level Up/B.jpg";
+import proj_3_C from "../../portfolio-cinema-content/Projets/clp/Level Up/C.mp4";
+import proj_3_D from "../../portfolio-cinema-content/Projets/clp/Level Up/D.jpg";
+import proj_3_E from "../../portfolio-cinema-content/Projets/clp/Level Up/E.jpg";
+import proj_4_A from "../../portfolio-cinema-content/Projets/clp/Run/A.jpg";
+import proj_4_B from "../../portfolio-cinema-content/Projets/clp/Run/B.jpg";
+import proj_4_C from "../../portfolio-cinema-content/Projets/clp/Run/C.jpg";
+import proj_4_D from "../../portfolio-cinema-content/Projets/clp/Run/D.jpg";
+import proj_4_E from "../../portfolio-cinema-content/Projets/clp/Run/E.jpg";
+import proj_4_F from "../../portfolio-cinema-content/Projets/clp/Run/F.jpg";
+import proj_4_G from "../../portfolio-cinema-content/Projets/clp/Run/G.jpg";
+import proj_4_H from "../../portfolio-cinema-content/Projets/clp/Run/H.jpg";
+import proj_4_I from "../../portfolio-cinema-content/Projets/clp/Run/I.jpg";
+import proj_4_J from "../../portfolio-cinema-content/Projets/clp/Run/J.jpg";
+import proj_4_K from "../../portfolio-cinema-content/Projets/clp/Run/K.jpg";
+import proj_4_L from "../../portfolio-cinema-content/Projets/clp/Run/L.jpg";
+import proj_4_M from "../../portfolio-cinema-content/Projets/clp/Run/M.jpg";
+import proj_4_N from "../../portfolio-cinema-content/Projets/clp/Run/N.jpg";
+import proj_5_A from "../../portfolio-cinema-content/Projets/crp/Converse/A.jpg";
+import proj_5_B from "../../portfolio-cinema-content/Projets/crp/Converse/B.jpg";
+import proj_5_C from "../../portfolio-cinema-content/Projets/crp/Converse/C.jpg";
+import proj_5_D from "../../portfolio-cinema-content/Projets/crp/Converse/D.jpg";
+import proj_6_A from "../../portfolio-cinema-content/Projets/crp/DAVID DAVID/A.png";
+import proj_6_B from "../../portfolio-cinema-content/Projets/crp/DAVID DAVID/B.png";
+import proj_6_C from "../../portfolio-cinema-content/Projets/crp/DAVID DAVID/C.png";
+import proj_6_D from "../../portfolio-cinema-content/Projets/crp/DAVID DAVID/D.png";
+import proj_6_E from "../../portfolio-cinema-content/Projets/crp/DAVID DAVID/E.png";
+import proj_6_F from "../../portfolio-cinema-content/Projets/crp/DAVID DAVID/F.png";
+import proj_6_G from "../../portfolio-cinema-content/Projets/crp/DAVID DAVID/G.png";
+import proj_6_H from "../../portfolio-cinema-content/Projets/crp/DAVID DAVID/H.png";
+import proj_7_A from "../../portfolio-cinema-content/Projets/crp/Fishermen Friends/A.jpg";
+import proj_7_B from "../../portfolio-cinema-content/Projets/crp/Fishermen Friends/B.jpg";
+import proj_7_C from "../../portfolio-cinema-content/Projets/crp/Fishermen Friends/C.mp4";
+import proj_7_D from "../../portfolio-cinema-content/Projets/crp/Fishermen Friends/D.jpg";
+import proj_7_E from "../../portfolio-cinema-content/Projets/crp/Fishermen Friends/E.mp4";
+import proj_7_F from "../../portfolio-cinema-content/Projets/crp/Fishermen Friends/F.jpg";
+import proj_7_G from "../../portfolio-cinema-content/Projets/crp/Fishermen Friends/G.jpg";
+import proj_7_H from "../../portfolio-cinema-content/Projets/crp/Fishermen Friends/H.jpg";
+import proj_7_I from "../../portfolio-cinema-content/Projets/crp/Fishermen Friends/I.mp4";
+import proj_8_A from "../../portfolio-cinema-content/Projets/crp/The Street Partners/A.jpg";
+import proj_8_B from "../../portfolio-cinema-content/Projets/crp/The Street Partners/B.mp4";
+import proj_8_C from "../../portfolio-cinema-content/Projets/crp/The Street Partners/C.jpg";
+import proj_8_D from "../../portfolio-cinema-content/Projets/crp/The Street Partners/D.jpg";
+import proj_8_E from "../../portfolio-cinema-content/Projets/crp/The Street Partners/E.mp4";
+import proj_8_F from "../../portfolio-cinema-content/Projets/crp/The Street Partners/F.jpg";
+import proj_9_A from "../../portfolio-cinema-content/Projets/doc/Bergers des Abeilles/A.jpg";
+import proj_9_B from "../../portfolio-cinema-content/Projets/doc/Bergers des Abeilles/B.jpg";
+import proj_9_C from "../../portfolio-cinema-content/Projets/doc/Bergers des Abeilles/C.mp4";
+import proj_9_D from "../../portfolio-cinema-content/Projets/doc/Bergers des Abeilles/D.jpg";
+import proj_10_A from "../../portfolio-cinema-content/Projets/doc/Des collines aux machines/A.jpg";
+import proj_10_B from "../../portfolio-cinema-content/Projets/doc/Des collines aux machines/B.mp4";
+import proj_10_C from "../../portfolio-cinema-content/Projets/doc/Des collines aux machines/C.jpg";
+import proj_10_D from "../../portfolio-cinema-content/Projets/doc/Des collines aux machines/D.mp4";
+import proj_10_E from "../../portfolio-cinema-content/Projets/doc/Des collines aux machines/E.jpg";
+import proj_10_F from "../../portfolio-cinema-content/Projets/doc/Des collines aux machines/F.jpg";
+import proj_11_A from "../../portfolio-cinema-content/Projets/fic/Dîner d’Affaire/A.jpg";
+import proj_11_B from "../../portfolio-cinema-content/Projets/fic/Dîner d’Affaire/B.jpg";
+import proj_11_C from "../../portfolio-cinema-content/Projets/fic/Dîner d’Affaire/C.mp4";
+import proj_11_D from "../../portfolio-cinema-content/Projets/fic/Dîner d’Affaire/D.jpg";
+import proj_11_E from "../../portfolio-cinema-content/Projets/fic/Dîner d’Affaire/E.jpg";
+import proj_12_A from "../../portfolio-cinema-content/Projets/fic/Encore un peu de nous/A.jpg";
+import proj_12_B from "../../portfolio-cinema-content/Projets/fic/Encore un peu de nous/B.jpg";
+import proj_12_C from "../../portfolio-cinema-content/Projets/fic/Encore un peu de nous/C.jpg";
+import proj_12_D from "../../portfolio-cinema-content/Projets/fic/Encore un peu de nous/D.jpg";
+import proj_12_E from "../../portfolio-cinema-content/Projets/fic/Encore un peu de nous/E.jpg";
+import proj_12_F from "../../portfolio-cinema-content/Projets/fic/Encore un peu de nous/F.jpg";
+import proj_13_A from "../../portfolio-cinema-content/Projets/fic/Fort Intérieur/A.jpg";
+import proj_13_B from "../../portfolio-cinema-content/Projets/fic/Fort Intérieur/B.jpg";
+import proj_13_C from "../../portfolio-cinema-content/Projets/fic/Fort Intérieur/C.jpg";
+import proj_13_D from "../../portfolio-cinema-content/Projets/fic/Fort Intérieur/D.mp4";
+import proj_13_E from "../../portfolio-cinema-content/Projets/fic/Fort Intérieur/E.jpg";
+import proj_13_F from "../../portfolio-cinema-content/Projets/fic/Fort Intérieur/F.jpg";
+import proj_14_A from "../../portfolio-cinema-content/Projets/fic/Homonculus/A.jpg";
+import proj_14_B from "../../portfolio-cinema-content/Projets/fic/Homonculus/B.jpg";
+import proj_14_C from "../../portfolio-cinema-content/Projets/fic/Homonculus/C.mp4";
+import proj_14_D from "../../portfolio-cinema-content/Projets/fic/Homonculus/D.jpg";
+import proj_14_E from "../../portfolio-cinema-content/Projets/fic/Homonculus/E.mp4";
+import proj_14_F from "../../portfolio-cinema-content/Projets/fic/Homonculus/F.mp4";
+import proj_14_G from "../../portfolio-cinema-content/Projets/fic/Homonculus/G.mp4";
+import proj_15_A from "../../portfolio-cinema-content/Projets/fic/Lady Extravagante/A.jpg";
+import proj_15_B from "../../portfolio-cinema-content/Projets/fic/Lady Extravagante/B.jpg";
+import proj_15_C from "../../portfolio-cinema-content/Projets/fic/Lady Extravagante/C.mp4";
+import proj_15_D from "../../portfolio-cinema-content/Projets/fic/Lady Extravagante/D.jpg";
+import proj_15_E from "../../portfolio-cinema-content/Projets/fic/Lady Extravagante/E.mp4";
+import proj_15_F from "../../portfolio-cinema-content/Projets/fic/Lady Extravagante/F.jpg";
+import proj_16_A from "../../portfolio-cinema-content/Projets/fic/Marcello/A.jpg";
+import proj_16_B from "../../portfolio-cinema-content/Projets/fic/Marcello/B.jpg";
+import proj_16_C from "../../portfolio-cinema-content/Projets/fic/Marcello/C.jpg";
+import proj_17_A from "../../portfolio-cinema-content/Projets/fic/Merci pour l'hiver/A.jpg";
+import proj_17_B from "../../portfolio-cinema-content/Projets/fic/Merci pour l'hiver/B.jpg";
+import proj_17_C from "../../portfolio-cinema-content/Projets/fic/Merci pour l'hiver/C.mp4";
+import proj_18_A from "../../portfolio-cinema-content/Projets/fic/Parles-moi/A.jpg";
+import proj_18_B from "../../portfolio-cinema-content/Projets/fic/Parles-moi/B.mp4";
+import proj_18_C from "../../portfolio-cinema-content/Projets/fic/Parles-moi/C.jpg";
+import proj_18_D from "../../portfolio-cinema-content/Projets/fic/Parles-moi/D.mp4";
+import proj_19_A from "../../portfolio-cinema-content/Projets/fic/Transmission/A.jpg";
+import proj_19_B from "../../portfolio-cinema-content/Projets/fic/Transmission/B.mp4";
+import proj_19_C from "../../portfolio-cinema-content/Projets/fic/Transmission/C.jpg";
+import proj_19_D from "../../portfolio-cinema-content/Projets/fic/Transmission/D.jpg";
+import proj_19_F from "../../portfolio-cinema-content/Projets/fic/Transmission/F.jpg";
+import proj_19_G from "../../portfolio-cinema-content/Projets/fic/Transmission/G.jpg";
+import proj_19_H from "../../portfolio-cinema-content/Projets/fic/Transmission/H.jpg";
+import proj_20_A from "../../portfolio-cinema-content/Projets/soc/Nassim Boukrouh/A.jpg";
+import proj_20_B from "../../portfolio-cinema-content/Projets/soc/Nassim Boukrouh/B.jpg";
+import proj_20_C from "../../portfolio-cinema-content/Projets/soc/Nassim Boukrouh/C.mp4";
+import proj_20_D from "../../portfolio-cinema-content/Projets/soc/Nassim Boukrouh/D.mp4";
+import proj_20_E from "../../portfolio-cinema-content/Projets/soc/Nassim Boukrouh/E.mp4";
+import proj_20_F from "../../portfolio-cinema-content/Projets/soc/Nassim Boukrouh/F.mp4";
+import proj_20_G from "../../portfolio-cinema-content/Projets/soc/Nassim Boukrouh/G.jpg";
+import proj_21_A from "../../portfolio-cinema-content/Projets/wed/M&L/A.jpg";
+import proj_21_B from "../../portfolio-cinema-content/Projets/wed/M&L/B.jpg";
+import proj_21_C from "../../portfolio-cinema-content/Projets/wed/M&L/C.mp4";
+import proj_21_D from "../../portfolio-cinema-content/Projets/wed/M&L/D.jpg";
+import proj_21_E from "../../portfolio-cinema-content/Projets/wed/M&L/E.jpg";
+import proj_21_F from "../../portfolio-cinema-content/Projets/wed/M&L/F.mp4";
 import reel_1_jpg from "../../portfolio-cinema-content/Instagram Reel/1.jpg";
 import reel_1_mp4 from "../../portfolio-cinema-content/Instagram Reel/1.mp4";
 import reel_10_jpg from "../../portfolio-cinema-content/Instagram Reel/10.jpg";
@@ -272,7 +272,7 @@ export const projects = [
     ]
 },
 {
-    "id": 110,
+    "id": 104,
     "title": "Run",
     "category": "clp",
     "subcategory": "",
@@ -291,82 +291,82 @@ export const projects = [
         "en": "Description coming soon."
     },
     "structuredCredits": [],
-    "media": proj_10_A,
+    "media": proj_4_A,
     "collection": [
         {
             "type": "image",
-            "src": proj_10_A,
+            "src": proj_4_A,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_10_B,
+            "src": proj_4_B,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_10_C,
+            "src": proj_4_C,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_10_D,
+            "src": proj_4_D,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_10_E,
+            "src": proj_4_E,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_10_F,
+            "src": proj_4_F,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_10_G,
+            "src": proj_4_G,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_10_H,
+            "src": proj_4_H,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_10_I,
+            "src": proj_4_I,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_10_J,
+            "src": proj_4_J,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_10_K,
+            "src": proj_4_K,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_10_L,
+            "src": proj_4_L,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_10_M,
+            "src": proj_4_M,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_10_N,
+            "src": proj_4_N,
             "poster": ""
         }
     ]
 },
 {
-    "id": 101,
+    "id": 106,
     "title": "DAVID DAVID",
     "category": "crp",
     "subcategory": "ad",
@@ -385,46 +385,46 @@ export const projects = [
         "en": "No description."
     },
     "structuredCredits": [],
-    "media": proj_1_A,
+    "media": proj_6_A,
     "collection": [
         {
             "type": "image",
-            "src": proj_1_A,
+            "src": proj_6_A,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_1_B,
+            "src": proj_6_B,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_1_C,
+            "src": proj_6_C,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_1_D,
+            "src": proj_6_D,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_1_E,
+            "src": proj_6_E,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_1_F,
+            "src": proj_6_F,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_1_G,
+            "src": proj_6_G,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_1_H,
+            "src": proj_6_H,
             "poster": ""
         }
     ]
@@ -582,7 +582,7 @@ export const projects = [
     ]
 },
 {
-    "id": 100,
+    "id": 105,
     "title": "Converse",
     "category": "crp",
     "subcategory": "ad",
@@ -601,32 +601,32 @@ export const projects = [
         "en": "Spec commercial developed in a student context, designed as an immersion into real production conditions. Shot entirely under rain, the project required precise organization and constant technical control. The visuals rely on a raw, contrasted aesthetic aligned with the brand’s urban energy."
     },
     "structuredCredits": [],
-    "media": proj_0_A,
+    "media": proj_5_A,
     "collection": [
         {
             "type": "image",
-            "src": proj_0_A,
+            "src": proj_5_A,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_0_B,
+            "src": proj_5_B,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_0_C,
+            "src": proj_5_C,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_0_D,
+            "src": proj_5_D,
             "poster": ""
         }
     ]
 },
 {
-    "id": 102,
+    "id": 107,
     "title": "Fishermen Friends",
     "category": "crp",
     "subcategory": "ad",
@@ -645,51 +645,51 @@ export const projects = [
         "en": "Studio-shot spec commercial built around an elevated set requiring a high level of execution precision. The project relies on structured staging and strong visual consistency within a technically demanding environment."
     },
     "structuredCredits": [],
-    "media": proj_2_A,
+    "media": proj_7_A,
     "collection": [
         {
             "type": "image",
-            "src": proj_2_A,
+            "src": proj_7_A,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_2_B,
+            "src": proj_7_B,
             "poster": ""
         },
         {
             "type": "video",
-            "src": proj_2_C,
+            "src": proj_7_C,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_2_D,
+            "src": proj_7_D,
             "poster": ""
         },
         {
             "type": "video",
-            "src": proj_2_E,
+            "src": proj_7_E,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_2_F,
+            "src": proj_7_F,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_2_G,
+            "src": proj_7_G,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_2_H,
+            "src": proj_7_H,
             "poster": ""
         },
         {
             "type": "video",
-            "src": proj_2_I,
+            "src": proj_7_I,
             "poster": ""
         }
     ]
@@ -901,7 +901,7 @@ export const projects = [
     ]
 },
 {
-    "id": 109,
+    "id": 103,
     "title": "Level Up",
     "category": "clp",
     "subcategory": "",
@@ -920,31 +920,31 @@ export const projects = [
         "en": "Music video for the artist VIO, driven by constant energy and a strong sense of rhythm. The visual universe blends dance, performance and bold contrasts in support of a confident identity."
     },
     "structuredCredits": [],
-    "media": proj_9_A,
+    "media": proj_3_A,
     "collection": [
         {
             "type": "image",
-            "src": proj_9_A,
+            "src": proj_3_A,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_9_B,
+            "src": proj_3_B,
             "poster": ""
         },
         {
             "type": "video",
-            "src": proj_9_C,
+            "src": proj_3_C,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_9_D,
+            "src": proj_3_D,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_9_E,
+            "src": proj_3_E,
             "poster": ""
         }
     ]
@@ -989,7 +989,7 @@ export const projects = [
     ]
 },
 {
-    "id": 106,
+    "id": 100,
     "title": "Bonne Santé",
     "category": "clp",
     "subcategory": "",
@@ -1008,37 +1008,37 @@ export const projects = [
         "en": "Music visualizer for Faz’r Elengi, designed around a deliberately minimal setup. The visuals focus on the artist’s presence, rhythm and atmosphere, aiming for clarity and aesthetic coherence."
     },
     "structuredCredits": [],
-    "media": proj_6_A,
+    "media": proj_0_A,
     "collection": [
         {
             "type": "image",
-            "src": proj_6_A,
+            "src": proj_0_A,
             "poster": ""
         },
         {
             "type": "video",
-            "src": proj_6_B,
+            "src": proj_0_B,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_6_C,
+            "src": proj_0_C,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_6_D,
+            "src": proj_0_D,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_6_E,
+            "src": proj_0_E,
             "poster": ""
         }
     ]
 },
 {
-    "id": 108,
+    "id": 102,
     "title": "Komani",
     "category": "clp",
     "subcategory": "",
@@ -1057,7 +1057,56 @@ export const projects = [
         "en": "Music video for Faz’r Elengi, shot across multiple locations with contrasting atmospheres. The project combines visual storytelling, raw energy and more complex technical sequences to build a strong, dynamic universe."
     },
     "structuredCredits": [],
-    "media": proj_8_cover,
+    "media": proj_2_cover,
+    "collection": [
+        {
+            "type": "image",
+            "src": proj_2_A,
+            "poster": ""
+        },
+        {
+            "type": "video",
+            "src": proj_2_B,
+            "poster": ""
+        },
+        {
+            "type": "image",
+            "src": proj_2_C,
+            "poster": ""
+        },
+        {
+            "type": "image",
+            "src": proj_2_D,
+            "poster": ""
+        },
+        {
+            "type": "video",
+            "src": proj_2_E,
+            "poster": ""
+        }
+    ]
+},
+{
+    "id": 108,
+    "title": "The Street Partners",
+    "category": "crp",
+    "subcategory": "ad",
+    "type": "",
+    "role": "dop",
+    "date": {
+        "raw": "07 2025",
+        "month": "07",
+        "year": "2025"
+    },
+    "sortWeight": 202507,
+    "status": "",
+    "link": "",
+    "desc": {
+        "fr": "Film publicitaire corporate réalisé pour The Street Partners. Une approche visuelle sobre et contemporaine, pensée pour valoriser le branding et transmettre une image professionnelle claire, élégante et maîtrisée.",
+        "en": "Corporate commercial created for The Street Partners. A clean, contemporary visual approach designed to enhance branding and convey a clear, elegant and controlled professional image."
+    },
+    "structuredCredits": [],
+    "media": proj_8_A,
     "collection": [
         {
             "type": "image",
@@ -1083,59 +1132,10 @@ export const projects = [
             "type": "video",
             "src": proj_8_E,
             "poster": ""
-        }
-    ]
-},
-{
-    "id": 103,
-    "title": "The Street Partners",
-    "category": "crp",
-    "subcategory": "ad",
-    "type": "",
-    "role": "dop",
-    "date": {
-        "raw": "07 2025",
-        "month": "07",
-        "year": "2025"
-    },
-    "sortWeight": 202507,
-    "status": "",
-    "link": "",
-    "desc": {
-        "fr": "Film publicitaire corporate réalisé pour The Street Partners. Une approche visuelle sobre et contemporaine, pensée pour valoriser le branding et transmettre une image professionnelle claire, élégante et maîtrisée.",
-        "en": "Corporate commercial created for The Street Partners. A clean, contemporary visual approach designed to enhance branding and convey a clear, elegant and controlled professional image."
-    },
-    "structuredCredits": [],
-    "media": proj_3_A,
-    "collection": [
-        {
-            "type": "image",
-            "src": proj_3_A,
-            "poster": ""
-        },
-        {
-            "type": "video",
-            "src": proj_3_B,
-            "poster": ""
         },
         {
             "type": "image",
-            "src": proj_3_C,
-            "poster": ""
-        },
-        {
-            "type": "image",
-            "src": proj_3_D,
-            "poster": ""
-        },
-        {
-            "type": "video",
-            "src": proj_3_E,
-            "poster": ""
-        },
-        {
-            "type": "image",
-            "src": proj_3_F,
+            "src": proj_8_F,
             "poster": ""
         }
     ]
@@ -1249,7 +1249,7 @@ export const projects = [
     ]
 },
 {
-    "id": 105,
+    "id": 110,
     "title": "Des collines aux machines",
     "category": "doc",
     "subcategory": "",
@@ -1268,42 +1268,42 @@ export const projects = [
         "en": "Festival-oriented documentary focusing on contemporary shepherds and the transformation of their way of life. The film explores the coexistence of traditional practices and modern tools, portraying a rural world in transition."
     },
     "structuredCredits": [],
-    "media": proj_5_A,
+    "media": proj_10_A,
     "collection": [
         {
             "type": "image",
-            "src": proj_5_A,
+            "src": proj_10_A,
             "poster": ""
         },
         {
             "type": "video",
-            "src": proj_5_B,
+            "src": proj_10_B,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_5_C,
+            "src": proj_10_C,
             "poster": ""
         },
         {
             "type": "video",
-            "src": proj_5_D,
+            "src": proj_10_D,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_5_E,
+            "src": proj_10_E,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_5_F,
+            "src": proj_10_F,
             "poster": ""
         }
     ]
 },
 {
-    "id": 104,
+    "id": 109,
     "title": "Bergers des Abeilles",
     "category": "doc",
     "subcategory": "",
@@ -1322,26 +1322,26 @@ export const projects = [
         "en": "Festival-oriented documentary following the daily lives of beekeepers and highlighting the essential role of bees. The film adopts an immersive, field-driven approach, giving space to gestures, landscapes and the passage of time."
     },
     "structuredCredits": [],
-    "media": proj_4_A,
+    "media": proj_9_A,
     "collection": [
         {
             "type": "image",
-            "src": proj_4_A,
+            "src": proj_9_A,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_4_B,
+            "src": proj_9_B,
             "poster": ""
         },
         {
             "type": "video",
-            "src": proj_4_C,
+            "src": proj_9_C,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_4_D,
+            "src": proj_9_D,
             "poster": ""
         }
     ]
@@ -1406,7 +1406,7 @@ export const projects = [
     ]
 },
 {
-    "id": 107,
+    "id": 101,
     "title": "Jamais",
     "category": "clp",
     "subcategory": "",
@@ -1425,31 +1425,31 @@ export const projects = [
         "en": "Music video for Faz’r Elengi, shot in a recording studio. A direct, stripped-down approach designed to fully exploit a confined space and intentionally limited resources."
     },
     "structuredCredits": [],
-    "media": proj_7_A,
+    "media": proj_1_A,
     "collection": [
         {
             "type": "image",
-            "src": proj_7_A,
+            "src": proj_1_A,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_7_B,
+            "src": proj_1_B,
             "poster": ""
         },
         {
             "type": "video",
-            "src": proj_7_C,
+            "src": proj_1_C,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_7_D,
+            "src": proj_1_D,
             "poster": ""
         },
         {
             "type": "video",
-            "src": proj_7_E,
+            "src": proj_1_E,
             "poster": ""
         }
     ]
