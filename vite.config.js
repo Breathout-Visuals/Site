@@ -12,8 +12,8 @@ const runScript = (script, label) => {
 const contentWatcher = () => ({
     name: 'content-watcher',
     configureServer(server) {
-        const ppDir = resolve(__dirname, 'Portfolio-Pro-Content');
-        const lucasDir = resolve(__dirname, 'lucas-content');
+        const ppDir = resolve(__dirname, 'portfolio-freelance-content');
+        const lucasDir = resolve(__dirname, 'portfolio-cinema-content');
         server.watcher.add(ppDir);
         server.watcher.add(lucasDir);
 
@@ -21,11 +21,11 @@ const contentWatcher = () => ({
             // Normalize path for Windows compatibility
             const normalizedFile = file.replace(/\\/g, '/');
             
-            if (normalizedFile.includes('/Portfolio-Pro-Content/')) {
-                console.log(`[Content Watcher] Portfolio-Pro-Content changed → regenerating...`);
+            if (normalizedFile.includes('/portfolio-freelance-content/')) {
+                console.log(`[Content Watcher] portfolio-freelance-content changed → regenerating...`);
                 runScript('scripts/portfolio-pro/generate.cjs', 'Portfolio Pro Gen');
             }
-            if (normalizedFile.includes('/lucas-content/')) {
+            if (normalizedFile.includes('/portfolio-cinema-content/')) {
                 console.log(`[Content Watcher] Lucas Content changed → regenerating...`);
                 runScript('scripts/lucas/generate-data.cjs', 'Lucas Data Gen');
             }
@@ -46,9 +46,9 @@ export default defineConfig({
                 lucas: resolve(__dirname, 'lucas-jacquot/index.html'),
                 // Portfolio Pro (Breathout Visuals)
                 portfolio_pro:         resolve(__dirname, 'index.html'),
-                portfolio_pro_project: resolve(__dirname, 'project.html'),
-                portfolio_pro_projets: resolve(__dirname, 'projets.html'),
-                portfolio_pro_contact: resolve(__dirname, 'contact.html'),
+                portfolio_pro_project: resolve(__dirname, 'portfolio-freelance/project.html'),
+                portfolio_pro_projets: resolve(__dirname, 'portfolio-freelance/projets.html'),
+                portfolio_pro_contact: resolve(__dirname, 'portfolio-freelance/contact.html'),
             },
         },
     },

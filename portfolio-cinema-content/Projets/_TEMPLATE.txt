@@ -1,0 +1,15 @@
+Name: [Titre]
+Category: [fic, crp, doc, clp, soc, wed]
+Subcategory: [sf, ftr, ser, cflm, ad, itw, yt, vrt]
+Type: [yt, nk25, nk26, pf26, ca26]
+Role: [dir, dop, fmk, gaf, spk, kgr, grp]
+Status: [edit, del]
+Date: [e.g. June 2026]
+Link: [URL]
+Description: [English]
+Description Fr: [French]
+
+[CREDITS]
+dir: Name
+dop: Name
+prod: Name

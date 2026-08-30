@@ -1,7 +1,0 @@
-Title: Alpha Run
-Client: Nike
-Date: 2024
-Description: A high-energy commercial for Nike's new running shoes.
-Tags: Commercial, Sport
-Width: 1920
-Height: 1080
