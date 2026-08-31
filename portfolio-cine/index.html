@@ -583,7 +583,7 @@
           Un ingénieur donne vie à un homoncule artificiel. Mais en découvrant les émotions humaines, la créature développe une conscience propre qui menace son créateur.
         </p>
         <div class="test-hud-tech test-anim">ARRI Alexa Mini LF &nbsp;•&nbsp; Cooke Anamorphic /i Prime &nbsp;•&nbsp; 2.39:1</div>
-          <a href="https://youtu.be/nK3sbmGYcG8" target="_blank" class="test-hud-play-btn test-anim"><i class="fa-solid fa-play"></i> Voir le film</a>
+          <div class="test-hud-play-btn test-anim" onclick="window.open('https://youtu.be/nK3sbmGYcG8', '_blank')" ><i class="fa-solid fa-play"></i> Voir le film</div>
       </div>
       
       <div class="test-hud-right test-anim-group">
@@ -757,7 +757,8 @@
         hudTimeout = setTimeout(() => {
           if (gallery.scrollLeft <= 50 && !isHudManuallyHidden) {
             hud.classList.remove('hidden');
-            manageVideos();
+            
+manageVideos();
           }
         }, 800);
       }
