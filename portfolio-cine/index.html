@@ -529,6 +529,7 @@
   <div class="test-rotate-message">
     <i class="fa-solid fa-mobile-screen-button"></i>
     <p>Veuillez tourner votre appareil<br>pour une expérience optimale</p>
+    <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 15px; letter-spacing: 1px;">(Appuyez ici si la rotation est bloquée)</p>
   </div>
   <div class="test-modal-frame">
     
@@ -617,6 +618,10 @@
   const progressBar = document.getElementById('test-progress');
   const overlay = document.getElementById('da-test-modal');
   const progressContainer = document.querySelector('.test-progress-container');
+  document.querySelector('.test-rotate-message').addEventListener('click', () => {
+    document.getElementById('da-test-modal').classList.add('force-landscape-bypass');
+  });
+
 
   function setMode(bts) {
       isBtsMode = bts;
@@ -651,6 +656,7 @@
     modal.style.display = 'block';
     void modal.offsetWidth;
     modal.classList.add('active');
+    modal.classList.remove('force-landscape-bypass');
     document.body.style.overflow = 'hidden';
     document.getElementById('test-instructions').classList.remove('hidden');
     hasSeenInstructions = false;

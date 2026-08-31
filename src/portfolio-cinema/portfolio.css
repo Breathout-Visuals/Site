@@ -3259,7 +3259,9 @@ body, html {
 
 /* Rotate Device Message */
 .test-rotate-message {
-    display: none;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
     position: absolute;
     inset: 0;
     background: #0b0b0b;
@@ -3270,6 +3272,7 @@ body, html {
     color: #fff;
     text-align: center;
     padding: 20px;
+    transition: opacity 0.8s ease;
 }
 .test-rotate-message i {
     font-size: 3.5rem;
@@ -3292,10 +3295,13 @@ body, html {
 }
 
 @media (orientation: portrait), (max-aspect-ratio: 1/1) {
-    .test-modal-overlay.active .test-rotate-message {
-        display: flex !important;
+    .test-modal-overlay.active:not(.force-landscape-bypass) .test-rotate-message {
+        opacity: 1 !important;
+        pointer-events: auto !important;
     }
-    .test-modal-overlay.active .test-modal-frame {
-        display: none !important;
+    .test-modal-overlay.active:not(.force-landscape-bypass) .test-modal-frame {
+        opacity: 0 !important;
+        pointer-events: none !important;
+        transform: translate(-50%, -48%) scale(0.96) !important;
     }
 }
