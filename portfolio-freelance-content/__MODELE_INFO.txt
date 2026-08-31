@@ -7,6 +7,9 @@ Client: Nom du Client (Optionnel)
 Category: commercial (Valeurs possibles: commercial, short_film, music_video, doc, social_media, wedding, photo, event)
 Date: 2025
 Video: https://vimeo.com/... (Lien vidéo principal, Optionnel)
+Camera: (Partie libre, Optionnel)
+Optique: (Partie libre, Optionnel)
+Format: (Partie libre, Optionnel)
 Description FR: Description de ton projet en français.
 Description EN: Description of your project in english.
 Featured: true (Mettre true pour l'afficher en page d'accueil, sinon laisser vide)
