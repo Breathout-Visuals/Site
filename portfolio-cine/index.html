@@ -484,11 +484,17 @@
 
 
 
-<button id="open-test-modal" style="position:fixed; bottom:20px; left:20px; z-index:8000; padding:15px 30px; background:#fff; color:#000; border:none; font-weight:bold; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">TEST DA (ANIMATIONS)</button>
+
+<button id="open-test-modal" style="position:fixed; bottom:20px; left:20px; z-index:8000; padding:15px 30px; background:#fff; color:#000; border:none; font-weight:bold; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">TEST DA (SCROLL FIX & ANIM)</button>
 
 <div class="test-modal-overlay" id="da-test-modal">
+  
   <div class="test-modal-frame">
     <button class="test-close-btn" id="close-test-modal"><i class="fa-solid fa-xmark"></i></button>
+
+    <!-- Invisible Click Zones for Next/Prev -->
+    <div class="test-nav-zone prev-zone" id="nav-prev"></div>
+    <div class="test-nav-zone next-zone" id="nav-next"></div>
 
     <div class="test-cinematic-gallery" id="test-gallery">
       <img id="main-large-img" src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&w=2000&q=80" alt="Main 1">
@@ -496,23 +502,28 @@
       <img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=2000&q=80" alt="Main 3">
     </div>
 
+    <!-- HUD LAYER -->
     <div class="test-hud-layer" id="test-hud">
+      
+      <!-- Left Info -->
       <div class="test-hud-left">
         <div class="test-hud-meta test-anim">Dir. Photographie &nbsp;—&nbsp; Fiction &nbsp;—&nbsp; 2024</div>
         <h2 class="test-hud-title test-anim">Dîner d'Affaire</h2>
         <p class="test-hud-desc test-anim">
-          Fais glisser l'image avec la souris (Drag & Drop) ou utilise le pavé tactile pour faire défiler vers la droite. Le HUD disparaîtra pour te laisser profiter.
+          Fais rouler la molette vers le bas (ou clique sur les bords de l'écran) pour voir la suite. Le texte va s'écarter comme un rideau.
         </p>
         <div class="test-hud-tech test-anim">
           ARRI Alexa Mini LF &nbsp;•&nbsp; Cooke Anamorphic /i Prime &nbsp;•&nbsp; 2.39:1
         </div>
       </div>
-      <div class="test-hud-right">
-        <div class="test-pip-wrapper test-anim" id="swap-trigger">
+      
+      <!-- Right Info -->
+      <div class="test-hud-right test-anim-group">
+        <div class="test-pip-wrapper" id="swap-trigger">
           <div class="test-pip-label" id="pip-view-label">Behind The Scenes</div>
           <img id="pip-small-img" src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80" alt="BTS" style="transition: opacity 0.4s ease;">
         </div>
-        <div class="test-related-wrapper test-anim">
+        <div class="test-related-wrapper">
           <div class="test-related-title">Voir Aussi</div>
           <div class="test-related-list">
             <div class="test-related-item">
@@ -526,17 +537,17 @@
           </div>
         </div>
       </div>
+      
     </div>
   </div>
 </div>
 
 <script>
-  // Open / Close with small delays for reflow
+  // Open / Close
   document.getElementById('open-test-modal').addEventListener('click', () => {
     const modal = document.getElementById('da-test-modal');
     modal.style.display = 'block';
-    // Force reflow
-    void modal.offsetWidth;
+    void modal.offsetWidth; // reflow
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
   });
@@ -548,14 +559,13 @@
     setTimeout(() => { 
         modal.style.display = 'none';
         document.getElementById('test-gallery').scrollLeft = 0; 
-    }, 600); // Wait for animations to finish
+    }, 700);
   });
 
-  // Scroll Hide HUD logic
   const gallery = document.getElementById('test-gallery');
   const hud = document.getElementById('test-hud');
-  let isScrolling;
 
+  // Fade HUD on scroll
   gallery.addEventListener('scroll', () => {
     if (gallery.scrollLeft > 100) {
       hud.classList.add('hidden');
@@ -564,35 +574,31 @@
     }
   });
 
-  // Drag to scroll logic for desktop (Since overflow-x doesn't always wheel horizontally)
-  let isDown = false;
-  let startX;
-  let scrollLeft;
+  // Perfect Wheel to Horizontal Snap Logic
+  let isWheeling = false;
+  gallery.addEventListener('wheel', (evt) => {
+    evt.preventDefault();
+    if (isWheeling) return; // Prevent multiple skips per wheel tick
+    isWheeling = true;
+    
+    const direction = evt.deltaY > 0 ? 1 : -1;
+    // Scroll by 50% of width to ensure it snaps to the next item
+    gallery.scrollBy({ left: direction * (window.innerWidth / 2), behavior: 'smooth' });
+    
+    setTimeout(() => { isWheeling = false; }, 400); // Debounce
+  }, { passive: false });
 
-  gallery.addEventListener('mousedown', (e) => {
-    isDown = true;
-    gallery.style.cursor = 'grabbing';
-    startX = e.pageX - gallery.offsetLeft;
-    scrollLeft = gallery.scrollLeft;
+  // Click zones
+  document.getElementById('nav-prev').addEventListener('click', () => {
+    gallery.scrollBy({ left: -window.innerWidth / 2, behavior: 'smooth' });
   });
-  gallery.addEventListener('mouseleave', () => {
-    isDown = false;
-    gallery.style.cursor = 'grab';
-  });
-  gallery.addEventListener('mouseup', () => {
-    isDown = false;
-    gallery.style.cursor = 'grab';
-  });
-  gallery.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - gallery.offsetLeft;
-    const walk = (x - startX) * 2; // Scroll speed multiplier
-    gallery.scrollLeft = scrollLeft - walk;
+  document.getElementById('nav-next').addEventListener('click', () => {
+    gallery.scrollBy({ left: window.innerWidth / 2, behavior: 'smooth' });
   });
 
   // SWAP LOGIC
-  document.getElementById('swap-trigger').addEventListener('click', () => {
+  document.getElementById('swap-trigger').addEventListener('click', (e) => {
+    e.stopPropagation();
     const mainImg = document.getElementById('main-large-img');
     const pipImg = document.getElementById('pip-small-img');
     const pipLabel = document.getElementById('pip-view-label');
@@ -610,13 +616,13 @@
       } else {
           pipLabel.innerText = "Switch to Final Cut";
       }
-      
       mainImg.style.opacity = 1;
       pipImg.style.opacity = 1;
     }, 400);
   });
 </script>
 </body>
+
 
 
 
