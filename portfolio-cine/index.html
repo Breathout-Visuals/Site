@@ -590,8 +590,8 @@
         <div class="test-pip-wrapper" id="swap-trigger">
           <div class="test-pip-label" id="pip-view-label">TO THE BTS SHOT</div>
           <!-- PiP crossfade layers -->
-          <img class="pip-layer active" src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80" alt="BTS">
-          <img class="pip-layer inactive" src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=800&q=80" alt="Final Cut">
+          <img class="pip-layer pip-bts-layer active" src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80" alt="BTS">
+          <img class="pip-layer pip-main-layer inactive" src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=800&q=80" alt="Final Cut">
         </div>
         <div class="test-related-wrapper">
           <div class="test-related-title">Voir Aussi</div>
@@ -639,9 +639,14 @@
   });
 
 
+  let isModeSwitching = false;
   function setMode(bts) {
       if (isBtsMode !== bts) {
+          isModeSwitching = true;
+          hud.classList.remove('hidden');
+          isHudManuallyHidden = false;
           smoothScrollTo(gallery, 0, 700); // Scroll back to first image on mode switch
+          setTimeout(() => { isModeSwitching = false; }, 750);
       }
       isBtsMode = bts;
       document.querySelectorAll('.main-layer').forEach(el => {
