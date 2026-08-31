@@ -483,51 +483,36 @@
 
 
 
-<button id="open-test-modal" style="position:fixed; bottom:20px; left:20px; z-index:8000; padding:15px 30px; background:#fff; color:#000; border:none; font-weight:bold; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">TEST DA 16:9 & SCROLL</button>
+
+<button id="open-test-modal" style="position:fixed; bottom:20px; left:20px; z-index:8000; padding:15px 30px; background:#fff; color:#000; border:none; font-weight:bold; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">TEST DA (ANIMATIONS)</button>
 
 <div class="test-modal-overlay" id="da-test-modal">
-  
-  <!-- PERFECT 16:9 CONTAINER -->
   <div class="test-modal-frame">
-    
     <button class="test-close-btn" id="close-test-modal"><i class="fa-solid fa-xmark"></i></button>
 
-    <!-- HORIZONTAL SCROLLING GALLERY -->
     <div class="test-cinematic-gallery" id="test-gallery">
-      <!-- Image 1 (Cover / Swappable) -->
       <img id="main-large-img" src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&w=2000&q=80" alt="Main 1">
-      <!-- Image 2 -->
       <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=2000&q=80" alt="Main 2">
-      <!-- Image 3 -->
-      <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&w=2000&q=80" alt="Main 3">
+      <img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=2000&q=80" alt="Main 3">
     </div>
 
-    <!-- HUD LAYER (Fades out when scrolling) -->
     <div class="test-hud-layer" id="test-hud">
-      
-      <!-- Left: Project Info -->
       <div class="test-hud-left">
-        <div class="test-hud-meta">Dir. Photographie &nbsp;—&nbsp; Fiction &nbsp;—&nbsp; 2024</div>
-        <h2 class="test-hud-title">Dîner d'Affaire</h2>
-        <p class="test-hud-desc">
-          Fais défiler l'image vers la droite (Swipe ou Molette) pour voir la suite. Le HUD disparaîtra automatiquement pour te laisser profiter de la photographie.
+        <div class="test-hud-meta test-anim">Dir. Photographie &nbsp;—&nbsp; Fiction &nbsp;—&nbsp; 2024</div>
+        <h2 class="test-hud-title test-anim">Dîner d'Affaire</h2>
+        <p class="test-hud-desc test-anim">
+          Fais glisser l'image avec la souris (Drag & Drop) ou utilise le pavé tactile pour faire défiler vers la droite. Le HUD disparaîtra pour te laisser profiter.
         </p>
-        <div class="test-hud-tech">
+        <div class="test-hud-tech test-anim">
           ARRI Alexa Mini LF &nbsp;•&nbsp; Cooke Anamorphic /i Prime &nbsp;•&nbsp; 2.39:1
         </div>
       </div>
-
-      <!-- Right: PiP Swap & Related -->
       <div class="test-hud-right">
-        
-        <!-- PiP -->
-        <div class="test-pip-wrapper" id="swap-trigger">
+        <div class="test-pip-wrapper test-anim" id="swap-trigger">
           <div class="test-pip-label" id="pip-view-label">Behind The Scenes</div>
           <img id="pip-small-img" src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80" alt="BTS" style="transition: opacity 0.4s ease;">
         </div>
-
-        <!-- Voir Aussi -->
-        <div class="test-related-wrapper">
+        <div class="test-related-wrapper test-anim">
           <div class="test-related-title">Voir Aussi</div>
           <div class="test-related-list">
             <div class="test-related-item">
@@ -540,30 +525,37 @@
             </div>
           </div>
         </div>
-
       </div>
-    </div> <!-- /test-hud-layer -->
-
-  </div> <!-- /test-modal-frame -->
+    </div>
+  </div>
 </div>
 
 <script>
-  // Open / Close
+  // Open / Close with small delays for reflow
   document.getElementById('open-test-modal').addEventListener('click', () => {
-    document.getElementById('da-test-modal').classList.add('active');
+    const modal = document.getElementById('da-test-modal');
+    modal.style.display = 'block';
+    // Force reflow
+    void modal.offsetWidth;
+    modal.classList.add('active');
     document.body.style.overflow = 'hidden';
   });
   
   document.getElementById('close-test-modal').addEventListener('click', () => {
-    document.getElementById('da-test-modal').classList.remove('active');
+    const modal = document.getElementById('da-test-modal');
+    modal.classList.remove('active');
     document.body.style.overflow = '';
-    // Reset scroll position on close
-    setTimeout(() => { document.getElementById('test-gallery').scrollLeft = 0; }, 400);
+    setTimeout(() => { 
+        modal.style.display = 'none';
+        document.getElementById('test-gallery').scrollLeft = 0; 
+    }, 600); // Wait for animations to finish
   });
 
-  // Fade HUD on scroll
+  // Scroll Hide HUD logic
   const gallery = document.getElementById('test-gallery');
   const hud = document.getElementById('test-hud');
+  let isScrolling;
+
   gallery.addEventListener('scroll', () => {
     if (gallery.scrollLeft > 100) {
       hud.classList.add('hidden');
@@ -572,43 +564,60 @@
     }
   });
 
-  // Enable horizontal scrolling with vertical mouse wheel
-  gallery.addEventListener('wheel', (evt) => {
-    evt.preventDefault();
-    gallery.scrollLeft += evt.deltaY;
+  // Drag to scroll logic for desktop (Since overflow-x doesn't always wheel horizontally)
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  gallery.addEventListener('mousedown', (e) => {
+    isDown = true;
+    gallery.style.cursor = 'grabbing';
+    startX = e.pageX - gallery.offsetLeft;
+    scrollLeft = gallery.scrollLeft;
+  });
+  gallery.addEventListener('mouseleave', () => {
+    isDown = false;
+    gallery.style.cursor = 'grab';
+  });
+  gallery.addEventListener('mouseup', () => {
+    isDown = false;
+    gallery.style.cursor = 'grab';
+  });
+  gallery.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - gallery.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll speed multiplier
+    gallery.scrollLeft = scrollLeft - walk;
   });
 
   // SWAP LOGIC
   document.getElementById('swap-trigger').addEventListener('click', () => {
     const mainImg = document.getElementById('main-large-img');
     const pipImg = document.getElementById('pip-small-img');
-    const mainLabel = document.getElementById('main-view-label'); // Not present in this version, simplified
     const pipLabel = document.getElementById('pip-view-label');
     
-    // Fade out
     mainImg.style.opacity = 0;
     pipImg.style.opacity = 0;
     
     setTimeout(() => {
-      // Swap sources
       const tempSrc = mainImg.src;
       mainImg.src = pipImg.src;
       pipImg.src = tempSrc;
       
-      // Swap labels
       if (pipLabel.innerText === "Switch to Final Cut") {
           pipLabel.innerText = "Behind The Scenes";
       } else {
           pipLabel.innerText = "Switch to Final Cut";
       }
       
-      // Fade in
       mainImg.style.opacity = 1;
       pipImg.style.opacity = 1;
     }, 400);
   });
 </script>
 </body>
+
 
 
 

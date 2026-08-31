@@ -3143,20 +3143,29 @@ body, html {
 
 
 
+
 /* --- MODAL DA TEST --- */
 .test-modal-overlay {
     position: fixed; inset: 0; background: rgba(5,5,5,0.98); z-index: 9000;
-    display: none; opacity: 0; transition: opacity 0.4s ease;
+    display: none; opacity: 0; transition: opacity 0.5s ease;
 }
-.test-modal-overlay.active { display: block; opacity: 1; }
+.test-modal-overlay.active { opacity: 1; }
 
-/* 16:9 Frame */
+/* 16:9 Frame with Opening Animation */
 .test-modal-frame {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    position: absolute; top: 50%; left: 50%;
+    /* Start state for animation: slightly smaller and lower */
+    transform: translate(-50%, -48%) scale(0.96);
+    opacity: 0;
     width: 100vw; height: 56.25vw;
-    max-height: 100vh; max-width: 177.77vh; /* Exact 16:9 constraint bounding box */
+    max-height: 100vh; max-width: 177.77vh; 
     background: #020202; overflow: hidden;
     box-shadow: 0 0 100px rgba(0,0,0,1);
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+}
+.test-modal-overlay.active .test-modal-frame {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
 }
 
 /* Scrolling Gallery */
@@ -3165,13 +3174,12 @@ body, html {
     overflow-x: auto; overflow-y: hidden;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
-    scroll-behavior: smooth;
-    cursor: grab;
+    cursor: grab; /* Native drag support */
 }
 .test-cinematic-gallery::-webkit-scrollbar { display: none; }
 .test-cinematic-gallery img {
     flex: 0 0 100%; height: 100%; object-fit: contain;
-    scroll-snap-align: center; pointer-events: none;
+    scroll-snap-align: center; pointer-events: none; /* Crucial for drag */
     transition: opacity 0.4s ease;
 }
 
@@ -3185,9 +3193,24 @@ body, html {
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
 .test-hud-layer.hidden {
-    opacity: 0; transform: translateY(30px); pointer-events: none;
+    opacity: 0 !important; transform: translateY(30px) !important; pointer-events: none;
 }
 .test-hud-layer > * { pointer-events: auto; }
+
+/* HUD Elements - Staggered Animations */
+.test-anim {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Delays triggered only when modal is active */
+.test-modal-overlay.active .test-hud-meta { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+.test-modal-overlay.active .test-hud-title { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+.test-modal-overlay.active .test-hud-desc { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+.test-modal-overlay.active .test-hud-tech { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+.test-modal-overlay.active .test-pip-wrapper { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
+.test-modal-overlay.active .test-related-wrapper { transition-delay: 0.7s; opacity: 1; transform: translateY(0); }
 
 /* HUD Left */
 .test-hud-left { max-width: 550px; }
@@ -3202,10 +3225,11 @@ body, html {
 /* PiP Thumbnail */
 .test-pip-wrapper {
     position: relative; width: 280px; aspect-ratio: 16/9; cursor: none;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.8); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
     border: 1px solid rgba(255,255,255,0.1); border-radius: 2px;
 }
-.test-pip-wrapper:hover { transform: scale(1.05) translateY(-5px); }
+/* Override the opening animation transform when hovered */
+.test-modal-overlay.active .test-pip-wrapper:hover { transform: scale(1.05) translateY(-5px); transition-delay: 0s; }
 .test-pip-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 .test-pip-label {
     position: absolute; top: -10px; right: -10px; background: #fff; color: #000;
@@ -3227,8 +3251,9 @@ body, html {
 .test-related-item:hover .hover-title { opacity: 1; }
 
 /* Close */
-.test-close-btn { position: absolute; top: 30px; right: 40px; font-size: 32px; color: #fff; background: none; border: none; cursor: none; opacity: 0.3; transition: opacity 0.3s; z-index: 10001; }
-.test-close-btn:hover { opacity: 1; }
+.test-close-btn { position: absolute; top: 30px; right: 40px; font-size: 32px; color: #fff; background: none; border: none; cursor: none; opacity: 0; transition: opacity 0.5s ease 0.8s; z-index: 10001; }
+.test-modal-overlay.active .test-close-btn { opacity: 0.3; }
+.test-modal-overlay.active .test-close-btn:hover { opacity: 1; transition-delay: 0s; }
 
 @media (max-width: 1100px) {
     .test-hud-layer { flex-direction: column; align-items: flex-start; gap: 40px; padding: 30px; }
