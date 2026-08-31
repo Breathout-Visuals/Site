@@ -487,23 +487,40 @@
 
 
 
-<button id="open-test-modal" style="position:fixed; bottom:20px; left:20px; z-index:8000; padding:15px 30px; background:#fff; color:#000; border:none; font-weight:bold; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">TEST DA (SCROLL FIX & PROGRESS)</button>
+
+<button id="open-test-modal" style="position:fixed; bottom:20px; left:20px; z-index:8000; padding:15px 30px; background:#fff; color:#000; border:none; font-weight:bold; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">TEST DA (PROGRESS TOP & CROSSFADE)</button>
 
 <div class="test-modal-overlay" id="da-test-modal">
   <button class="test-close-btn" id="close-test-modal"><i class="fa-solid fa-xmark"></i></button>
 
   <div class="test-modal-frame">
     
+    <!-- PROGRESS BAR (Top of the frame) -->
+    <div class="test-progress-container">
+      <div class="test-progress-bar" id="test-progress"></div>
+    </div>
+
     <!-- Invisible Click Zones -->
     <div class="test-nav-zone prev-zone" id="nav-prev"></div>
     <div class="test-nav-zone center-zone" id="nav-toggle" title="Cliquez pour masquer l'interface"></div>
     <div class="test-nav-zone next-zone" id="nav-next"></div>
 
     <div class="test-cinematic-gallery" id="test-gallery">
-      <img id="main-large-img" src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&w=2000&q=80" alt="Main 1">
-      <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=2000&q=80" alt="Main 2">
-      <img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=2000&q=80" alt="Main 3">
+      <!-- Image 1 with crossfade layers -->
+      <div class="test-gallery-item">
+        <img class="main-layer active" src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1920&h=1080&q=80" alt="Main 1">
+        <img class="main-layer inactive" src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=1920&h=1080&q=80" alt="BTS 1">
+      </div>
+      <div class="test-gallery-item">
+        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1920&h=1080&q=80" alt="Main 2">
+      </div>
+      <div class="test-gallery-item">
+        <img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=1920&h=1080&q=80" alt="Main 3">
+      </div>
     </div>
+
+    <!-- Vignette Shadow replacing the Gradient Blur -->
+    <div class="test-vignette" id="test-vignette"></div>
 
     <!-- Instructions Overlay -->
     <div class="test-instructions" id="test-instructions">
@@ -517,7 +534,7 @@
         <div class="test-hud-meta test-anim">Dir. Photographie &nbsp;—&nbsp; Fiction &nbsp;—&nbsp; 2024</div>
         <h2 class="test-hud-title test-anim">Dîner d'Affaire</h2>
         <p class="test-hud-desc test-anim">
-          Barre de progression ajoutée en dessous. Scroll vertical converti en horizontal de façon robuste. Padding interne ajouté pour corriger les pixels de l'image.
+          La barre de progression est intégrée à la fenêtre en haut. Le gradient est remplacé par un Inset Shadow physique. L'animation de swap est un fondu-enchaîné croisé (Dissolve).
         </p>
         <div class="test-hud-tech test-anim">
           ARRI Alexa Mini LF &nbsp;•&nbsp; Cooke Anamorphic /i Prime &nbsp;•&nbsp; 2.39:1
@@ -527,7 +544,9 @@
       <div class="test-hud-right test-anim-group">
         <div class="test-pip-wrapper" id="swap-trigger">
           <div class="test-pip-label" id="pip-view-label">TO THE BTS SHOT</div>
-          <img id="pip-small-img" src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80" alt="BTS">
+          <!-- PiP crossfade layers -->
+          <img class="pip-layer active" src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80" alt="BTS">
+          <img class="pip-layer inactive" src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=800&q=80" alt="Final Cut">
         </div>
         <div class="test-related-wrapper">
           <div class="test-related-title">Voir Aussi</div>
@@ -545,12 +564,6 @@
       </div>
     </div>
   </div> <!-- end frame -->
-
-  <!-- PROGRESS BAR (Outside frame, at the bottom) -->
-  <div class="test-progress-container">
-    <div class="test-progress-bar" id="test-progress"></div>
-  </div>
-
 </div>
 
 <script>
@@ -562,7 +575,7 @@
     document.body.style.overflow = 'hidden';
     document.getElementById('test-instructions').classList.remove('hidden');
     hasSeenInstructions = false;
-    updateProgress(); // init progress
+    updateProgress();
   });
   
   document.getElementById('close-test-modal').addEventListener('click', () => {
@@ -573,11 +586,13 @@
         modal.style.display = 'none';
         document.getElementById('test-gallery').scrollLeft = 0; 
         document.getElementById('test-hud').classList.remove('hidden');
+        document.getElementById('test-vignette').classList.remove('hidden');
     }, 800);
   });
 
   const gallery = document.getElementById('test-gallery');
   const hud = document.getElementById('test-hud');
+  const vignette = document.getElementById('test-vignette');
   const instructions = document.getElementById('test-instructions');
   const progressBar = document.getElementById('test-progress');
   const overlay = document.getElementById('da-test-modal');
@@ -588,11 +603,11 @@
 
   function hideHUD() {
       hud.classList.add('hidden');
+      vignette.classList.add('hidden');
       instructions.classList.add('hidden');
       hasSeenInstructions = true;
   }
 
-  // Progress Bar Logic
   function updateProgress() {
       const maxScroll = gallery.scrollWidth - gallery.clientWidth;
       if (maxScroll <= 0) { progressBar.style.width = '0%'; return; }
@@ -606,6 +621,7 @@
       hideHUD();
     } else {
       hud.classList.remove('hidden');
+      vignette.classList.remove('hidden');
     }
   });
 
@@ -620,13 +636,13 @@
         hudTimeout = setTimeout(() => {
           if (gallery.scrollLeft <= 50 && !isHudManuallyHidden) {
             hud.classList.remove('hidden');
+            vignette.classList.remove('hidden');
           }
         }, 800);
       }
     }
   });
 
-  // ROBUST Scroll Easing
   let isWheeling = false;
   function smoothScrollTo(element, target, duration) {
     const start = element.scrollLeft;
@@ -649,13 +665,10 @@
       }
     }
     requestAnimationFrame(animation);
-    // Safety net
     setTimeout(() => { isWheeling = false; }, duration + 50);
   }
 
-  // Wheel listener heavily improved
   overlay.addEventListener('wheel', (evt) => {
-    // Only intercept if we are scrolling mostly vertically
     if (Math.abs(evt.deltaY) > Math.abs(evt.deltaX)) {
         evt.preventDefault();
         if (isWheeling) return;
@@ -680,29 +693,29 @@
     smoothScrollTo(gallery, boundedTarget, 900);
   });
 
-  // SWAP LOGIC
+  // CINEMATIC CROSSFADE SWAP LOGIC
   document.getElementById('swap-trigger').addEventListener('click', (e) => {
     e.stopPropagation();
-    const mainImg = document.getElementById('main-large-img');
-    const pipImg = document.getElementById('pip-small-img');
+    const mainLayers = document.querySelectorAll('.main-layer');
+    const pipLayers = document.querySelectorAll('.pip-layer');
     const pipLabel = document.getElementById('pip-view-label');
-    mainImg.style.opacity = 0;
-    pipImg.style.opacity = 0;
-    setTimeout(() => {
-      const tempSrc = mainImg.src;
-      mainImg.src = pipImg.src;
-      pipImg.src = tempSrc;
-      if (pipLabel.innerText === "TO THE FINAL CUT") {
-          pipLabel.innerText = "TO THE BTS SHOT";
-      } else {
-          pipLabel.innerText = "TO THE FINAL CUT";
-      }
-      mainImg.style.opacity = 1;
-      pipImg.style.opacity = 1;
-    }, 400);
+    
+    // Toggle active classes for smooth crossfade
+    mainLayers.forEach(layer => layer.classList.toggle('active'));
+    mainLayers.forEach(layer => layer.classList.toggle('inactive'));
+    
+    pipLayers.forEach(layer => layer.classList.toggle('active'));
+    pipLayers.forEach(layer => layer.classList.toggle('inactive'));
+    
+    if (pipLabel.innerText === "TO THE FINAL CUT") {
+        pipLabel.innerText = "TO THE BTS SHOT";
+    } else {
+        pipLabel.innerText = "TO THE FINAL CUT";
+    }
   });
 </script>
 </body>
+
 
 
 
