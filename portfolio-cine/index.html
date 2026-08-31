@@ -12,11 +12,7 @@
       if (v) v.setAttribute('content', 'width=1100');
     })();
   
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) {
-      document.getElementById('close-test-modal').click();
-    }
-  });
+  
 
 </script>
   <title>Lucas Jacquot | Filmmaker</title>
@@ -54,11 +50,7 @@
       ]
     }
   
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) {
-      document.getElementById('close-test-modal').click();
-    }
-  });
+  
 
 </script>
 </head>
@@ -155,11 +147,7 @@
       }, 500); // Wait for bar to finish before fading out
     });
   
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) {
-      document.getElementById('close-test-modal').click();
-    }
-  });
+  
 
 </script>
 
@@ -193,11 +181,7 @@
           if (v) { v.setAttribute('playsinline', ''); v.play().catch(() => { }); }
         });
       
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) {
-      document.getElementById('close-test-modal').click();
-    }
-  });
+  
 
 </script>
       <div class="hero-content">
@@ -503,11 +487,7 @@
   <div class="cursor-outline" data-cursor-outline></div>
 
   <script type="module" src="/src/portfolio-cinema/portfolio.js?v=4">
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) {
-      document.getElementById('close-test-modal').click();
-    }
-  });
+  
 
 </script>
 
@@ -708,6 +688,11 @@
   const instructions = document.getElementById('test-instructions');
   const progressBar = document.getElementById('test-progress');
   const overlay = document.getElementById('da-test-modal');
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        document.getElementById('close-test-modal').click();
+      }
+    });
   const progressContainer = document.querySelector('.test-progress-container');
   const pipBts = document.querySelector('.pip-bts-layer');
   const pipMain = document.querySelector('.pip-main-layer');
@@ -810,11 +795,7 @@
     }, 800);
   });
 
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) {
-      document.getElementById('close-test-modal').click();
-    }
-  });
+  
 
   function hideHUD() {
       hud.classList.add('hidden');
