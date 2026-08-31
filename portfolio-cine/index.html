@@ -646,7 +646,7 @@
           hud.classList.add('instant-show'); // Bypass CSS delays
           hud.classList.remove('hidden');
           isHudManuallyHidden = false;
-          smoothScrollTo(gallery, 0, 700); // Scroll back to first image on mode switch
+          gallery.scrollLeft = 0; // Instant jump back to first image on mode switch
           setTimeout(() => { 
               isModeSwitching = false; 
               hud.classList.remove('instant-show'); 

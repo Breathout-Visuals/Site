@@ -3241,7 +3241,7 @@ body, html {
 .test-related-item { position: relative; width: calc(9.0 * var(--cqw)); aspect-ratio: 16/9; cursor: none; overflow: hidden; border-radius: calc(0.15 * var(--cqw)); box-shadow: 0 calc(0.4 * var(--cqw)) calc(1.0 * var(--cqw)) rgba(0,0,0,0.5); }
 .test-related-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; transition: all 0.4s; }
 .test-related-item:hover img { opacity: 1; transform: scale(1.05); }
-.test-related-item .hover-title { position: absolute; inset: 0; display: flex !important; align-items: center; justify-content: center; text-align: center; font-size: calc(0.65 * var(--cqw)); text-transform: uppercase; letter-spacing: calc(0.1 * var(--cqw)); color: #fff; background: rgba(0,0,0,0.7); opacity: 0; transition: opacity 0.3s; padding: calc(0.7 * var(--cqw)); }
+.test-related-item .hover-title { position: absolute; inset: 0; display: flex !important; align-items: center; justify-content: center; text-align: center; font-size: calc(0.65 * var(--cqw)); text-transform: uppercase; letter-spacing: calc(0.1 * var(--cqw)); color: #fff; background: rgba(0,0,0,0.9); opacity: 0; transition: opacity 0.3s; padding: calc(0.7 * var(--cqw)); }
 .test-related-item:hover .hover-title { opacity: 1; }
 
 /* PiP - Stealth Mode with Crossfade */
@@ -3307,6 +3307,12 @@ body, html {
 
     .test-modal-overlay.force-landscape-bypass {
         --cqw: calc(min(90dvh, 90vw * 16 / 9) / 100) !important;
+    }
+    .test-modal-overlay.force-landscape-bypass .test-related-item {
+        width: calc(14.0 * var(--cqw)) !important;
+    }
+    .test-modal-overlay.force-landscape-bypass .test-related-title {
+        font-size: calc(1.0 * var(--cqw)) !important;
     }
     .test-modal-overlay.force-landscape-bypass .test-modal-frame {
         width: 90dvh !important;

@@ -1,0 +1,17 @@
+TITRE: Test
+SOUSTITRE: Ingestion Test
+CATEGORIE: fiction
+CLIENT: Antigravity
+ANNEE: 2026
+
+Role:
+- Director of Photography
+
+Synopsis:
+Projet de test pour le nouveau système d'ingestion dynamique du modal. Ce texte doit remplacer le contenu hardcodé.
+
+Camera: Arri Alexa 35
+Optique: Zeiss B-Speed
+Format: 2.39:1
+
+LIEN: https://youtu.be/nK3sbmGYcG8
