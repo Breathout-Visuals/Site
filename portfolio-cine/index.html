@@ -552,7 +552,7 @@
         <img class="bts-layer inactive" src="https://images.unsplash.com/photo-1621252179022-81788da1e2db?auto=format&fit=crop&w=1920&h=1080&q=80" alt="BTS 2">
       </div>
       <div class="test-gallery-item">
-        <img class="main-layer active" src="/portfolio-cinema-content/Projets/fic/Homonculus/D.jpg" alt="Main 3">
+        <video class="main-layer active test-video" src="/portfolio-cinema-content/Projets/fic/Homonculus/C.mp4" loop muted playsinline preload="auto" style="width: 100%; height: 100%; object-fit: cover;"></video>
         <img class="bts-layer inactive" src="https://images.unsplash.com/photo-1497911174120-042e519e9176?auto=format&fit=crop&w=1920&h=1080&q=80" alt="BTS 3">
       </div>
     </div>
@@ -624,6 +624,7 @@
           el.classList.toggle('active', !isBtsMode);
           el.classList.toggle('inactive', isBtsMode);
       });
+      manageVideos();
       document.querySelectorAll('.bts-layer').forEach(el => {
           el.classList.toggle('active', isBtsMode);
           el.classList.toggle('inactive', !isBtsMode);
@@ -636,6 +637,7 @@
           el.classList.toggle('active', !isBtsMode);
           el.classList.toggle('inactive', isBtsMode);
       });
+      manageVideos();
       document.getElementById('pip-view-label').innerText = isBtsMode ? "TO THE FINAL CUT" : "TO THE BTS SHOT";
   }
 
@@ -676,13 +678,37 @@
       instructions.classList.add('hidden');
       
       hasSeenInstructions = true;
+    manageVideos();
   }
 
   function updateProgress() {
-      const maxScroll = gallery.scrollWidth - gallery.clientWidth;
-      if (maxScroll <= 0) { progressBar.style.width = '0%'; return; }
-      const percent = (gallery.scrollLeft / maxScroll) * 100;
-      progressBar.style.width = percent + '%';
+    const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+    if (maxScroll <= 0) { progressBar.style.width = '0%'; return; }
+    const percent = (gallery.scrollLeft / maxScroll) * 100;
+    progressBar.style.width = percent + '%';
+  }
+
+  function manageVideos() {
+      const videos = gallery.querySelectorAll('video.test-video');
+      const isHudVisible = !hud.classList.contains('hidden');
+      
+      videos.forEach(video => {
+          const item = video.closest('.test-gallery-item');
+          const itemStart = item.offsetLeft;
+          const itemEnd = itemStart + item.clientWidth;
+          
+          const scrollStart = gallery.scrollLeft;
+          const scrollEnd = scrollStart + gallery.clientWidth;
+          
+          const overlap = Math.max(0, Math.min(itemEnd, scrollEnd) - Math.max(itemStart, scrollStart));
+          const isInView = overlap > (item.clientWidth * 0.5);
+          
+          if (isInView && !isHudVisible && !isBtsMode) {
+              video.play().catch(e => console.log(e));
+          } else {
+              video.pause();
+          }
+      });
   }
 
   document.getElementById('nav-toggle').addEventListener('click', () => {
@@ -690,6 +716,7 @@
     if (hud.classList.contains('hidden')) {
       hud.classList.remove('hidden');
       isHudManuallyHidden = false;
+    manageVideos();
     } else {
       hideHUD();
       isHudManuallyHidden = true;
@@ -698,6 +725,7 @@
 
   gallery.addEventListener('scroll', () => {
     updateProgress();
+    manageVideos();
     if (gallery.scrollLeft > 50) {
       clearTimeout(hudTimeout);
       hideHUD();
@@ -707,7 +735,7 @@
         hudTimeout = setTimeout(() => {
           if (gallery.scrollLeft <= 50 && !isHudManuallyHidden) {
             hud.classList.remove('hidden');
-            
+            manageVideos();
           }
         }, 800);
       }
