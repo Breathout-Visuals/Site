@@ -11,7 +11,14 @@
       var v = document.querySelector('meta[name="viewport"]');
       if (v) v.setAttribute('content', 'width=1100');
     })();
-  </script>
+  
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      document.getElementById('close-test-modal').click();
+    }
+  });
+
+</script>
   <title>Lucas Jacquot | Filmmaker</title>
   <meta name="description" content="Portfolio of a visual storyteller and filmmaker based in Paris.">
   <meta name="google" content="notranslate" />
@@ -46,7 +53,14 @@
         "https://www.linkedin.com/in/lucas-jacquot-96358b252/"
       ]
     }
-  </script>
+  
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      document.getElementById('close-test-modal').click();
+    }
+  });
+
+</script>
 </head>
 
 <body>
@@ -140,7 +154,14 @@
         preloader.classList.add('hidden');
       }, 500); // Wait for bar to finish before fading out
     });
-  </script>
+  
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      document.getElementById('close-test-modal').click();
+    }
+  });
+
+</script>
 
   <header>
     <div class="container">
@@ -171,7 +192,14 @@
           const v = document.querySelector('.hero-video-bg');
           if (v) { v.setAttribute('playsinline', ''); v.play().catch(() => { }); }
         });
-      </script>
+      
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      document.getElementById('close-test-modal').click();
+    }
+  });
+
+</script>
       <div class="hero-content">
         <h1 class="stagger-text notranslate" translate="no">
           <span class="line">CRAFTING</span>
@@ -474,7 +502,14 @@
   <div class="cursor-dot" data-cursor-dot></div>
   <div class="cursor-outline" data-cursor-outline></div>
 
-  <script type="module" src="/src/portfolio-cinema/portfolio.js?v=4"></script>
+  <script type="module" src="/src/portfolio-cinema/portfolio.js?v=4">
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      document.getElementById('close-test-modal').click();
+    }
+  });
+
+</script>
 
 
 
@@ -491,7 +526,7 @@
 <button id="open-test-modal" style="position:fixed; bottom:20px; left:20px; z-index:8000; padding:15px 30px; background:#fff; color:#000; border:none; font-weight:bold; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">TEST DA (PROGRESS TOP & CROSSFADE)</button>
 
 <div class="test-modal-overlay" id="da-test-modal">
-  <button class="test-close-btn" id="close-test-modal"><i class="fa-solid fa-xmark"></i></button>
+  
 
   <div class="test-modal-frame">
     
@@ -502,7 +537,7 @@
 
     <!-- Invisible Click Zones -->
     <div class="test-nav-zone prev-zone" id="nav-prev"></div>
-    <div class="test-nav-zone center-zone" id="nav-toggle" title="Cliquez pour masquer l'interface"></div>
+    <div class="test-nav-zone center-zone" id="nav-toggle" ></div>
     <div class="test-nav-zone next-zone" id="nav-next"></div>
 
     <div class="test-cinematic-gallery" id="test-gallery">
@@ -530,13 +565,16 @@
 
     <!-- HUD LAYER -->
     <div class="test-hud-layer" id="test-hud">
+      <button class="test-close-btn test-anim" id="close-test-modal"><i class="fa-solid fa-xmark"></i></button>
       <div class="test-hud-left">
         <div class="test-hud-meta test-anim">Dir. Photographie &nbsp;—&nbsp; Fiction &nbsp;—&nbsp; 2024</div>
         <h2 class="test-hud-title test-anim">Dîner d'Affaire</h2>
         <p class="test-hud-desc test-anim">
           La barre de progression est intégrée à la fenêtre en haut. Le gradient est remplacé par un Inset Shadow physique. L'animation de swap est un fondu-enchaîné croisé (Dissolve).
         </p>
-        <div class="test-hud-tech test-anim">
+        <div class="test-hud-tech test-anim">ARRI Alexa Mini LF &nbsp;•&nbsp; Cooke Anamorphic /i Prime &nbsp;•&nbsp; 2.39:1</div>
+        <a href="#" class="test-hud-play-btn test-anim" style="margin-top: 25px;"><i class="fa-solid fa-play"></i> Voir le film</a>
+        <a href="#" class="test-hud-play-btn test-anim" style="margin-top: 25px;"><i class="fa-solid fa-play"></i> Voir le film</a>
           ARRI Alexa Mini LF &nbsp;•&nbsp; Cooke Anamorphic /i Prime &nbsp;•&nbsp; 2.39:1
         </div>
       </div>
@@ -713,6 +751,13 @@
         pipLabel.innerText = "TO THE FINAL CUT";
     }
   });
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      document.getElementById('close-test-modal').click();
+    }
+  });
+
 </script>
 </body>
 
