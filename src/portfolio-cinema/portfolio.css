@@ -3326,3 +3326,6 @@ body, html {
 @keyframes hudSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
 @keyframes hudSlideUpDim { from { opacity: 0; transform: translateY(20px); } to { opacity: 0.4; transform: translateY(0) scale(1); } }
+
+/* Instant show for PiP switch */
+.test-hud-layer.instant-show .test-anim, .test-hud-layer.instant-show .test-anim-group, .test-hud-layer.instant-show .test-close-btn, .test-hud-layer.instant-show .test-hud-play-btn, .test-hud-layer.instant-show .test-hud-title, .test-hud-layer.instant-show .test-hud-desc, .test-hud-layer.instant-show .test-hud-tech, .test-hud-layer.instant-show .test-hud-meta { transition-delay: 0s !important; animation-delay: 0s !important; transition-duration: 0.3s !important; animation-duration: 0.3s !important; }

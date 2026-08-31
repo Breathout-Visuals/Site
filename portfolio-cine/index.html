@@ -643,10 +643,14 @@
   function setMode(bts) {
       if (isBtsMode !== bts) {
           isModeSwitching = true;
+          hud.classList.add('instant-show'); // Bypass CSS delays
           hud.classList.remove('hidden');
           isHudManuallyHidden = false;
           smoothScrollTo(gallery, 0, 700); // Scroll back to first image on mode switch
-          setTimeout(() => { isModeSwitching = false; }, 750);
+          setTimeout(() => { 
+              isModeSwitching = false; 
+              hud.classList.remove('instant-show'); 
+          }, 800);
       }
       isBtsMode = bts;
       document.querySelectorAll('.main-layer').forEach(el => {
