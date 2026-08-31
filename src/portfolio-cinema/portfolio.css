@@ -3149,6 +3149,7 @@ body, html {
 
 
 
+
 /* --- MODAL DA TEST --- */
 .test-modal-overlay {
     position: fixed; inset: 0; background: rgba(5,5,5,0.98); z-index: 9000;
@@ -3156,16 +3157,17 @@ body, html {
 }
 .test-modal-overlay.active { opacity: 1; }
 
-/* 90% Width, Rounded 16:9 Frame */
+/* Modal Frame (Rounded, Padded to hide subpixel edge blur) */
 .test-modal-frame {
     position: absolute; top: 50%; left: 50%;
     transform: translate(-50%, -48%) scale(0.96); opacity: 0;
-    width: 90vw; height: 50.625vw; /* 90 * (9/16) */
-    max-height: 90vh; max-width: 160vh; /* 90 * (16/9) */
+    width: 90vw; height: 50.625vw;
+    max-height: 90vh; max-width: 160vh; 
     background: #000; overflow: hidden;
-    box-shadow: 0 30px 100px rgba(0,0,0,0.8);
-    border-radius: 24px; /* Rounded corners! */
+    box-shadow: 0 40px 100px rgba(0,0,0,1);
+    border-radius: 16px; /* Reduced by 30% as requested */
     border: 1px solid rgba(255,255,255,0.1);
+    padding: 1px; /* The genius trick: forces image to stop 1px before the border */
     transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
 }
 .test-modal-overlay.active .test-modal-frame { transform: translate(-50%, -50%) scale(1); opacity: 1; }
@@ -3176,15 +3178,27 @@ body, html {
 .test-nav-zone.next-zone { right: 0; width: 15vw; }
 .test-nav-zone.center-zone { left: 15vw; right: 15vw; cursor: none; }
 
+/* Progress Bar */
+.test-progress-container {
+    position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%);
+    width: 250px; height: 2px; background: rgba(255,255,255,0.15);
+    border-radius: 2px; overflow: hidden; z-index: 10001;
+    opacity: 0; transition: opacity 0.8s ease;
+}
+.test-modal-overlay.active .test-progress-container { opacity: 1; transition-delay: 0.8s; }
+.test-progress-bar {
+    height: 100%; width: 0%; background: #fff;
+    transition: width 0.4s ease-out; box-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
 /* Gallery */
 .test-cinematic-gallery {
-    position: absolute; inset: 0; display: flex;
-    overflow-x: hidden; overflow-y: hidden;
-    scrollbar-width: none; cursor: none;
+    position: absolute; inset: 1px; /* Accounts for padding */
+    display: flex; overflow: hidden;
+    scrollbar-width: none; cursor: none; border-radius: 14px; /* Inner radius */
 }
-.test-cinematic-gallery::-webkit-scrollbar { display: none; }
 .test-cinematic-gallery img {
-    flex: 0 0 100%; height: 100%; object-fit: cover; /* Cover ensures no gaps */
+    flex: 0 0 100%; height: 100%; object-fit: cover;
     pointer-events: none; transition: opacity 0.4s ease;
 }
 
@@ -3203,21 +3217,17 @@ body, html {
     display: flex; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,0.1);
     animation: pulseGlow 2s infinite alternate;
 }
-@keyframes pulseGlow {
-    from { box-shadow: 0 0 0 rgba(255,255,255,0); }
-    to { box-shadow: 0 0 10px rgba(255,255,255,0.2); }
-}
+@keyframes pulseGlow { from { box-shadow: 0 0 0 rgba(255,255,255,0); } to { box-shadow: 0 0 10px rgba(255,255,255,0.2); } }
 
 /* HUD LAYER */
 .test-hud-layer {
-    position: absolute; inset: 0; padding: 60px;
+    position: absolute; inset: 1px; padding: 60px;
     display: flex; justify-content: space-between; align-items: flex-end;
-    pointer-events: none; z-index: 100;
+    pointer-events: none; z-index: 100; border-radius: 14px; overflow: hidden;
 }
-/* Extended seamless gradient */
 .test-hud-layer::before {
     content: ''; position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0) 80%);
+    background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 15%, rgba(0,0,0,0) 60%);
     z-index: -1; pointer-events: none;
     transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -3263,19 +3273,11 @@ body, html {
     transition: transform 0.4s ease; overflow: hidden;
 }
 .test-modal-overlay.active .test-pip-wrapper:hover { transform: scale(1.05) translateY(-5px); transition-delay: 0s; }
-.test-pip-wrapper img {
-    width: 100%; height: 100%; object-fit: cover;
-    filter: grayscale(100%) contrast(1.1) brightness(0.5); opacity: 0.8;
-    transition: filter 0.4s ease, opacity 0.4s ease;
-}
+.test-pip-wrapper img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%) contrast(1.1) brightness(0.5); opacity: 0.8; transition: filter 0.4s ease, opacity 0.4s ease; }
 .test-modal-overlay.active .test-pip-wrapper:hover img { opacity: 1; filter: grayscale(100%) contrast(1.2) brightness(0.8); }
-.test-pip-label {
-    position: absolute; top: 0px; right: 0px; background: #fff; color: #000;
-    font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; padding: 6px 14px; z-index: 10;
-    font-weight: 800; box-shadow: 0 10px 20px rgba(0,0,0,0.8); border-bottom-left-radius: 4px;
-}
+.test-pip-label { position: absolute; top: 0px; right: 0px; background: #fff; color: #000; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; padding: 6px 14px; z-index: 10; font-weight: 800; box-shadow: 0 10px 20px rgba(0,0,0,0.8); border-bottom-left-radius: 4px; }
 
-/* Close Button (Floating outside the frame) */
+/* Close */
 .test-close-btn { position: absolute; top: 30px; right: 40px; font-size: 32px; color: #fff; background: none; border: none; cursor: none; opacity: 0; transition: opacity 0.5s ease 0.8s; z-index: 10001; }
 .test-modal-overlay.active .test-close-btn { opacity: 0.4; }
 .test-modal-overlay.active .test-close-btn:hover { opacity: 1; transition-delay: 0s; }

@@ -486,21 +486,23 @@
 
 
 
-<button id="open-test-modal" style="position:fixed; bottom:20px; left:20px; z-index:8000; padding:15px 30px; background:#fff; color:#000; border:none; font-weight:bold; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">TEST DA (SCROLL AMORTI & CLIC)</button>
+
+<button id="open-test-modal" style="position:fixed; bottom:20px; left:20px; z-index:8000; padding:15px 30px; background:#fff; color:#000; border:none; font-weight:bold; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">TEST DA (SCROLL FIX & PROGRESS)</button>
 
 <div class="test-modal-overlay" id="da-test-modal">
   <button class="test-close-btn" id="close-test-modal"><i class="fa-solid fa-xmark"></i></button>
-  <div class="test-modal-frame">
 
+  <div class="test-modal-frame">
+    
     <!-- Invisible Click Zones -->
     <div class="test-nav-zone prev-zone" id="nav-prev"></div>
     <div class="test-nav-zone center-zone" id="nav-toggle" title="Cliquez pour masquer l'interface"></div>
     <div class="test-nav-zone next-zone" id="nav-next"></div>
 
     <div class="test-cinematic-gallery" id="test-gallery">
-      <img id="main-large-img" src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1920&h=1080&q=80" alt="Main 1">
-      <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1920&h=1080&q=80" alt="Main 2">
-      <img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=1920&h=1080&q=80" alt="Main 3">
+      <img id="main-large-img" src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&w=2000&q=80" alt="Main 1">
+      <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=2000&q=80" alt="Main 2">
+      <img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=2000&q=80" alt="Main 3">
     </div>
 
     <!-- Instructions Overlay -->
@@ -515,7 +517,7 @@
         <div class="test-hud-meta test-anim">Dir. Photographie &nbsp;—&nbsp; Fiction &nbsp;—&nbsp; 2024</div>
         <h2 class="test-hud-title test-anim">Dîner d'Affaire</h2>
         <p class="test-hud-desc test-anim">
-          L'interface disparaît au clic ou au défilement. Le mouvement de scroll est maintenant parfaitement amorti (Cinematic Easing).
+          Barre de progression ajoutée en dessous. Scroll vertical converti en horizontal de façon robuste. Padding interne ajouté pour corriger les pixels de l'image.
         </p>
         <div class="test-hud-tech test-anim">
           ARRI Alexa Mini LF &nbsp;•&nbsp; Cooke Anamorphic /i Prime &nbsp;•&nbsp; 2.39:1
@@ -525,7 +527,7 @@
       <div class="test-hud-right test-anim-group">
         <div class="test-pip-wrapper" id="swap-trigger">
           <div class="test-pip-label" id="pip-view-label">TO THE BTS SHOT</div>
-          <img id="pip-small-img" src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=1920&h=1080&q=80" alt="BTS" style="transition: opacity 0.4s ease;">
+          <img id="pip-small-img" src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80" alt="BTS">
         </div>
         <div class="test-related-wrapper">
           <div class="test-related-title">Voir Aussi</div>
@@ -542,19 +544,25 @@
         </div>
       </div>
     </div>
+  </div> <!-- end frame -->
+
+  <!-- PROGRESS BAR (Outside frame, at the bottom) -->
+  <div class="test-progress-container">
+    <div class="test-progress-bar" id="test-progress"></div>
   </div>
+
 </div>
 
 <script>
   document.getElementById('open-test-modal').addEventListener('click', () => {
     const modal = document.getElementById('da-test-modal');
     modal.style.display = 'block';
-    void modal.offsetWidth; // reflow
+    void modal.offsetWidth;
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
-    // Reset instructions on open
     document.getElementById('test-instructions').classList.remove('hidden');
     hasSeenInstructions = false;
+    updateProgress(); // init progress
   });
   
   document.getElementById('close-test-modal').addEventListener('click', () => {
@@ -571,6 +579,9 @@
   const gallery = document.getElementById('test-gallery');
   const hud = document.getElementById('test-hud');
   const instructions = document.getElementById('test-instructions');
+  const progressBar = document.getElementById('test-progress');
+  const overlay = document.getElementById('da-test-modal');
+
   let isHudManuallyHidden = false;
   let hasSeenInstructions = false;
   let hudTimeout;
@@ -578,52 +589,54 @@
   function hideHUD() {
       hud.classList.add('hidden');
       instructions.classList.add('hidden');
-      hasSeenInstructions = true; // Never show instructions again
+      hasSeenInstructions = true;
   }
 
-  // Click center to toggle
+  // Progress Bar Logic
+  function updateProgress() {
+      const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+      if (maxScroll <= 0) { progressBar.style.width = '0%'; return; }
+      const percent = (gallery.scrollLeft / maxScroll) * 100;
+      progressBar.style.width = percent + '%';
+  }
+
   document.getElementById('nav-toggle').addEventListener('click', () => {
     isHudManuallyHidden = !isHudManuallyHidden;
     if (isHudManuallyHidden) {
       hideHUD();
     } else {
       hud.classList.remove('hidden');
-      // Intentionally NOT showing instructions again
     }
   });
 
-  // Fade HUD on scroll with 1s delay on return
   gallery.addEventListener('scroll', () => {
-    if (gallery.scrollLeft > 100) {
+    updateProgress();
+    if (gallery.scrollLeft > 50) {
       clearTimeout(hudTimeout);
       hideHUD();
     } else {
       if (hud.classList.contains('hidden')) {
         clearTimeout(hudTimeout);
         hudTimeout = setTimeout(() => {
-          if (gallery.scrollLeft <= 100 && !isHudManuallyHidden) {
+          if (gallery.scrollLeft <= 50 && !isHudManuallyHidden) {
             hud.classList.remove('hidden');
-            // Intentionally NOT showing instructions again
           }
-        }, 1000); // 1 second delay
+        }, 800);
       }
     }
   });
 
-  // Custom Smooth Easing (Ammortissement)
+  // ROBUST Scroll Easing
   let isWheeling = false;
   function smoothScrollTo(element, target, duration) {
     const start = element.scrollLeft;
     const change = target - start;
     let startTime = null;
-
     function easeInOutCubic(t, b, c, d) {
       t /= d/2;
       if (t < 1) return c/2*t*t*t + b;
-      t -= 2;
-      return c/2*(t*t*t + 2) + b;
+      t -= 2; return c/2*(t*t*t + 2) + b;
     }
-
     function animation(currentTime) {
       if (startTime === null) startTime = currentTime;
       const timeElapsed = currentTime - startTime;
@@ -636,21 +649,25 @@
       }
     }
     requestAnimationFrame(animation);
+    // Safety net
+    setTimeout(() => { isWheeling = false; }, duration + 50);
   }
 
-  // Wheel event with soft duration
-  gallery.addEventListener('wheel', (evt) => {
-    evt.preventDefault();
-    if (isWheeling) return;
-    isWheeling = true;
-    const direction = evt.deltaY > 0 ? 1 : -1;
-    const target = gallery.scrollLeft + (direction * gallery.clientWidth);
-    const maxScroll = gallery.scrollWidth - gallery.clientWidth;
-    const boundedTarget = Math.max(0, Math.min(target, maxScroll));
-    smoothScrollTo(gallery, boundedTarget, 900);
+  // Wheel listener heavily improved
+  overlay.addEventListener('wheel', (evt) => {
+    // Only intercept if we are scrolling mostly vertically
+    if (Math.abs(evt.deltaY) > Math.abs(evt.deltaX)) {
+        evt.preventDefault();
+        if (isWheeling) return;
+        isWheeling = true;
+        const direction = evt.deltaY > 0 ? 1 : -1;
+        const target = gallery.scrollLeft + (direction * gallery.clientWidth);
+        const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+        const boundedTarget = Math.max(0, Math.min(target, maxScroll));
+        smoothScrollTo(gallery, boundedTarget, 900);
+    }
   }, { passive: false });
 
-  // Click zones
   document.getElementById('nav-prev').addEventListener('click', () => {
     if (isWheeling) return; isWheeling = true;
     const boundedTarget = Math.max(0, gallery.scrollLeft - gallery.clientWidth);
@@ -669,10 +686,8 @@
     const mainImg = document.getElementById('main-large-img');
     const pipImg = document.getElementById('pip-small-img');
     const pipLabel = document.getElementById('pip-view-label');
-    
     mainImg.style.opacity = 0;
     pipImg.style.opacity = 0;
-    
     setTimeout(() => {
       const tempSrc = mainImg.src;
       mainImg.src = pipImg.src;
@@ -688,6 +703,7 @@
   });
 </script>
 </body>
+
 
 
 
