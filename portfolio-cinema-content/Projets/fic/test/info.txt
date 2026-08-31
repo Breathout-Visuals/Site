@@ -5,7 +5,8 @@ CLIENT: Antigravity
 ANNEE: 2026
 
 Role:
-- Director of Photography
+- dop
+- col
 
 Synopsis:
 Projet de test pour le nouveau système d'ingestion dynamique du modal. Ce texte doit remplacer le contenu hardcodé.

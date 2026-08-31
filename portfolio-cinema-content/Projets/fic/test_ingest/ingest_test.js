@@ -1,16 +1,4 @@
-// Dictionnaire de traduction simplifié pour l'ingestion
-const dict = {
-    fr: {
-        "Director of Photography": "Chef Opérateur",
-        "Colorist": "Étalonneur",
-        "Director": "Réalisateur"
-    },
-    en: {
-        "Director of Photography": "Director of Photography",
-        "Colorist": "Colorist",
-        "Director": "Director"
-    }
-};
+import { LIBRARY } from '/src/portfolio-cinema/library.js';
 
 // Mock des fichiers générés par le système de build pour le projet 'test'
 const testProjectFiles = [
@@ -21,7 +9,9 @@ const testProjectFiles = [
 
 async function loadProjectData(projectFolderUrl) {
     try {
+        // En prod, le nom du fichier pourrait être info.txt
         const response = await fetch(projectFolderUrl + '/info.txt');
+        if (!response.ok) throw new Error('Network response was not ok');
         const text = await response.text();
         
         // Parsing simple du TXT
@@ -58,7 +48,13 @@ async function loadProjectData(projectFolderUrl) {
 }
 
 function translateRoles(roles, lang) {
-    return roles.map(r => (dict[lang] && dict[lang][r]) ? dict[lang][r] : r);
+    const rolesLib = LIBRARY.roles_me || {};
+    return roles.map(r => {
+        if (rolesLib[r] && rolesLib[r][lang]) {
+            return rolesLib[r][lang];
+        }
+        return r; // Fallback to raw text if not in library
+    });
 }
 
 export async function populateTestModal() {
@@ -72,9 +68,9 @@ export async function populateTestModal() {
     const translatedRoles = translateRoles(data.roles, lang);
     
     // 3. Injection des métadonnées texte dans le DOM
-    document.getElementById('test-hud-title').innerText = data.title;
-    document.querySelector('.test-hud-desc').innerText = data.synopsis;
-    document.querySelector('.test-hud-meta').innerText = data.subtitle + ' — ' + translatedRoles.join(' & ');
+    document.getElementById('test-hud-title').innerText = data.title || '';
+    document.querySelector('.test-hud-desc').innerText = (data.synopsis || '').trim();
+    document.querySelector('.test-hud-meta').innerText = (data.subtitle || '') + ' — ' + translatedRoles.join(' & ');
     document.querySelector('.test-hud-tech').innerHTML = (data.camera || '') + ' &nbsp; &nbsp; ' + (data.lens || '') + ' &nbsp; &nbsp; ' + (data.format || '');
     
     const playBtn = document.querySelector('.test-hud-play-btn');
@@ -108,7 +104,6 @@ export async function populateTestModal() {
         }
         mainEl.className = 'main-layer active' + (file.type === 'video' ? ' test-video' : '');
         
-        // BTS (Assumons des images pour simplifier, sauf si video)
         btsEl = document.createElement('img');
         btsEl.src = file.bts;
         btsEl.className = 'bts-layer inactive';
