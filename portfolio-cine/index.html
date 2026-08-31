@@ -624,12 +624,25 @@
   const progressBar = document.getElementById('test-progress');
   const overlay = document.getElementById('da-test-modal');
   const progressContainer = document.querySelector('.test-progress-container');
+  const pipBts = document.querySelector('.pip-bts-layer');
+  const pipMain = document.querySelector('.pip-main-layer');
+  if (pipBts && pipMain) {
+      const firstBts = document.querySelector('.bts-layer');
+      const firstMain = document.querySelector('.main-layer');
+      // If it's a video, we can't easily extract src for img unless we use a poster or something. Assuming images for first slide.
+      if (firstBts && firstBts.src) pipBts.src = firstBts.src;
+      if (firstMain && firstMain.src) pipMain.src = firstMain.src;
+  }
+
   document.querySelector('.test-rotate-message').addEventListener('click', () => {
     document.getElementById('da-test-modal').classList.add('force-landscape-bypass');
   });
 
 
   function setMode(bts) {
+      if (isBtsMode !== bts) {
+          smoothScrollTo(gallery, 0, 700); // Scroll back to first image on mode switch
+      }
       isBtsMode = bts;
       document.querySelectorAll('.main-layer').forEach(el => {
           el.classList.toggle('active', !isBtsMode);
