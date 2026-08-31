@@ -1,18 +1,18 @@
-TITRE: Test
-SOUSTITRE: Ingestion Test
-CATEGORIE: fiction
-CLIENT: Antigravity
-ANNEE: 2026
-
-Role:
-- dop
-- col
-
-Synopsis:
-Projet de test pour le nouveau système d'ingestion dynamique du modal. Ce texte doit remplacer le contenu hardcodé.
-
+Name: Test Ingest
+Category: fic
+Subcategory: short
+Type: 
+Role: dop
+Status: 
+Date: 08 2026
+Link: https://youtu.be/nK3sbmGYcG8
+Description: Test project for the new ingestion system. This text should dynamically replace the hardcoded content in the modal.
+Description Fr: Projet de test pour le nouveau système d'ingestion. Ce texte doit remplacer dynamiquement le contenu codé en dur dans le modal.
 Camera: Arri Alexa 35
-Optique: Zeiss B-Speed
+Lens: Zeiss B-Speed
 Format: 2.39:1
 
-LIEN: https://youtu.be/nK3sbmGYcG8
+[CREDITS]
+dop: Lucas Jacquot
+col: John Doe
+director: Jane Smith

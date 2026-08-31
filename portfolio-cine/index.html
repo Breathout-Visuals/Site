@@ -612,9 +612,92 @@
 </div>
 
 <script type="module">
-  import { populateTestModal } from '/portfolio-cinema-content/Projets/fic/test_ingest/ingest_test.js';
-  
+
+  import { LIBRARY } from '/src/portfolio-cinema/library.js';
+
+  async function populateTestModal() {
+      const testProjectFiles = [
+          { type: 'image', main: '/portfolio-cinema-content/Projets/fic/test/FINAL CUT/A.jpg', bts: '/portfolio-cinema-content/Projets/fic/test/BTS/A.jpg' },
+          { type: 'image', main: '/portfolio-cinema-content/Projets/fic/test/FINAL CUT/B.jpg', bts: '/portfolio-cinema-content/Projets/fic/test/BTS/B.jpg' },
+          { type: 'video', main: '/portfolio-cinema-content/Projets/fic/test/FINAL CUT/C.mp4', bts: '/portfolio-cinema-content/Projets/fic/test/BTS/C.mp4' }
+      ];
+
+      try {
+          const response = await fetch('/portfolio-cinema-content/Projets/fic/test/info.txt');
+          const text = await response.text();
+          
+          const data = { roles: [] };
+          const lines = text.split('\n');
+          let parsingCredits = false;
+          
+          for (let line of lines) {
+              line = line.trim();
+              if (!line) continue;
+              
+              if (line === '[CREDITS]') { parsingCredits = true; continue; }
+              
+              if (!parsingCredits) {
+                  if (line.startsWith('Name:')) data.title = line.replace('Name:', '').trim();
+                  else if (line.startsWith('Description Fr:')) data.descFr = line.replace('Description Fr:', '').trim();
+                  else if (line.startsWith('Description:')) data.descEn = line.replace('Description:', '').trim();
+                  else if (line.startsWith('Link:')) data.link = line.replace('Link:', '').trim();
+                  else if (line.startsWith('Camera:')) data.camera = line.replace('Camera:', '').trim();
+                  else if (line.startsWith('Lens:')) data.lens = line.replace('Lens:', '').trim();
+                  else if (line.startsWith('Format:')) data.format = line.replace('Format:', '').trim();
+                  else if (line.startsWith('Role:')) {
+                      const r = line.replace('Role:', '').trim();
+                      if (r) data.roles.push(r);
+                  }
+              }
+          }
+          
+          const lang = document.documentElement.lang || 'fr';
+          const rolesLib = LIBRARY.roles_me || {};
+          const translatedRoles = data.roles.map(r => (rolesLib[r] && rolesLib[r][lang]) ? rolesLib[r][lang] : r);
+          
+          document.getElementById('test-hud-title').innerText = data.title || '';
+          document.querySelector('.test-hud-desc').innerText = lang === 'fr' ? (data.descFr || data.descEn || '') : (data.descEn || '');
+          document.querySelector('.test-hud-meta').innerText = "Short Film — " + translatedRoles.join(' & ');
+          
+          const techText = [data.camera, data.lens, data.format].filter(Boolean).join(' &nbsp; &nbsp; ');
+          document.querySelector('.test-hud-tech').innerHTML = techText;
+          
+          const playBtn = document.querySelector('.test-hud-play-btn');
+          if (data.link) {
+              playBtn.setAttribute('onclick', "window.open('" + data.link + "', '_blank')");
+              playBtn.style.display = 'inline-flex';
+          } else {
+              playBtn.style.display = 'none';
+          }
+
+          const gallery = document.getElementById('test-gallery');
+          gallery.innerHTML = ''; 
+          testProjectFiles.forEach((file) => {
+              const item = document.createElement('div');
+              item.className = 'test-gallery-item';
+              let mainEl = file.type === 'video' ? document.createElement('video') : document.createElement('img');
+              mainEl.src = file.main;
+              if (file.type === 'video') {
+                  mainEl.loop = true; mainEl.muted = true; mainEl.playsInline = true;
+                  mainEl.style.width = '100%'; mainEl.style.height = '100%'; mainEl.style.objectFit = 'cover';
+              }
+              mainEl.className = 'main-layer active' + (file.type === 'video' ? ' test-video' : '');
+              
+              let btsEl = document.createElement('img');
+              btsEl.src = file.bts;
+              btsEl.className = 'bts-layer inactive';
+              
+              item.appendChild(mainEl);
+              item.appendChild(btsEl);
+              gallery.appendChild(item);
+          });
+      } catch (e) {
+          console.error("Ingestion failed:", e);
+      }
+  }
+
   let isBtsMode = false;
+
   let isHudManuallyHidden = false;
   let hasSeenInstructions = false;
   let hudTimeout;
