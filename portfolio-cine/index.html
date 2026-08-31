@@ -595,15 +595,28 @@
 
   import { LIBRARY } from '/src/portfolio-cinema/library.js';
 
+  import { PROJECTS } from '/src/portfolio-cinema/project-data.js';
+
   async function populateTestModal() {
-      const testProjectFiles = [
-          { type: 'image', main: '/portfolio-cinema-content/Projets/fic/test/FINAL CUT/A.jpg', bts: '/portfolio-cinema-content/Projets/fic/test/BTS/A.jpg' },
-          { type: 'image', main: '/portfolio-cinema-content/Projets/fic/test/FINAL CUT/B.jpg', bts: '/portfolio-cinema-content/Projets/fic/test/BTS/B.jpg' },
-          { type: 'video', main: '/portfolio-cinema-content/Projets/fic/test/FINAL CUT/C.mp4', bts: '/portfolio-cinema-content/Projets/fic/test/BTS/C.mp4' }
-      ];
+      // Importation DYNAMIQUE des médias via le build system
+      const testProj = PROJECTS.find(p => p.title === "Test Ingest");
+      let testProjectFiles = [];
+      if (testProj && testProj.collection) {
+          testProjectFiles = testProj.collection.map((col, index) => {
+              const char = String.fromCharCode(65 + index); // A, B, C...
+              const ext = col.type === 'video' ? 'mp4' : 'jpg';
+              return {
+                  type: col.type,
+                  main: col.src, 
+                  bts: /portfolio-cinema-content/Projets/fic/test/BTS/.
+              };
+          });
+      } else {
+          console.warn("Test Ingest not found in project-data.js. Did you run generate-data.cjs?");
+      }
 
       try {
-          const response = await fetch('/portfolio-cinema-content/Projets/fic/test/info.txt');
+          const response = await fetch('/portfolio-cinema-content/Projets/fic/test/info.txt?t=' + new Date().getTime(), { cache: 'no-store' });
           const text = await response.text();
           
           const data = { roles: [] };
