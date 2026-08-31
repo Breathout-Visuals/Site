@@ -482,64 +482,73 @@
 
 
 
-<button id="open-test-modal" style="position:fixed; bottom:20px; left:20px; z-index:8000; padding:15px 30px; background:#fff; color:#000; border:none; font-weight:bold; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">TEST DA CINEMATIC HUD</button>
+
+<button id="open-test-modal" style="position:fixed; bottom:20px; left:20px; z-index:8000; padding:15px 30px; background:#fff; color:#000; border:none; font-weight:bold; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">TEST DA 16:9 & SCROLL</button>
 
 <div class="test-modal-overlay" id="da-test-modal">
-  <button class="test-close-btn" id="close-test-modal"><i class="fa-solid fa-xmark"></i></button>
-
-  <!-- UN-CROPPED MEDIA LAYER -->
-  <div class="test-cinematic-layer">
-    <div class="test-view-label" id="main-view-label" style="position: absolute; top: 40px; left: 40px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem;">Final Cut</div>
-    <!-- Note: Object-fit contain ensures NO CROPPING for 21:9 images -->
-    <img id="main-large-img" src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&w=2000&q=80" alt="Main" style="transition: opacity 0.4s ease;">
-  </div>
-
-  <!-- HUD LAYER (INFO + NAVIGATION) -->
-  <div class="test-hud-layer">
+  
+  <!-- PERFECT 16:9 CONTAINER -->
+  <div class="test-modal-frame">
     
-    <!-- Left: Project Info -->
-    <div class="test-hud-left">
-      <div class="test-hud-meta">Dir. Photographie &nbsp;—&nbsp; Fiction &nbsp;—&nbsp; 2024</div>
-      <h2 class="test-hud-title">Dîner d'Affaire</h2>
-      <p class="test-hud-desc">
-        Un huis clos sous haute tension raconté au travers d'une esthétique froide et contrastée. L'image a été pensée pour isoler les personnages et faire ressentir la pression psychologique du scénario.
-      </p>
-      <!-- Tech specs inline (No accordion, no jumping, no Étalonnage) -->
-      <div class="test-hud-tech">
-        ARRI Alexa Mini LF &nbsp;•&nbsp; Cooke Anamorphic /i Prime &nbsp;•&nbsp; 2.39:1
-      </div>
+    <button class="test-close-btn" id="close-test-modal"><i class="fa-solid fa-xmark"></i></button>
+
+    <!-- HORIZONTAL SCROLLING GALLERY -->
+    <div class="test-cinematic-gallery" id="test-gallery">
+      <!-- Image 1 (Cover / Swappable) -->
+      <img id="main-large-img" src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&w=2000&q=80" alt="Main 1">
+      <!-- Image 2 -->
+      <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=2000&q=80" alt="Main 2">
+      <!-- Image 3 -->
+      <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&w=2000&q=80" alt="Main 3">
     </div>
 
-    <!-- Right: PiP Swap & Related -->
-    <div class="test-hud-right">
+    <!-- HUD LAYER (Fades out when scrolling) -->
+    <div class="test-hud-layer" id="test-hud">
       
-      <!-- PiP -->
-      <div class="test-pip-wrapper" id="swap-trigger">
-        <div class="test-pip-label" id="pip-view-label">Behind The Scenes</div>
-        <img id="pip-small-img" src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80" alt="BTS" style="transition: opacity 0.4s ease;">
-      </div>
-
-      <!-- Voir Aussi (Smaller, purely navigational) -->
-      <div class="test-related-wrapper">
-        <div class="test-related-title">Voir Aussi</div>
-        <div class="test-related-list">
-          <div class="test-related-item">
-            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=400&q=80" alt="Related">
-            <span class="hover-title">Projet Alpha</span>
-          </div>
-          <div class="test-related-item">
-            <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&w=400&q=80" alt="Related">
-            <span class="hover-title">Projet Beta</span>
-          </div>
+      <!-- Left: Project Info -->
+      <div class="test-hud-left">
+        <div class="test-hud-meta">Dir. Photographie &nbsp;—&nbsp; Fiction &nbsp;—&nbsp; 2024</div>
+        <h2 class="test-hud-title">Dîner d'Affaire</h2>
+        <p class="test-hud-desc">
+          Fais défiler l'image vers la droite (Swipe ou Molette) pour voir la suite. Le HUD disparaîtra automatiquement pour te laisser profiter de la photographie.
+        </p>
+        <div class="test-hud-tech">
+          ARRI Alexa Mini LF &nbsp;•&nbsp; Cooke Anamorphic /i Prime &nbsp;•&nbsp; 2.39:1
         </div>
       </div>
 
-    </div>
+      <!-- Right: PiP Swap & Related -->
+      <div class="test-hud-right">
+        
+        <!-- PiP -->
+        <div class="test-pip-wrapper" id="swap-trigger">
+          <div class="test-pip-label" id="pip-view-label">Behind The Scenes</div>
+          <img id="pip-small-img" src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80" alt="BTS" style="transition: opacity 0.4s ease;">
+        </div>
 
-  </div>
+        <!-- Voir Aussi -->
+        <div class="test-related-wrapper">
+          <div class="test-related-title">Voir Aussi</div>
+          <div class="test-related-list">
+            <div class="test-related-item">
+              <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=400&q=80" alt="Related">
+              <span class="hover-title">Projet Alpha</span>
+            </div>
+            <div class="test-related-item">
+              <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&w=400&q=80" alt="Related">
+              <span class="hover-title">Projet Beta</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div> <!-- /test-hud-layer -->
+
+  </div> <!-- /test-modal-frame -->
 </div>
 
 <script>
+  // Open / Close
   document.getElementById('open-test-modal').addEventListener('click', () => {
     document.getElementById('da-test-modal').classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -548,13 +557,32 @@
   document.getElementById('close-test-modal').addEventListener('click', () => {
     document.getElementById('da-test-modal').classList.remove('active');
     document.body.style.overflow = '';
+    // Reset scroll position on close
+    setTimeout(() => { document.getElementById('test-gallery').scrollLeft = 0; }, 400);
+  });
+
+  // Fade HUD on scroll
+  const gallery = document.getElementById('test-gallery');
+  const hud = document.getElementById('test-hud');
+  gallery.addEventListener('scroll', () => {
+    if (gallery.scrollLeft > 100) {
+      hud.classList.add('hidden');
+    } else {
+      hud.classList.remove('hidden');
+    }
+  });
+
+  // Enable horizontal scrolling with vertical mouse wheel
+  gallery.addEventListener('wheel', (evt) => {
+    evt.preventDefault();
+    gallery.scrollLeft += evt.deltaY;
   });
 
   // SWAP LOGIC
   document.getElementById('swap-trigger').addEventListener('click', () => {
     const mainImg = document.getElementById('main-large-img');
     const pipImg = document.getElementById('pip-small-img');
-    const mainLabel = document.getElementById('main-view-label');
+    const mainLabel = document.getElementById('main-view-label'); // Not present in this version, simplified
     const pipLabel = document.getElementById('pip-view-label');
     
     // Fade out
@@ -568,12 +596,10 @@
       pipImg.src = tempSrc;
       
       // Swap labels
-      if (mainLabel.innerText === "Final Cut") {
-          mainLabel.innerText = "Behind The Scenes";
-          pipLabel.innerText = "Switch to Final Cut";
-      } else {
-          mainLabel.innerText = "Final Cut";
+      if (pipLabel.innerText === "Switch to Final Cut") {
           pipLabel.innerText = "Behind The Scenes";
+      } else {
+          pipLabel.innerText = "Switch to Final Cut";
       }
       
       // Fade in
@@ -583,6 +609,7 @@
   });
 </script>
 </body>
+
 
 
 
