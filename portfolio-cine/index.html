@@ -604,6 +604,40 @@
 </div>
 
 <script>
+  let isBtsMode = false;
+  let isHudManuallyHidden = false;
+  let hasSeenInstructions = false;
+  let hudTimeout;
+  let isWheeling = false;
+
+  const gallery = document.getElementById('test-gallery');
+  const hud = document.getElementById('test-hud');
+  const instructions = document.getElementById('test-instructions');
+  const progressBar = document.getElementById('test-progress');
+  const overlay = document.getElementById('da-test-modal');
+  const progressContainer = document.querySelector('.test-progress-container');
+
+  function setMode(bts) {
+      isBtsMode = bts;
+      document.querySelectorAll('.main-layer').forEach(el => {
+          el.classList.toggle('active', !isBtsMode);
+          el.classList.toggle('inactive', isBtsMode);
+      });
+      document.querySelectorAll('.bts-layer').forEach(el => {
+          el.classList.toggle('active', isBtsMode);
+          el.classList.toggle('inactive', !isBtsMode);
+      });
+      document.querySelectorAll('.pip-main-layer').forEach(el => {
+          el.classList.toggle('active', isBtsMode);
+          el.classList.toggle('inactive', !isBtsMode);
+      });
+      document.querySelectorAll('.pip-bts-layer').forEach(el => {
+          el.classList.toggle('active', !isBtsMode);
+          el.classList.toggle('inactive', isBtsMode);
+      });
+      document.getElementById('pip-view-label').innerText = isBtsMode ? "TO THE FINAL CUT" : "TO THE BTS SHOT";
+  }
+
   document.getElementById('open-test-modal').addEventListener('click', () => {
     const modal = document.getElementById('da-test-modal');
     modal.style.display = 'block';
@@ -612,6 +646,8 @@
     document.body.style.overflow = 'hidden';
     document.getElementById('test-instructions').classList.remove('hidden');
     hasSeenInstructions = false;
+    isHudManuallyHidden = false;
+    setMode(false); // Reset to Final Cut
     updateProgress();
   });
   
@@ -621,27 +657,23 @@
     document.body.style.overflow = '';
     setTimeout(() => { 
         modal.style.display = 'none';
-        document.getElementById('test-gallery').scrollLeft = 0; 
-        document.getElementById('test-hud').classList.remove('hidden');
-        document.getElementById('test-vignette').classList.remove('hidden');
+        gallery.scrollLeft = 0; 
+        hud.classList.remove('hidden');
+        progressContainer.style.opacity = 1;
+        setMode(false);
     }, 800);
   });
 
-  const gallery = document.getElementById('test-gallery');
-  const hud = document.getElementById('test-hud');
-  const vignette = document.getElementById('test-vignette');
-  const instructions = document.getElementById('test-instructions');
-  const progressBar = document.getElementById('test-progress');
-  const overlay = document.getElementById('da-test-modal');
-
-  let isHudManuallyHidden = false;
-  let hasSeenInstructions = false;
-  let hudTimeout;
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      document.getElementById('close-test-modal').click();
+    }
+  });
 
   function hideHUD() {
       hud.classList.add('hidden');
-      vignette.classList.add('hidden');
       instructions.classList.add('hidden');
+      progressContainer.style.opacity = 0;
       hasSeenInstructions = true;
   }
 
@@ -658,7 +690,7 @@
       hideHUD();
     } else {
       hud.classList.remove('hidden');
-      vignette.classList.remove('hidden');
+      progressContainer.style.opacity = 1;
     }
   });
 
@@ -673,14 +705,13 @@
         hudTimeout = setTimeout(() => {
           if (gallery.scrollLeft <= 50 && !isHudManuallyHidden) {
             hud.classList.remove('hidden');
-            vignette.classList.remove('hidden');
+            progressContainer.style.opacity = 1;
           }
         }, 800);
       }
     }
   });
 
-  let isWheeling = false;
   function smoothScrollTo(element, target, duration) {
     const start = element.scrollLeft;
     const change = target - start;
@@ -730,33 +761,10 @@
     smoothScrollTo(gallery, boundedTarget, 900);
   });
 
-  // CINEMATIC CROSSFADE SWAP LOGIC
   document.getElementById('swap-trigger').addEventListener('click', (e) => {
     e.stopPropagation();
-    const mainLayers = document.querySelectorAll('.main-layer');
-    const pipLayers = document.querySelectorAll('.pip-layer');
-    const pipLabel = document.getElementById('pip-view-label');
-    
-    // Toggle active classes for smooth crossfade
-    mainLayers.forEach(layer => layer.classList.toggle('active'));
-    mainLayers.forEach(layer => layer.classList.toggle('inactive'));
-    
-    pipLayers.forEach(layer => layer.classList.toggle('active'));
-    pipLayers.forEach(layer => layer.classList.toggle('inactive'));
-    
-    if (pipLabel.innerText === "TO THE FINAL CUT") {
-        pipLabel.innerText = "TO THE BTS SHOT";
-    } else {
-        pipLabel.innerText = "TO THE FINAL CUT";
-    }
+    setMode(!isBtsMode);
   });
-
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) {
-      document.getElementById('close-test-modal').click();
-    }
-  });
-
 </script>
 </body>
 
