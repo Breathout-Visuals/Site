@@ -6,7 +6,7 @@
   <link rel="icon" type="image/png" href="/portfolio-cinema/assets/site-icone-onglet.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Runtime Viewport Override for PC-like experience on Mobile (Satisfies Validator + User Req) -->
-  <script>
+  <script type="module">
     (function () {
       var v = document.querySelector('meta[name="viewport"]');
       if (v) v.setAttribute('content', 'width=1100');
@@ -139,7 +139,7 @@
       </div>
     </div>
   </div>
-  <script>
+  <script type="module">
     window.addEventListener('load', () => {
       const preloader = document.getElementById('preloader');
       const bar = preloader.querySelector('.preloader-bar');
@@ -187,7 +187,7 @@
       <video class="hero-video-bg" autoplay muted loop poster="https://placehold.co/1920x1080/111/111.jpg">
       </video>
       <!-- Script to add playsinline at runtime (Fixes validator warning while keeping iOS support) -->
-      <script>
+      <script type="module">
         document.addEventListener("DOMContentLoaded", () => {
           const v = document.querySelector('.hero-video-bg');
           if (v) { v.setAttribute('playsinline', ''); v.play().catch(() => { }); }
@@ -611,7 +611,7 @@
   </div> <!-- end frame -->
 </div>
 
-<script>
+<script type="module">
   let isBtsMode = false;
   let isHudManuallyHidden = false;
   let hasSeenInstructions = false;
@@ -642,14 +642,14 @@
   let isModeSwitching = false;
   function setMode(bts) {
       if (isBtsMode !== bts) {
-          isModeSwitching = true;
+          isModeSwitching = true; gallery.classList.add('instant-switch');
           hud.classList.add('instant-show'); // Bypass CSS delays
           hud.classList.remove('hidden');
           isHudManuallyHidden = false;
           gallery.scrollLeft = 0; // Instant jump back to first image on mode switch
           setTimeout(() => { 
               isModeSwitching = false; 
-              hud.classList.remove('instant-show'); 
+              hud.classList.remove('instant-show'); gallery.classList.remove('instant-switch'); 
           }, 800);
       }
       isBtsMode = bts;
@@ -674,7 +674,21 @@
       document.getElementById('pip-view-label').innerText = isBtsMode ? "TO THE FINAL CUT" : "TO THE BTS SHOT";
   }
 
+
   document.getElementById('open-test-modal').addEventListener('click', async () => {
+      // Run ingestion system before opening
+      await populateTestModal();
+      
+      // Setup PiP dynamic images again since DOM was rewritten
+      const pipBts = document.querySelector('.pip-bts-layer');
+      const pipMain = document.querySelector('.pip-main-layer');
+      if (pipBts && pipMain) {
+          const firstBts = document.querySelector('.bts-layer');
+          const firstMain = document.querySelector('.main-layer');
+          if (firstBts && firstBts.src) pipBts.src = firstBts.src;
+          if (firstMain && firstMain.src) pipMain.src = firstMain.src;
+      }
+
     try {
       if (!document.fullscreenElement && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         await document.documentElement.requestFullscreen();
