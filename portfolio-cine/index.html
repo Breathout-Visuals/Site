@@ -541,7 +541,6 @@
     <div class="test-nav-zone next-zone" id="nav-next"></div>
 
     <div class="test-cinematic-gallery" id="test-gallery">
-      <!-- Image 1 with crossfade layers -->
       <div class="test-gallery-item">
         <img class="main-layer active" src="/portfolio-cinema-content/Projets/fic/Homonculus/A.jpg" alt="Main 1">
         <img class="bts-layer inactive" src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=1920&h=1080&q=80" alt="BTS 1">
@@ -555,6 +554,50 @@
         <img class="bts-layer inactive" src="https://images.unsplash.com/photo-1497911174120-042e519e9176?auto=format&fit=crop&w=1920&h=1080&q=80" alt="BTS 3">
       </div>
     </div>
+    
+    <!-- Vignette Shadow replacing the Gradient Blur -->
+    <div class="test-vignette" id="test-vignette"></div>
+
+    <!-- Instructions Overlay -->
+    <div class="test-instructions" id="test-instructions">
+      <div class="test-instruction-item"><i class="fa-solid fa-mouse"></i> Scroll pour voir la suite</div>
+      <div class="test-instruction-item"><i class="fa-solid fa-hand-pointer"></i> Clic au centre pour masquer l'UI</div>
+    </div>
+
+    <!-- HUD LAYER -->
+    <div class="test-hud-layer" id="test-hud">
+      <button class="test-close-btn test-anim" id="close-test-modal"><i class="fa-solid fa-xmark"></i></button>
+      <div class="test-hud-left">
+        <div class="test-hud-meta test-anim">Machinerie &nbsp;—&nbsp; Fiction &nbsp;—&nbsp; 2026</div>
+        <h2 class="test-hud-title test-anim">Homonculus</h2>
+        <p class="test-hud-desc test-anim">
+          Homonculus est un court métrage réalisé dans une démarche professionnelle, pensé pour une diffusion en chaîne et une présentation en festivals. Le projet a rassemblé une équipe composée d'étudiants, de professionnels du cinéma et d'anciens étudiants, réunissant différentes expériences autour d'une ambition commune : créer une œuvre ambitieuse et exigeante.
+        </p>
+        <div class="test-hud-tech test-anim">ARRI Alexa Mini LF &nbsp;•&nbsp; Cooke Anamorphic /i Prime &nbsp;•&nbsp; 2.39:1</div>
+          <a href="https://youtu.be/nK3sbmGYcG8" target="_blank" class="test-hud-play-btn test-anim"><i class="fa-solid fa-play"></i> Voir le film</a>
+      </div>
+      
+      <div class="test-hud-right test-anim-group">
+        <div class="test-pip-wrapper" id="swap-trigger">
+          <div class="test-pip-label" id="pip-view-label">TO THE BTS SHOT</div>
+          <!-- PiP crossfade layers -->
+          <img class="pip-layer active" src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80" alt="BTS">
+          <img class="pip-layer inactive" src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=800&q=80" alt="Final Cut">
+        </div>
+        <div class="test-related-wrapper">
+          <div class="test-related-title">Voir Aussi</div>
+          <div class="test-related-list">
+            <div class="test-related-item">
+              <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=400&q=80" alt="Related">
+              <span class="hover-title">Projet Alpha</span>
+            </div>
+            <div class="test-related-item">
+              <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&w=400&q=80" alt="Related">
+              <span class="hover-title">Projet Beta</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div> <!-- end frame -->
 </div>
