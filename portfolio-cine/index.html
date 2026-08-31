@@ -485,15 +485,16 @@
 
 
 
-<button id="open-test-modal" style="position:fixed; bottom:20px; left:20px; z-index:8000; padding:15px 30px; background:#fff; color:#000; border:none; font-weight:bold; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">TEST DA (SCROLL FIX & ANIM)</button>
+
+<button id="open-test-modal" style="position:fixed; bottom:20px; left:20px; z-index:8000; padding:15px 30px; background:#fff; color:#000; border:none; font-weight:bold; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">TEST DA (SCROLL AMORTI & CLIC)</button>
 
 <div class="test-modal-overlay" id="da-test-modal">
-  
   <div class="test-modal-frame">
     <button class="test-close-btn" id="close-test-modal"><i class="fa-solid fa-xmark"></i></button>
 
-    <!-- Invisible Click Zones for Next/Prev -->
+    <!-- Invisible Click Zones -->
     <div class="test-nav-zone prev-zone" id="nav-prev"></div>
+    <div class="test-nav-zone center-zone" id="nav-toggle" title="Cliquez pour masquer l'interface"></div>
     <div class="test-nav-zone next-zone" id="nav-next"></div>
 
     <div class="test-cinematic-gallery" id="test-gallery">
@@ -502,22 +503,25 @@
       <img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=2000&q=80" alt="Main 3">
     </div>
 
+    <!-- Instructions Overlay -->
+    <div class="test-instructions" id="test-instructions">
+      <div class="test-instruction-item"><i class="fa-solid fa-mouse"></i> Scroll pour voir la suite</div>
+      <div class="test-instruction-item"><i class="fa-solid fa-hand-pointer"></i> Clic au centre pour masquer l'UI</div>
+    </div>
+
     <!-- HUD LAYER -->
     <div class="test-hud-layer" id="test-hud">
-      
-      <!-- Left Info -->
       <div class="test-hud-left">
         <div class="test-hud-meta test-anim">Dir. Photographie &nbsp;—&nbsp; Fiction &nbsp;—&nbsp; 2024</div>
         <h2 class="test-hud-title test-anim">Dîner d'Affaire</h2>
         <p class="test-hud-desc test-anim">
-          Fais rouler la molette vers le bas (ou clique sur les bords de l'écran) pour voir la suite. Le texte va s'écarter comme un rideau.
+          L'interface disparaît au clic ou au défilement. Le mouvement de scroll est maintenant parfaitement amorti (Cinematic Easing).
         </p>
         <div class="test-hud-tech test-anim">
           ARRI Alexa Mini LF &nbsp;•&nbsp; Cooke Anamorphic /i Prime &nbsp;•&nbsp; 2.39:1
         </div>
       </div>
       
-      <!-- Right Info -->
       <div class="test-hud-right test-anim-group">
         <div class="test-pip-wrapper" id="swap-trigger">
           <div class="test-pip-label" id="pip-view-label">Behind The Scenes</div>
@@ -537,13 +541,11 @@
           </div>
         </div>
       </div>
-      
     </div>
   </div>
 </div>
 
 <script>
-  // Open / Close
   document.getElementById('open-test-modal').addEventListener('click', () => {
     const modal = document.getElementById('da-test-modal');
     modal.style.display = 'block';
@@ -559,41 +561,101 @@
     setTimeout(() => { 
         modal.style.display = 'none';
         document.getElementById('test-gallery').scrollLeft = 0; 
-    }, 700);
+    }, 800);
   });
 
   const gallery = document.getElementById('test-gallery');
   const hud = document.getElementById('test-hud');
+  const instructions = document.getElementById('test-instructions');
+  let isHudManuallyHidden = false;
+  let hudTimeout;
 
-  // Fade HUD on scroll
-  gallery.addEventListener('scroll', () => {
-    if (gallery.scrollLeft > 100) {
+  // Click center to toggle
+  document.getElementById('nav-toggle').addEventListener('click', () => {
+    isHudManuallyHidden = !isHudManuallyHidden;
+    if (isHudManuallyHidden) {
       hud.classList.add('hidden');
+      instructions.classList.add('hidden');
     } else {
       hud.classList.remove('hidden');
+      instructions.classList.remove('hidden');
     }
   });
 
-  // Perfect Wheel to Horizontal Snap Logic
+  // Fade HUD on scroll with 1s delay on return
+  gallery.addEventListener('scroll', () => {
+    if (gallery.scrollLeft > 100) {
+      clearTimeout(hudTimeout);
+      hud.classList.add('hidden');
+      instructions.classList.add('hidden');
+    } else {
+      if (hud.classList.contains('hidden')) {
+        clearTimeout(hudTimeout);
+        hudTimeout = setTimeout(() => {
+          if (gallery.scrollLeft <= 100 && !isHudManuallyHidden) {
+            hud.classList.remove('hidden');
+            instructions.classList.remove('hidden');
+          }
+        }, 1000); // 1 second delay
+      }
+    }
+  });
+
+  // Custom Smooth Easing (Ammortissement)
   let isWheeling = false;
+  function smoothScrollTo(element, target, duration) {
+    const start = element.scrollLeft;
+    const change = target - start;
+    let startTime = null;
+
+    function easeInOutCubic(t, b, c, d) {
+      t /= d/2;
+      if (t < 1) return c/2*t*t*t + b;
+      t -= 2;
+      return c/2*(t*t*t + 2) + b;
+    }
+
+    function animation(currentTime) {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      element.scrollLeft = easeInOutCubic(timeElapsed, start, change, duration);
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animation);
+      } else {
+        element.scrollLeft = target;
+        isWheeling = false;
+      }
+    }
+    requestAnimationFrame(animation);
+  }
+
+  // Wheel event with soft duration
   gallery.addEventListener('wheel', (evt) => {
     evt.preventDefault();
-    if (isWheeling) return; // Prevent multiple skips per wheel tick
+    if (isWheeling) return;
     isWheeling = true;
-    
     const direction = evt.deltaY > 0 ? 1 : -1;
-    // Scroll by 50% of width to ensure it snaps to the next item
-    gallery.scrollBy({ left: direction * (window.innerWidth / 2), behavior: 'smooth' });
+    // Target is exactly one image width
+    const target = gallery.scrollLeft + (direction * gallery.clientWidth);
+    // Limit target bounds
+    const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+    const boundedTarget = Math.max(0, Math.min(target, maxScroll));
     
-    setTimeout(() => { isWheeling = false; }, 400); // Debounce
+    // 900ms duration for soft ammortissement
+    smoothScrollTo(gallery, boundedTarget, 900);
   }, { passive: false });
 
   // Click zones
   document.getElementById('nav-prev').addEventListener('click', () => {
-    gallery.scrollBy({ left: -window.innerWidth / 2, behavior: 'smooth' });
+    if (isWheeling) return; isWheeling = true;
+    const boundedTarget = Math.max(0, gallery.scrollLeft - gallery.clientWidth);
+    smoothScrollTo(gallery, boundedTarget, 900);
   });
   document.getElementById('nav-next').addEventListener('click', () => {
-    gallery.scrollBy({ left: window.innerWidth / 2, behavior: 'smooth' });
+    if (isWheeling) return; isWheeling = true;
+    const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+    const boundedTarget = Math.min(maxScroll, gallery.scrollLeft + gallery.clientWidth);
+    smoothScrollTo(gallery, boundedTarget, 900);
   });
 
   // SWAP LOGIC
@@ -610,7 +672,6 @@
       const tempSrc = mainImg.src;
       mainImg.src = pipImg.src;
       pipImg.src = tempSrc;
-      
       if (pipLabel.innerText === "Switch to Final Cut") {
           pipLabel.innerText = "Behind The Scenes";
       } else {
@@ -622,6 +683,7 @@
   });
 </script>
 </body>
+
 
 
 
