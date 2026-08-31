@@ -738,18 +738,55 @@
     setTimeout(() => { isWheeling = false; }, duration + 50);
   }
 
-  overlay.addEventListener('wheel', (evt) => {
-    if (Math.abs(evt.deltaY) > Math.abs(evt.deltaX)) {
-        evt.preventDefault();
-        if (isWheeling) return;
-        isWheeling = true;
-        const direction = evt.deltaY > 0 ? 1 : -1;
-        const target = gallery.scrollLeft + (direction * gallery.clientWidth);
-        const maxScroll = gallery.scrollWidth - gallery.clientWidth;
-        const boundedTarget = Math.max(0, Math.min(target, maxScroll));
-        smoothScrollTo(gallery, boundedTarget, 900);
+    overlay.addEventListener('wheel', (evt) => {
+    evt.preventDefault();
+    if (isWheeling) return;
+    
+    const deltaX = evt.deltaX;
+    const deltaY = evt.deltaY;
+    
+    if (Math.abs(deltaX) < 15 && Math.abs(deltaY) < 15) return;
+    
+    let direction = 0;
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        direction = deltaX > 0 ? 1 : -1;
+    } else {
+        direction = deltaY > 0 ? 1 : -1;
     }
+    
+    if (direction === 0) return;
+
+    isWheeling = true;
+    const target = gallery.scrollLeft + (direction * gallery.clientWidth);
+    const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+    const boundedTarget = Math.max(0, Math.min(target, maxScroll));
+    smoothScrollTo(gallery, boundedTarget, 900);
   }, { passive: false });
+
+  let touchStartX = 0;
+  let touchStartY = 0;
+  overlay.addEventListener('touchstart', (evt) => {
+      touchStartX = evt.changedTouches[0].screenX;
+      touchStartY = evt.changedTouches[0].screenY;
+  }, { passive: true });
+  
+  overlay.addEventListener('touchend', (evt) => {
+      if (isWheeling) return;
+      const touchEndX = evt.changedTouches[0].screenX;
+      const touchEndY = evt.changedTouches[0].screenY;
+      
+      const diffX = touchStartX - touchEndX;
+      const diffY = touchStartY - touchEndY;
+      
+      if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+          isWheeling = true;
+          const direction = diffX > 0 ? 1 : -1;
+          const target = gallery.scrollLeft + (direction * gallery.clientWidth);
+          const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+          const boundedTarget = Math.max(0, Math.min(target, maxScroll));
+          smoothScrollTo(gallery, boundedTarget, 700);
+      }
+  }, { passive: true });
 
   document.getElementById('nav-prev').addEventListener('click', () => {
     if (isWheeling) return; isWheeling = true;
