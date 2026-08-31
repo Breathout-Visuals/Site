@@ -552,6 +552,9 @@
     void modal.offsetWidth; // reflow
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+    // Reset instructions on open
+    document.getElementById('test-instructions').classList.remove('hidden');
+    hasSeenInstructions = false;
   });
   
   document.getElementById('close-test-modal').addEventListener('click', () => {
@@ -561,6 +564,7 @@
     setTimeout(() => { 
         modal.style.display = 'none';
         document.getElementById('test-gallery').scrollLeft = 0; 
+        document.getElementById('test-hud').classList.remove('hidden');
     }, 800);
   });
 
@@ -568,17 +572,23 @@
   const hud = document.getElementById('test-hud');
   const instructions = document.getElementById('test-instructions');
   let isHudManuallyHidden = false;
+  let hasSeenInstructions = false;
   let hudTimeout;
+
+  function hideHUD() {
+      hud.classList.add('hidden');
+      instructions.classList.add('hidden');
+      hasSeenInstructions = true; // Never show instructions again
+  }
 
   // Click center to toggle
   document.getElementById('nav-toggle').addEventListener('click', () => {
     isHudManuallyHidden = !isHudManuallyHidden;
     if (isHudManuallyHidden) {
-      hud.classList.add('hidden');
-      instructions.classList.add('hidden');
+      hideHUD();
     } else {
       hud.classList.remove('hidden');
-      instructions.classList.remove('hidden');
+      // Intentionally NOT showing instructions again
     }
   });
 
@@ -586,15 +596,14 @@
   gallery.addEventListener('scroll', () => {
     if (gallery.scrollLeft > 100) {
       clearTimeout(hudTimeout);
-      hud.classList.add('hidden');
-      instructions.classList.add('hidden');
+      hideHUD();
     } else {
       if (hud.classList.contains('hidden')) {
         clearTimeout(hudTimeout);
         hudTimeout = setTimeout(() => {
           if (gallery.scrollLeft <= 100 && !isHudManuallyHidden) {
             hud.classList.remove('hidden');
-            instructions.classList.remove('hidden');
+            // Intentionally NOT showing instructions again
           }
         }, 1000); // 1 second delay
       }
@@ -635,13 +644,9 @@
     if (isWheeling) return;
     isWheeling = true;
     const direction = evt.deltaY > 0 ? 1 : -1;
-    // Target is exactly one image width
     const target = gallery.scrollLeft + (direction * gallery.clientWidth);
-    // Limit target bounds
     const maxScroll = gallery.scrollWidth - gallery.clientWidth;
     const boundedTarget = Math.max(0, Math.min(target, maxScroll));
-    
-    // 900ms duration for soft ammortissement
     smoothScrollTo(gallery, boundedTarget, 900);
   }, { passive: false });
 
