@@ -819,8 +819,13 @@
       const touchEndX = evt.changedTouches[0].screenX;
       const touchEndY = evt.changedTouches[0].screenY;
       
-      const diffX = touchStartX - touchEndX;
-      const diffY = touchStartY - touchEndY;
+      let diffX = touchStartX - touchEndX;
+      let diffY = touchStartY - touchEndY;
+      
+      if (document.getElementById('da-test-modal').classList.contains('force-landscape-bypass')) {
+          diffX = -diffY;
+          diffY = 0;
+      }
       
       if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
           isWheeling = true;

@@ -3304,4 +3304,11 @@ body, html {
         pointer-events: none !important;
         transform: translate(-50%, -48%) scale(0.96) !important;
     }
+
+    .test-modal-overlay.force-landscape-bypass {
+        --cqw: calc(min(90vh, 90vw * 16 / 9) / 100) !important;
+    }
+    .test-modal-overlay.force-landscape-bypass .test-modal-frame {
+        transform: translate(-50%, -50%) rotate(90deg) scale(1) !important;
+    }
 }
