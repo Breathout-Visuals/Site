@@ -658,7 +658,7 @@
         modal.style.display = 'none';
         gallery.scrollLeft = 0; 
         hud.classList.remove('hidden');
-        progressContainer.style.opacity = 1;
+        
         setMode(false);
     }, 800);
   });
@@ -672,7 +672,7 @@
   function hideHUD() {
       hud.classList.add('hidden');
       instructions.classList.add('hidden');
-      progressContainer.style.opacity = 0;
+      
       hasSeenInstructions = true;
   }
 
@@ -684,12 +684,13 @@
   }
 
   document.getElementById('nav-toggle').addEventListener('click', () => {
-    isHudManuallyHidden = !isHudManuallyHidden;
-    if (isHudManuallyHidden) {
-      hideHUD();
-    } else {
+    clearTimeout(hudTimeout);
+    if (hud.classList.contains('hidden')) {
       hud.classList.remove('hidden');
-      progressContainer.style.opacity = 1;
+      isHudManuallyHidden = false;
+    } else {
+      hideHUD();
+      isHudManuallyHidden = true;
     }
   });
 
@@ -704,7 +705,7 @@
         hudTimeout = setTimeout(() => {
           if (gallery.scrollLeft <= 50 && !isHudManuallyHidden) {
             hud.classList.remove('hidden');
-            progressContainer.style.opacity = 1;
+            
           }
         }, 800);
       }
