@@ -498,9 +498,9 @@
     <div class="test-nav-zone next-zone" id="nav-next"></div>
 
     <div class="test-cinematic-gallery" id="test-gallery">
-      <img id="main-large-img" src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&w=2000&q=80" alt="Main 1">
-      <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=2000&q=80" alt="Main 2">
-      <img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=2000&q=80" alt="Main 3">
+      <img id="main-large-img" src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1920&h=1080&q=80" alt="Main 1">
+      <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1920&h=1080&q=80" alt="Main 2">
+      <img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=1920&h=1080&q=80" alt="Main 3">
     </div>
 
     <!-- Instructions Overlay -->
@@ -524,8 +524,8 @@
       
       <div class="test-hud-right test-anim-group">
         <div class="test-pip-wrapper" id="swap-trigger">
-          <div class="test-pip-label" id="pip-view-label">Behind The Scenes</div>
-          <img id="pip-small-img" src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80" alt="BTS" style="transition: opacity 0.4s ease;">
+          <div class="test-pip-label" id="pip-view-label">TO THE BTS SHOT</div>
+          <img id="pip-small-img" src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=1920&h=1080&q=80" alt="BTS" style="transition: opacity 0.4s ease;">
         </div>
         <div class="test-related-wrapper">
           <div class="test-related-title">Voir Aussi</div>
@@ -677,10 +677,10 @@
       const tempSrc = mainImg.src;
       mainImg.src = pipImg.src;
       pipImg.src = tempSrc;
-      if (pipLabel.innerText === "Switch to Final Cut") {
-          pipLabel.innerText = "Behind The Scenes";
+      if (pipLabel.innerText === "TO THE FINAL CUT") {
+          pipLabel.innerText = "TO THE BTS SHOT";
       } else {
-          pipLabel.innerText = "Switch to Final Cut";
+          pipLabel.innerText = "TO THE FINAL CUT";
       }
       mainImg.style.opacity = 1;
       pipImg.style.opacity = 1;
