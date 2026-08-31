@@ -641,7 +641,12 @@
       document.getElementById('pip-view-label').innerText = isBtsMode ? "TO THE FINAL CUT" : "TO THE BTS SHOT";
   }
 
-  document.getElementById('open-test-modal').addEventListener('click', () => {
+  document.getElementById('open-test-modal').addEventListener('click', async () => {
+    try {
+      if (!document.fullscreenElement && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        await document.documentElement.requestFullscreen();
+      }
+    } catch (e) { console.log(e); }
     const modal = document.getElementById('da-test-modal');
     modal.style.display = 'block';
     void modal.offsetWidth;
@@ -654,7 +659,12 @@
     updateProgress();
   });
   
-  document.getElementById('close-test-modal').addEventListener('click', () => {
+  document.getElementById('close-test-modal').addEventListener('click', async () => {
+    try {
+      if (document.fullscreenElement) {
+        await document.exitFullscreen();
+      }
+    } catch (e) {}
     const modal = document.getElementById('da-test-modal');
     modal.classList.remove('active');
     document.body.style.overflow = '';
