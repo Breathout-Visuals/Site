@@ -3154,7 +3154,7 @@ body, html {
 
 
 /* --- MODAL DA TEST --- */
-.test-modal-overlay { --cqw: calc(min(90vw, 90vh * 16 / 9) / 100);  position: fixed; inset: 0; background: rgba(5,5,5,0.98); z-index: 9000; display: none; opacity: 0; transition: opacity 0.5s ease; cursor: pointer; }
+.test-modal-overlay { --cqw: calc(min(90vw, 90vh * 16 / 9) / 100); position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 9000; display: none; opacity: 0; transition: opacity 0.5s ease; cursor: pointer; }
 .test-modal-overlay.active { opacity: 1; }
 
 .test-modal-frame {
