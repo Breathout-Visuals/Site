@@ -9,37 +9,44 @@ const testProjectFiles = [
 
 async function loadProjectData(projectFolderUrl) {
     try {
-        // En prod, le nom du fichier pourrait être info.txt
         const response = await fetch(projectFolderUrl + '/info.txt');
         if (!response.ok) throw new Error('Network response was not ok');
         const text = await response.text();
         
-        // Parsing simple du TXT
-        const data = {};
+        const data = { credits: [] };
         const lines = text.split('\n');
-        let currentKey = null;
-        let roleList = [];
+        let parsingCredits = false;
         
         for (let line of lines) {
             line = line.trim();
             if (!line) continue;
             
-            if (line.startsWith('TITRE:')) data.title = line.replace('TITRE:', '').trim();
-            else if (line.startsWith('SOUSTITRE:')) data.subtitle = line.replace('SOUSTITRE:', '').trim();
-            else if (line.startsWith('LIEN:')) data.link = line.replace('LIEN:', '').trim();
-            else if (line.startsWith('Camera:')) data.camera = line.replace('Camera:', '').trim();
-            else if (line.startsWith('Optique:')) data.lens = line.replace('Optique:', '').trim();
-            else if (line.startsWith('Format:')) data.format = line.replace('Format:', '').trim();
-            else if (line.startsWith('Role:')) { currentKey = 'roles'; }
-            else if (line.startsWith('Synopsis:')) { currentKey = 'synopsis'; data.synopsis = ''; }
-            else if (line.startsWith('- ') && currentKey === 'roles') {
-                roleList.push(line.replace('- ', '').trim());
+            if (line === '[CREDITS]') {
+                parsingCredits = true;
+                continue;
             }
-            else if (currentKey === 'synopsis') {
-                data.synopsis += line + ' ';
+            
+            if (parsingCredits) {
+                // e.g. "dop: Lucas Jacquot"
+                const parts = line.split(':');
+                if (parts.length >= 2) {
+                    data.credits.push({ role: parts[0].trim(), name: parts.slice(1).join(':').trim() });
+                }
+            } else {
+                if (line.startsWith('Name:')) data.title = line.replace('Name:', '').trim();
+                else if (line.startsWith('Subcategory:')) data.subcategory = line.replace('Subcategory:', '').trim();
+                else if (line.startsWith('Link:')) data.link = line.replace('Link:', '').trim();
+                else if (line.startsWith('Camera:')) data.camera = line.replace('Camera:', '').trim();
+                else if (line.startsWith('Lens:')) data.lens = line.replace('Lens:', '').trim();
+                else if (line.startsWith('Format:')) data.format = line.replace('Format:', '').trim();
+                else if (line.startsWith('Role:')) {
+                    const r = line.replace('Role:', '').trim();
+                    data.roles = r.split(',').map(x => x.trim()).filter(x => x);
+                }
+                else if (line.startsWith('Description Fr:')) data.synopsis_fr = line.replace('Description Fr:', '').trim();
+                else if (line.startsWith('Description:')) data.synopsis_en = line.replace('Description:', '').trim();
             }
         }
-        data.roles = roleList;
         return data;
     } catch (e) {
         console.error("Erreur ingestion info.txt:", e);
@@ -47,14 +54,20 @@ async function loadProjectData(projectFolderUrl) {
     }
 }
 
-function translateRoles(roles, lang) {
+function translateRole(roleKey, lang) {
     const rolesLib = LIBRARY.roles_me || {};
-    return roles.map(r => {
-        if (rolesLib[r] && rolesLib[r][lang]) {
-            return rolesLib[r][lang];
-        }
-        return r; // Fallback to raw text if not in library
-    });
+    if (rolesLib[roleKey] && rolesLib[roleKey][lang]) {
+        return rolesLib[roleKey][lang];
+    }
+    return roleKey; 
+}
+
+function translateSubcat(catKey, lang) {
+    const catLib = LIBRARY.subcategories || {};
+    if (catLib[catKey] && catLib[catKey][lang]) {
+        return catLib[catKey][lang];
+    }
+    return catKey;
 }
 
 export async function populateTestModal() {
@@ -65,12 +78,14 @@ export async function populateTestModal() {
     if (!data) return;
     
     // 2. Traduction
-    const translatedRoles = translateRoles(data.roles, lang);
+    const translatedRoles = (data.roles || []).map(r => translateRole(r, lang));
+    const translatedSubcat = translateSubcat(data.subcategory, lang);
+    const synopsis = lang === 'fr' && data.synopsis_fr ? data.synopsis_fr : (data.synopsis_en || '');
     
     // 3. Injection des métadonnées texte dans le DOM
     document.getElementById('test-hud-title').innerText = data.title || '';
-    document.querySelector('.test-hud-desc').innerText = (data.synopsis || '').trim();
-    document.querySelector('.test-hud-meta').innerText = (data.subtitle || '') + ' — ' + translatedRoles.join(' & ');
+    document.querySelector('.test-hud-desc').innerText = synopsis;
+    document.querySelector('.test-hud-meta').innerText = (translatedSubcat || '') + ' — ' + translatedRoles.join(' & ');
     document.querySelector('.test-hud-tech').innerHTML = (data.camera || '') + ' &nbsp; &nbsp; ' + (data.lens || '') + ' &nbsp; &nbsp; ' + (data.format || '');
     
     const playBtn = document.querySelector('.test-hud-play-btn');

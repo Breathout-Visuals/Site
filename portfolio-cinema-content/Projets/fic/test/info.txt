@@ -1,18 +1,18 @@
-Name: Test Ingest
+Name: Homonculus
 Category: fic
-Subcategory: short
+Subcategory: sf
 Type: 
-Role: dop
+Role: dop, col
 Status: 
 Date: 08 2026
 Link: https://youtu.be/nK3sbmGYcG8
-Description: Test project for the new ingestion system. This text should dynamically replace the hardcoded content in the modal.
-Description Fr: Projet de test pour le nouveau système d'ingestion. Ce texte doit remplacer dynamiquement le contenu codé en dur dans le modal.
+Description: An engineer brings an artificial homunculus to life. But as it discovers human emotions, the creature develops a consciousness of its own that threatens its creator.
+Description Fr: Un ingénieur donne vie à un homoncule artificiel. Mais en découvrant les émotions humaines, la créature développe une conscience propre qui menace son créateur.
 Camera: Arri Alexa 35
 Lens: Zeiss B-Speed
 Format: 2.39:1
 
 [CREDITS]
+dir: Jane Smith
 dop: Lucas Jacquot
 col: John Doe
-director: Jane Smith

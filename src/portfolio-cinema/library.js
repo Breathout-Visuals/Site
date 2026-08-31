@@ -76,6 +76,7 @@ export const LIBRARY = {
     roles_me: {
         dir:  { en: "Director",                 fr: "Réalisateur",                extra: "" },
         dop:  { en: "Director of Photography",  fr: "Directeur de la Photo",      extra: "" },
+        col:  { en: "Colorist",                 fr: "Étalonneur",                 extra: "" },
         fmk:  { en: "Filmmaker",                fr: "Filmmaker",                  extra: "" },
         gaf:  { en: "Gaffer",                   fr: "Chef Électricien",           extra: "" },
         spk:  { en: "Spark",                    fr: "Électricien",                extra: "" },
