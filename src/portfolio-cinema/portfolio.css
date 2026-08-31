@@ -3315,3 +3315,10 @@ body, html {
         transform: translate(-50%, -50%) rotate(90deg) scale(1) !important;
     }
 }
+
+/* Instruction toggles for Mobile/Desktop */
+.instr-mobile { display: none; }
+@media (max-width: 768px), (pointer: coarse) {
+    .instr-desktop { display: none; }
+    .instr-mobile { display: inline; }
+}
