@@ -595,11 +595,11 @@
 
   import { LIBRARY } from '/src/portfolio-cinema/library.js';
 
-  import { PROJECTS } from '/src/portfolio-cinema/project-data.js';
+  import { projects } from '/src/portfolio-cinema/project-data.js';
 
   async function populateTestModal() {
       // Importation DYNAMIQUE des médias via le build system
-      const testProj = PROJECTS.find(p => p.title === "Test Ingest");
+      const testProj = projects.find(p => p.title === "Test Ingest");
       let testProjectFiles = [];
       if (testProj && testProj.collection) {
           testProjectFiles = testProj.collection.map((col, index) => {
