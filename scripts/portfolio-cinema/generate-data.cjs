@@ -17,6 +17,9 @@ const KEY_MAP = {
     'Link': 'link',
     'Description': 'desc_en',
     'Description Fr': 'desc_fr',
+    'Camera': 'camera',
+    'Lens': 'lens',
+    'Format': 'format',
     'Credits': 'credits'
 };
 
@@ -170,6 +173,7 @@ function generateImportsAndData() {
 
         const projectObj = {
             id: index + 100,
+            folderPath: path.relative(PROJECTS_DIR, path.join(dir, 'BTS')).split(path.sep).join('/'),
             title: info.title || 'Untitled',
             category: info.category ? info.category.toLowerCase().trim() : 'all',
             subcategory: info.subcategory ? info.subcategory.toLowerCase().trim() : '',
@@ -179,6 +183,9 @@ function generateImportsAndData() {
             sortWeight: sortWeight,
             status: info.status ? info.status.toLowerCase().trim() : '',
             link: info.link || '',
+            camera: info.camera || '',
+            lens: info.lens || '',
+            format: info.format || '',
             desc: {
                 fr: info.desc_fr || info.desc_en || 'Pas de description.',
                 en: info.desc_en || 'No description.'

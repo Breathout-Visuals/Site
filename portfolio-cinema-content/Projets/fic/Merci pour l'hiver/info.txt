@@ -9,6 +9,11 @@ Link:
 Description: **Merci pour l'hiver** is an ambitious year-end student film, driven by a strong cinematic vision. The film tells a love story marked by a breakup and the lingering traces of a relationship that ended badly. The production mobilized an ambitious crew and technical setup, including the use of cranes, steadicams, and various staging tools to give the project a highly professional dimension.
 Description Fr: **Merci pour l’hiver** est un film étudiant de fin d’année réalisé avec des moyens importants, porté par une ambition cinématographique forte. Le film raconte une histoire d’amour marquée par la rupture et les traces laissées par une relation qui s’est mal terminée. La production a mobilisé une équipe et un dispositif technique ambitieux, avec notamment l’utilisation de grue, steadicam et différents outils de mise en scène afin de donner une dimension plus professionnelle au projet.
 
+
+Camera: Alexa Caca
+Lens: Angenieux nieux
+Format: 16:9
+
 [CREDITS]
 producer:
 exec_producer:

@@ -9,6 +9,11 @@ Link: https://youtu.be/8_-Vov9VG48
 Description: Spec commercial developed in a student context, designed as an immersion into real production conditions. Shot entirely under rain, the project required precise organization and constant technical control. The visuals rely on a raw, contrasted aesthetic aligned with the brand’s urban energy.
 Description Fr: Publicité spec développée dans un cadre étudiant, pensée comme une immersion dans des conditions de production réelles. Le tournage s’est déroulé entièrement sous la pluie, impliquant une organisation précise et une rigueur technique constante. L’image s’appuie sur une esthétique brute et contrastée, en lien direct avec l’énergie urbaine de la marque.
 
+
+Camera: Alexa Caca
+Lens: Angenieux nieux
+Format: 16:9
+
 [CREDITS]
 producer:
 exec_producer:

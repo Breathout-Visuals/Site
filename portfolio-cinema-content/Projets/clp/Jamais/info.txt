@@ -9,6 +9,11 @@ Link: https://youtu.be/df6oxIY3-1U
 Description: Music video for Faz’r Elengi, shot in a recording studio. A direct, stripped-down approach designed to fully exploit a confined space and intentionally limited resources.
 Description Fr: Clip musical pour Faz’r Elengi, tourné en studio d’enregistrement. Une approche directe et épurée, pensée pour exploiter au maximum un espace restreint et des moyens volontairement limités.
 
+
+Camera: Alexa Caca
+Lens: Angenieux nieux
+Format: 16:9
+
 [CREDITS]
 producer:
 exec_producer:

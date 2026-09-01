@@ -6,8 +6,13 @@ Role: kgr
 Status: edit
 Date: 11 2025
 Link: https://www.youtube.com/watch?v=0o7v2v1dPTc
-Description: 
-Description Fr: 
+Description:  Lorum ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Description Fr:  Lorum ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+
+Camera: Alexa Caca
+Lens: Angenieux nieux
+Format: 16:9
 
 [CREDITS]
 producer:

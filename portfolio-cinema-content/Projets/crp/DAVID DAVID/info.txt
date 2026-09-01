@@ -6,7 +6,12 @@ Role: grp
 Status: edit
 Date: 06 2026
 Link: 
-Description: 
-Description Fr: 
+Description:  Lorum ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Description Fr:  Lorum ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+
+Camera: Alexa Caca
+Lens: Angenieux nieux
+Format: 16:9
 
 [CREDITS]

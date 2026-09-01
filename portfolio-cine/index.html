@@ -503,7 +503,7 @@
 
 
 
-<button id="open-test-modal" style="position:fixed; bottom:20px; left:20px; z-index:8000; padding:15px 30px; background:#fff; color:#000; border:none; font-weight:bold; letter-spacing: 2px; text-transform: uppercase; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">TEST DA (PROGRESS TOP & CROSSFADE)</button>
+
 
 <div class="test-modal-overlay" id="da-test-modal">
   <div class="test-rotate-message">
@@ -573,70 +573,48 @@
 
   import { projects } from '/src/portfolio-cinema/project-data.js';
 
-  async function populateTestModal() {
-      // Importation DYNAMIQUE des médias via le build system
-      
-        // Importation DYNAMIQUE des médias via Vite Glob
-        let testProjectFiles = [];
-        try {
-            const finalCutFiles = import.meta.glob('/portfolio-cinema-content/Projets/fic/test/FINAL CUT/*.{jpg,mp4}', { eager: true, as: 'url' });
-            
-            const entries = Object.entries(finalCutFiles).sort((a, b) => a[0].localeCompare(b[0]));
-            
-            entries.forEach(([path, url]) => {
-                const filename = path.split('/').pop(); // e.g. A.jpg
-                const isVideo = filename.endsWith('.mp4');
-                const btsPath = `/portfolio-cinema-content/Projets/fic/test/BTS/${filename}`;
-                
-                testProjectFiles.push({
-                    type: isVideo ? 'video' : 'image',
-                    main: url, // Vite resolved URL
-                    bts: btsPath
-                });
-            });
-        } catch (e) {
-            console.error("Vite Glob failed:", e);
-        }
-        try {
-          const response = await fetch('/portfolio-cinema-content/Projets/fic/test/info.txt?t=' + new Date().getTime(), { cache: 'no-store' });
-          const text = await response.text();
+  window.populateTestModal = function(projectId) {
+          const testProj = projects.find(p => p.id == projectId) || projects[0];
           
-          const data = { roles: [] };
-          const lines = text.split('\n');
-          let parsingCredits = false;
-          
-          for (let line of lines) {
-              line = line.trim();
-              if (!line) continue;
-              
-              if (line === '[CREDITS]') { parsingCredits = true; continue; }
-              
-              if (!parsingCredits) {
-                  if (line.startsWith('Name:')) data.title = line.replace('Name:', '').trim();
-                  else if (line.startsWith('Description Fr:')) data.descFr = line.replace('Description Fr:', '').trim();
-                  else if (line.startsWith('Description:')) data.descEn = line.replace('Description:', '').trim();
-                  else if (line.startsWith('Link:')) data.link = line.replace('Link:', '').trim();
-                  else if (line.startsWith('Camera:')) data.camera = line.replace('Camera:', '').trim();
-                  else if (line.startsWith('Lens:')) data.lens = line.replace('Lens:', '').trim();
-                  else if (line.startsWith('Format:')) data.format = line.replace('Format:', '').trim();
-                    else if (line.startsWith('Date:')) data.date = line.replace('Date:', '').trim();
-                    else if (line.startsWith('Subcategory:')) data.subcategory = line.replace('Subcategory:', '').trim();
-                    else if (line.startsWith('Date:')) data.date = line.replace('Date:', '').trim();
-                    else if (line.startsWith('Subcategory:')) data.subcategory = line.replace('Subcategory:', '').trim();
-                  else if (line.startsWith('Role:')) {
-                      const r = line.replace('Role:', '').trim();
-                      if (r) data.roles.push(r);
-                  }
-              }
+          let testProjectFiles = [];
+          if (testProj && testProj.collection) {
+              testProjectFiles = testProj.collection.map((col, index) => {
+                  const char = String.fromCharCode(65 + index);
+                  const ext = col.type === 'video' ? 'mp4' : 'jpg';
+                  const folder = testProj.folderPath || '';
+                  // Use Vite's resolved static import for Final Cut
+                  // But for BTS we have to guess the path.
+                  const btsPath = `/portfolio-cinema-content/Projets/${folder}/${char}.${ext}`;
+                  return {
+                      type: col.type,
+                      main: col.src,
+                      bts: btsPath
+                  };
+              });
           }
+
+          const data = {
+              title: testProj.title,
+              descEn: testProj.desc.en,
+              descFr: testProj.desc.fr,
+              roles: testProj.structuredCredits.map(c => c.originalRole),
+              camera: testProj.camera,
+              lens: testProj.lens,
+              format: testProj.format,
+              date: testProj.date.raw,
+              subcategory: testProj.subcategory,
+              link: testProj.link
+          };
           
           const lang = document.documentElement.lang || 'fr';
-          const rolesLib = LIBRARY.roles_me || {};
-          const translatedRoles = data.roles.map(r => (rolesLib[r] && rolesLib[r][lang]) ? rolesLib[r][lang] : r);
           
-          document.getElementById('test-hud-title').innerText = data.title || '';
-          document.querySelector('.test-hud-desc').innerText = lang === 'fr' ? (data.descFr || data.descEn || '') : (data.descEn || '');
-          
+          try {
+            const rolesLib = LIBRARY.roles_me || {};
+            const translatedRoles = data.roles.map(r => (rolesLib[r] && rolesLib[r][lang]) ? rolesLib[r][lang] : r);
+            
+            document.getElementById('test-hud-title').innerText = data.title || '';
+            document.querySelector('.test-hud-desc').innerText = lang === 'fr' ? (data.descFr || data.descEn || '') : (data.descEn || '');
+            
             const dateLib = LIBRARY.dates || {};
             let finalDate = '';
             if (data.date) {
@@ -652,28 +630,28 @@
             const catLib = LIBRARY.subcategories || {};
             const translatedSubcat = data.subcategory && catLib[data.subcategory] && catLib[data.subcategory][lang] ? catLib[data.subcategory][lang] : (data.subcategory || 'Short Film');
             document.querySelector('.test-hud-meta').innerText = translatedSubcat + ' — ' + translatedRoles.join(' & ') + (finalDate ? ' — ' + finalDate : '');
+            
+            const techText = [data.camera, data.lens, data.format].filter(Boolean).join(' &nbsp; • &nbsp; ');
+            document.querySelector('.test-hud-tech').innerHTML = techText;
+            
+            const playBtn = document.querySelector('.test-hud-play-btn');
+            if (data.link) {
+                playBtn.setAttribute('onclick', "window.open('" + data.link + "', '_blank')");
+                playBtn.style.display = 'inline-flex';
+            } else {
+                playBtn.style.display = 'none';
+            }
 
-          
-          const techText = [data.camera, data.lens, data.format].filter(Boolean).join(' &nbsp; • &nbsp; ');
-          document.querySelector('.test-hud-tech').innerHTML = techText;
-          
-          const playBtn = document.querySelector('.test-hud-play-btn');
-          if (data.link) {
-              playBtn.setAttribute('onclick', "window.open('" + data.link + "', '_blank')");
-              playBtn.style.display = 'inline-flex';
-          } else {
-              playBtn.style.display = 'none';
-          }
-
-          // Populate Related Projects dynamically
+            // Populate Related Projects dynamically
             const relatedList = document.getElementById('test-related-list');
             if (relatedList) {
                 relatedList.innerHTML = '';
-                const otherProjects = projects.filter(p => p.title !== "Test Ingest" && p.media && p.title).slice(0, 2);
+                const otherProjects = projects.filter(p => p.id != projectId && p.media && p.title).slice(0, 2);
                 otherProjects.forEach(op => {
                     const item = document.createElement('div');
                     item.className = 'test-related-item';
                     item.innerHTML = `<img src="${op.media}" alt="${op.title}"><span class="hover-title">${op.title}</span>`;
+                    item.onclick = function() { window.populateTestModal(op.id); };
                     relatedList.appendChild(item);
                 });
             }

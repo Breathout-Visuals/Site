@@ -9,6 +9,11 @@ Link: https://youtu.be/-Emi3lXQOys
 Description: Short film created for the Nikon Film Festival 2025. The film explores themes of transmission, self-perception and intergenerational relationships through a sensitive, introspective approach focused on how we view others and ourselves.
 Description Fr: Court-métrage réalisé pour le Nikon Film Festival 2025. Le film explore les notions de transmission, de perception de soi et de liens intergénérationnels, à travers une approche sensible et introspective, centrée sur le regard que l’on porte sur les autres et sur soi-même.
 
+
+Camera: Alexa Caca
+Lens: Angenieux nieux
+Format: 16:9
+
 [CREDITS]
 producer:
 exec_producer:

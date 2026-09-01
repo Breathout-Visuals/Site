@@ -9,6 +9,11 @@ Link:
 Description: Corporate commercial created for The Street Partners. A clean, contemporary visual approach designed to enhance branding and convey a clear, elegant and controlled professional image.
 Description Fr: Film publicitaire corporate réalisé pour The Street Partners. Une approche visuelle sobre et contemporaine, pensée pour valoriser le branding et transmettre une image professionnelle claire, élégante et maîtrisée.
 
+
+Camera: Alexa Caca
+Lens: Angenieux nieux
+Format: 16:9
+
 [CREDITS]
 producer:
 exec_producer:

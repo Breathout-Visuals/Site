@@ -9,6 +9,11 @@ Link:
 Description: Festival-oriented short film produced through a non-profit association. Set in the world of Nice journalism in the 1980s, with close attention to atmosphere, historical context and period tensions.
 Description Fr: Court-métrage destiné aux festivals, produit en association. Le film plonge dans le milieu du journalisme niçois des années 1980, avec une attention particulière portée à l’atmosphère, au contexte historique et aux tensions de l’époque.
 
+
+Camera: Alexa Caca
+Lens: Angenieux nieux
+Format: 16:9
+
 [CREDITS]
 producer:
 exec_producer:

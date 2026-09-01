@@ -2,7 +2,7 @@ Name: Test Ingest
 Category: fic
 Subcategory: sf
 Type: 
-Role: dop, col
+Role: grp
 Status: 
 Date: 08 2026
 Link: https://youtu.be/nK3sbmGYcG8

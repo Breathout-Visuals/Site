@@ -6,5 +6,9 @@ Role: dop
 Status: edit
 Date: 08 2026
 Link: 
-Description:  Description coming soon.
-Description Fr:  Description à venir.
+Description: Description coming soon. Lorum ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Description Fr: Description à venir. Lorum ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+Camera: Alexa Caca
+Lens: Angenieux nieux
+Format: 16:9

@@ -9,6 +9,11 @@ Link: https://youtu.be/fJYaTO2tbA4
 Description: **Lady Extravagante** is a short film produced with a professional approach, intended for TV broadcast and festival selection. The work explores queer themes through family bonds, specifically the relationship between identity, self-expression, and parental perspective. The project offers a reflection on acceptance, transmission, and human relationships, with a sensitive and committed approach.
 Description Fr: **Lady Extravagante** est un court métrage réalisé dans une démarche professionnelle, pensé pour une diffusion en chaîne et une sélection en festivals. L’œuvre explore les thématiques queer à travers les liens familiaux, notamment la relation entre identité, expression de soi et regard des parents. Le projet porte une réflexion sur l’acceptation, la transmission et les relations humaines, avec une approche sensible et engagée.
 
+
+Camera: Alexa Caca
+Lens: Angenieux nieux
+Format: 16:9
+
 [CREDITS]
 producer:
 exec_producer:

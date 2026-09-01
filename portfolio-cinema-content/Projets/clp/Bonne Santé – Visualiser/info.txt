@@ -9,6 +9,11 @@ Link: https://youtu.be/tgxDICtOiC8?si=jc08L-4kW2mw9f5q
 Description: Music visualizer for Faz’r Elengi, designed around a deliberately minimal setup. The visuals focus on the artist’s presence, rhythm and atmosphere, aiming for clarity and aesthetic coherence.
 Description Fr: Visualiser musical pour Faz’r Elengi, conçu autour d’un dispositif volontairement minimal. L’image se concentre sur la présence de l’artiste, le rythme et l’atmosphère, dans une recherche de clarté et de cohérence esthétique.
 
+
+Camera: Alexa Caca
+Lens: Angenieux nieux
+Format: 16:9
+
 [CREDITS]
 producer:
 exec_producer:
