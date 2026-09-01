@@ -523,22 +523,8 @@
     <div class="test-nav-zone center-zone" id="nav-toggle" ></div>
     <div class="test-nav-zone next-zone" id="nav-next"></div>
 
-    <div class="test-cinematic-gallery" id="test-gallery">
-      <div class="test-gallery-item">
-        <img class="main-layer active" src="/portfolio-cinema-content/Projets/fic/Homonculus/A.jpg" alt="Main 1">
-        <img class="bts-layer inactive" src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=1920&h=1080&q=80" alt="BTS 1">
-      </div>
-      <div class="test-gallery-item">
-        <img class="main-layer active" src="/portfolio-cinema-content/Projets/fic/Homonculus/B.jpg" alt="Main 2">
-        <img class="bts-layer inactive" src="https://images.unsplash.com/photo-1621252179022-81788da1e2db?auto=format&fit=crop&w=1920&h=1080&q=80" alt="BTS 2">
-      </div>
-      <div class="test-gallery-item">
-        <video class="main-layer active test-video" src="/portfolio-cinema-content/Projets/fic/Homonculus/C.mp4" loop muted playsinline preload="auto" style="width: 100%; height: 100%; object-fit: cover;"></video>
-        <img class="bts-layer inactive" src="https://images.unsplash.com/photo-1497911174120-042e519e9176?auto=format&fit=crop&w=1920&h=1080&q=80" alt="BTS 3">
-      </div>
-    </div>
-    
-    <!-- Vignette Shadow replacing the Gradient Blur -->
+    <div class="test-cinematic-gallery" id="test-gallery"></div>
+      <!-- Vignette Shadow replacing the Gradient Blur -->
     <div class="test-vignette" id="test-vignette"></div>
 
     <!-- Instructions Overlay -->
@@ -557,12 +543,10 @@
     <div class="test-hud-layer" id="test-hud">
       <button class="test-close-btn test-anim" id="close-test-modal"><i class="fa-solid fa-xmark"></i></button>
       <div class="test-hud-left">
-        <div class="test-hud-meta test-anim">Machinerie &nbsp;—&nbsp; Fiction &nbsp;—&nbsp; 2026</div>
-        <h2 class="test-hud-title test-anim">Homonculus</h2>
-        <p class="test-hud-desc test-anim">
-          Un ingénieur donne vie à un homoncule artificiel. Mais en découvrant les émotions humaines, la créature développe une conscience propre qui menace son créateur.
-        </p>
-        <div class="test-hud-tech test-anim">ARRI Alexa Mini LF &nbsp;•&nbsp; Cooke Anamorphic /i Prime &nbsp;•&nbsp; 2.39:1</div>
+        <div class="test-hud-meta test-anim" id="test-hud-meta"></div>
+        <h2 class="test-hud-title test-anim" id="test-hud-title"></h2>
+        <p class="test-hud-desc test-anim"></p>
+        <div class="test-hud-tech test-anim"></div>
           <div class="test-hud-play-btn test-anim" onclick="window.open('https://youtu.be/nK3sbmGYcG8', '_blank')" ><i class="fa-solid fa-play"></i> Voir le film</div>
       </div>
       
@@ -599,23 +583,29 @@
 
   async function populateTestModal() {
       // Importation DYNAMIQUE des médias via le build system
-      const testProj = projects.find(p => p.title === "Test Ingest");
-      let testProjectFiles = [];
-      if (testProj && testProj.collection) {
-          testProjectFiles = testProj.collection.map((col, index) => {
-              const char = String.fromCharCode(65 + index); // A, B, C...
-              const ext = col.type === 'video' ? 'mp4' : 'jpg';
-              return {
-                  type: col.type,
-                  main: col.src, 
-                  bts: `/portfolio-cinema-content/Projets/fic/test/BTS/${char}.${ext}`
-              };
-          });
-      } else {
-          console.warn("Test Ingest not found in project-data.js. Did you run generate-data.cjs?");
-      }
-
-      try {
+      
+        // Importation DYNAMIQUE des médias via Vite Glob
+        let testProjectFiles = [];
+        try {
+            const finalCutFiles = import.meta.glob('/portfolio-cinema-content/Projets/fic/test/FINAL CUT/*.{jpg,mp4}', { eager: true, as: 'url' });
+            
+            const entries = Object.entries(finalCutFiles).sort((a, b) => a[0].localeCompare(b[0]));
+            
+            entries.forEach(([path, url]) => {
+                const filename = path.split('/').pop(); // e.g. A.jpg
+                const isVideo = filename.endsWith('.mp4');
+                const btsPath = `/portfolio-cinema-content/Projets/fic/test/BTS/${filename}`;
+                
+                testProjectFiles.push({
+                    type: isVideo ? 'video' : 'image',
+                    main: url, // Vite resolved URL
+                    bts: btsPath
+                });
+            });
+        } catch (e) {
+            console.error("Vite Glob failed:", e);
+        }
+        try {
           const response = await fetch('/portfolio-cinema-content/Projets/fic/test/info.txt?t=' + new Date().getTime(), { cache: 'no-store' });
           const text = await response.text();
           
