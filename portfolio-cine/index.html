@@ -559,15 +559,7 @@
         </div>
         <div class="test-related-wrapper">
           <div class="test-related-title">Voir Aussi</div>
-          <div class="test-related-list">
-            <div class="test-related-item">
-              <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=400&q=80" alt="Related">
-              <span class="hover-title">Projet Alpha</span>
-            </div>
-            <div class="test-related-item">
-              <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&w=400&q=80" alt="Related">
-              <span class="hover-title">Projet Beta</span>
-            </div>
+          <div class="test-related-list" id="test-related-list"></div>
           </div>
         </div>
       </div>
@@ -673,8 +665,21 @@
               playBtn.style.display = 'none';
           }
 
-          const gallery = document.getElementById('test-gallery');
-          gallery.innerHTML = ''; 
+          // Populate Related Projects dynamically
+            const relatedList = document.getElementById('test-related-list');
+            if (relatedList) {
+                relatedList.innerHTML = '';
+                const otherProjects = projects.filter(p => p.title !== "Test Ingest" && p.media && p.title).slice(0, 2);
+                otherProjects.forEach(op => {
+                    const item = document.createElement('div');
+                    item.className = 'test-related-item';
+                    item.innerHTML = `<img src="${op.media}" alt="${op.title}"><span class="hover-title">${op.title}</span>`;
+                    relatedList.appendChild(item);
+                });
+            }
+
+            const gallery = document.getElementById('test-gallery');
+            gallery.innerHTML = ''; 
           testProjectFiles.forEach((file) => {
               const item = document.createElement('div');
               item.className = 'test-gallery-item';

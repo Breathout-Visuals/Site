@@ -3236,10 +3236,10 @@ body, html {
 /* Right Panel */
 .test-hud-right { display: flex !important; flex-direction: column; align-items: flex-end; gap: calc(3.0 * var(--cqw)); }
 .test-related-wrapper { display: flex !important; flex-direction: column; align-items: flex-end; gap: calc(1.0 * var(--cqw)); }
-.test-related-title { font-size: calc(0.65 * var(--cqw)); text-transform: uppercase; letter-spacing: calc(0.15 * var(--cqw)); color: rgba(255,255,255,0.6); text-shadow: 0 calc(0.15 * var(--cqw)) calc(0.4 * var(--cqw)) rgba(0,0,0,0.8); }
+.test-related-title { font-size: calc(0.65 * var(--cqw)); text-transform: uppercase; letter-spacing: calc(0.15 * var(--cqw)); color: rgba(255,255,255,0.9); text-shadow: 0 calc(0.15 * var(--cqw)) calc(0.4 * var(--cqw)) rgba(0,0,0,0.8); }
 .test-related-list { display: flex !important; gap: calc(1.0 * var(--cqw)); }
 .test-related-item { position: relative; width: calc(9.0 * var(--cqw)); aspect-ratio: 16/9; cursor: none; overflow: hidden; border-radius: calc(0.15 * var(--cqw)); box-shadow: 0 calc(0.4 * var(--cqw)) calc(1.0 * var(--cqw)) rgba(0,0,0,0.5); }
-.test-related-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; transition: all 0.4s; }
+.test-related-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: all 0.4s; }
 .test-related-item:hover img { opacity: 1; transform: scale(1.05); }
 .test-related-item .hover-title { position: absolute; inset: 0; display: flex !important; align-items: center; justify-content: center; text-align: center; font-size: calc(0.65 * var(--cqw)); text-transform: uppercase; letter-spacing: calc(0.1 * var(--cqw)); color: #fff; background: rgba(0,0,0,0.9); opacity: 0; transition: opacity 0.3s; padding: calc(0.7 * var(--cqw)); }
 .test-related-item:hover .hover-title { opacity: 1; }
@@ -3337,3 +3337,9 @@ body, html {
 .test-hud-layer.instant-show .test-anim, .test-hud-layer.instant-show .test-anim-group, .test-hud-layer.instant-show .test-close-btn, .test-hud-layer.instant-show .test-hud-play-btn, .test-hud-layer.instant-show .test-hud-title, .test-hud-layer.instant-show .test-hud-desc, .test-hud-layer.instant-show .test-hud-tech, .test-hud-layer.instant-show .test-hud-meta { transition-delay: 0s !important; animation-delay: 0s !important; transition-duration: 0s !important; animation-duration: 0s !important; opacity: 1 !important; transform: translateY(0) scale(1) !important; }
 
 .instant-switch .main-layer, .instant-switch .bts-layer { transition: none !important; }
+
+@media (max-width: 768px), (pointer: coarse) {
+  .test-related-item { width: calc(18.0 * var(--cqw)); }
+  .test-related-title { font-size: calc(1.2 * var(--cqw)); }
+  .test-related-item .hover-title { font-size: calc(1.1 * var(--cqw)); }
+}
