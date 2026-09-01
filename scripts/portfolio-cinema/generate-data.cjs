@@ -94,7 +94,12 @@ function generateImportsAndData() {
 
         const mediaFiles = {};
         let coverFile = null;
-        const files = fs.readdirSync(dir);
+        let mediaDir = dir;
+        const finalCutPath = path.join(dir, 'FINAL CUT');
+        if (fs.existsSync(finalCutPath) && fs.statSync(finalCutPath).isDirectory()) {
+            mediaDir = finalCutPath;
+        }
+        const files = fs.readdirSync(mediaDir);
         const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
         alphabet.forEach(letter => {
@@ -110,7 +115,7 @@ function generateImportsAndData() {
         let coverVar = "''";
 
         if (coverFile) {
-            let relativePath = path.relative(path.dirname(OUTPUT_FILE_REAL), path.join(dir, coverFile)).split(path.sep).join('/');
+            let relativePath = path.relative(path.dirname(OUTPUT_FILE_REAL), path.join(mediaDir, coverFile)).split(path.sep).join('/');
             if (!relativePath.startsWith('.')) relativePath = './' + relativePath;
             const varName = `${projectVarName}_cover`;
             imports.push(`import ${varName} from ${JSON.stringify(relativePath)};`);
@@ -119,7 +124,7 @@ function generateImportsAndData() {
 
         Object.keys(mediaFiles).forEach(letter => {
             const fileName = mediaFiles[letter];
-            let relativePath = path.relative(path.dirname(OUTPUT_FILE_REAL), path.join(dir, fileName)).split(path.sep).join('/');
+            let relativePath = path.relative(path.dirname(OUTPUT_FILE_REAL), path.join(mediaDir, fileName)).split(path.sep).join('/');
             if (!relativePath.startsWith('.')) relativePath = './' + relativePath;
             const varName = `${projectVarName}_${letter}`;
             imports.push(`import ${varName} from ${JSON.stringify(relativePath)};`);

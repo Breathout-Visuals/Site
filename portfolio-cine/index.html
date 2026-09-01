@@ -627,6 +627,8 @@
                   else if (line.startsWith('Camera:')) data.camera = line.replace('Camera:', '').trim();
                   else if (line.startsWith('Lens:')) data.lens = line.replace('Lens:', '').trim();
                   else if (line.startsWith('Format:')) data.format = line.replace('Format:', '').trim();
+                    else if (line.startsWith('Date:')) data.date = line.replace('Date:', '').trim().split(' ').pop();
+                    else if (line.startsWith('Subcategory:')) data.subcategory = line.replace('Subcategory:', '').trim();
                   else if (line.startsWith('Role:')) {
                       const r = line.replace('Role:', '').trim();
                       if (r) data.roles.push(r);
@@ -642,7 +644,7 @@
           document.querySelector('.test-hud-desc').innerText = lang === 'fr' ? (data.descFr || data.descEn || '') : (data.descEn || '');
           document.querySelector('.test-hud-meta').innerText = "Short Film — " + translatedRoles.join(' & ');
           
-          const techText = [data.camera, data.lens, data.format].filter(Boolean).join(' &nbsp; &nbsp; ');
+          const techText = [data.camera, data.lens, data.format].filter(Boolean).join(' &nbsp; • &nbsp; ');
           document.querySelector('.test-hud-tech').innerHTML = techText;
           
           const playBtn = document.querySelector('.test-hud-play-btn');
