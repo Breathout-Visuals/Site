@@ -112,40 +112,26 @@ import proj_18_A from "../../portfolio-cinema-content/Projets/fic/Parles-moi/FIN
 import proj_18_B from "../../portfolio-cinema-content/Projets/fic/Parles-moi/FINAL CUT/B.mp4";
 import proj_18_C from "../../portfolio-cinema-content/Projets/fic/Parles-moi/FINAL CUT/C.jpg";
 import proj_18_D from "../../portfolio-cinema-content/Projets/fic/Parles-moi/FINAL CUT/D.mp4";
-import proj_19_A from "../../portfolio-cinema-content/Projets/fic/test/FINAL CUT/A.jpg";
-import proj_19_B from "../../portfolio-cinema-content/Projets/fic/test/FINAL CUT/B.jpg";
-import proj_19_C from "../../portfolio-cinema-content/Projets/fic/test/FINAL CUT/C.mp4";
-import proj_19_D from "../../portfolio-cinema-content/Projets/fic/test/FINAL CUT/D.jpg";
-import proj_19_E from "../../portfolio-cinema-content/Projets/fic/test/FINAL CUT/E.mp4";
-import proj_19_F from "../../portfolio-cinema-content/Projets/fic/test/FINAL CUT/F.mp4";
-import proj_19_G from "../../portfolio-cinema-content/Projets/fic/test/FINAL CUT/G.mp4";
-import proj_20_A from "../../portfolio-cinema-content/Projets/fic/test/FINAL CUT/A.jpg";
-import proj_20_B from "../../portfolio-cinema-content/Projets/fic/test/FINAL CUT/B.jpg";
-import proj_20_C from "../../portfolio-cinema-content/Projets/fic/test/FINAL CUT/C.mp4";
-import proj_20_D from "../../portfolio-cinema-content/Projets/fic/test/FINAL CUT/D.jpg";
-import proj_20_E from "../../portfolio-cinema-content/Projets/fic/test/FINAL CUT/E.mp4";
-import proj_20_F from "../../portfolio-cinema-content/Projets/fic/test/FINAL CUT/F.mp4";
-import proj_20_G from "../../portfolio-cinema-content/Projets/fic/test/FINAL CUT/G.mp4";
-import proj_21_A from "../../portfolio-cinema-content/Projets/fic/Transmission/FINAL CUT/A.jpg";
-import proj_21_B from "../../portfolio-cinema-content/Projets/fic/Transmission/FINAL CUT/B.mp4";
-import proj_21_C from "../../portfolio-cinema-content/Projets/fic/Transmission/FINAL CUT/C.jpg";
-import proj_21_D from "../../portfolio-cinema-content/Projets/fic/Transmission/FINAL CUT/D.jpg";
-import proj_21_F from "../../portfolio-cinema-content/Projets/fic/Transmission/FINAL CUT/F.jpg";
-import proj_21_G from "../../portfolio-cinema-content/Projets/fic/Transmission/FINAL CUT/G.jpg";
-import proj_21_H from "../../portfolio-cinema-content/Projets/fic/Transmission/FINAL CUT/H.jpg";
-import proj_22_A from "../../portfolio-cinema-content/Projets/soc/Nassim Boukrouh/FINAL CUT/A.jpg";
-import proj_22_B from "../../portfolio-cinema-content/Projets/soc/Nassim Boukrouh/FINAL CUT/B.jpg";
-import proj_22_C from "../../portfolio-cinema-content/Projets/soc/Nassim Boukrouh/FINAL CUT/C.mp4";
-import proj_22_D from "../../portfolio-cinema-content/Projets/soc/Nassim Boukrouh/FINAL CUT/D.mp4";
-import proj_22_E from "../../portfolio-cinema-content/Projets/soc/Nassim Boukrouh/FINAL CUT/E.mp4";
-import proj_22_F from "../../portfolio-cinema-content/Projets/soc/Nassim Boukrouh/FINAL CUT/F.mp4";
-import proj_22_G from "../../portfolio-cinema-content/Projets/soc/Nassim Boukrouh/FINAL CUT/G.jpg";
-import proj_23_A from "../../portfolio-cinema-content/Projets/wed/M&L/FINAL CUT/A.jpg";
-import proj_23_B from "../../portfolio-cinema-content/Projets/wed/M&L/FINAL CUT/B.jpg";
-import proj_23_C from "../../portfolio-cinema-content/Projets/wed/M&L/FINAL CUT/C.mp4";
-import proj_23_D from "../../portfolio-cinema-content/Projets/wed/M&L/FINAL CUT/D.jpg";
-import proj_23_E from "../../portfolio-cinema-content/Projets/wed/M&L/FINAL CUT/E.jpg";
-import proj_23_F from "../../portfolio-cinema-content/Projets/wed/M&L/FINAL CUT/F.mp4";
+import proj_19_A from "../../portfolio-cinema-content/Projets/fic/Transmission/FINAL CUT/A.jpg";
+import proj_19_B from "../../portfolio-cinema-content/Projets/fic/Transmission/FINAL CUT/B.mp4";
+import proj_19_C from "../../portfolio-cinema-content/Projets/fic/Transmission/FINAL CUT/C.jpg";
+import proj_19_D from "../../portfolio-cinema-content/Projets/fic/Transmission/FINAL CUT/D.jpg";
+import proj_19_F from "../../portfolio-cinema-content/Projets/fic/Transmission/FINAL CUT/F.jpg";
+import proj_19_G from "../../portfolio-cinema-content/Projets/fic/Transmission/FINAL CUT/G.jpg";
+import proj_19_H from "../../portfolio-cinema-content/Projets/fic/Transmission/FINAL CUT/H.jpg";
+import proj_20_A from "../../portfolio-cinema-content/Projets/soc/Nassim Boukrouh/FINAL CUT/A.jpg";
+import proj_20_B from "../../portfolio-cinema-content/Projets/soc/Nassim Boukrouh/FINAL CUT/B.jpg";
+import proj_20_C from "../../portfolio-cinema-content/Projets/soc/Nassim Boukrouh/FINAL CUT/C.mp4";
+import proj_20_D from "../../portfolio-cinema-content/Projets/soc/Nassim Boukrouh/FINAL CUT/D.mp4";
+import proj_20_E from "../../portfolio-cinema-content/Projets/soc/Nassim Boukrouh/FINAL CUT/E.mp4";
+import proj_20_F from "../../portfolio-cinema-content/Projets/soc/Nassim Boukrouh/FINAL CUT/F.mp4";
+import proj_20_G from "../../portfolio-cinema-content/Projets/soc/Nassim Boukrouh/FINAL CUT/G.jpg";
+import proj_21_A from "../../portfolio-cinema-content/Projets/wed/M&L/FINAL CUT/A.jpg";
+import proj_21_B from "../../portfolio-cinema-content/Projets/wed/M&L/FINAL CUT/B.jpg";
+import proj_21_C from "../../portfolio-cinema-content/Projets/wed/M&L/FINAL CUT/C.mp4";
+import proj_21_D from "../../portfolio-cinema-content/Projets/wed/M&L/FINAL CUT/D.jpg";
+import proj_21_E from "../../portfolio-cinema-content/Projets/wed/M&L/FINAL CUT/E.jpg";
+import proj_21_F from "../../portfolio-cinema-content/Projets/wed/M&L/FINAL CUT/F.mp4";
 import reel_1_jpg from "../../portfolio-cinema-content/Instagram Reel/1.jpg";
 import reel_1_mp4 from "../../portfolio-cinema-content/Instagram Reel/1.mp4";
 import reel_10_jpg from "../../portfolio-cinema-content/Instagram Reel/10.jpg";
@@ -384,91 +370,6 @@ export const projects = [
     ]
 },
 {
-    "id": 120,
-    "folderPath": "fic/test/BTS",
-    "title": "Test Ingest",
-    "category": "fic",
-    "subcategory": "sf",
-    "type": "",
-    "role": "grp",
-    "date": {
-        "raw": "08 2026",
-        "month": "08",
-        "year": "2026"
-    },
-    "sortWeight": 202608,
-    "status": "",
-    "link": "https://youtu.be/nK3sbmGYcG8",
-    "camera": "Arri Alexa 35",
-    "lens": "Zeiss B-Speed",
-    "format": "2.39:1",
-    "desc": {
-        "fr": "Un ingénieur donne vie à un homoncule artificiel. Mais en découvrant les émotions humaines, la créature développe une conscience propre qui menace son créateur.",
-        "en": "An engineer brings an artificial homunculus to life. But as it discovers human emotions, the creature develops a consciousness of its own that threatens its creator."
-    },
-    "structuredCredits": [
-        {
-            "roleKey": "dir",
-            "originalRole": "dir",
-            "names": [
-                "Jane Smith"
-            ]
-        },
-        {
-            "roleKey": "dop",
-            "originalRole": "dop",
-            "names": [
-                "Lucas Jacquot"
-            ]
-        },
-        {
-            "roleKey": "col",
-            "originalRole": "col",
-            "names": [
-                "John Doe"
-            ]
-        }
-    ],
-    "media": proj_20_A,
-    "collection": [
-        {
-            "type": "image",
-            "src": proj_20_A,
-            "poster": ""
-        },
-        {
-            "type": "image",
-            "src": proj_20_B,
-            "poster": ""
-        },
-        {
-            "type": "video",
-            "src": proj_20_C,
-            "poster": ""
-        },
-        {
-            "type": "image",
-            "src": proj_20_D,
-            "poster": ""
-        },
-        {
-            "type": "video",
-            "src": proj_20_E,
-            "poster": ""
-        },
-        {
-            "type": "video",
-            "src": proj_20_F,
-            "poster": ""
-        },
-        {
-            "type": "video",
-            "src": proj_20_G,
-            "poster": ""
-        }
-    ]
-},
-{
     "id": 106,
     "folderPath": "crp/DAVID DAVID/BTS",
     "title": "DAVID DAVID",
@@ -701,69 +602,6 @@ export const projects = [
     ]
 },
 {
-    "id": 119,
-    "folderPath": "fic/test/FINAL CUT/BTS",
-    "title": "Homonculus",
-    "category": "fic",
-    "subcategory": "sf",
-    "type": "",
-    "role": "grp",
-    "date": {
-        "raw": "04 2026",
-        "month": "04",
-        "year": "2026"
-    },
-    "sortWeight": 202604,
-    "status": "",
-    "link": "https://youtu.be/nK3sbmGYcG8",
-    "camera": "",
-    "lens": "",
-    "format": "",
-    "desc": {
-        "fr": "Homonculus est un court métrage réalisé dans une démarche professionnelle, pensé pour une diffusion en chaîne et une présentation en festivals. Le projet a rassemblé une équipe composée d’étudiants, de professionnels du cinéma et d’anciens étudiants, réunissant différentes expériences autour d’une ambition commune : créer une œuvre ambitieuse et exigeante.",
-        "en": "Homonculus is a short film produced with a professional approach, intended for TV broadcast and festival screenings. The project brought together a crew of students, industry professionals, and alumni, merging diverse experiences around a shared goal: creating an ambitious and demanding piece of work."
-    },
-    "structuredCredits": [],
-    "media": proj_19_A,
-    "collection": [
-        {
-            "type": "image",
-            "src": proj_19_A,
-            "poster": ""
-        },
-        {
-            "type": "image",
-            "src": proj_19_B,
-            "poster": ""
-        },
-        {
-            "type": "video",
-            "src": proj_19_C,
-            "poster": ""
-        },
-        {
-            "type": "image",
-            "src": proj_19_D,
-            "poster": ""
-        },
-        {
-            "type": "video",
-            "src": proj_19_E,
-            "poster": ""
-        },
-        {
-            "type": "video",
-            "src": proj_19_F,
-            "poster": ""
-        },
-        {
-            "type": "video",
-            "src": proj_19_G,
-            "poster": ""
-        }
-    ]
-},
-{
     "id": 105,
     "folderPath": "crp/Converse/BTS",
     "title": "Converse",
@@ -885,7 +723,7 @@ export const projects = [
     ]
 },
 {
-    "id": 121,
+    "id": 119,
     "folderPath": "fic/Transmission/BTS",
     "title": "Transmission",
     "category": "fic",
@@ -908,41 +746,41 @@ export const projects = [
         "en": "Short film created for the Nikon Film Festival 2025. The film explores themes of transmission, self-perception and intergenerational relationships through a sensitive, introspective approach focused on how we view others and ourselves."
     },
     "structuredCredits": [],
-    "media": proj_21_A,
+    "media": proj_19_A,
     "collection": [
         {
             "type": "image",
-            "src": proj_21_A,
+            "src": proj_19_A,
             "poster": ""
         },
         {
             "type": "video",
-            "src": proj_21_B,
+            "src": proj_19_B,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_21_C,
+            "src": proj_19_C,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_21_D,
+            "src": proj_19_D,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_21_F,
+            "src": proj_19_F,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_21_G,
+            "src": proj_19_G,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_21_H,
+            "src": proj_19_H,
             "poster": ""
         }
     ]
@@ -1367,7 +1205,7 @@ export const projects = [
     ]
 },
 {
-    "id": 123,
+    "id": 121,
     "folderPath": "wed/M&L/BTS",
     "title": "M&L",
     "category": "wed",
@@ -1390,36 +1228,36 @@ export const projects = [
         "en": "Wedding film shot at Mas des 5 Fontaines. A sensitive approach blending documentary capture and cinematic storytelling, aiming to convey emotion, detail and the atmosphere of the day."
     },
     "structuredCredits": [],
-    "media": proj_23_A,
+    "media": proj_21_A,
     "collection": [
         {
             "type": "image",
-            "src": proj_23_A,
+            "src": proj_21_A,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_23_B,
+            "src": proj_21_B,
             "poster": ""
         },
         {
             "type": "video",
-            "src": proj_23_C,
+            "src": proj_21_C,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_23_D,
+            "src": proj_21_D,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_23_E,
+            "src": proj_21_E,
             "poster": ""
         },
         {
             "type": "video",
-            "src": proj_23_F,
+            "src": proj_21_F,
             "poster": ""
         }
     ]
@@ -1589,7 +1427,7 @@ export const projects = [
     ]
 },
 {
-    "id": 122,
+    "id": 120,
     "folderPath": "soc/Nassim Boukrouh/BTS",
     "title": "Nassim Boukrouh",
     "category": "soc",
@@ -1612,41 +1450,41 @@ export const projects = [
         "en": "YouTube video series focused on real estate, shot internationally across South Africa, Switzerland, France, Canada and the United Arab Emirates. A mobile, dynamic format designed to adapt to diverse contexts while remaining accessible and informative."
     },
     "structuredCredits": [],
-    "media": proj_22_A,
+    "media": proj_20_A,
     "collection": [
         {
             "type": "image",
-            "src": proj_22_A,
+            "src": proj_20_A,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_22_B,
+            "src": proj_20_B,
             "poster": ""
         },
         {
             "type": "video",
-            "src": proj_22_C,
+            "src": proj_20_C,
             "poster": ""
         },
         {
             "type": "video",
-            "src": proj_22_D,
+            "src": proj_20_D,
             "poster": ""
         },
         {
             "type": "video",
-            "src": proj_22_E,
+            "src": proj_20_E,
             "poster": ""
         },
         {
             "type": "video",
-            "src": proj_22_F,
+            "src": proj_20_F,
             "poster": ""
         },
         {
             "type": "image",
-            "src": proj_22_G,
+            "src": proj_20_G,
             "poster": ""
         }
     ]

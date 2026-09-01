@@ -521,9 +521,6 @@ function setupModal() {
                 if (muteBtn) muteBtn.style.display = 'none';
             }
         }
-        // ------------------------------------
-        // --- GLOBAL TOUCH FEEDBACK (Delegation) ---
-        // Adds "is-pressed" class for responsive touch animations
         document.addEventListener('touchstart', (e) => {
             const card = e.target.closest('.related-item');
             if (card) {
@@ -783,12 +780,6 @@ function setupModal() {
         });
 
         if (project.type === 'collection') {
-            // --- REEL CAROUSEL (Specific for 9:16 content) ---
-            // The `isReels` variable is not defined in the provided context.
-            // Assuming it's meant to be `project.isReel` or similar, or a global flag.
-            // For        if (project.type === 'collection') {
-            // --- REEL CAROUSEL (Specific for 9:16 content) ---
-            // FIXED: Verify correct ID for Instagram Reels (ID is 10, not 'reels')
             if (project.id === 10 || project.title === 'Instagram Reels') {
                 modal.classList.add('reel-mode');
                 window.currentCarousel = new ReelCarousel(mediaContainer, mediaList);
@@ -799,20 +790,6 @@ function setupModal() {
                     window.currentCarousel.destroy();
                     window.currentCarousel = null;
                 }
-                // If it's a collection but not 'reels', it should still use a carousel,
-                // but the standard one, not ReelCarousel.
-                // The original code created a ReelCarousel for all collections.
-                // This change implies a distinction.
-                // For now, I'll leave this else branch empty as per the instruction's structure,
-                // which means non-reel collections won't get a carousel here.
-                // This might be an incomplete instruction or implies further changes.
-                // Reverting to original behavior for non-reel collections if no further instruction.
-                // Original: window.currentCarousel = new ReelCarousel(mediaContainer, project.collection);
-                // The instruction's snippet only covers the 'reels' case for ReelCarousel.
-                // I will assume the intent is to only use ReelCarousel for 'reels' and
-                // other collections should fall through to the standard carousel logic below,
-                // or have their own specific handling.
-                // Given the instruction, I will only apply the provided snippet.
             }
         } else {
             modal.classList.remove('collection-mode');
@@ -1161,9 +1138,6 @@ function setupModal() {
     window.addEventListener('hashchange', checkHash);
 }
 
-// --- 3D Curve Carousel ---
-// --- 9:16 Reel Carousel (Simple Horizontal Scroll) ---
-// --- Global Audio State ---
 let globalMute = false; // Default unmuted
 let isMuteSetup = false; // Flag to prevent duplicate listeners
 
@@ -1261,9 +1235,6 @@ class ReelCarousel {
         this.itemsData = items;
         this.items = [];
 
-        // Duplicate for infinite scroll 
-        // Increased duplication to Ensure NO gaps/black spots (12x)
-        // If user has 3 items -> 36 items. Enough for wide screens.
         this.displayData = [
             ...items, ...items, ...items, ...items,
             ...items, ...items, ...items, ...items,
@@ -1354,10 +1325,6 @@ class ReelCarousel {
                 const itemSpacing = 210;
                 const totalWidth = this.displayData.length * itemSpacing;
 
-                // 1. Calculate Shortest Path to this clone ('i')
-                // The item 'i' has a fixed absolute position in the strip: i * 210
-                // But 'scrollX' might be very far (due to infinite looping).
-                // We want to move scrollX by the small visual distance to bring 'i' to center.
 
                 const itemPos = i * itemSpacing;
                 const diff = itemPos - this.scrollX;
@@ -1423,9 +1390,6 @@ class ReelCarousel {
                     this.selectedIndex = i;
                     this.targetScrollX = this.scrollX + wrappedDiff;
 
-                    // Optional: Force Pause others as we move away?
-                    // Good UX: Leave playing until new one selected?
-                    // Let's pause to keep performance high during scroll.
                     this.items.forEach((it) => {
                         const ov = it.querySelector('video');
                         if (ov && !ov.paused) {
@@ -1474,10 +1438,6 @@ class ReelCarousel {
 
         this.centerItem(finalIndex);
 
-        // Linear Deceleration Setup
-        // Distance = 4500px (Increased for longer tail)
-        // Velocity = 50
-        // Friction = ~0.30 to last ~2.5s
 
         const dist = 4500;
         this.scrollX = this.targetScrollX - dist;
@@ -2159,10 +2119,6 @@ class InfiniteGallery {
             // Check for horizontal scroll (Trackpad or Shift+Wheel)
             if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
                 e.preventDefault();
-                // Invert delta because: scrolling right (two fingers left) -> positive deltaX -> should move content left (negative translate)
-                // Actually:
-                // Standard: Pan Right -> Content moves Left.
-                // e.deltaX > 0 (Pan Right gesture?). 
 
                 this.currentTranslate -= e.deltaX * 1.5;
 
@@ -2185,10 +2141,6 @@ class InfiniteGallery {
             this.singleItemWidth = 30 * vw;
         }
 
-        // Calculate limit once
-        // FIX: Handle Odd vs Even counts for 2-row grid.
-        // Even: Pattern repeats every 1 Set (Count/2 cols).
-        // Odd: Pattern shifts rows, repeats every 2 Sets (Count cols).
         const visualCols = (this.currentCount % 2 === 0)
             ? (this.currentCount / 2)
             : this.currentCount;
