@@ -915,7 +915,8 @@ manageVideos();
     if (direction === 0) return;
 
     isWheeling = true;
-    const target = gallery.scrollLeft + (direction * gallery.clientWidth);
+    const currentIndex = Math.round(gallery.scrollLeft / gallery.clientWidth);
+    const target = (currentIndex + direction) * gallery.clientWidth;
     const maxScroll = gallery.scrollWidth - gallery.clientWidth;
     const boundedTarget = Math.max(0, Math.min(target, maxScroll));
     smoothScrollTo(gallery, boundedTarget, 900);
@@ -944,7 +945,8 @@ manageVideos();
       if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
           isWheeling = true;
           const direction = diffX > 0 ? 1 : -1;
-          const target = gallery.scrollLeft + (direction * gallery.clientWidth);
+          const currentIndex = Math.round(gallery.scrollLeft / gallery.clientWidth);
+    const target = (currentIndex + direction) * gallery.clientWidth;
           const maxScroll = gallery.scrollWidth - gallery.clientWidth;
           const boundedTarget = Math.max(0, Math.min(target, maxScroll));
           smoothScrollTo(gallery, boundedTarget, 700);
@@ -953,13 +955,15 @@ manageVideos();
 
   document.getElementById('nav-prev').addEventListener('click', () => {
     if (isWheeling) return; isWheeling = true;
-    const boundedTarget = Math.max(0, gallery.scrollLeft - gallery.clientWidth);
+    const currentIndex = Math.round(gallery.scrollLeft / gallery.clientWidth);
+    const boundedTarget = Math.max(0, (currentIndex - 1) * gallery.clientWidth);
     smoothScrollTo(gallery, boundedTarget, 900);
   });
   document.getElementById('nav-next').addEventListener('click', () => {
     if (isWheeling) return; isWheeling = true;
     const maxScroll = gallery.scrollWidth - gallery.clientWidth;
-    const boundedTarget = Math.min(maxScroll, gallery.scrollLeft + gallery.clientWidth);
+    const currentIndex = Math.round(gallery.scrollLeft / gallery.clientWidth);
+    const boundedTarget = Math.min(maxScroll, (currentIndex + 1) * gallery.clientWidth);
     smoothScrollTo(gallery, boundedTarget, 900);
   });
 
