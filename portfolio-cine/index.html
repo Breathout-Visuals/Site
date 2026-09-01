@@ -676,9 +676,36 @@
               
               item.appendChild(mainEl);
               item.appendChild(btsEl);
-              gallery.appendChild(item);
+                          gallery.appendChild(item);
           });
-      } catch (e) {
+          
+          // Setup PiP dynamic images
+          const pipBts = document.querySelector('.pip-bts-layer');
+          const pipMain = document.querySelector('.pip-main-layer');
+          if (pipBts && pipMain) {
+              const firstBts = document.querySelector('.bts-layer');
+              const firstMain = document.querySelector('.main-layer');
+              if (firstBts && firstBts.src) pipBts.src = firstBts.src;
+              if (firstMain && firstMain.src) pipMain.src = firstMain.src;
+          }
+          
+          const firstVid = document.querySelector('.test-gallery-item:first-child video.main-layer');
+          if (firstVid) firstVid.play().catch(e => console.log('Autoplay blocked', e));
+
+          const modal = document.getElementById('da-test-modal');
+          modal.style.display = 'block';
+          void modal.offsetWidth;
+          modal.classList.add('active');
+          
+          if (typeof updateProgress === 'function') updateProgress();
+          
+          // Mobile fullscreen
+          try {
+            if (!document.fullscreenElement && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+              document.documentElement.requestFullscreen();
+            }
+          } catch (e) { console.log(e); }
+} catch (e) {
           console.error("Ingestion failed:", e);
       }
   }
