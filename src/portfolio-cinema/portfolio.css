@@ -3178,7 +3178,7 @@ body, html {
 .test-progress-bar { height: 100%; width: 0%; background: #fff; transition: width 0.3s ease-out; box-shadow: 0 0 10px rgba(255,255,255,0.5); }
 
 /* Gallery & Crossfade */
-.test-cinematic-gallery { position: absolute; inset: 1px; display: flex !important; overflow: hidden; scrollbar-width: none; cursor: none; border-radius: calc(1.1 * var(--cqw)); }
+.test-cinematic-gallery { position: absolute; inset: 1px; display: flex !important; overflow: hidden; scrollbar-width: none; cursor: none; border-radius: calc(1.1 * var(--cqw)); touch-action: none; }
 .test-gallery-item { flex: 0 0 100%; position: relative; height: 100%; }
 .test-cinematic-gallery img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
 .main-layer, .bts-layer { position: absolute; inset: 0; transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
