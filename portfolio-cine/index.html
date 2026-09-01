@@ -572,12 +572,12 @@
     <!-- Instructions Overlay -->
     <div class="test-instructions" id="test-instructions">
       <div class="test-instruction-item">
-        <span class="instr-desktop"><i class="fa-solid fa-mouse"></i> Scroll pour voir la suite</span>
-        <span class="instr-mobile"><i class="fa-solid fa-hand-pointer"></i> Swipe pour voir la suite</span>
+        <span class="instr-desktop"><i class="fa-solid fa-mouse"></i> <span data-i18n="modal.instr.scroll">Scroll pour voir la suite</span></span>
+        <span class="instr-mobile"><i class="fa-solid fa-hand-pointer"></i> <span data-i18n="modal.instr.swipe">Swipe pour voir la suite</span></span>
       </div>
       <div class="test-instruction-item">
-        <span class="instr-desktop"><i class="fa-solid fa-hand-pointer"></i> Clic au centre pour masquer l'UI</span>
-        <span class="instr-mobile"><i class="fa-solid fa-mobile-screen"></i> Appuie sur l'écran pour masquer l'UI</span>
+        <span class="instr-desktop"><i class="fa-solid fa-hand-pointer"></i> <span data-i18n="modal.instr.click_hide">Clic au centre pour masquer l'UI</span></span>
+        <span class="instr-mobile"><i class="fa-solid fa-mobile-screen"></i> <span data-i18n="modal.instr.tap_hide">Appuie sur l'écran pour masquer l'UI</span></span>
       </div>
     </div>
 
@@ -600,7 +600,7 @@
           <img class="pip-layer pip-main-layer inactive" src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=800&q=80" alt="Final Cut">
         </div>
         <div class="test-related-wrapper">
-          <div class="test-related-title">Voir Aussi</div>
+          <div class="test-related-title" data-i18n="modal.related">Voir Aussi</div>
           <div class="test-related-list" id="test-related-list"></div>
           </div>
         </div>
@@ -831,7 +831,12 @@
           el.classList.toggle('inactive', isBtsMode);
       });
       manageVideos();
-      document.getElementById('pip-view-label').innerText = isBtsMode ? "TO THE FINAL CUT" : "TO THE BTS SHOT";
+      const lng = document.documentElement.lang || 'fr';
+      if (lng === 'en') {
+          document.getElementById('pip-view-label').innerText = isBtsMode ? "TO THE FINAL CUT" : "TO THE BTS SHOT";
+      } else {
+          document.getElementById('pip-view-label').innerText = isBtsMode ? "VOIR LE RÉSULTAT" : "VOIR LES COULISSES";
+      }
   }
 
 

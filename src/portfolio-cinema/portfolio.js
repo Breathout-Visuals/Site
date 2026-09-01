@@ -25,6 +25,7 @@ const translations = {
         },
         contact: { btn: "Me Contacter" },
         modal: {
+            instr: { scroll: "Scroll pour voir la suite", swipe: "Swipe pour voir la suite", click_hide: "Clic au centre pour masquer l'UI", tap_hide: "Appuie sur l'écran pour masquer l'UI" },
             related: "Voir aussi",
             view_project: "Voir le projet",
             credits: "Crédits",
@@ -58,6 +59,7 @@ const translations = {
             copyright: "© 2025 Breathout Visuals. All rights reserved."
         },
         modal: {
+            instr: { scroll: "Scroll to see more", swipe: "Swipe to see more", click_hide: "Click center to hide UI", tap_hide: "Tap screen to hide UI" },
             related: "See also",
             view_project: "View Project",
             credits: "Credits",
