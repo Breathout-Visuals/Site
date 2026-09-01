@@ -696,6 +696,20 @@
           modal.style.display = 'block';
           void modal.offsetWidth;
           modal.classList.add('active');
+          modal.classList.remove('force-landscape-bypass');
+          document.body.style.overflow = 'hidden';
+          document.getElementById('test-instructions').classList.remove('hidden');
+          hasSeenInstructions = false;
+          isHudManuallyHidden = false;
+          const hudEl = document.getElementById('test-hud');
+          if (hudEl) hudEl.classList.remove('hidden');
+          const galEl = document.getElementById('test-gallery');
+          if (galEl) {
+              galEl.style.scrollBehavior = 'auto';
+              galEl.scrollLeft = 0;
+              galEl.style.scrollBehavior = '';
+          }
+          if (typeof setMode === 'function') setMode(false);
           
           if (typeof updateProgress === 'function') updateProgress();
           
@@ -779,38 +793,6 @@
   }
 
 
-  document.getElementById('open-test-modal').addEventListener('click', async () => {
-      // Run ingestion system before opening
-      await populateTestModal();
-      
-      // Setup PiP dynamic images again since DOM was rewritten
-      const pipBts = document.querySelector('.pip-bts-layer');
-      const pipMain = document.querySelector('.pip-main-layer');
-      if (pipBts && pipMain) {
-          const firstBts = document.querySelector('.bts-layer');
-          const firstMain = document.querySelector('.main-layer');
-          if (firstBts && firstBts.src) pipBts.src = firstBts.src;
-          if (firstMain && firstMain.src) pipMain.src = firstMain.src;
-      }
-
-    try {
-      if (!document.fullscreenElement && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        await document.documentElement.requestFullscreen();
-      }
-    } catch (e) { console.log(e); }
-    const modal = document.getElementById('da-test-modal');
-    modal.style.display = 'block';
-    void modal.offsetWidth;
-    modal.classList.add('active');
-    modal.classList.remove('force-landscape-bypass');
-    document.body.style.overflow = 'hidden';
-    document.getElementById('test-instructions').classList.remove('hidden');
-    hasSeenInstructions = false;
-    isHudManuallyHidden = false;
-    setMode(false); // Reset to Final Cut
-    updateProgress();
-  });
-  
   document.getElementById('close-test-modal').addEventListener('click', async () => {
     try {
       if (document.fullscreenElement) {
