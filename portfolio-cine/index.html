@@ -627,7 +627,7 @@
                   else if (line.startsWith('Camera:')) data.camera = line.replace('Camera:', '').trim();
                   else if (line.startsWith('Lens:')) data.lens = line.replace('Lens:', '').trim();
                   else if (line.startsWith('Format:')) data.format = line.replace('Format:', '').trim();
-                    else if (line.startsWith('Date:')) data.date = line.replace('Date:', '').trim().split(' ').pop();
+                    else if (line.startsWith('Date:')) data.date = line.replace('Date:', '').trim();
                     else if (line.startsWith('Subcategory:')) data.subcategory = line.replace('Subcategory:', '').trim();
                   else if (line.startsWith('Role:')) {
                       const r = line.replace('Role:', '').trim();
@@ -669,8 +669,9 @@
               mainEl.className = 'main-layer active' + (file.type === 'video' ? ' test-video' : '');
               
               let btsEl = document.createElement('img');
-              btsEl.src = file.bts;
-              btsEl.className = 'bts-layer inactive';
+                btsEl.src = file.bts;
+                btsEl.className = 'bts-layer inactive';
+                btsEl.onerror = function() { this.setAttribute('data-no-bts', 'true'); if (typeof updateProgress === 'function') updateProgress(); };
               
               item.appendChild(mainEl);
               item.appendChild(btsEl);
