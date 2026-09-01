@@ -532,31 +532,31 @@ function setupModal() {
         }
     });
 
-    closeBtn.addEventListener('click', closeModal);
-    backdrop.addEventListener('click', closeModal);
+    // closeBtn removed
+    // backdrop removed
 
     if (prevBtn) {
         prevBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            navigateModal(-1);
+            // navigate removed
         });
     }
 
     if (nextBtn) {
         nextBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            navigateModal(1);
+            // navigate removed
         });
     }
 
     // Escape Key & Arrows
     document.addEventListener('keydown', (e) => {
         if (!modal.classList.contains('active')) return;
-        if (e.key === 'Escape') closeModal();
+        // if (e.key === 'Escape') closeModal();
         // Arrows might conflict with carousel horizontal scroll if we implement key nav there, 
         // but for now let's keep project nav
-        if (e.key === 'ArrowLeft') navigateModal(-1);
-        if (e.key === 'ArrowRight') navigateModal(1);
+        // navigate removed
+        // navigate removed
     });
 
     // --- Deep Linking ---
