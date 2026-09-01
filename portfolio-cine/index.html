@@ -691,7 +691,7 @@
               title: testProj.title,
               descEn: testProj.desc.en,
               descFr: testProj.desc.fr,
-              roles: testProj.structuredCredits.map(c => c.originalRole),
+              roles: testProj.structuredCredits && testProj.structuredCredits.length > 0 ? testProj.structuredCredits.map(c => c.originalRole) : [testProj.role],
               camera: testProj.camera,
               lens: testProj.lens,
               format: testProj.format,
@@ -740,7 +740,7 @@
             const relatedList = document.getElementById('test-related-list');
             if (relatedList) {
                 relatedList.innerHTML = '';
-                const otherProjects = projects.filter(p => p.id != projectId && p.media && p.title).slice(0, 2);
+                const otherProjects = projects.filter(p => p.id != projectId && p.media && p.title && p.id != 10).sort(() => 0.5 - Math.random()).slice(0, 2);
                 otherProjects.forEach(op => {
                     const item = document.createElement('div');
                     item.className = 'test-related-item';
