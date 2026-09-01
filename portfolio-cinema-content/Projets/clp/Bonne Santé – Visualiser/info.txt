@@ -6,12 +6,12 @@ Role: dop
 Status: 
 Date: 08 2025
 Link: https://youtu.be/tgxDICtOiC8?si=jc08L-4kW2mw9f5q
-Description: Music visualizer for Faz’r Elengi, designed around a deliberately minimal setup. The visuals focus on the artist’s presence, rhythm and atmosphere, aiming for clarity and aesthetic coherence.
-Description Fr: Visualiser musical pour Faz’r Elengi, conçu autour d’un dispositif volontairement minimal. L’image se concentre sur la présence de l’artiste, le rythme et l’atmosphère, dans une recherche de clarté et de cohérence esthétique.
 
+Description: Music video for Faz’r Elengi, built around an artistic direction tailored to his universe and designed to complement the energy of his music.
+Description Fr: Clip musical pour Faz’r Elengi, construit autour d’une direction artistique adaptée à son univers et pensée pour accompagner l’énergie de sa musique.
 
-Camera: Alexa Caca
-Lens: Angenieux nieux
+Camera: Sony FX3
+Lens: Typoch Simera C
 Format: 16:9
 
 [CREDITS]

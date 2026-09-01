@@ -6,12 +6,12 @@ Role: dop
 Status: edit
 Date: 05 2025
 Link: 
-Description: Festival-oriented documentary focusing on contemporary shepherds and the transformation of their way of life. The film explores the coexistence of traditional practices and modern tools, portraying a rural world in transition.
-Description Fr: Documentaire destiné aux festivals consacré aux bergers contemporains et aux mutations de leur mode de vie. Le film explore la cohabitation entre pratiques traditionnelles et outils modernes, dessinant le portrait d’un monde rural en transition.
 
+Description: In the French valleys, shepherds share the challenges of passing on their knowledge and preserving an ancestral profession in a changing world.
+Description Fr: Dans les vallées françaises, des bergers témoignent des difficultés à transmettre leur savoir-faire et à préserver un métier ancestral face aux évolutions contemporaines.
 
-Camera: Alexa Caca
-Lens: Angenieux nieux
+Camera: Sony FX3
+Lens: Angénieux EZ-1
 Format: 16:9
 
 [CREDITS]

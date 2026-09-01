@@ -6,12 +6,12 @@ Role: grp
 Status: edit
 Date: 06 2026
 Link: 
-Description:  Lorum ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-Description Fr:  Lorum ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
+Description: In the dim light of his studio, a Nice-based artist creates a work of art, allowing his gestures, materials and universe to gradually come to life.
+Description Fr: Dans la pénombre de son atelier, un artiste niçois façonne une œuvre, laissant son geste, sa matière et son univers prendre progressivement vie.
 
-Camera: Alexa Caca
-Lens: Angenieux nieux
-Format: 16:9
+Camera: Arri Alexa Mini
+Lens: Angénieux 25-250mm HR
+Format: 
 
 [CREDITS]

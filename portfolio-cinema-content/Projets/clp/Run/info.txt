@@ -6,9 +6,10 @@ Role: dop
 Status: edit
 Date: 08 2026
 Link: 
-Description: Description coming soon. Lorum ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-Description Fr: Description à venir. Lorum ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
-Camera: Alexa Caca
-Lens: Angenieux nieux
-Format: 16:9
+Description: Following a robbery, a relentless chase moves through three radically different artistic worlds, centred around a mysterious object that becomes the focus of a frantic pursuit.
+Description Fr: Après un braquage, une course-poursuite sans relâche traverse trois directions artistiques radicalement différentes, autour d’un mystérieux objet devenu l’enjeu d’une quête effrénée.
+
+Camera: Arri Alexa Mini
+Lens: Arri Ultra Prime
+Format: 

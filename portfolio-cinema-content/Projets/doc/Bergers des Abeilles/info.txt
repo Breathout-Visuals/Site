@@ -6,12 +6,12 @@ Role: dop
 Status: 
 Date: 04 2025
 Link: 
-Description: Festival-oriented documentary following the daily lives of beekeepers and highlighting the essential role of bees. The film adopts an immersive, field-driven approach, giving space to gestures, landscapes and the passage of time.
-Description Fr: Documentaire destiné aux festivals, suivant le quotidien d’apiculteurs et mettant en lumière le rôle fondamental des abeilles. Le film adopte une approche immersive, ancrée dans le terrain, laissant une large place aux gestes, aux paysages et au temps long.
 
+Description: Through the lives of beekeepers, the film explores the transmission of essential knowledge and the challenges of preserving an ancestral practice.
+Description Fr: À travers le parcours d’apiculteurs, le film explore la transmission d’un savoir-faire essentiel et les difficultés rencontrées pour préserver une pratique ancestrale.
 
-Camera: Alexa Caca
-Lens: Angenieux nieux
+Camera: Sony FX3
+Lens: Angénieux EZ-1
 Format: 16:9
 
 [CREDITS]

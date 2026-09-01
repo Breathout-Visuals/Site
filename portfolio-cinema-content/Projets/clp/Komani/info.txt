@@ -6,13 +6,13 @@ Role: dir
 Status: edit
 Date: 08 2025
 Link: 
-Description: Music video for Faz’r Elengi, shot across multiple locations with contrasting atmospheres. The project combines visual storytelling, raw energy and more complex technical sequences to build a strong, dynamic universe.
-Description Fr: Clip musical pour Faz’r Elengi, tourné dans plusieurs lieux aux ambiances contrastées. Le projet combine narration visuelle, énergie brute et séquences techniques plus complexes, afin de construire un univers fort et rythmé.
 
+Description: Music video for Faz’r Elengi, built around an artistic direction tailored to his universe, designed to complement the energy, rhythm and identity of his music.
+Description Fr: Clip musical pour Faz’r Elengi, construit autour d’une direction artistique adaptée à son univers, pensée pour accompagner l’énergie, le rythme et l’identité de sa musique.
 
-Camera: Alexa Caca
-Lens: Angenieux nieux
-Format: 16:9
+Camera: RED V-Raptor
+Lens: DZO Pavo Anamorphic
+Format: 21:9
 
 [CREDITS]
 producer:

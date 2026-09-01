@@ -6,13 +6,13 @@ Role: kgr
 Status: edit
 Date: 11 2025
 Link: https://www.youtube.com/watch?v=0o7v2v1dPTc
-Description:  Lorum ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-Description Fr:  Lorum ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
+Description: In a housing estate in Cannes, Hamza devotes his time to his grandfather with Alzheimer's, while his mother tries to free him from an increasingly consuming sacrifice.
+Description Fr: Dans une cité cannoise, Hamza consacre son temps à son grand-père atteint d’Alzheimer, tandis que sa mère tente de l’éloigner d’un sacrifice devenu envahissant.
 
-Camera: Alexa Caca
-Lens: Angenieux nieux
-Format: 16:9
+Camera: Arri Alexa Mini
+Lens: Angénieux 25-250mm HR
+Format: 
 
 [CREDITS]
 producer:

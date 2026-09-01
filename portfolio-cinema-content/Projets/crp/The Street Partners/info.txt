@@ -6,13 +6,13 @@ Role: dop
 Status: 
 Date: 07 2025
 Link: 
-Description: Corporate commercial created for The Street Partners. A clean, contemporary visual approach designed to enhance branding and convey a clear, elegant and controlled professional image.
-Description Fr: Film publicitaire corporate réalisé pour The Street Partners. Une approche visuelle sobre et contemporaine, pensée pour valoriser le branding et transmettre une image professionnelle claire, élégante et maîtrisée.
 
+Description: An advertisement for The Street Partners blending sport, relaxation and style through a dynamic urban universe driven by energy and movement.
+Description Fr: Une publicité pour The Street Partners mêlant sport, détente et style, à travers un univers urbain dynamique porté par l’énergie et le mouvement.
 
-Camera: Alexa Caca
-Lens: Angenieux nieux
-Format: 16:9
+Camera: Sony FX3
+Lens: Typoch Simera C
+Format: 9:16
 
 [CREDITS]
 producer:

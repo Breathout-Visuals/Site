@@ -6,12 +6,12 @@ Role: dir
 Status: 
 Date: 09 2025
 Link: 
-Description: Music video for the artist VIO, driven by constant energy and a strong sense of rhythm. The visual universe blends dance, performance and bold contrasts in support of a confident identity.
-Description Fr: Clip musical pour l’artiste VIO, porté par une énergie constante et un rythme soutenu. L’univers visuel mêle danse, performance et contrastes marqués, au service d’une identité affirmée.
 
+Description: Music video developed for the artist, with an artistic direction built around their universe, identity and creative intentions.
+Description Fr: Clip musical développé pour l’artiste, avec une direction artistique construite autour de son univers, de son identité et de ses intentions créatives.
 
-Camera: Alexa Caca
-Lens: Angenieux nieux
+Camera: Sony FX3
+Lens: Typoch Simera C
 Format: 16:9
 
 [CREDITS]

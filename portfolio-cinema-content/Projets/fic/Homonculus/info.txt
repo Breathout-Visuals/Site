@@ -6,12 +6,12 @@ Role: grp
 Status: 
 Date: 04 2026
 Link: https://youtu.be/nK3sbmGYcG8
-Description: Homonculus is a short film produced with a professional approach, intended for TV broadcast and festival screenings. The project brought together a crew of students, industry professionals, and alumni, merging diverse experiences around a shared goal: creating an ambitious and demanding piece of work.
-Description Fr: Homonculus est un court métrage réalisé dans une démarche professionnelle, pensé pour une diffusion en chaîne et une présentation en festivals. Le projet a rassemblé une équipe composée d’étudiants, de professionnels du cinéma et d’anciens étudiants, réunissant différentes expériences autour d’une ambition commune : créer une œuvre ambitieuse et exigeante.
 
+Description: After a student disappears, her only classmate begins searching for her within a school where secrets seem to multiply.
+Description Fr: Après la disparition d’une élève, sa seule camarade de classe se lance à sa recherche au cœur d’une école où les secrets semblent se multiplier.
 
-Camera: Alexa Caca
-Lens: Angenieux nieux
+Camera: Arri Alexa 35
+Lens: Zeiss B-Speed
 Format: 16:9
 
 [CREDITS]

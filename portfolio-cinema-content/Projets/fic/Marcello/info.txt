@@ -6,13 +6,13 @@ Role: kgr
 Status: edit
 Date: 09 2025
 Link: 
-Description: Festival-oriented short film produced through a non-profit association. Set in the world of Nice journalism in the 1980s, with close attention to atmosphere, historical context and period tensions.
-Description Fr: Court-métrage destiné aux festivals, produit en association. Le film plonge dans le milieu du journalisme niçois des années 1980, avec une attention particulière portée à l’atmosphère, au contexte historique et aux tensions de l’époque.
 
+Description: In the world of Nice journalism during the 1980s, Marcello tries to find his place and establish himself in a competitive environment.
+Description Fr: Dans le milieu du journalisme niçois des années 1980, Marcello tente de trouver sa place et de s’imposer dans un univers compétitif.
 
-Camera: Alexa Caca
-Lens: Angenieux nieux
-Format: 16:9
+Camera: Sony FX3
+Lens: MIR soviétiques
+Format: 
 
 [CREDITS]
 producer:
