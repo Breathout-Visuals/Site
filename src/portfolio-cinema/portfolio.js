@@ -190,6 +190,8 @@ function setupLanguageSwitch() {
 }
 
 function updateContent() {
+    document.documentElement.lang = currentLang;
+
     // 1. Static UI elements
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
