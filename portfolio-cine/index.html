@@ -629,6 +629,8 @@
                   else if (line.startsWith('Format:')) data.format = line.replace('Format:', '').trim();
                     else if (line.startsWith('Date:')) data.date = line.replace('Date:', '').trim();
                     else if (line.startsWith('Subcategory:')) data.subcategory = line.replace('Subcategory:', '').trim();
+                    else if (line.startsWith('Date:')) data.date = line.replace('Date:', '').trim();
+                    else if (line.startsWith('Subcategory:')) data.subcategory = line.replace('Subcategory:', '').trim();
                   else if (line.startsWith('Role:')) {
                       const r = line.replace('Role:', '').trim();
                       if (r) data.roles.push(r);
@@ -642,7 +644,23 @@
           
           document.getElementById('test-hud-title').innerText = data.title || '';
           document.querySelector('.test-hud-desc').innerText = lang === 'fr' ? (data.descFr || data.descEn || '') : (data.descEn || '');
-          document.querySelector('.test-hud-meta').innerText = "Short Film — " + translatedRoles.join(' & ');
+          
+            const dateLib = LIBRARY.dates || {};
+            let finalDate = '';
+            if (data.date) {
+                const parts = data.date.split(' ');
+                if (parts.length === 2) {
+                    const m = parts[0];
+                    const y = parts[1];
+                    finalDate = (dateLib[m] && dateLib[m][lang] ? dateLib[m][lang] : m) + ' ' + y;
+                } else {
+                    finalDate = data.date;
+                }
+            }
+            const catLib = LIBRARY.subcategories || {};
+            const translatedSubcat = data.subcategory && catLib[data.subcategory] && catLib[data.subcategory][lang] ? catLib[data.subcategory][lang] : (data.subcategory || 'Short Film');
+            document.querySelector('.test-hud-meta').innerText = translatedSubcat + ' — ' + translatedRoles.join(' & ') + (finalDate ? ' — ' + finalDate : '');
+
           
           const techText = [data.camera, data.lens, data.format].filter(Boolean).join(' &nbsp; • &nbsp; ');
           document.querySelector('.test-hud-tech').innerHTML = techText;
@@ -812,11 +830,33 @@
   }
 
   function updateProgress() {
-    const maxScroll = gallery.scrollWidth - gallery.clientWidth;
-    if (maxScroll <= 0) { progressBar.style.width = '0%'; return; }
-    const percent = (gallery.scrollLeft / maxScroll) * 100;
-    progressBar.style.width = percent + '%';
-  }
+      const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+      if (maxScroll <= 0) { progressBar.style.width = '0%'; return; }
+      const percent = (gallery.scrollLeft / maxScroll) * 100;
+      progressBar.style.width = percent + '%';
+
+      const items = document.querySelectorAll('.test-gallery-item');
+      const activeIndex = Math.round(gallery.scrollLeft / gallery.clientWidth);
+      const activeBts = items[activeIndex] ? items[activeIndex].querySelector('.bts-layer') : null;
+      
+      const swapTrigger = document.getElementById('swap-trigger');
+      
+      if (items[activeIndex]) {
+          const mainL = items[activeIndex].querySelector('.main-layer');
+          const btsL = items[activeIndex].querySelector('.bts-layer');
+          const pipMain = document.querySelector('.pip-main-layer');
+          const pipBts = document.querySelector('.pip-bts-layer');
+          if (mainL && pipMain) pipMain.src = mainL.src || mainL.currentSrc || '';
+          if (btsL && pipBts) pipBts.src = btsL.src || '';
+      }
+      
+      if (activeBts && activeBts.getAttribute('data-no-bts') === 'true') {
+          swapTrigger.style.display = 'none';
+          if (isBtsMode) setMode(false);
+      } else {
+          swapTrigger.style.display = 'flex';
+      }
+    }
 
   function manageVideos() {
       const videos = gallery.querySelectorAll('video.test-video');
