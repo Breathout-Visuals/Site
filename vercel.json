@@ -1,18 +1,21 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/lucas-jacquot",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/lucas-jacquot",
-      "destination": "/portfolio-cine/index.html"
-    },
-    {
-      "source": "/lucas-jacquot/",
-      "destination": "/portfolio-cine/index.html"
+      "destination": "/portfolio-cine/"
     },
     {
       "source": "/lucas-jacquot/photos",
-      "destination": "/portfolio-cine/photos.html"
+      "destination": "/portfolio-cine/photos"
     },
     {
       "source": "/lucas-jacquot/(.*)",
