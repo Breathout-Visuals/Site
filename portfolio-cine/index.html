@@ -1035,7 +1035,7 @@ manageVideos();
           diffY = 0;
       }
       
-      if (Math.abs(diffX) > 25 && Math.abs(diffX) > Math.abs(diffY) * 0.8) {
+      if (Math.abs(diffX) > 15 && Math.abs(diffX) > Math.abs(diffY) * 0.6) {
           isWheeling = true;
           const direction = diffX > 0 ? 1 : -1;
           const currentIndex = Math.round(gallery.scrollLeft / gallery.clientWidth);
