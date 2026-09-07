@@ -474,6 +474,7 @@ function setupModal() {
 
         const openModal = (projectId) => {
         if (projectId == 10 || projectId === '10') {
+            modal.style.pointerEvents = 'auto';
             
         // 1. CLEANUP PREVIOUS STATE
         if (window.currentCarousel) {
@@ -980,6 +981,7 @@ function setupModal() {
     };
     
     const closeModal = () => {
+        modal.style.pointerEvents = 'none';
         modal.classList.remove('active');
         document.body.style.overflow = '';
 

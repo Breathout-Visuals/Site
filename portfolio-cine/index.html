@@ -548,6 +548,7 @@
 
 
 <div class="test-modal-overlay" id="da-test-modal">
+  <div id="anim-blocker" style="position: absolute; inset: 0; z-index: 999999; background: transparent; display: none;"></div>
   <div class="test-rotate-message">
     <i class="fa-solid fa-mobile-screen-button"></i>
     <p>Veuillez tourner votre appareil<br>pour une expérience optimale</p>
@@ -735,6 +736,13 @@
           if (firstVid) firstVid.play().catch(e => console.log('Autoplay blocked', e));
 
           const modal = document.getElementById('da-test-modal');
+          modal.style.pointerEvents = 'auto';
+          const blocker = document.getElementById('anim-blocker');
+          if (blocker) {
+              blocker.style.display = 'block';
+              setTimeout(() => { blocker.style.display = 'none'; }, 2000);
+          }
+          if (typeof hudTimeout !== 'undefined') clearTimeout(hudTimeout);
           modal.style.display = 'block';
           void modal.offsetWidth;
           modal.classList.add('active');
@@ -748,8 +756,12 @@
           const galEl = document.getElementById('test-gallery');
           if (galEl) {
               galEl.style.scrollBehavior = 'auto';
+              galEl.scrollTo(0, 0);
               galEl.scrollLeft = 0;
-              galEl.style.scrollBehavior = '';
+              requestAnimationFrame(() => {
+                  galEl.scrollLeft = 0;
+                  galEl.style.scrollBehavior = '';
+              });
           }
           if (typeof setMode === 'function') setMode(false);
           
@@ -847,6 +859,7 @@
       }
     } catch (e) {}
     const modal = document.getElementById('da-test-modal');
+    modal.style.pointerEvents = 'none';
     modal.classList.remove('active');
     document.body.style.overflow = '';
     setTimeout(() => { 
