@@ -498,7 +498,7 @@ export const projects = [
     "link": "https://youtu.be/nK3sbmGYcG8",
     "camera": "Arri Alexa 35",
     "lens": "Zeiss B-Speed",
-    "format": "16:9",
+    "format": "",
     "desc": {
         "fr": "Après la disparition d’une élève, sa seule camarade de classe se lance à sa recherche au cœur d’une école où les secrets semblent se multiplier.",
         "en": "After a student disappears, her only classmate begins searching for her within a school where secrets seem to multiply."
@@ -561,7 +561,7 @@ export const projects = [
     "link": "https://youtu.be/fJYaTO2tbA4",
     "camera": "Arri Alexa 35",
     "lens": "Cooke S3/i + Angénieux 25-250mm HR",
-    "format": "2.39:1",
+    "format": "",
     "desc": {
         "fr": "Un jeune homme retourne voir sa mère pour lui révéler son identité queer et son départ pour Las Vegas, malgré son profond mépris envers cette communauté.",
         "en": "A young man returns to his mother to reveal his queer identity and plans to leave for Las Vegas, despite her deep contempt for the community."
@@ -667,7 +667,7 @@ export const projects = [
     "link": "https://youtu.be/Mrxr60GwegA?si=FsYsjUN6Du7rdpwQ",
     "camera": "Arri Alexa 35",
     "lens": "Cooke S3/i",
-    "format": "21:9",
+    "format": "",
     "desc": {
         "fr": "Une publicité décalée où la Mort, repoussée par une mauvaise haleine, offre finalement un Fisherman’s Friend à celui qu’elle était venue chercher.",
         "en": "An offbeat advertisement where Death, repelled by bad breath, ultimately offers a Fisherman’s Friend to the person she came to collect."
@@ -740,7 +740,7 @@ export const projects = [
     "link": "https://youtu.be/-Emi3lXQOys",
     "camera": "Alexa Caca",
     "lens": "Angenieux nieux",
-    "format": "16:9",
+    "format": "",
     "desc": {
         "fr": "Court-métrage réalisé pour le Nikon Film Festival 2025. Le film explore les notions de transmission, de perception de soi et de liens intergénérationnels, à travers une approche sensible et introspective, centrée sur le regard que l’on porte sur les autres et sur soi-même.",
         "en": "Short film created for the Nikon Film Festival 2025. The film explores themes of transmission, self-perception and intergenerational relationships through a sensitive, introspective approach focused on how we view others and ourselves."
@@ -803,7 +803,7 @@ export const projects = [
     "link": "https://youtu.be/XE4fg93ZOfc",
     "camera": "Sony FX9",
     "lens": "Sony SCL",
-    "format": "16:9",
+    "format": "",
     "desc": {
         "fr": "Une jeune femme voulant percer dans la musique se retrouve confrontée à un producteur corrompu et manipulateur, dont les intentions dépassent largement le cadre professionnel.",
         "en": "A young woman pursuing a career in music confronts a corrupt and manipulative producer whose intentions extend far beyond the professional sphere."
@@ -914,7 +914,7 @@ export const projects = [
     "link": "https://youtu.be/LFv09FZMiSM",
     "camera": "Alexa Caca",
     "lens": "Angenieux nieux",
-    "format": "16:9",
+    "format": "",
     "desc": {
         "fr": "Court-métrage réalisé pour le Nikon Film Festival 2025. Le film explore la fragilité d’un couple confronté à une hospitalisation soudaine, en s’attachant aux silences, aux regards et à l’intimité émotionnelle.",
         "en": "Short film created for the Nikon Film Festival 2025. The film explores the fragility of a couple facing a sudden hospitalization, focusing on silence, glances and emotional intimacy."
@@ -962,7 +962,7 @@ export const projects = [
     "link": "",
     "camera": "Sony FX3",
     "lens": "Typoch Simera C",
-    "format": "16:9",
+    "format": "",
     "desc": {
         "fr": "Clip musical développé pour l’artiste, avec une direction artistique construite autour de son univers, de son identité et de ses intentions créatives.",
         "en": "Music video developed for the artist, with an artistic direction built around their universe, identity and creative intentions."
@@ -1058,7 +1058,7 @@ export const projects = [
     "link": "https://youtu.be/tgxDICtOiC8?si=jc08L-4kW2mw9f5q",
     "camera": "Sony FX3",
     "lens": "Typoch Simera C",
-    "format": "16:9",
+    "format": "",
     "desc": {
         "fr": "Clip musical pour Faz’r Elengi, construit autour d’une direction artistique adaptée à son univers et pensée pour accompagner l’énergie de sa musique.",
         "en": "Music video for Faz’r Elengi, built around an artistic direction tailored to his universe and designed to complement the energy of his music."
@@ -1111,7 +1111,7 @@ export const projects = [
     "link": "",
     "camera": "RED V-Raptor",
     "lens": "DZO Pavo Anamorphic",
-    "format": "21:9",
+    "format": "",
     "desc": {
         "fr": "Clip musical pour Faz’r Elengi, construit autour d’une direction artistique adaptée à son univers, pensée pour accompagner l’énergie, le rythme et l’identité de sa musique.",
         "en": "Music video for Faz’r Elengi, built around an artistic direction tailored to his universe, designed to complement the energy, rhythm and identity of his music."
@@ -1164,7 +1164,7 @@ export const projects = [
     "link": "",
     "camera": "Sony FX3",
     "lens": "Typoch Simera C",
-    "format": "9:16",
+    "format": "",
     "desc": {
         "fr": "Une publicité pour The Street Partners mêlant sport, détente et style, à travers un univers urbain dynamique porté par l’énergie et le mouvement.",
         "en": "An advertisement for The Street Partners blending sport, relaxation and style through a dynamic urban universe driven by energy and movement."
@@ -1222,7 +1222,7 @@ export const projects = [
     "link": "https://youtu.be/P_eesdexjfs?si=XZgBzbj4_jNqJE2F",
     "camera": "Alexa Caca",
     "lens": "Angenieux nieux",
-    "format": "16:9",
+    "format": "",
     "desc": {
         "fr": "Film de mariage tourné au Mas des 5 Fontaines. Une approche sensible mêlant captation documentaire et écriture cinématographique, cherchant à retranscrire l’émotion, les détails et l’atmosphère de la journée.",
         "en": "Wedding film shot at Mas des 5 Fontaines. A sensitive approach blending documentary capture and cinematic storytelling, aiming to convey emotion, detail and the atmosphere of the day."
@@ -1280,7 +1280,7 @@ export const projects = [
     "link": "",
     "camera": "Sony FX3",
     "lens": "Typoch Simera C",
-    "format": "16:9",
+    "format": "",
     "desc": {
         "fr": "Après la mort de ses parents, un jeune homme retrouve sa maison familiale, où d’anciens souvenirs ressurgissent et alimentent progressivement une profonde paranoïa.",
         "en": "After his parents' death, a young man returns to his family home, where old memories resurface and gradually fuel a deep sense of paranoia."
@@ -1338,7 +1338,7 @@ export const projects = [
     "link": "",
     "camera": "Sony FX3",
     "lens": "Angénieux EZ-1",
-    "format": "16:9",
+    "format": "",
     "desc": {
         "fr": "Dans les vallées françaises, des bergers témoignent des difficultés à transmettre leur savoir-faire et à préserver un métier ancestral face aux évolutions contemporaines.",
         "en": "In the French valleys, shepherds share the challenges of passing on their knowledge and preserving an ancestral profession in a changing world."
@@ -1396,7 +1396,7 @@ export const projects = [
     "link": "",
     "camera": "Sony FX3",
     "lens": "Angénieux EZ-1",
-    "format": "16:9",
+    "format": "",
     "desc": {
         "fr": "À travers le parcours d’apiculteurs, le film explore la transmission d’un savoir-faire essentiel et les difficultés rencontrées pour préserver une pratique ancestrale.",
         "en": "Through the lives of beekeepers, the film explores the transmission of essential knowledge and the challenges of preserving an ancestral practice."
@@ -1444,7 +1444,7 @@ export const projects = [
     "link": "",
     "camera": "Alexa Caca",
     "lens": "Angenieux nieux",
-    "format": "16:9",
+    "format": "",
     "desc": {
         "fr": "Série de vidéos YouTube dédiées à l’immobilier, tournée à l’international, notamment en Afrique du Sud, en Suisse, en France, au Canada et aux Émirats arabes unis. Un format mobile et dynamique, pensé pour s’adapter à des contextes variés tout en restant accessible et informatif.",
         "en": "YouTube video series focused on real estate, shot internationally across South Africa, Switzerland, France, Canada and the United Arab Emirates. A mobile, dynamic format designed to adapt to diverse contexts while remaining accessible and informative."
@@ -1507,7 +1507,7 @@ export const projects = [
     "link": "https://youtu.be/df6oxIY3-1U",
     "camera": "Sony FX3",
     "lens": "Typoch Simera C",
-    "format": "16:9",
+    "format": "",
     "desc": {
         "fr": "Clip musical pour Faz’r Elengi, développé autour d’une direction artistique pensée en collaboration avec l’artiste et adaptée à son univers musical.",
         "en": "Music video for Faz’r Elengi, developed around an artistic direction created in collaboration with the artist and tailored to his musical universe."

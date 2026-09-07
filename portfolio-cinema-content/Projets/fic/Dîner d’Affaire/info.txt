@@ -12,7 +12,6 @@ Description Fr: Une jeune femme voulant percer dans la musique se retrouve confr
 
 Camera: Sony FX9
 Lens: Sony SCL
-Format: 16:9
 
 [CREDITS]
 producer:

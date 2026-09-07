@@ -12,7 +12,6 @@ Description Fr: Clip musical pour Faz’r Elengi, construit autour d’une direc
 
 Camera: Sony FX3
 Lens: Typoch Simera C
-Format: 16:9
 
 [CREDITS]
 producer:

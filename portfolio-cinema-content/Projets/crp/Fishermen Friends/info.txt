@@ -12,7 +12,6 @@ Description Fr: Une publicité décalée où la Mort, repoussée par une mauvais
 
 Camera: Arri Alexa 35
 Lens: Cooke S3/i
-Format: 21:9
 
 [CREDITS]
 producer:

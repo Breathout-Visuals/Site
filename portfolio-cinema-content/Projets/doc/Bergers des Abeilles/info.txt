@@ -12,7 +12,6 @@ Description Fr: À travers le parcours d’apiculteurs, le film explore la trans
 
 Camera: Sony FX3
 Lens: Angénieux EZ-1
-Format: 16:9
 
 [CREDITS]
 producer:

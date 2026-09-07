@@ -12,4 +12,3 @@ Description Fr: Après un braquage, une course-poursuite sans relâche traverse 
 
 Camera: Arri Alexa Mini
 Lens: Arri Ultra Prime
-Format: 

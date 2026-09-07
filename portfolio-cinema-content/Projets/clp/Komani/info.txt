@@ -12,7 +12,6 @@ Description Fr: Clip musical pour Faz’r Elengi, construit autour d’une direc
 
 Camera: RED V-Raptor
 Lens: DZO Pavo Anamorphic
-Format: 21:9
 
 [CREDITS]
 producer:

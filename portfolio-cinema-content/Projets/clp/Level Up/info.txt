@@ -12,7 +12,6 @@ Description Fr: Clip musical développé pour l’artiste, avec une direction ar
 
 Camera: Sony FX3
 Lens: Typoch Simera C
-Format: 16:9
 
 [CREDITS]
 producer:
