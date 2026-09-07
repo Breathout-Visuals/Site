@@ -3154,7 +3154,7 @@ body, html {
 
 
 /* --- MODAL DA TEST --- */
-.test-modal-overlay { --cqw: calc(min(90vw, 90dvh * 16 / 9) / 100); position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 9000; display: none; opacity: 0; transition: opacity 0.5s ease; cursor: pointer; touch-action: none; }
+.test-modal-overlay { --cqw: calc(min(90vw, 90dvh * 16 / 9) / 100); position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 9000; display: none; opacity: 0; transition: opacity 0.5s ease; cursor: pointer; }
 .test-modal-overlay.active { opacity: 1; }
 
 .test-modal-frame {
@@ -3178,7 +3178,9 @@ body, html {
 .test-progress-bar { height: 100%; width: 0%; background: #fff; transition: width 0.3s ease-out; box-shadow: 0 0 10px rgba(255,255,255,0.5); }
 
 /* Gallery & Crossfade */
-.test-cinematic-gallery { position: absolute; inset: 1px; display: flex !important; overflow: hidden; scrollbar-width: none; cursor: none; border-radius: calc(1.1 * var(--cqw)); touch-action: none; }
+.test-cinematic-gallery { position: absolute; inset: 1px; display: flex !important; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scrollbar-width: none; cursor: none; border-radius: calc(1.1 * var(--cqw));  }
+.test-cinematic-gallery::-webkit-scrollbar { display: none; }
+.test-gallery-item { scroll-snap-align: center; scroll-snap-stop: always; }
 .test-gallery-item { flex: 0 0 100%; position: relative; height: 100%; }
 .test-cinematic-gallery img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
 .main-layer, .bts-layer { position: absolute; inset: 0; transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
