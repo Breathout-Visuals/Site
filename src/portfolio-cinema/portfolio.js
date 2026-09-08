@@ -2751,21 +2751,15 @@ window.openRandomProject = function(event) {
         event.preventDefault();
     }
     
-    // Close the current modal
-    const closeBtn = document.getElementById('close-test-modal');
-    if (closeBtn) closeBtn.click();
-    
-    // Filter available projects (exclude instagram reel '10')
+    // Filter available projects (exclude instagram reel '10' and current project if possible)
     const available = projects.filter(p => p.id != 10 && p.id != '10');
     if (available.length === 0) return;
     
     // Pick a random project
     const randomProject = available[Math.floor(Math.random() * available.length)];
     
-    // Wait for the modal close animation to finish (roughly 500-800ms) before opening the new one
-    setTimeout(() => {
-        if (window.openModal) {
-            window.openModal(randomProject.id);
-        }
-    }, 600);
+    // Seamless switch without closing the modal
+    if (typeof window.populateTestModal === 'function') {
+        window.populateTestModal(randomProject.id);
+    }
 };
