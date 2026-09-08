@@ -3309,7 +3309,7 @@ body, html {
     100% { transform: rotate(-90deg); }
 }
 
-@media (orientation: portrait), (max-aspect-ratio: 1/1) {
+@media (pointer: coarse) and (orientation: portrait), (pointer: coarse) and (max-aspect-ratio: 1/1) {
     .test-modal-overlay.active:not(.force-landscape-bypass) .test-rotate-message {
         opacity: 1 !important;
         pointer-events: auto !important;
@@ -3487,7 +3487,7 @@ body, html {
 }
 
 /* Bypass state (Portrait orientation but forced sideways video) - Physical Top/Bottom */
-@media (orientation: portrait), (max-aspect-ratio: 1/1) {
+@media (pointer: coarse) and (orientation: portrait), (pointer: coarse) and (max-aspect-ratio: 1/1) {
   .test-modal-overlay.force-landscape-bypass .modal-random-nav {
     width: 100vw;
     height: 10vh;
