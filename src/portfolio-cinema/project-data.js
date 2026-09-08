@@ -738,8 +738,8 @@ export const projects = [
     "sortWeight": 202512,
     "status": "",
     "link": "https://youtu.be/-Emi3lXQOys",
-    "camera": "Alexa Caca",
-    "lens": "Angenieux nieux",
+    "camera": "Sony FX3",
+    "lens": "Dzo Catta Ace",
     "format": "",
     "desc": {
         "fr": "Court-métrage réalisé pour le Nikon Film Festival 2025. Le film explore les notions de transmission, de perception de soi et de liens intergénérationnels, à travers une approche sensible et introspective, centrée sur le regard que l’on porte sur les autres et sur soi-même.",
@@ -912,8 +912,8 @@ export const projects = [
     "sortWeight": 202511,
     "status": "",
     "link": "https://youtu.be/LFv09FZMiSM",
-    "camera": "Alexa Caca",
-    "lens": "Angenieux nieux",
+    "camera": "Sony FX3",
+    "lens": "Gmaster",
     "format": "",
     "desc": {
         "fr": "Court-métrage réalisé pour le Nikon Film Festival 2025. Le film explore la fragilité d’un couple confronté à une hospitalisation soudaine, en s’attachant aux silences, aux regards et à l’intimité émotionnelle.",
@@ -1013,7 +1013,7 @@ export const projects = [
     "sortWeight": 202509,
     "status": "edit",
     "link": "",
-    "camera": "Sony FX3",
+    "camera": "Sony FX9",
     "lens": "MIR soviétiques",
     "format": "",
     "desc": {
@@ -1220,8 +1220,8 @@ export const projects = [
     "sortWeight": 202507,
     "status": "",
     "link": "https://youtu.be/P_eesdexjfs?si=XZgBzbj4_jNqJE2F",
-    "camera": "Alexa Caca",
-    "lens": "Angenieux nieux",
+    "camera": "Sony FX6",
+    "lens": "Angenieux EZ-1",
     "format": "",
     "desc": {
         "fr": "Film de mariage tourné au Mas des 5 Fontaines. Une approche sensible mêlant captation documentaire et écriture cinématographique, cherchant à retranscrire l’émotion, les détails et l’atmosphère de la journée.",
@@ -1336,7 +1336,7 @@ export const projects = [
     "sortWeight": 202505,
     "status": "edit",
     "link": "",
-    "camera": "Sony FX3",
+    "camera": "Sony FX6",
     "lens": "Angénieux EZ-1",
     "format": "",
     "desc": {
@@ -1394,7 +1394,7 @@ export const projects = [
     "sortWeight": 202504,
     "status": "",
     "link": "",
-    "camera": "Sony FX3",
+    "camera": "Sony FX6",
     "lens": "Angénieux EZ-1",
     "format": "",
     "desc": {
@@ -1442,8 +1442,8 @@ export const projects = [
     "sortWeight": 202501,
     "status": "",
     "link": "",
-    "camera": "Alexa Caca",
-    "lens": "Angenieux nieux",
+    "camera": "Sony FX3",
+    "lens": "Gmaster",
     "format": "",
     "desc": {
         "fr": "Série de vidéos YouTube dédiées à l’immobilier, tournée à l’international, notamment en Afrique du Sud, en Suisse, en France, au Canada et aux Émirats arabes unis. Un format mobile et dynamique, pensé pour s’adapter à des contextes variés tout en restant accessible et informatif.",
