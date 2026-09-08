@@ -464,6 +464,7 @@ nav {
 .nav-links a {
   font-size: 0.9rem;
   font-weight: 400;
+  white-space: nowrap;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   /* Reduced from 0.05em */

@@ -15,21 +15,6 @@
   
 
 </script>
-    <script>
-      // Desktop Zoom Polyfill: Force desktop browsers to scale down exactly like mobile viewport
-      (function() {
-        function applyDesktopZoom() {
-          if (window.matchMedia('(pointer: fine)').matches && window.innerWidth < 1100) {
-            document.documentElement.style.zoom = window.innerWidth / 1100;
-          } else {
-            document.documentElement.style.zoom = 1;
-          }
-        }
-        window.addEventListener('resize', applyDesktopZoom);
-        window.addEventListener('DOMContentLoaded', applyDesktopZoom);
-        applyDesktopZoom();
-      })();
-    </script>
   <title>Lucas Jacquot | Filmmaker</title>
   <meta name="description" content="Portfolio of a visual storyteller and filmmaker based in Paris.">
   <meta name="google" content="notranslate" />
