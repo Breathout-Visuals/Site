@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/portfolio-freelance/generate.cjs && node scripts/portfolio-cinema/generate-data.cjs && vite",
-    "build": "node scripts/portfolio-freelance/generate.cjs && node scripts/portfolio-cinema/generate-data.cjs && vite build",
+    "build": "npm run validate && node scripts/portfolio-freelance/generate.cjs && node scripts/portfolio-cinema/generate-data.cjs && vite build",
     "gen": "node scripts/portfolio-freelance/generate.cjs && node scripts/portfolio-cinema/generate-data.cjs",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "validate": "node scripts/validate-infos.cjs"
   },
   "devDependencies": {
     "vite": "^7.2.4"
