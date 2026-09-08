@@ -600,6 +600,8 @@ nav {
 }
 
 .hero-content {
+  container-type: inline-size;
+  container-name: hero;
   text-align: center;
   z-index: 1;
   width: 100%;
@@ -622,13 +624,14 @@ nav {
 
 .stagger-text .line {
   display: block;
-  font-size: clamp(4rem, 13vw, 11rem);
+  font-size: 12.5cqw;
   font-weight: 700;
   /* Bolder */
   text-transform: uppercase;
   letter-spacing: -0.04em;
   opacity: 0;
   animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  white-space: nowrap;
 }
 
 .stagger-text .line.italic {
@@ -638,8 +641,8 @@ nav {
   /* Bold Italic */
   text-transform: lowercase;
   letter-spacing: -0.02em;
-  margin-top: 1rem;
-  font-size: clamp(3rem, 10vw, 8rem);
+  margin-top: 2cqw;
+  font-size: 9.5cqw;
 }
 
 .stagger-text .line:nth-child(1) {
@@ -3344,4 +3347,32 @@ body, html {
   .test-related-item { width: calc(18.0 * var(--cqw)); }
   .test-related-title { font-size: calc(1.2 * var(--cqw)); }
   .test-related-item .hover-title { font-size: calc(1.1 * var(--cqw)); }
+}
+
+
+/* --- PROJECT CARD CONTAINER QUERIES --- */
+.project-card {
+  container-type: inline-size;
+  container-name: card;
+}
+.project-card .project-title {
+  font-size: 8cqw !important;
+  margin-bottom: 1.5cqw !important;
+  line-height: 1 !important;
+}
+.project-card .project-category {
+  font-size: 2.2cqw !important;
+}
+.project-card .role-badge,
+.project-card .status-badge {
+  font-size: 2cqw !important;
+  padding: 1cqw 2cqw !important;
+}
+.project-card .project-info {
+  padding: 5cqw !important;
+}
+.project-card .project-overlay-role {
+  top: 4cqw !important;
+  right: 4cqw !important;
+  left: auto !important;
 }
