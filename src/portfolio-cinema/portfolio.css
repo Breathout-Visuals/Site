@@ -3452,18 +3452,6 @@ body, html {
 /* Show on all mobile screens when modal is active */
 @media (max-width: 900px) {
   .test-modal-overlay.active .modal-random-nav {
-  display: none;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 15%;
-  z-index: 99999;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 2.5rem;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  transition: background 0.3s, color 0.3s;
-}
+    display: flex;
+  }
 }
