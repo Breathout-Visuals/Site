@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const rootDir = path.join(__dirname, '../portfolio-cinema-content/Projets');
+const rootDir = path.join(__dirname, '../../portfolio-cinema-content/Projets');
 
 const requiredFields = [
     'Name:', 'Category:', 'Subcategory:', 'Type:', 'Role:', 
