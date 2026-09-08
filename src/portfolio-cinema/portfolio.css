@@ -3518,3 +3518,17 @@ body, html {
 
 
 body.modal-open .portrait-lock-message { display: none !important; }
+
+
+/* FORCE 16:9 BOUNDING BOX ON HEADER AND FOOTER (USER REQUEST) */
+.container,
+.nav,
+.footer-bar,
+.footer-top {
+  max-width: 90rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
