@@ -176,7 +176,7 @@ body {
   .nav-links {
     position: fixed !important;
     inset: 0 !important;
-    width: 100vw !important;
+    width: 100% !important;
     height: 100vh !important;
     background: rgba(5, 5, 5, 0.98) !important;
     -webkit-backdrop-filter: blur(1.25rem) !important;
@@ -733,7 +733,7 @@ nav {
 
 .gallery-wrapper {
   position: relative;
-  width: 100vw;
+  width: 100%;
   overflow: hidden;
   padding: 5rem 0;
   -webkit-user-select: none;
@@ -3496,7 +3496,7 @@ body, html {
 /* Bypass state (Portrait orientation but forced sideways video) - Physical Top/Bottom */
 @media (pointer: coarse) and (orientation: portrait), (pointer: coarse) and (max-aspect-ratio: 1/1) {
   .test-modal-overlay.force-landscape-bypass .modal-random-nav {
-    width: 100vw;
+    width: 100%;
     height: 10vh;
     min-width: 0;
     left: 0; right: 0;

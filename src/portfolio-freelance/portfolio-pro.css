@@ -113,7 +113,7 @@ button { background: none; border: none; cursor: pointer; color: inherit; font-f
 .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(12,12,12,0.95) 0%, rgba(12,12,12,0.15) 65%, transparent 100%); }
 .hero-content { position: relative; z-index: 1; width: 100%; will-change: opacity, transform; }
 .hero-label { font-size: 0.6875rem; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); margin-bottom: 1rem; }
-.hero-title { font-size: clamp(4rem, 9vw, 12rem); font-weight: 700; line-height: 0.88; letter-spacing: -0.03em; text-transform: uppercase; overflow: hidden; margin-bottom: 2.25rem; }
+.hero-title { font-size: 8.1rem; font-weight: 700; line-height: 0.88; letter-spacing: -0.03em; text-transform: uppercase; overflow: hidden; margin-bottom: 2.25rem; }
 .hero-title .line { display: block; transform: translateY(110%); animation: slideUp 1s cubic-bezier(0.16,1,0.3,1) forwards; }
 .hero-title .line:nth-child(2) { animation-delay: 0.1s; }
 .hero-cta { display: inline-flex; align-items: center; gap: 0.625rem; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.25); padding-bottom: 0.3125rem; opacity: 0; animation: fadeIn 0.7s ease 0.7s forwards; transition: border-color 0.25s, gap 0.25s; }
@@ -132,7 +132,7 @@ button { background: none; border: none; cursor: pointer; color: inherit; font-f
 
 /* ─── PAGE HERO (inner pages) ─────────────────────────── */
 .page-hero { padding: calc(var(--nav-h) + 3.75rem) 2.5rem 3rem; border-bottom: 1px solid var(--border); }
-.page-hero-title { font-size: clamp(3rem, 7vw, 8rem); font-weight: 700; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
+.page-hero-title { font-size: 6.3rem; font-weight: 700; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
 .page-hero-sub { font-size: 0.6875rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); margin-top: 0.875rem; }
 
 /* ─── SECTION COMMON ──────────────────────────────────── */
@@ -161,7 +161,7 @@ button { background: none; border: none; cursor: pointer; color: inherit; font-f
   padding: 3.25rem 2.5rem;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  font-size: clamp(2rem, 5vw, 5rem);
+  font-size: 4.5rem;
   font-weight: 700; text-transform: uppercase;
   letter-spacing: -0.02em;
   transition: opacity 0.25s;
@@ -184,7 +184,7 @@ button { background: none; border: none; cursor: pointer; color: inherit; font-f
   gap: 1.25rem;
 }
 .slim-header-title {
-  font-size: clamp(3rem, 7vw, 7rem);
+  font-size: 6.3rem;
   font-weight: 700; text-transform: uppercase;
   letter-spacing: -0.03em; line-height: 1;
 }
@@ -203,7 +203,7 @@ button { background: none; border: none; cursor: pointer; color: inherit; font-f
 .featured-card:hover .featured-card-img { transform: scale(1.04); }
 .featured-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 55%); display: flex; align-items: flex-end; padding: 2rem; }
 .featured-card-cat { font-size: 0.625rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 0.5rem; }
-.featured-card-name { font-size: clamp(1.3rem, 2.5vw, 2rem); font-weight: 700; text-transform: uppercase; letter-spacing: -0.01em; line-height: 1.1; }
+.featured-card-name { font-size: 2.0rem; font-weight: 700; text-transform: uppercase; letter-spacing: -0.01em; line-height: 1.1; }
 .featured-card-role { font-size: 0.75rem; color: rgba(255,255,255,0.45); margin-top: 0.375rem; }
 .card-placeholder { background: #141414; }
 
@@ -225,7 +225,7 @@ button { background: none; border: none; cursor: pointer; color: inherit; font-f
 .stat-block:last-child { border-right: none; }
 .stat-num {
   display: block;
-  font-size: clamp(3rem, 5vw, 5.5rem);
+  font-size: 4.5rem;
   font-weight: 700; letter-spacing: -0.04em; line-height: 1;
   margin-bottom: 0.5rem;
 }
@@ -248,7 +248,7 @@ button { background: none; border: none; cursor: pointer; color: inherit; font-f
 .acc-trigger { width: 100%; display: flex; align-items: center; gap: 1.5rem; padding: 1.75rem 0; text-align: left; transition: opacity 0.2s; cursor: pointer; }
 .acc-trigger:hover { opacity: 0.65; }
 .acc-num { font-size: 0.625rem; letter-spacing: 0.15em; color: var(--muted); width: 1.75rem; flex-shrink: 0; }
-.acc-title { flex: 1; font-size: clamp(1rem, 2vw, 1.35rem); font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; }
+.acc-title { flex: 1; font-size: 1.35rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; }
 .acc-icon { font-size: 1.2rem; font-weight: 300; color: var(--dim); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); flex-shrink: 0; width: 1.5rem; text-align: center; }
 .acc-trigger[aria-expanded="true"] .acc-icon { transform: rotate(45deg); color: var(--text); }
 .acc-body { max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
@@ -261,7 +261,7 @@ button { background: none; border: none; cursor: pointer; color: inherit; font-f
 .acc-video video { width: 100%; height: 100%; object-fit: cover; }
 
 /* ─── CTA BAND ────────────────────────────────────────── */
-.cta-band { display: flex; align-items: center; justify-content: space-between; padding: 2.5rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); font-size: clamp(1rem, 2vw, 1.4rem); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; transition: background 0.25s; }
+.cta-band { display: flex; align-items: center; justify-content: space-between; padding: 2.5rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); font-size: 1.4rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; transition: background 0.25s; }
 .cta-band:hover { background: var(--bg2); }
 .cta-band-arrow { font-size: 1.5rem; transition: transform 0.3s ease; }
 .cta-band:hover .cta-band-arrow { transform: translateX(0.5rem); }
@@ -283,14 +283,14 @@ button { background: none; border: none; cursor: pointer; color: inherit; font-f
 .project-card-info { transform: translateY(0.625rem); transition: transform 0.4s ease; }
 .project-card:hover .project-card-info { transform: translateY(0); }
 .project-card-cat { font-size: 0.625rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 0.375rem; }
-.project-card-name { font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 600; line-height: 1.1; }
+.project-card-name { font-size: 1.5rem; font-weight: 600; line-height: 1.1; }
 .project-card-role { font-size: 0.6875rem; color: rgba(255,255,255,0.45); margin-top: 0.25rem; }
 .projects-empty { grid-column: span 2; padding: 5rem 0; text-align: center; color: var(--muted); font-size: 0.8125rem; letter-spacing: 0.1em; }
 .project-card.hidden { display: none; }
 
 /* ─── HOME CONTACT ────────────────────────────────────── */
 .home-footer { padding: 3.75rem 2.5rem 6.25rem; border-top: 1px solid var(--border); }
-.contact-big { display: block; font-size: clamp(2rem, 5vw, 5.5rem); font-weight: 700; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1; margin-bottom: 3.5rem; transition: opacity 0.25s; cursor: pointer; }
+.contact-big { display: block; font-size: 4.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1; margin-bottom: 3.5rem; transition: opacity 0.25s; cursor: pointer; }
 .contact-big:hover { opacity: 0.55; }
 .contact-row { display: flex; align-items: center; gap: 3rem; flex-wrap: wrap; }
 .contact-link { font-size: 0.875rem; font-weight: 300; color: var(--dim); transition: color 0.2s; }
@@ -320,7 +320,7 @@ button { background: none; border: none; cursor: pointer; color: inherit; font-f
   padding: 0.3125rem 0.875rem; margin-bottom: 1.25rem;
 }
 .bio-name {
-  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-size: 4.5rem;
   font-weight: 700; text-transform: uppercase;
   letter-spacing: -0.03em; line-height: 0.95;
   margin-bottom: 1.5rem;
@@ -358,7 +358,7 @@ button { background: none; border: none; cursor: pointer; color: inherit; font-f
 /* Contact items */
 .contact-page-label { font-size: 0.625rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-bottom: 1rem; display: block; }
 .contact-page-sub-title {
-  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  font-size: 2.2rem;
   font-weight: 700; text-transform: uppercase; letter-spacing: -0.01em;
   margin-bottom: 2rem;
 }
@@ -379,7 +379,7 @@ button { background: none; border: none; cursor: pointer; color: inherit; font-f
 .proj-info-label { font-size: 0.5625rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; display: block; }
 .proj-info-value { font-size: 0.875rem; font-weight: 400; }
 .proj-body { padding: 4rem 2.5rem; max-width: 47.5rem; }
-.proj-title { font-size: clamp(2rem, 5vw, 4rem); font-weight: 700; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+.proj-title { font-size: 4.0rem; font-weight: 700; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
 .proj-client { font-size: 0.8125rem; color: var(--dim); margin-bottom: 2rem; }
 .proj-desc { font-size: 0.9375rem; font-weight: 300; line-height: 1.85; color: var(--dim); }
 .proj-video-link { display: inline-flex; align-items: center; gap: 0.625rem; margin-top: 2rem; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; border: 1px solid var(--muted); padding: 0.75rem 1.5rem; transition: all 0.2s; }
@@ -393,7 +393,7 @@ button { background: none; border: none; cursor: pointer; color: inherit; font-f
 .proj-next { display: flex; align-items: center; justify-content: space-between; padding: 3.5rem 2.5rem; border-top: 1px solid var(--border); transition: opacity 0.25s; cursor: pointer; }
 .proj-next:hover { opacity: 0.6; }
 .proj-next-label { font-size: 0.625rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.5rem; }
-.proj-next-name { font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 700; text-transform: uppercase; letter-spacing: -0.01em; }
+.proj-next-name { font-size: 2.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: -0.01em; }
 .proj-next-arrow { font-size: 2rem; transition: transform 0.3s ease; }
 .proj-next:hover .proj-next-arrow { transform: translateX(0.5rem); }
 
@@ -417,7 +417,7 @@ button { background: none; border: none; cursor: pointer; color: inherit; font-f
 
   .hero { padding: 0 1.25rem 3.5rem; }
   .hero-scroll { display: none; }
-  .hero-title { font-size: clamp(3.5rem, 16vw, 6rem); }
+  .hero-title { font-size: 3.9rem; }
 
   .section { padding: 3rem 1.25rem; }
   .approach-section { padding: 3rem 1.25rem; }
@@ -440,10 +440,8 @@ button { background: none; border: none; cursor: pointer; color: inherit; font-f
   /* Stats — Horizontal Carousel / Marquee */
   .stats-outer {
     overflow: hidden;
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 100%;
+    
     padding: 0 0 2rem 0;
     margin: 2.5rem 0;
   }
@@ -473,7 +471,7 @@ button { background: none; border: none; cursor: pointer; color: inherit; font-f
     gap: 0.25rem;
     text-align: center;
   }
-  .stat-num { font-size: clamp(3rem, 15vw, 4rem); min-width: auto; line-height: 1; margin-bottom: 0.25rem; text-align: center; }
+  .stat-num { font-size: 3.66rem; min-width: auto; line-height: 1; margin-bottom: 0.25rem; text-align: center; }
   .stat-label { font-size: 1rem; text-align: center; }
   .stat-sub { margin-left: auto; margin-right: auto; margin-top: auto; padding-top: 0.5rem; text-align: center; }
 
@@ -488,7 +486,7 @@ button { background: none; border: none; cursor: pointer; color: inherit; font-f
 
   /* Home footer */
   .home-footer { padding: 3.5rem 1.25rem; }
-  .contact-big { font-size: clamp(1.8rem, 8vw, 2.8rem); margin-bottom: 2.25rem; }
+  .contact-big { font-size: 1.95rem; margin-bottom: 2.25rem; }
   .contact-row { flex-direction: column; align-items: flex-start; gap: 0.875rem; }
   .social-links { margin-left: 0; }
 
@@ -496,7 +494,7 @@ button { background: none; border: none; cursor: pointer; color: inherit; font-f
   .contact-page { padding: var(--nav-h) 1.25rem 0; }
   .contact-page-inner { padding: 2.5rem 0 3rem; }
   .bio-block { grid-template-columns: 1fr; gap: 2.5rem; padding-bottom: 3rem; margin-bottom: 2.5rem; }
-  .bio-name { font-size: clamp(3rem, 14vw, 5rem); line-height: 0.95; margin-bottom: 1rem; }
+  .bio-name { font-size: 3.41rem; line-height: 0.95; margin-bottom: 1rem; }
   .bio-role { font-size: 0.75rem; margin-bottom: 1.5rem; }
   .bio-desc { font-size: 0.9375rem; }
   .bio-block-right { justify-content: flex-start; }
@@ -506,7 +504,7 @@ button { background: none; border: none; cursor: pointer; color: inherit; font-f
   
   .big-cta-link { 
     padding: 2.25rem 1.25rem; 
-    font-size: clamp(1.8rem, 8vw, 2.5rem); 
+    font-size: 1.95rem; 
   }
   
   .slim-header { 
@@ -515,7 +513,7 @@ button { background: none; border: none; cursor: pointer; color: inherit; font-f
     align-items: flex-start; 
     gap: 0.75rem;
   }
-  .slim-header-title { font-size: clamp(2.5rem, 10vw, 4rem); }
+  .slim-header-title { font-size: 2.5rem; }
 
   /* Project page */
   .proj-hero { height: 55vw; min-height: 17.5rem; }
@@ -530,18 +528,18 @@ button { background: none; border: none; cursor: pointer; color: inherit; font-f
   .proj-info-item:last-child { border-bottom: none; }
   .proj-info-label { margin-bottom: 0; }
   .proj-body { padding: 2.25rem 1.25rem; }
-  .proj-title { font-size: clamp(1.8rem, 8vw, 2.5rem); }
+  .proj-title { font-size: 1.95rem; }
   .proj-gallery { padding: 0 1.25rem 2.5rem; grid-template-columns: 1fr; }
   .proj-video-embed { padding: 0 1.25rem 2.5rem; }
   .proj-next { padding: 2.25rem 1.25rem; }
-  .proj-next-name { font-size: clamp(1.2rem, 6vw, 1.8rem); }
+  .proj-next-name { font-size: 1.46rem; }
 
   /* Footer */
   .footer-bar { padding: 1.125rem 1.25rem; flex-direction: column; gap: 0.375rem; text-align: center; }
 }
 
 @media (max-width: 480px) and (pointer: coarse) and (orientation: portrait) {
-  .hero-title { font-size: clamp(3rem, 18vw, 5rem); }
+  .hero-title { font-size: 4.39rem; }
   .stats-section { grid-template-columns: 1fr; }
   .stat-block { border-left: none !important; padding-left: 0 !important; border-bottom: 1px solid var(--border) !important; }
   .stat-block:last-child { border-bottom: none !important; }
