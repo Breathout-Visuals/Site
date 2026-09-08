@@ -578,10 +578,7 @@
       <div class="test-progress-bar" id="test-progress"></div>
     </div>
 
-    <!-- Invisible Click Zones -->
-    <div class="test-nav-zone prev-zone" id="nav-prev"></div>
-    <div class="test-nav-zone center-zone" id="nav-toggle" ></div>
-    <div class="test-nav-zone next-zone" id="nav-next"></div>
+    
 
     <div class="test-cinematic-gallery" id="test-gallery"></div>
       <!-- Vignette Shadow replacing the Gradient Blur -->
@@ -975,17 +972,7 @@
       });
   }
 
-  document.getElementById('nav-toggle').addEventListener('click', () => {
-    clearTimeout(hudTimeout);
-    if (hud.classList.contains('hidden')) {
-      hud.classList.remove('hidden');
-      isHudManuallyHidden = false;
-    manageVideos();
-    } else {
-      hideHUD();
-      isHudManuallyHidden = true;
-    }
-  });
+  
 
   gallery.addEventListener('scroll', () => {
     updateProgress();
@@ -1057,60 +1044,125 @@ manageVideos();
     smoothScrollTo(gallery, boundedTarget, 700);
   }, { passive: false });
 
-  document.getElementById('nav-prev').addEventListener('click', () => {
-    if (isWheeling) return; isWheeling = true;
-    const currentIndex = Math.round(gallery.scrollLeft / gallery.clientWidth);
-    const boundedTarget = Math.max(0, (currentIndex - 1) * gallery.clientWidth);
-    smoothScrollTo(gallery, boundedTarget, 700);
-  });
-  document.getElementById('nav-next').addEventListener('click', () => {
-    if (isWheeling) return; isWheeling = true;
-    const maxScroll = gallery.scrollWidth - gallery.clientWidth;
-    const currentIndex = Math.round(gallery.scrollLeft / gallery.clientWidth);
-    const boundedTarget = Math.min(maxScroll, (currentIndex + 1) * gallery.clientWidth);
-    smoothScrollTo(gallery, boundedTarget, 700);
-  });
+  
+  
 
   
-    // SWIPE LOGIC FOR GALLERY (Adapts to Forced Landscape and Native Horizontal)
+    
+    // TOUCH AND CLICK LOGIC
     let touchStartX = 0;
     let touchStartY = 0;
+    let isDragging = false;
     const modalFrame = document.querySelector('.test-modal-frame');
 
     if (modalFrame) {
         modalFrame.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-            touchStartY = e.changedTouches[0].screenY;
+            touchStartX = e.changedTouches[0].clientX;
+            touchStartY = e.changedTouches[0].clientY;
+            isDragging = false;
+        }, { passive: true });
+
+        modalFrame.addEventListener('touchmove', (e) => {
+            const currentX = e.changedTouches[0].clientX;
+            const currentY = e.changedTouches[0].clientY;
+            if (Math.abs(currentX - touchStartX) > 10 || Math.abs(currentY - touchStartY) > 10) {
+                isDragging = true;
+            }
         }, { passive: true });
 
         modalFrame.addEventListener('touchend', (e) => {
-            const touchEndX = e.changedTouches[0].screenX;
-            const touchEndY = e.changedTouches[0].screenY;
+            const touchEndX = e.changedTouches[0].clientX;
+            const touchEndY = e.changedTouches[0].clientY;
             
             const deltaX = touchEndX - touchStartX;
             const deltaY = touchEndY - touchStartY;
             
             const isForced = document.getElementById('da-test-modal').classList.contains('force-landscape-bypass');
-            const swipeThreshold = 40;
+            const swipeThreshold = 30;
             
             if (isForced) {
+                // In forced mode, native scrolling doesn't work, so we use JS swiping
                 if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > swipeThreshold) {
                     if (deltaY < 0) {
-                        document.getElementById('nav-next').click();
+                        goToNext();
                     } else {
-                        document.getElementById('nav-prev').click();
+                        goToPrev();
                     }
                 }
             } else {
-                if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > swipeThreshold) {
-                    if (deltaX < 0) {
-                        document.getElementById('nav-next').click();
-                    } else {
-                        document.getElementById('nav-prev').click();
-                    }
+                // In native mode, native horizontal scrolling handles the swipe naturally!
+                // We just need to make sure we don't accidentally trigger a click.
+            }
+        });
+
+        modalFrame.addEventListener('click', (e) => {
+            // Ignore clicks if the user was dragging/swiping
+            if (isDragging) {
+                isDragging = false;
+                return;
+            }
+            
+            // Check if they clicked a UI element (like the close button or random arrows)
+            if (e.target.closest('.test-hud-layer') || e.target.closest('.modal-random-nav') || e.target.closest('.test-rotate-message')) {
+                return;
+            }
+
+            const rect = modalFrame.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const width = rect.width;
+            const height = rect.height;
+            
+            const isForced = document.getElementById('da-test-modal').classList.contains('force-landscape-bypass');
+            
+            if (isForced) {
+                // Frame is rotated!
+                // Physical top is visual left (prev/next)
+                if (y < height * 0.15) {
+                    goToNext(); // Physical top = Visual left
+                } else if (y > height * 0.85) {
+                    goToPrev(); // Physical bottom = Visual right
+                } else {
+                    toggleHud();
+                }
+            } else {
+                // Native orientation
+                if (x < width * 0.15) {
+                    goToPrev();
+                } else if (x > width * 0.85) {
+                    goToNext();
+                } else {
+                    toggleHud();
                 }
             }
         });
+    }
+
+    function goToPrev() {
+        if (isWheeling) return; isWheeling = true;
+        const currentIndex = Math.round(gallery.scrollLeft / gallery.clientWidth);
+        const boundedTarget = Math.max(0, (currentIndex - 1) * gallery.clientWidth);
+        smoothScrollTo(gallery, boundedTarget, 700);
+    }
+    
+    function goToNext() {
+        if (isWheeling) return; isWheeling = true;
+        const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+        const currentIndex = Math.round(gallery.scrollLeft / gallery.clientWidth);
+        const boundedTarget = Math.min(maxScroll, (currentIndex + 1) * gallery.clientWidth);
+        smoothScrollTo(gallery, boundedTarget, 700);
+    }
+    
+    function toggleHud() {
+        isHudManuallyHidden = !isHudManuallyHidden;
+        if (isHudManuallyHidden) {
+            hud.classList.add('hidden');
+            instructions.classList.add('hidden');
+        } else {
+            hud.classList.remove('hidden');
+        }
+        hasSeenInstructions = true;
+        manageVideos();
     }
 
     document.getElementById('swap-trigger').addEventListener('click', (e) => {
