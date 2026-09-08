@@ -1071,7 +1071,49 @@ manageVideos();
     smoothScrollTo(gallery, boundedTarget, 700);
   });
 
-  document.getElementById('swap-trigger').addEventListener('click', (e) => {
+  
+    // SWIPE LOGIC FOR GALLERY (Adapts to Forced Landscape and Native Horizontal)
+    let touchStartX = 0;
+    let touchStartY = 0;
+    const modalFrame = document.querySelector('.test-modal-frame');
+
+    if (modalFrame) {
+        modalFrame.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        modalFrame.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].screenX;
+            const touchEndY = e.changedTouches[0].screenY;
+            
+            const deltaX = touchEndX - touchStartX;
+            const deltaY = touchEndY - touchStartY;
+            
+            const isForced = document.getElementById('da-test-modal').classList.contains('force-landscape-bypass');
+            const swipeThreshold = 40;
+            
+            if (isForced) {
+                if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > swipeThreshold) {
+                    if (deltaY < 0) {
+                        document.getElementById('nav-next').click();
+                    } else {
+                        document.getElementById('nav-prev').click();
+                    }
+                }
+            } else {
+                if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > swipeThreshold) {
+                    if (deltaX < 0) {
+                        document.getElementById('nav-next').click();
+                    } else {
+                        document.getElementById('nav-prev').click();
+                    }
+                }
+            }
+        });
+    }
+
+    document.getElementById('swap-trigger').addEventListener('click', (e) => {
     e.stopPropagation();
     setMode(!isBtsMode);
   });
