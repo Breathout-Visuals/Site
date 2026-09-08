@@ -3450,10 +3450,9 @@ body, html {
 .modal-random-nav.left { left: 0; }
 .modal-random-nav.right { right: 0; }
 
-/* Only show on mobile landscape where there is wide pillarboxing */
-@media (max-height: 600px) and (orientation: landscape) and (pointer: coarse) {
-  /* Ensure the modal is active before showing */
-  .test-modal-overlay.active:not(.force-landscape-bypass) .modal-random-nav {
+/* Show on all mobile screens when modal is active */
+@media (max-width: 900px) {
+  .test-modal-overlay.active .modal-random-nav {
     display: flex;
   }
 }
