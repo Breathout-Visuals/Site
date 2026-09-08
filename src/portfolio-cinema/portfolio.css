@@ -765,7 +765,7 @@ nav {
   transform-style: preserve-3d;
 }
 
-@media (max-width: 1200px) and (pointer: coarse) {
+@media (max-width: 1200px) and (pointer: coarse) and (orientation: portrait) {
 
   /* Reduce Work Padding to fix "Enormous Space" */
   #work {
@@ -1130,7 +1130,7 @@ footer {
 
 
 
-@media (max-width: 1200px) and (pointer: coarse) {
+@media (max-width: 1200px) and (pointer: coarse) and (orientation: portrait) {
   .project-filters {
     padding: 1rem 1.5rem;
     /* Reduce huge padding on mobile */
@@ -1401,7 +1401,7 @@ footer {
 /* Mobile */
 /* Mobile Footer Override Removed to force Desktop Grid */
 
-@media (max-width: 1100px) and (pointer: coarse) {
+@media (max-width: 1100px) and (pointer: coarse) and (orientation: portrait) {
   footer {
     margin-top: -10vh !important; /* Give more gap on mobile */
     padding-top: 2rem !important; /* Ensure content breathes */
@@ -1480,7 +1480,7 @@ footer {
   color: #fff;
 }
 
-@media (max-width: 768px) and (pointer: coarse), (max-height: 600px) and (orientation: landscape) and (pointer: coarse) {
+@media (max-width: 768px) and (pointer: coarse) and (orientation: portrait) {
   .footer-grid {
     grid-template-columns: 1fr;
     text-align: center;
@@ -1766,7 +1766,7 @@ footer {
   /* Space for top overlap */
 }
 
-@media (max-width: 1200px) and (pointer: coarse) {
+@media (max-width: 1200px) and (pointer: coarse) and (orientation: portrait) {
   .modal.collection-mode .modal-media-container {
     height: 30vh !important;
     /* User requested 30% */
@@ -1811,7 +1811,7 @@ footer {
   }
 }
 
-@media (max-width: 1100px) and (pointer: coarse) {
+@media (max-width: 1100px) and (pointer: coarse) and (orientation: portrait) {
   .modal-controls {
     /* Mobile/Tablet: Ensure standard flow */
     position: relative !important;
@@ -1969,7 +1969,7 @@ footer {
   margin-top: 1rem;
 }
 
-@media (max-width: 1200px) and (pointer: coarse) {
+@media (max-width: 1200px) and (pointer: coarse) and (orientation: portrait) {
   .carousel-viewport {
     height: 30vh !important;
     /* User requested 30% */
@@ -2101,7 +2101,7 @@ a,
    most max-width queries are bypassed. 
 */
 
-@media (max-width: 768px) and (pointer: coarse), (max-height: 600px) and (orientation: landscape) and (pointer: coarse) {
+@media (max-width: 768px) and (pointer: coarse) and (orientation: portrait) {
   .hero-content h1 {
     font-size: 3rem;
   }
@@ -2181,7 +2181,7 @@ a,
   right: -5rem;
 }
 
-@media (max-width: 900px) and (pointer: coarse) {
+@media (max-width: 900px) and (pointer: coarse) and (orientation: portrait) {
   .modal-nav {
     font-size: 1.5rem;
     padding: 1rem;
@@ -2330,7 +2330,7 @@ a,
 
 
 
-@media (max-width: 900px) and (pointer: coarse) {
+@media (max-width: 900px) and (pointer: coarse) and (orientation: portrait) {
   .modal-nav.prev {
     left: 1rem !important;
   }
@@ -2924,7 +2924,7 @@ a,
   border-bottom-color: #fff;
 }
 
-@media (max-width: 600px) and (pointer: coarse) {
+@media (max-width: 600px) and (pointer: coarse) and (orientation: portrait) {
   .credits-grid {
     grid-template-columns: 1fr;
     gap: 0.2rem;
@@ -2960,7 +2960,7 @@ a,
 }
 
 /* --- MOBILE FIXES (Applied last to ensure priority) --- */
-@media (max-width: 1024px) and (pointer: coarse) {
+@media (max-width: 1024px) and (pointer: coarse) and (orientation: portrait) {
   .project-overlay-role {
     display: flex !important;
     /* Ensure it is flex */
@@ -3030,7 +3030,7 @@ a,
 }
 
 /* Mobile-Only Overrides */
-@media (max-width: 1100px) and (pointer: coarse) {
+@media (max-width: 1100px) and (pointer: coarse) and (orientation: portrait) {
   .about-desktop {
     display: none !important;
   }
@@ -3532,3 +3532,9 @@ body.modal-open .portrait-lock-message { display: none !important; }
   right: 0 !important;
 }
 
+
+
+/* RESET SCALING FOR MOBILE PORTRAIT SO IT ISNT MICROSCOPIC */
+@media (pointer: coarse) and (orientation: portrait) {
+  html { font-size: 16px !important; }
+}

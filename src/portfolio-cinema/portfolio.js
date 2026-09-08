@@ -2247,7 +2247,7 @@ if (menuToggle && navLinks) {
 (function () {
     const style = document.createElement('style');
     style.innerHTML = `
-        @media (max-width: 1300px) and (pointer: coarse) {
+        @media (max-width: 1300px) and (pointer: coarse) and (orientation: portrait) {
             .project-overlay-role {
                 display: flex !important;
                 flex-direction: column !important;
