@@ -3338,6 +3338,19 @@ body, html {
 
 @keyframes hudSlideUpDim { from { opacity: 0; transform: translateY(20px); } to { opacity: 0.4; transform: translateY(0) scale(1); } }
 
+
+/* Animation Restart Class */
+.test-instructions.restart-anim,
+.test-hud-layer.restart-anim .test-anim,
+.test-hud-layer.restart-anim .test-anim-group,
+.test-hud-layer.restart-anim .test-hud-play-btn,
+.test-hud-layer.restart-anim .test-close-btn {
+    transition: none !important;
+    animation: none !important;
+    opacity: 0 !important;
+    transform: translateY(20px) !important;
+}
+
 /* Instant show for PiP switch */
 .test-hud-layer.instant-show .test-anim, .test-hud-layer.instant-show .test-anim-group, .test-hud-layer.instant-show .test-close-btn, .test-hud-layer.instant-show .test-hud-play-btn, .test-hud-layer.instant-show .test-hud-title, .test-hud-layer.instant-show .test-hud-desc, .test-hud-layer.instant-show .test-hud-tech, .test-hud-layer.instant-show .test-hud-meta { transition-delay: 0s !important; animation-delay: 0s !important; transition-duration: 0s !important; animation-duration: 0s !important; opacity: 1 !important; transform: translateY(0) scale(1) !important; }
 

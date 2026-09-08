@@ -765,11 +765,29 @@
           modal.classList.add('active');
           document.body.classList.add('modal-open');
           document.body.style.overflow = 'hidden';
-          document.getElementById('test-instructions').classList.remove('hidden');
+                      const instrEl = document.getElementById('test-instructions');
+            if (instrEl) {
+                instrEl.classList.remove('hidden');
+                instrEl.classList.add('restart-anim');
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        instrEl.classList.remove('restart-anim');
+                    });
+                });
+            }
           hasSeenInstructions = false;
           isHudManuallyHidden = false;
-          const hudEl = document.getElementById('test-hud');
-          if (hudEl) hudEl.classList.remove('hidden');
+                      const hudEl = document.getElementById('test-hud');
+            if (hudEl) {
+                hudEl.classList.remove('hidden');
+                // Force animation restart
+                hudEl.classList.add('restart-anim');
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        hudEl.classList.remove('restart-anim');
+                    });
+                });
+            }
           const galEl = document.getElementById('test-gallery');
           if (galEl) {
               galEl.style.scrollBehavior = 'auto';
