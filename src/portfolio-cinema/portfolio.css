@@ -3421,8 +3421,6 @@ body, html {
   body:not(.modal-open) .portrait-lock-message {
     display: flex !important;
   }
-    display: flex;
-  }
 }
 
 
