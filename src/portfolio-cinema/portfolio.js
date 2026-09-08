@@ -714,6 +714,16 @@ function setupModal() {
              <span class="meta-label" data-i18n="modal.role_label">${translations[currentLang].modal.role_label}</span>
              <span class="meta-value">${pRole}</span>
            </div>
+           ${project.camera ? `
+           <div class="meta-item">
+             <span class="meta-label" data-i18n="modal.camera_label">${translations[currentLang].modal.camera_label || "Cam"}</span>
+             <span class="meta-value">${project.camera}</span>
+           </div>` : ''}
+           ${project.lens ? `
+           <div class="meta-item">
+             <span class="meta-label" data-i18n="modal.lens_label">${translations[currentLang].modal.lens_label || "Lens"}</span>
+             <span class="meta-value">${project.lens}</span>
+           </div>` : ''}
          </div>
        `;
 

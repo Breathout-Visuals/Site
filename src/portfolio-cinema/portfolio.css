@@ -205,7 +205,7 @@ body {
   }
 
   /* Scale Links inside Overlay */
-  .nav-links a {
+  .nav-links.active a {
     font-size: 3rem !important;
     /* Huge text */
     font-family: var(--font-display) !important;
