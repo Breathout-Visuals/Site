@@ -763,7 +763,6 @@
           modal.style.display = 'block';
           void modal.offsetWidth;
           modal.classList.add('active');
-          modal.classList.remove('force-landscape-bypass');
           document.body.classList.add('modal-open');
           document.body.style.overflow = 'hidden';
           document.getElementById('test-instructions').classList.remove('hidden');
@@ -879,6 +878,7 @@
     const modal = document.getElementById('da-test-modal');
     modal.style.pointerEvents = 'none';
     modal.classList.remove('active');
+      modal.classList.remove('force-landscape-bypass');
       document.body.classList.remove('modal-open');
       document.body.style.overflow = '';
     setTimeout(() => { 

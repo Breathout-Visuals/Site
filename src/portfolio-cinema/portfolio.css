@@ -3451,7 +3451,7 @@ body, html {
 .modal-random-nav.right { right: 0; }
 
 /* Show on mobile screens */
-@media (max-width: 900px) {
+@media (pointer: coarse), (max-width: 1000px) {
   .test-modal-overlay.active .modal-random-nav {
     display: flex;
   }
