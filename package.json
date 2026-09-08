@@ -8,7 +8,7 @@
     "build": "npm run validate && node scripts/portfolio-freelance/generate.cjs && node scripts/portfolio-cinema/generate-data.cjs && vite build",
     "gen": "node scripts/portfolio-freelance/generate.cjs && node scripts/portfolio-cinema/generate-data.cjs",
     "preview": "vite preview",
-    "validate": "node scripts/validate-infos.cjs"
+    "validate": "node scripts/portfolio-cinema/validate-infos.cjs"
   },
   "devDependencies": {
     "vite": "^7.2.4"
