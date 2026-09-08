@@ -3419,18 +3419,17 @@ body, html {
 /* Show message on mobile phones in landscape mode, EXCEPT if a modal is open */
 @media (max-height: 600px) and (orientation: landscape) and (pointer: coarse) {
   body:not(.modal-open) .portrait-lock-message {
+    display: flex !important;
+  }
     display: flex;
   }
 }
 
 
-/* --- MODAL RANDOM NAV ARROWS (Mobile Landscape) --- */
+/* --- MODAL RANDOM NAV ARROWS --- */
 .modal-random-nav {
   display: none;
   position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 15%;
   z-index: 99999;
   align-items: center;
   justify-content: center;
@@ -3440,18 +3439,48 @@ body, html {
   -webkit-tap-highlight-color: transparent;
   transition: background 0.3s, color 0.3s;
 }
-
+.modal-random-nav i { transition: transform 0.3s; }
 .modal-random-nav:active {
   background: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 1);
 }
 
+/* Default state (Native landscape or desktop) - Physical Left/Right */
+.modal-random-nav {
+  top: 0; bottom: 0; width: 10vw; min-width: 60px;
+}
 .modal-random-nav.left { left: 0; }
 .modal-random-nav.right { right: 0; }
 
-/* Show on all mobile screens when modal is active */
+/* Show on mobile screens */
 @media (max-width: 900px) {
   .test-modal-overlay.active .modal-random-nav {
     display: flex;
   }
 }
+
+/* Bypass state (Portrait orientation but forced sideways video) - Physical Top/Bottom */
+@media (orientation: portrait), (max-aspect-ratio: 1/1) {
+  .test-modal-overlay.force-landscape-bypass .modal-random-nav {
+    width: 100vw;
+    height: 10vh;
+    min-width: 0;
+    left: 0; right: 0;
+  }
+  .test-modal-overlay.force-landscape-bypass .modal-random-nav.left {
+    top: 0; bottom: auto; left: 0; right: 0;
+  }
+  .test-modal-overlay.force-landscape-bypass .modal-random-nav.right {
+    bottom: 0; top: auto; left: 0; right: 0;
+  }
+  /* Rotate icons so they point left/right when the user turns the phone */
+  .test-modal-overlay.force-landscape-bypass .modal-random-nav.left i {
+    transform: rotate(90deg);
+  }
+  .test-modal-overlay.force-landscape-bypass .modal-random-nav.right i {
+    transform: rotate(90deg);
+  }
+}
+
+
+body.modal-open .portrait-lock-message { display: none !important; }
