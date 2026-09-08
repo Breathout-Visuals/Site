@@ -760,22 +760,27 @@
               setTimeout(() => { blocker.style.display = 'none'; }, 2000);
           }
           if (typeof hudTimeout !== 'undefined') clearTimeout(hudTimeout);
-          modal.style.display = 'block';
+          const isSeamless = modal.classList.contains('active');
+            modal.style.display = 'block';
           void modal.offsetWidth;
           modal.classList.add('active');
           document.body.classList.add('modal-open');
           document.body.style.overflow = 'hidden';
                       const instrEl = document.getElementById('test-instructions');
             if (instrEl) {
-                instrEl.classList.remove('hidden');
-                instrEl.classList.add('restart-anim');
-                requestAnimationFrame(() => {
+                if (!isSeamless) {
+                    instrEl.classList.remove('hidden');
+                    instrEl.classList.add('restart-anim');
                     requestAnimationFrame(() => {
-                        instrEl.classList.remove('restart-anim');
+                        requestAnimationFrame(() => {
+                            instrEl.classList.remove('restart-anim');
+                        });
                     });
-                });
+                    hasSeenInstructions = false;
+                } else {
+                    instrEl.classList.add('hidden');
+                }
             }
-          hasSeenInstructions = false;
           isHudManuallyHidden = false;
                       const hudEl = document.getElementById('test-hud');
             if (hudEl) {
