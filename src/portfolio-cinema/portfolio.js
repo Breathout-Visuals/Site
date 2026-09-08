@@ -473,6 +473,8 @@ function setupModal() {
     let currentProjectId = null;
 
         const openModal = (projectId) => {
+            window.openModal = openModal; // Expose globally
+
         if (projectId == 10 || projectId === '10') {
             modal.style.pointerEvents = 'auto';
             
@@ -2740,3 +2742,30 @@ function setupAboutMobileAnimation() {
 
     onScroll();
 }
+
+
+// --- RANDOM PROJECT NAVIGATION ---
+window.openRandomProject = function(event) {
+    if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+    }
+    
+    // Close the current modal
+    const closeBtn = document.getElementById('close-test-modal');
+    if (closeBtn) closeBtn.click();
+    
+    // Filter available projects (exclude instagram reel '10')
+    const available = projects.filter(p => p.id != 10 && p.id != '10');
+    if (available.length === 0) return;
+    
+    // Pick a random project
+    const randomProject = available[Math.floor(Math.random() * available.length)];
+    
+    // Wait for the modal close animation to finish (roughly 500-800ms) before opening the new one
+    setTimeout(() => {
+        if (window.openModal) {
+            window.openModal(randomProject.id);
+        }
+    }, 600);
+};
