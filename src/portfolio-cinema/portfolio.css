@@ -3376,3 +3376,15 @@ body, html {
   right: 4cqw !important;
   left: auto !important;
 }
+
+
+/* --- LANDSCAPE MOBILE GALLERY FIX --- */
+/* When phones are held horizontally, they use the desktop layout, but 2 rows of 40vh squishes the cards flat. 
+   This forces a single row of large, beautifully proportioned cards in landscape mode. */
+@media (max-height: 600px) and (orientation: landscape) {
+  .gallery-track {
+    grid-template-rows: 75vh !important;
+    grid-auto-columns: 55vh !important;
+    gap: 4vw !important;
+  }
+}
