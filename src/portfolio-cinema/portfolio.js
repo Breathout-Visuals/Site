@@ -407,7 +407,7 @@ function setupAnimations() {
             const targetId = this.getAttribute('href');
 
             // SPECIAL CASE: About Section on Mobile
-            if (targetId === '#about' && window.innerWidth <= 1100) {
+            if (targetId === '#about' && window.matchMedia('(max-width: 1100px) and (pointer: coarse) and (orientation: portrait)').matches) {
                 if (typeof window.autoScrollToAbout === 'function') {
                     window.autoScrollToAbout();
                     return;
@@ -1675,7 +1675,7 @@ function setupEmailInteractions() {
             const targetId = btn.getAttribute('data-scroll');
 
             // SPECIAL CASE: About Section on Mobile
-            if (targetId === '#about' && window.innerWidth <= 1100) {
+            if (targetId === '#about' && window.matchMedia('(max-width: 1100px) and (pointer: coarse) and (orientation: portrait)').matches) {
                 if (typeof window.autoScrollToAbout === 'function') {
                     window.autoScrollToAbout();
                     return;
@@ -2247,7 +2247,7 @@ if (menuToggle && navLinks) {
 (function () {
     const style = document.createElement('style');
     style.innerHTML = `
-        @media (max-width: 1300px) and (pointer: coarse) and (orientation: portrait) {
+        @media (max-width: 1300px) and (pointer: coarse) {
             .project-overlay-role {
                 display: flex !important;
                 flex-direction: column !important;

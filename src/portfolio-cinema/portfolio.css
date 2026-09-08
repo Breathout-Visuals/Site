@@ -205,9 +205,8 @@ body {
   }
 
   /* Scale Links inside Overlay */
-  .nav-links.active a {
-    font-size: 3rem !important;
-    /* Huge text */
+  .nav-links a {
+    /* Font size controlled by mobile CSS injection to avoid pop */
     font-family: var(--font-display) !important;
     font-weight: 700 !important;
 
@@ -424,6 +423,7 @@ header {
   padding: 3rem 0;
   /* Increased from 2rem */
   position: absolute;
+  z-index: 100;
   /* Transparent initially */
   top: 0;
   left: 0;
