@@ -830,7 +830,7 @@ footer {
 }
 
 /* Desktop Hover (Only on devices that support hover) */
-@media (hover: hover) and (pointer: coarse) {
+@media (hover: hover) {
   .project-card:hover .project-media {
     transform: scale(1.05);
     filter: grayscale(0%);
@@ -969,7 +969,7 @@ footer {
 }
 
 /* Role Badge Hover/Touch */
-@media (hover: hover) and (pointer: coarse) {
+@media (hover: hover) {
 
   .project-card:hover .role-badge,
   .project-card:hover .status-badge {
@@ -1070,7 +1070,7 @@ footer {
   transition: color 0.3s ease;
 }
 
-@media (hover: hover) and (pointer: coarse) {
+@media (hover: hover) {
   .filter-btn:hover {
     color: var(--text-color);
   }
@@ -1161,7 +1161,7 @@ footer {
 }
 
 /* PC Hover Restore */
-@media (min-width: 1201px) and (pointer: coarse) {
+@media (min-width: 1201px) {
   .filter-dropup:hover .dropup-menu {
     opacity: 1;
     visibility: visible;
@@ -1197,7 +1197,7 @@ footer {
   align-items: center;
 }
 
-@media (hover: hover) and (pointer: coarse) {
+@media (hover: hover) {
   .dropup-item:hover {
     opacity: 1;
     color: #fff !important;
@@ -1706,7 +1706,7 @@ footer {
   /* Vertical representation */
 }
 
-@media (hover: hover) and (pointer: coarse) {
+@media (hover: hover) {
   .modal-controls button:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: scale(1.05);
@@ -1802,7 +1802,7 @@ footer {
   bottom: auto;
 }
 
-@media (min-width: 1101px) and (pointer: coarse) {
+@media (min-width: 1101px) {
   .modal-controls {
     /* Desktop: Shift UP to overlap video */
     transform: translateY(-5.625rem);
@@ -1859,7 +1859,7 @@ footer {
   pointer-events: none;
 }
 
-@media (hover: hover) and (pointer: coarse) {
+@media (hover: hover) {
   .project-card:hover .project-overlay-role {
     opacity: 1;
     transform: translateY(0);
@@ -2160,7 +2160,7 @@ a,
   transition: all 0.3s ease;
 }
 
-@media (hover: hover) and (pointer: coarse) {
+@media (hover: hover) {
   .modal-nav:hover {
     color: #fff;
     transform: translateY(-50%) scale(1.2);
@@ -2840,7 +2840,7 @@ a,
   backdrop-filter: blur(0.25rem);
 }
 
-@media (hover: hover) and (pointer: coarse) {
+@media (hover: hover) {
   .project-carousel-nav:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: translateY(-50%) scale(1.1);
@@ -3169,7 +3169,7 @@ body, html {
 
 
 /* --- MODAL DA TEST --- */
-.test-modal-overlay { --cqw: calc(min(90vw, 90dvh * 16 / 9) / 100); position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(0.9375rem); -webkit-backdrop-filter: blur(0.9375rem); z-index: 9000; display: none; opacity: 0; transition: opacity 0.5s ease; cursor: pointer; }
+.test-modal-overlay { --cqw: calc(min(90vw, 90dvh * 16 / 9) / 100); position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(0.9375rem); -webkit-backdrop-filter: blur(0.9375rem); z-index: 9000; display: none; opacity: 0; transition: opacity 0.8s ease; cursor: pointer; }
 .test-modal-overlay.active { opacity: 1; }
 
 .test-modal-frame {
@@ -3177,7 +3177,7 @@ body, html {
     width: 90vw; height: auto; max-width: calc(90dvh * 16 / 9); max-height: 90dvh; aspect-ratio: 16 / 9;
     container-type: inline-size;
     background: #000; overflow: hidden; box-shadow: 0 2.5rem 6.25rem rgba(0,0,0,1); border-radius: calc(1.2 * var(--cqw)); border: 1px solid rgba(255,255,255,0.1); padding: 1px;
-    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease; cursor: default;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease; cursor: default;
 }
 .test-modal-overlay.active .test-modal-frame { transform: translate(-50%, -50%) scale(1); opacity: 1; }
 
