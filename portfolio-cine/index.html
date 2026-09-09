@@ -70,7 +70,7 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
+      width: 100%;
       height: 100vh;
       background-color: #050505;
       z-index: 99999;
@@ -92,11 +92,7 @@
       align-items: center;
     }
 
-    @media (max-width: 768px) {
-      .preloader-content {
-        transform: scale(2.0);
-      }
-    }
+    
 
     .preloader-brand {
       font-family: 'Inter', 'Helvetica Neue', sans-serif;
@@ -604,7 +600,7 @@
         <h2 class="test-hud-title test-anim" id="test-hud-title"></h2>
         <p class="test-hud-desc test-anim"></p>
         <div class="test-hud-tech test-anim"></div>
-          <div class="test-hud-play-btn test-anim" onclick="window.open('https://youtu.be/nK3sbmGYcG8', '_blank')" ><i class="fa-solid fa-play"></i> Voir le film</div>
+          <div class="test-hud-play-btn test-anim" onclick="window.open('https://youtu.be/nK3sbmGYcG8', '_blank')" ><i class="fa-solid fa-play"></i> <span data-i18n="modal.view_film">Voir le film</span></div>
       </div>
       
       <div class="test-hud-right test-anim-group">
@@ -708,7 +704,7 @@
                     const item = document.createElement('div');
                     item.className = 'test-related-item';
                     item.innerHTML = `<img src="${op.media}" alt="${op.title}"><span class="hover-title">${op.title}</span>`;
-                    item.onclick = function() { window.populateTestModal(op.id); };
+                    item.onclick = function(e) { e.stopPropagation(); window.populateTestModal(op.id); };
                     relatedList.appendChild(item);
                 });
             }
@@ -758,11 +754,37 @@
           }
           if (typeof hudTimeout !== 'undefined') clearTimeout(hudTimeout);
           const isSeamless = modal.classList.contains('active');
-            modal.style.display = 'block';
+            
+          modal.style.display = 'block';
           void modal.offsetWidth;
-          modal.classList.add('active');
+          
+          const isMobilePortrait = window.matchMedia('(pointer: coarse) and (orientation: portrait), (pointer: coarse) and (max-aspect-ratio: 1/1)').matches;
+          const isForced = modal.classList.contains('force-landscape-bypass');
+          
+          if (isMobilePortrait && !isForced && !isSeamless) {
+              modal.classList.add('pending-rotate');
+              
+              const checkRotation = () => {
+                  const stillPortrait = window.matchMedia('(pointer: coarse) and (orientation: portrait), (pointer: coarse) and (max-aspect-ratio: 1/1)').matches;
+                  const bypassed = modal.classList.contains('force-landscape-bypass');
+                  if (!stillPortrait || bypassed) {
+                      modal.classList.remove('pending-rotate');
+                      void modal.offsetWidth;
+                      modal.classList.add('active');
+                      window.removeEventListener('resize', checkRotation);
+                      modal.removeEventListener('bypass-triggered', checkRotation);
+                  }
+              };
+              
+              window.addEventListener('resize', checkRotation);
+              modal.addEventListener('bypass-triggered', checkRotation);
+          } else {
+              setTimeout(() => { modal.classList.add('active'); }, 50);
+          }
+          
           document.body.classList.add('modal-open');
           document.body.style.overflow = 'hidden';
+
                       const instrEl = document.getElementById('test-instructions');
             if (instrEl) {
                 if (!isSeamless) {
@@ -843,9 +865,7 @@
       if (firstMain && firstMain.src) pipMain.src = firstMain.src;
   }
 
-  document.querySelector('.test-rotate-message').addEventListener('click', () => {
-    document.getElementById('da-test-modal').classList.add('force-landscape-bypass');
-  });
+  document.querySelector('.test-rotate-message').addEventListener('click', () => { const m = document.getElementById('da-test-modal'); m.classList.add('force-landscape-bypass'); m.dispatchEvent(new Event('bypass-triggered')); });
 
 
   let isModeSwitching = false;
@@ -898,6 +918,7 @@
     const modal = document.getElementById('da-test-modal');
     modal.style.pointerEvents = 'none';
     modal.classList.remove('active');
+      modal.classList.remove('pending-rotate');
       modal.classList.remove('force-landscape-bypass');
       document.body.classList.remove('modal-open');
       document.body.style.overflow = '';
@@ -995,27 +1016,12 @@ manageVideos();
   });
 
   function smoothScrollTo(element, target, duration) {
-    const start = element.scrollLeft;
-    const change = target - start;
-    let startTime = null;
-    function easeInOutCubic(t, b, c, d) {
-      t /= d/2;
-      if (t < 1) return c/2*t*t*t + b;
-      t -= 2; return c/2*(t*t*t + 2) + b;
-    }
-    function animation(currentTime) {
-      if (startTime === null) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      element.scrollLeft = easeInOutCubic(timeElapsed, start, change, duration);
-      if (timeElapsed < duration) {
-        requestAnimationFrame(animation);
-      } else {
-        element.scrollLeft = target;
-        isWheeling = false;
-      }
-    }
-    requestAnimationFrame(animation);
-    setTimeout(() => { isWheeling = false; }, duration + 50);
+    element.style.scrollBehavior = 'smooth';
+    element.scrollLeft = target;
+    setTimeout(() => { 
+        element.style.scrollBehavior = 'auto';
+        isWheeling = false; 
+    }, duration);
   }
 
     overlay.addEventListener('wheel', (evt) => {
