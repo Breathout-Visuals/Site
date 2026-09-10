@@ -10,5 +10,6 @@ Description: YouTube video series focused on real estate, shot internationally a
 Description Fr: Série de vidéos YouTube dédiées à l’immobilier, tournée à l’international, notamment en Afrique du Sud, en Suisse, en France, au Canada et aux Émirats arabes unis. Un format mobile et dynamique, pensé pour s’adapter à des contextes variés tout en restant accessible et informatif.
 
 
-Camera: Alexa Caca
-Lens: Angenieux nieux
+Camera: Sony FX3
+Lens: Sony GMaster
+
